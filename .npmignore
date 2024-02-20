@@ -1,0 +1,6 @@
+/.vscode
+/test
+/.env
+/.gitignore
+/eslint.config.js
+/rollup.config.js
