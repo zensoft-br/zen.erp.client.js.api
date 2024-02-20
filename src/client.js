@@ -16,7 +16,11 @@ class Client {
   constructor(tenant, token) {
     this.#tenant = tenant;
     this.#token = token;
-    this.#jwt = JSON.parse(Buffer.from(token.split(".")[1], "base64").toString());
+    this.#jwt = jwt(token);
+  }
+
+  async close() {
+    // this.fetch();
   }
 
   async fetch(input, init) {
@@ -93,7 +97,7 @@ export function createFromToken(host, token, options) {
   return new Client(host, token);
 }
 
-export async function login(host, user, password, properties) {
+export async function connect(host, user, password, properties) {
   // Tenant
   if (!host.toLowerCase().startsWith("http"))
     host = `https://${host}.zenerp.app.br:8443`;
@@ -118,4 +122,14 @@ export async function login(host, user, password, properties) {
   const token = await response.text();
 
   return createFromToken(host, token);
+}
+
+function jwt(token) {
+  var base64Url = token.split(".")[1];
+  var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+  var jsonPayload = decodeURIComponent(globalThis.atob(base64).split("").map(function(c) {
+    return `%${ (`00${ c.charCodeAt(0).toString(16)}`).slice(-2)}`;
+  }).join(""));
+
+  return JSON.parse(jsonPayload);
 }
