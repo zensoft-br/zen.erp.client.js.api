@@ -1,3 +1,4 @@
+import { Api } from "./api/api.js";
 import { createI18n } from "./i18n.js";
 import Web from "./web.js";
 
@@ -8,7 +9,7 @@ class Client {
   #jwt;
   #debug = false;
 
-  // #api;
+  #api;
   #i18n;
   #web;
 
@@ -42,11 +43,11 @@ class Client {
     return fetch(_input, _init);
   }
 
-  // get api() {
-  //   if (!this.#api)
-  //     this.#api = new API(this);
-  //   return this.#api;
-  // }
+  get api() {
+    if (!this.#api)
+      this.#api = new Api(this);
+    return this.#api;
+  }
 
   get i18n() {
     if (!this.#i18n)
@@ -58,6 +59,10 @@ class Client {
 
   get jti() {
     return this.#jwt.jti;
+  }
+
+  get jwt() {
+    return this.#token;
   }
 
   get language() {
@@ -80,16 +85,18 @@ class Client {
 
 }
 
-export function createFromHostAndToken(host, token, options) {
+export function createFromToken(host, token, options) {
+  // Tenant
+  if (!host.toLowerCase().startsWith("http"))
+    host = `https://${host}.zenerp.app.br:8443`;
+
   return new Client(host, token);
 }
 
-export function createFromTenantAndToken(tenant, token, options) {
-  return createFromHostAndToken(`https://${tenant}.zenerp.app.br:8443`, token, options);
-}
-
-export async function loginAtHost(host, user, password, properties) {
-  // const i18n = await createI18n(properties?.locale, properties?.timeZone);
+export async function login(host, user, password, properties) {
+  // Tenant
+  if (!host.toLowerCase().startsWith("http"))
+    host = `https://${host}.zenerp.app.br:8443`;
 
   const response = await fetch(`${host}/system/security/tokenOpRequest`, {
     method: "POST",
@@ -110,9 +117,5 @@ export async function loginAtHost(host, user, password, properties) {
 
   const token = await response.text();
 
-  return createFromHostAndToken(host, token);
-}
-
-export async function loginAtTenant(tenant, user, password, properties) {
-  return loginAtHost(`https://${tenant}.zenerp.app.br:8443`, user, password, properties);
+  return createFromToken(host, token);
 }

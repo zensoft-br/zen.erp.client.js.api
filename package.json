@@ -32,9 +32,6 @@
   "dependencies": {
     "luxon": "^3.4.4"
   },
-  "bundledDependencies": [
-    "luxon"
-  ],
   "bundleDependencies": [
     "luxon"
   ]

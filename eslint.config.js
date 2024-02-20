@@ -13,7 +13,7 @@ export default [
       stylistic,
     },
     "rules": {
-      "indent":    [
+      "indent": [
         "error",
         2,
       ],
