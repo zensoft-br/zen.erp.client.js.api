@@ -29,4 +29,6 @@ console.log(zenClient.user);
 
 console.log(await zenClient.api.catalog.categoryRead());
 
+console.log(await zenClient.web.fetchBlob("/category/category"));
+
 console.log((await zenClient.i18n).getResource("@@:/@word/yes"));

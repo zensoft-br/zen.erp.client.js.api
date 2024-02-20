@@ -1,8 +1,18 @@
-```
+# @zensoft-br/zenclient
+
+## Install
+
+```js
 npm install @zensoft-br/zenclient
 ```
 
-## Usage
+## Import
+
+```js
+import ZenClient from "@zensoft-br/zenclient";
+```
+
+## Connect
 
 ### Creating a client using a new connection (generates a new token)
 
@@ -20,6 +30,14 @@ const client = await ZenClient.connect("tenant_or_host", "user", "password",
 
 ```js
 const client = ZenClient.createFromToken("tenant_or_host", "token");
+```
+
+## client.web - Fetch methods
+
+### Fetching blob
+
+```js
+const blob = await client.web.fetchBlob("/catalog/category");
 ```
 
 ### Fetching json
@@ -40,8 +58,36 @@ const text = await client.web.fetchText("/catalog/category");
 const response = await client.web.fetch("/catalog/category");
 ```
 
-### Fetching from api
+### Fetching response and validating status (throw error if status >= 300)
+
+```js
+const response = await client.web.fetchOk("/catalog/category");
+```
+
+### Handling response (throw error if status >= 300)
+
+```js
+const response = await client.web.fetch("/catalog/category");
+await client.web.handleResponse(response);
+```
+
+## client.api - API wrapper
+
+### Calling api methods (not fully implemented)
 
 ```js
 const categoryList = await client.api.catalog.categoryRead("q=id==1001");
+```
+
+## client.i18n - Internationalization
+
+### Fetching resources
+
+```js
+client.i18n.getResource("@@:/@word/yes");
+client.i18n.format("@@:/catalog/category/error/notFound", "category");
+client.i18n.formatDate("2000-01-31");
+client.i18n.formatDate(new Date("2000-01-31"));
+client.i18n.formatNumber(1000, { digits: 2 });
+client.i18n.formatNumber(1000, { minDigits: 2, maxDigits: 4 });
 ```
