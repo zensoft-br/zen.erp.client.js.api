@@ -1,0 +1,19 @@
+export class Taxation {
+  id;
+  source;
+  tax;
+  taxType;
+  grossBaseValueExpression;
+  grossBaseValue;
+  grossBaseValueVariationRate;
+  baseValue;
+  taxRate;
+  grossTaxValue;
+  taxAdjustmentExpression;
+  taxAdjustmentValue;
+  taxValue;
+  compensationRate;
+  compensationValue;
+  tags;
+  properties;
+}

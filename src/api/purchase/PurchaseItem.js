@@ -1,0 +1,29 @@
+export class PurchaseItem {
+  id;
+  purchase;
+  productPacking;
+  fiscalProfileProduct;
+  taxationRule;
+  taxationOperation;
+  priceListValue;
+  unit;
+  quantity;
+  internalQuantity;
+  servedQuantity;
+  unitValue;
+  productValue;
+  discountType;
+  discountAmount;
+  discountValue;
+  otherValues;
+  operationValue;
+  insideTaxValue;
+  outsideTaxValue;
+  totalValue;
+  taxCompensationValue;
+  effectiveValue;
+  account;
+  accountComplement;
+  tags;
+  properties;
+}

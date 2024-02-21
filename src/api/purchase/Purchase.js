@@ -1,0 +1,23 @@
+export class Purchase {
+  id;
+  status;
+  company;
+  purchaseProfile;
+  fiscalProfileOperation;
+  workflow;
+  workpiece;
+  warehouse;
+  person;
+  personAddressShipping;
+  code;
+  date;
+  availabilityDate;
+  freightType;
+  priceList;
+  currency;
+  totalValue;
+  incomingRequest;
+  quote;
+  tags;
+  properties;
+}

@@ -1,0 +1,31 @@
+export class IncomingInvoiceItem {
+  incomingInvoice;
+  incomingRequest;
+  OTHER_VALUES_FREIGHT;
+  OTHER_VALUES_INSURANCE;
+  OTHER_VALUES_OTHER;
+  id;
+  productPacking;
+  taxationRule;
+  taxationOperation;
+  quantity;
+  unit;
+  internalQuantity;
+  netWeightKg;
+  grossWeightKg;
+  unitValue;
+  productValue;
+  discountValue;
+  otherValues;
+  operationValue;
+  insideTaxValue;
+  outsideTaxValue;
+  totalValue;
+  taxCompensationValue;
+  effectiveValue;
+  assetTag;
+  account;
+  accountComplement;
+  tags;
+  properties;
+}

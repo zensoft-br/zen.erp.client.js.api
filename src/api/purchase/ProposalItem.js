@@ -1,0 +1,30 @@
+export class ProposalItem {
+  id;
+  status;
+  proposal;
+  quoteItem;
+  availabilityDate;
+  productPacking;
+  fiscalProfileProduct;
+  unit;
+  quantity;
+  internalQuantity;
+  approvedQuantity;
+  currency;
+  unitValue;
+  taxationRule;
+  taxationOperation;
+  productValue;
+  discountType;
+  discountAmount;
+  discountValue;
+  otherValues;
+  operationValue;
+  insideTaxValue;
+  outsideTaxValue;
+  totalValue;
+  taxCompensationValue;
+  effectiveValue;
+  tags;
+  properties;
+}

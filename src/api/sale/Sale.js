@@ -1,0 +1,24 @@
+export class Sale {
+  id;
+  status;
+  company;
+  saleProfile;
+  fiscalProfileOperation;
+  workflow;
+  workpiece;
+  person;
+  personAddressShipping;
+  code;
+  date;
+  availabilityDate;
+  personSalesperson;
+  freightType;
+  personShipping;
+  priceList;
+  currency;
+  totalValue;
+  outgoingRequest;
+  outgoingInvoice;
+  tags;
+  properties;
+}

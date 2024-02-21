@@ -11,7 +11,7 @@ npm install @zensoft-br/zenclient
 ## Importação
 
 ```js
-import ZenClient from "@zensoft-br/zenclient";
+import Zen from "@zensoft-br/zenclient";
 ```
 
 ## Conexão
@@ -19,7 +19,7 @@ import ZenClient from "@zensoft-br/zenclient";
 ### Inicializando e conectando um cliente
 
 ```js
-const client = await ZenClient.connect("tenant_or_host", "user", "password",
+const client = await Zen.connect("tenant_or_host", "user", "password",
   {
     "locale": "pt-BR",
     "timeZone": "America/Sao_Paulo",
@@ -31,7 +31,7 @@ const client = await ZenClient.connect("tenant_or_host", "user", "password",
 ### Criando um cliente a partir de um token
 
 ```js
-const client = ZenClient.createFromToken("tenant_or_host", "token");
+const client = Zen.createFromToken("tenant_or_host", "token");
 ```
 
 ## Métodos `fetch` (client.web)
@@ -79,16 +79,35 @@ const response = await client.web.fetch("/catalog/category");
 await client.web.handleResponse(response);
 ```
 
-## Encapsulamento de API (client.api)
+## Encapsulamento de API (Zen.api)
 
-Coleção de objetos que representam a estrutura da API e podem ser utilizados para acessar a API de forma mais simplificada e orientada a objetos (módulo sujeito a modificações).
+Coleção de objetos que representam a estrutura da API e podem ser utilizados para acessar a API de forma mais simplificada e orientada a objetos.
 
 ### Chamando métodos da API
 
+As classes de serviços devem ser instanciadas com uma instância do cliente como argumento do construtor.
+
 ```js
-const categoryList = await new ZenClient.CategoryService(cliente).categoryRead("q=id==1001");
-let sale = await new ZenClient.SaleService(cliente).saleReadById(1001);
-sale = await ZenClient.SaleService(cliente).saleOpForward(sale.id);
+const categoryService = new Zen.api.catalog.Service(client);
+```
+
+```js
+const categoryService = new Zen.api.catalog.Service(client);
+
+let category = new Zen.api.catalog.Category();
+category.code = "TOOLS";
+category.description = "Tools";
+
+category = await categoryService.categoryCreate(category);
+```
+
+```js
+const saleService = new Zen.api.sale.Service(client);
+
+let sale;
+
+sale = await saleService.saleOpPrepare(1001);
+sale = await saleService.saleOpApprove(1001);
 ```
 
 ## Internacionalização (client.i18n)

@@ -1,0 +1,20 @@
+export class IncomingListItem {
+  id;
+  incomingList;
+  stockCluster;
+  address;
+  depositor;
+  productPacking;
+  quality;
+  lot;
+  serial;
+  expirationDate;
+  handlingUnit;
+  quantity;
+  netWeightKg;
+  grossWeightKg;
+  volumeM3;
+  productPackingInvoice;
+  tags;
+  properties;
+}

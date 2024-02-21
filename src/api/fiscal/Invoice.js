@@ -1,0 +1,27 @@
+export class Invoice {
+  id;
+  source;
+  company;
+  fiscalProfileOperation;
+  workflow;
+  workpiece;
+  person;
+  personAddressShipping;
+  personShipping;
+  freightType;
+  fiscalProfilePerson;
+  returned;
+  invoiceSeries;
+  number;
+  date;
+  issueDate;
+  shippingDateTime;
+  grossWeightKg;
+  netWeightKg;
+  volumeM3;
+  totalValue;
+  journalEntry;
+  personSalesperson;
+  tags;
+  properties;
+}

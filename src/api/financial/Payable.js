@@ -1,0 +1,30 @@
+export class Payable {
+  incomingInvoice;
+  id;
+  status;
+  source;
+  company;
+  person;
+  payer;
+  type;
+  code;
+  description;
+  barcode;
+  installment;
+  date;
+  issueDate;
+  dueDate;
+  value;
+  valueSettlement;
+  valueDiscount;
+  valueRenegotiation;
+  valueAddition;
+  balance;
+  account;
+  accountComplement;
+  accountCounterpart;
+  accountComplementCounterpart;
+  wallet;
+  tags;
+  properties;
+}

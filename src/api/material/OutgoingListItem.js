@@ -1,0 +1,22 @@
+export class OutgoingListItem {
+  id;
+  reservation;
+  stockCluster;
+  warehouse;
+  address;
+  depositor;
+  productPacking;
+  assetTag;
+  quality;
+  lot;
+  serial;
+  expirationDate;
+  handlingUnit;
+  type;
+  tags;
+  quantity;
+  netWeightKg;
+  grossWeightKg;
+  volumeM3;
+  value;
+}

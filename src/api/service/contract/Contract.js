@@ -1,0 +1,26 @@
+export class Contract {
+  id;
+  status;
+  company;
+  contractProfile;
+  workflow;
+  workpiece;
+  person;
+  code;
+  dateStart;
+  dateEnd;
+  billingCycle;
+  billingInterval;
+  billingGraceDays;
+  billingLastDate;
+  billingNextDate;
+  contractIndex;
+  contractIndexValue;
+  adjustmentCycle;
+  adjustmentInterval;
+  adjustmentLastDate;
+  adjustmentNextDate;
+  totalValue;
+  tags;
+  properties;
+}

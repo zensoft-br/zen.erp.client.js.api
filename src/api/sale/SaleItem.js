@@ -1,0 +1,29 @@
+export class SaleItem {
+  id;
+  sale;
+  productPacking;
+  fiscalProfileProduct;
+  taxationRule;
+  taxationOperation;
+  priceListValue;
+  quantity;
+  servedQuantity;
+  unitValue;
+  costUnitValue;
+  productValue;
+  discountType;
+  discountAmount;
+  discountValue;
+  otherValues;
+  operationValue;
+  insideTaxValue;
+  outsideTaxValue;
+  totalValue;
+  taxCompensationValue;
+  effectiveValue;
+  account;
+  accountComplement;
+  schedule;
+  tags;
+  properties;
+}

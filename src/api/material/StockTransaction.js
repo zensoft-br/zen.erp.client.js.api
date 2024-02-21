@@ -1,0 +1,31 @@
+export class StockTransaction {
+  dateTime;
+  sourceId;
+  transaction;
+  flow;
+  reversal;
+  description;
+  balance;
+  id;
+  stockCluster;
+  warehouse;
+  address;
+  code;
+  depositor;
+  productPacking;
+  assetTag;
+  quality;
+  lot;
+  serial;
+  expirationDate;
+  handlingUnit;
+  type;
+  tags;
+  quantity;
+  netWeightKg;
+  grossWeightKg;
+  volumeM3;
+  reservation;
+  movingOrderId;
+  status;
+}

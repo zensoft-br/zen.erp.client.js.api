@@ -1,0 +1,24 @@
+export class Stock {
+  id;
+  stockCluster;
+  warehouse;
+  address;
+  code;
+  depositor;
+  productPacking;
+  assetTag;
+  quality;
+  lot;
+  serial;
+  expirationDate;
+  handlingUnit;
+  type;
+  tags;
+  quantity;
+  netWeightKg;
+  grossWeightKg;
+  volumeM3;
+  reservation;
+  movingOrderId;
+  status;
+}

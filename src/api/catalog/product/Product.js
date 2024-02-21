@@ -1,0 +1,25 @@
+export class Product {
+  id;
+  type;
+  code;
+  description;
+  complement;
+  keywords;
+  unit;
+  fiscalProfileProduct;
+  variant;
+  barcode;
+  lengthCm;
+  widthCm;
+  heightCm;
+  volumeM3;
+  netWeightKg;
+  grossWeightKg;
+  category1;
+  category2;
+  category3;
+  category4;
+  category5;
+  tags;
+  properties;
+}
