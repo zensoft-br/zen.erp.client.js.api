@@ -1,4 +1,3 @@
-import { Api } from "./api/api.js";
 import { createI18n } from "./i18n.js";
 import Web from "./web.js";
 
@@ -9,7 +8,7 @@ class Client {
   #jwt;
   #debug = false;
 
-  #api;
+  // #api;
   #i18n;
   #web;
 
@@ -47,11 +46,11 @@ class Client {
     return fetch(_input, _init);
   }
 
-  get api() {
-    if (!this.#api)
-      this.#api = new Api(this);
-    return this.#api;
-  }
+  // get api() {
+  //   if (!this.#api)
+  //     this.#api = new Api(this);
+  //   return this.#api;
+  // }
 
   get i18n() {
     if (!this.#i18n)
@@ -86,7 +85,6 @@ class Client {
       this.#web = new Web(this);
     return this.#web;
   }
-
 }
 
 export function createFromToken(host, token, options) {
