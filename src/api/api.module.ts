@@ -1,0 +1,15 @@
+export * as accounting from "./accounting/accounting.module.js";
+export * as catalog from "./catalog/catalog.module.js";
+export * as commercial from "./commercial/commercial.module.js";
+export * as financial from "./financial/financial.module.js";
+export * as fiscal from "./fiscal/fiscal.module.js";
+export * as logistic from "./logistic/logistic.module.js";
+export * as material from "./material/material.module.js";
+export * as production from "./production/production.module.js";
+export * as purchase from "./purchase/purchase.module.js";
+export * as sale from "./sale/sale.module.js";
+export * as service from "./service/service.module.js";
+export * as shipping from "./shipping/shipping.module.js";
+export * as supply from "./supply/supply.module.js";
+export * as system from "./system/system.module.js";
+export * as taxation from "./taxation/taxation.module.js";

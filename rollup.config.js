@@ -1,25 +1,40 @@
 import resolver from "@rollup/plugin-node-resolve";
+import typescript from "@rollup/plugin-typescript";
 
 export default {
-  input: "index.js",
+  input: "src/index.js",
   output: [
+    // {
+    //   file: "dist/cjs/bundle.js",
+    //   format: "cjs",
+    // },
     {
-      file: "dist/cjs/bundle.js",
-      format: "cjs",
-    },
-    {
-      file: "dist/es/bundle.js",
+      dir: "dist/es",
       format: "es",
+      sourcemap: true,
+      // plugins: [
+      //   typescript(),
+      //   resolver({
+      //     extensions: [".js", ".ts"],
+      //   }),
+      //   // terser(), // Optional, for minification
+      // ],
     },
-    {
-      // file: "dist/global/zen.bundle.js",
-      file: "dist/iife/bundle.js",
-      format: "iife",
-      name: "zenclient",
-      plugins: [
-        // terser(),
-      ],
-    },
+    // {
+    //   // file: "dist/global/zen.bundle.js",
+    //   file: "dist/iife/bundle.js",
+    //   format: "iife",
+    //   name: "zenclient",
+    //   plugins: [
+    //     // terser(),
+    //   ],
+    // },
   ],
-  plugins: [resolver()],
+  plugins: [
+    typescript(),
+    resolver({
+      extensions: [".js", ".ts"],
+    }),
+    // terser(), // Optional, for minification
+  ],
 };
