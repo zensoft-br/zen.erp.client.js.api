@@ -1,4 +1,4 @@
-export const Service = {};
+export { LocationService as Service } from "./LocationService.js";
 
 export { City } from "./City.js";
 export { CityBasic } from "./CityBasic.js";

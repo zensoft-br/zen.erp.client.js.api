@@ -2,7 +2,7 @@ export * as billing from "./billing/billing.module.js";
 export * as credit from "./credit/credit.module.js";
 export * as treasury from "./treasury/treasury.module.js";
 
-export const Service = {};
+export { FinancialService as Service } from "./FinancialService.js";
 
 export { BillingTitle } from "./BillingTitle.js";
 export { Currency } from "./Currency.js";

@@ -1,4 +1,4 @@
-export const Service = {};
+export { SecurityService as Service } from "./SecurityService.js";
 
 export { AccessPoint } from "./AccessPoint.js";
 export { AccessProfile } from "./AccessProfile.js";

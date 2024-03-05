@@ -1,4 +1,4 @@
-export const Service = {};
+export { BillingService as Service } from "./BillingService.js";
 
 export { Batch } from "./Batch.js";
 export { BatchRequest } from "./BatchRequest.js";

@@ -1,13 +1,14 @@
 import "dotenv/config";
-import Z from "../index.js";
+import Z from "../dist/esm/index.js";
 
-const client = Z.createFromToken(
+// const client = Z.createFromToken(
+//   process.env.TENANT,
+//   process.env.TOKEN);
+
+const client = await Z.connect(
   process.env.TENANT,
-  process.env.TOKEN);
+  process.env.USER,
+  process.env.PASSWORD);
 
-const saleService = new Z.api.sale.Service(client);
-
-let sale;
-
-sale = await saleService.saleOpPrepare(1001);
-sale = await saleService.saleOpApprove(1001);
+const categoryList = await client.web.fetchJson("/catalog/category");
+console.log(categoryList);

@@ -1,4 +1,4 @@
-export const Service = {};
+export { AccountingService as Service } from "./AccountingService.js";
 
 export { Account } from "./Account.js";
 export { AccountCategory } from "./AccountCategory.js";

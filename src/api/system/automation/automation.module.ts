@@ -1,4 +1,4 @@
-export const Service = {};
+export { AutomationService as Service } from "./AutomationService.js";
 
 export { Agent } from "./Agent.js";
 export { AgentAccessPoint } from "./AgentAccessPoint.js";

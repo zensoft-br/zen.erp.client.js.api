@@ -12,7 +12,7 @@ export * as security from "./security/security.module.js";
 export * as storage from "./storage/storage.module.js";
 export * as workflow from "./workflow/workflow.module.js";
 
-export const Service = {};
+export { SystemService as Service } from "./SystemService.js";
 
 export { Info } from "./Info.js";
 export { Status } from "./Status.js";

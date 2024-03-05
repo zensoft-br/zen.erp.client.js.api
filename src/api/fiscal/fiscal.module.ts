@@ -1,6 +1,6 @@
 export * as br from "./br/br.module.js";
 
-export const Service = {};
+export { FiscalService as Service } from "./FiscalService.js";
 
 export { FiscalProfileOperation } from "./FiscalProfileOperation.js";
 export { FiscalProfilePerson } from "./FiscalProfilePerson.js";

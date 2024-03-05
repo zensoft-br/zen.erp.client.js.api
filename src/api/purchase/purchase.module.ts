@@ -1,4 +1,4 @@
-export const Service = {};
+export { PurchaseService as Service } from "./PurchaseService.js";
 
 export { PriceList } from "./PriceList.js";
 export { PriceListItem } from "./PriceListItem.js";
