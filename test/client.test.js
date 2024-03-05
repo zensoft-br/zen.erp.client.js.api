@@ -11,4 +11,7 @@ const client = await Z.connect(
   process.env.PASSWORD);
 
 const categoryList = await client.web.fetchJson("/catalog/category");
-console.log(categoryList);
+// console.log(categoryList);
+
+const catalogService = new Z.api.catalog.Service(client);
+console.log(await catalogService.categoryRead());
