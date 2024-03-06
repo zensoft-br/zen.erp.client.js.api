@@ -1,2 +1,2 @@
-export { StorageService as Service } from "./StorageService.js";
+export { StorageService } from "./StorageService.js";
 

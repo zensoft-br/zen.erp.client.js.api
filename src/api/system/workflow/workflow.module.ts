@@ -1,4 +1,4 @@
-export { WorkflowService as Service } from "./WorkflowService.js";
+export { WorkflowService } from "./WorkflowService.js";
 
 export { Workflow } from "./Workflow.js";
 export { WorkflowConnector } from "./WorkflowConnector.js";

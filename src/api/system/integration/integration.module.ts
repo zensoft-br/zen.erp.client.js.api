@@ -1,4 +1,4 @@
-export { IntegrationService as Service } from "./IntegrationService.js";
+export { IntegrationService } from "./IntegrationService.js";
 
 export { Message } from "./Message.js";
 export { Publication } from "./Publication.js";

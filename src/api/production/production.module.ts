@@ -1,4 +1,4 @@
-export { ProductionService as Service } from "./ProductionService.js";
+export { ProductionService } from "./ProductionService.js";
 
 export { Bom } from "./Bom.js";
 export { BomItem } from "./BomItem.js";

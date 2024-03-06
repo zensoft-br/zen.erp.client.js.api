@@ -1,4 +1,4 @@
-export { PurchaseService as Service } from "./PurchaseService.js";
+export { PurchaseService } from "./PurchaseService.js";
 
 export { PriceList } from "./PriceList.js";
 export { PriceListItem } from "./PriceListItem.js";

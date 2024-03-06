@@ -1,4 +1,4 @@
-export { ProductService as Service } from "./ProductService.js";
+export { ProductService } from "./ProductService.js";
 
 export { CodeConversion } from "./CodeConversion.js";
 export { CodeConversionList } from "./CodeConversionList.js";

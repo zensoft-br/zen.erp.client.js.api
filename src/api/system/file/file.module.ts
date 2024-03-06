@@ -1,3 +1,3 @@
-export { FileService as Service } from "./FileService.js";
+export { FileService } from "./FileService.js";
 
 export { File } from "./File.js";

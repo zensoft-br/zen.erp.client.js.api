@@ -1,4 +1,4 @@
-export { SaleService as Service } from "./SaleService.js";
+export { SaleService } from "./SaleService.js";
 
 export { PriceFormation } from "./PriceFormation.js";
 export { PriceFormationItem } from "./PriceFormationItem.js";

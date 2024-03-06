@@ -1,4 +1,4 @@
-export { BillingService as Service } from "./BillingService.js";
+export { BillingService } from "./BillingService.js";
 
 export { Batch } from "./Batch.js";
 export { BatchRequest } from "./BatchRequest.js";

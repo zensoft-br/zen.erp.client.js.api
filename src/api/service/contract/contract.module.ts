@@ -1,4 +1,4 @@
-export { ContractService as Service } from "./ContractService.js";
+export { ContractService } from "./ContractService.js";
 
 export { Contract } from "./Contract.js";
 export { ContractBilling } from "./ContractBilling.js";

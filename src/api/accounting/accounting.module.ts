@@ -1,4 +1,4 @@
-export { AccountingService as Service } from "./AccountingService.js";
+export { AccountingService } from "./AccountingService.js";
 
 export { Account } from "./Account.js";
 export { AccountCategory } from "./AccountCategory.js";

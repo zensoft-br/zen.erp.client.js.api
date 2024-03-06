@@ -1,4 +1,4 @@
-export { TaxationService as Service } from "./TaxationService.js";
+export { TaxationService } from "./TaxationService.js";
 
 export { Tax } from "./Tax.js";
 export { Taxation } from "./Taxation.js";

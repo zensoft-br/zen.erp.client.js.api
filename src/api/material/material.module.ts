@@ -1,6 +1,6 @@
 export * as report from "./report/report.module.js";
 
-export { MaterialService as Service } from "./MaterialService.js";
+export { MaterialService } from "./MaterialService.js";
 
 export { Address } from "./Address.js";
 export { HandlingUnit } from "./HandlingUnit.js";

@@ -1,4 +1,4 @@
-export { CommercialService as Service } from "./CommercialService.js";
+export { CommercialService } from "./CommercialService.js";
 
 export { PriceList } from "./PriceList.js";
 export { PriceListChangeRequest } from "./PriceListChangeRequest.js";

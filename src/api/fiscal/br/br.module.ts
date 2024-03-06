@@ -1,4 +1,4 @@
-export { FiscalBrService as Service } from "./FiscalBrService.js";
+export { FiscalBrService } from "./FiscalBrService.js";
 
 export { Dfe } from "./Dfe.js";
 export { DfeNfeProcIn } from "./DfeNfeProcIn.js";

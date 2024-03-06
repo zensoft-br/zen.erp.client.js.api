@@ -1,4 +1,4 @@
-export { PersonService as Service } from "./PersonService.js";
+export { PersonService } from "./PersonService.js";
 
 export { Person } from "./Person.js";
 export { PersonAddress } from "./PersonAddress.js";
