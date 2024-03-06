@@ -1,163 +1,168 @@
 export class LocationService {
 
-	#zenClient;
+  #zenClient;
 
-	constructor(zenClient) {
-		this.#zenClient = zenClient;
-	}
-	
-	async cityCreate(bean) {
-		return this.#zenClient.web.fetchJson("/catalog/location/city", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  constructor(zenClient) {
+    this.#zenClient = zenClient;
+  }
+  
+  async cityCreate(bean) {
+    return this.#zenClient.web.fetchJson("/catalog/location/city", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async cityDelete(id) {
-		this.#zenClient.web.fetchJson(`/catalog/location/city/${id}`, {
-			method: "DELETE",
-			
-		});
-	}
+  async cityDelete(id) {
+    this.#zenClient.web.fetchJson(`/catalog/location/city/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
 
-	async cityOpFind(args) {
-		return this.#zenClient.web.fetchJson("/catalog/location/cityOpFind", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(args),
+  async cityOpFind(args) {
+    return this.#zenClient.web.fetchJson("/catalog/location/cityOpFind", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
 
-		});
-	}
+    });
+  }
 
-	async cityRead(search) {
-		return this.#zenClient.web.fetchJson(`/catalog/location/city?${search}`, {
-			method: "GET",
-			
-		});
-	}
+  async cityRead(search) {
+    return this.#zenClient.web.fetchJson(`/catalog/location/city?${search}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async cityReadById(id) {
-		return this.#zenClient.web.fetchJson(`/catalog/location/city/${id}`, {
-			method: "GET",
-			
-		});
-	}
+  async cityReadById(id) {
+    return this.#zenClient.web.fetchJson(`/catalog/location/city/${id}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async cityUpdate(bean) {
-		return this.#zenClient.web.fetchJson("/catalog/location/city", {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async cityUpdate(bean) {
+    return this.#zenClient.web.fetchJson("/catalog/location/city", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async countryCreate(bean) {
-		return this.#zenClient.web.fetchJson("/catalog/location/country", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async countryCreate(bean) {
+    return this.#zenClient.web.fetchJson("/catalog/location/country", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async countryDelete(id) {
-		this.#zenClient.web.fetchJson(`/catalog/location/country/${id}`, {
-			method: "DELETE",
-			
-		});
-	}
+  async countryDelete(id) {
+    this.#zenClient.web.fetchJson(`/catalog/location/country/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
 
-	async countryRead(search) {
-		return this.#zenClient.web.fetchJson(`/catalog/location/country?${search}`, {
-			method: "GET",
-			
-		});
-	}
+  async countryRead(search) {
+    return this.#zenClient.web.fetchJson(`/catalog/location/country?${search}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async countryReadById(id) {
-		return this.#zenClient.web.fetchJson(`/catalog/location/country/${id}`, {
-			method: "GET",
-			
-		});
-	}
+  async countryReadById(id) {
+    return this.#zenClient.web.fetchJson(`/catalog/location/country/${id}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async countryUpdate(bean) {
-		return this.#zenClient.web.fetchJson("/catalog/location/country", {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async countryUpdate(bean) {
+    return this.#zenClient.web.fetchJson("/catalog/location/country", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async geocodeRead(address) {
-		return this.#zenClient.web.fetchJson(`/catalog/location/geocode?address=${address}`, {
-			method: "GET",
-			
-		});
-	}
+  async geocodeRead(address) {
+    const sp = new URLSearchParams();
+    if (address) sp.set("address", address);
+    return this.#zenClient.web.fetchJson(`/catalog/location/geocode?${sp.toString()}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async stateCreate(bean) {
-		return this.#zenClient.web.fetchJson("/catalog/location/state", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async stateCreate(bean) {
+    return this.#zenClient.web.fetchJson("/catalog/location/state", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async stateDelete(id) {
-		this.#zenClient.web.fetchJson(`/catalog/location/state/${id}`, {
-			method: "DELETE",
-			
-		});
-	}
+  async stateDelete(id) {
+    this.#zenClient.web.fetchJson(`/catalog/location/state/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
 
-	async stateRead(search) {
-		return this.#zenClient.web.fetchJson(`/catalog/location/state?${search}`, {
-			method: "GET",
-			
-		});
-	}
+  async stateRead(search) {
+    return this.#zenClient.web.fetchJson(`/catalog/location/state?${search}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async stateReadById(id) {
-		return this.#zenClient.web.fetchJson(`/catalog/location/state/${id}`, {
-			method: "GET",
-			
-		});
-	}
+  async stateReadById(id) {
+    return this.#zenClient.web.fetchJson(`/catalog/location/state/${id}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async stateUpdate(bean) {
-		return this.#zenClient.web.fetchJson("/catalog/location/state", {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async stateUpdate(bean) {
+    return this.#zenClient.web.fetchJson("/catalog/location/state", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async zipcodeRead(country, zipcode) {
-		return this.#zenClient.web.fetchJson(`/catalog/location/zipcode?country=${country}&zipcode=${zipcode}`, {
-			method: "GET",
-			
-		});
-	}
+  async zipcodeRead(country, zipcode) {
+    const sp = new URLSearchParams();
+    if (country) sp.set("country", country);
+    if (zipcode) sp.set("zipcode", zipcode);
+    return this.#zenClient.web.fetchJson(`/catalog/location/zipcode?${sp.toString()}`, {
+      method: "GET",
+      
+    });
+  }
 
-	}
+  }

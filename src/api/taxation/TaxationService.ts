@@ -1,195 +1,201 @@
 export class TaxationService {
 
-	#zenClient;
+  #zenClient;
 
-	constructor(zenClient) {
-		this.#zenClient = zenClient;
-	}
-	
-	async taxCreate(bean) {
-		return this.#zenClient.web.fetchJson("/taxation/tax", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  constructor(zenClient) {
+    this.#zenClient = zenClient;
+  }
+  
+  async taxCreate(bean) {
+    return this.#zenClient.web.fetchJson("/taxation/tax", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async taxDelete(id) {
-		this.#zenClient.web.fetchJson(`/taxation/tax/${id}`, {
-			method: "DELETE",
-			
-		});
-	}
+  async taxDelete(id) {
+    this.#zenClient.web.fetchJson(`/taxation/tax/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
 
-	async taxOpReadByCode(fiscalRegionCode, code) {
-		return this.#zenClient.web.fetchJson(`/taxation/taxOpReadByCode?fiscalRegionCode=${fiscalRegionCode}&code=${code}`, {
-			method: "POST",
-			
-		});
-	}
+  async taxOpReadByCode(fiscalRegionCode, code) {
+    const sp = new URLSearchParams();
+    if (fiscalRegionCode) sp.set("fiscalRegionCode", fiscalRegionCode);
+    if (code) sp.set("code", code);
+    return this.#zenClient.web.fetchJson(`/taxation/taxOpReadByCode?${sp.toString()}`, {
+      method: "POST",
+      
+    });
+  }
 
-	async taxRead(search) {
-		return this.#zenClient.web.fetchJson(`/taxation/tax?${search}`, {
-			method: "GET",
-			
-		});
-	}
+  async taxRead(search) {
+    return this.#zenClient.web.fetchJson(`/taxation/tax?${search}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async taxReadById(id) {
-		return this.#zenClient.web.fetchJson(`/taxation/tax/${id}`, {
-			method: "GET",
-			
-		});
-	}
+  async taxReadById(id) {
+    return this.#zenClient.web.fetchJson(`/taxation/tax/${id}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async taxUpdate(bean) {
-		return this.#zenClient.web.fetchJson("/taxation/tax", {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async taxUpdate(bean) {
+    return this.#zenClient.web.fetchJson("/taxation/tax", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async taxationCreate(bean) {
-		return this.#zenClient.web.fetchJson("/taxation/taxation", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async taxationCreate(bean) {
+    return this.#zenClient.web.fetchJson("/taxation/taxation", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async taxationDelete(id) {
-		this.#zenClient.web.fetchJson(`/taxation/taxation/${id}`, {
-			method: "DELETE",
-			
-		});
-	}
+  async taxationDelete(id) {
+    this.#zenClient.web.fetchJson(`/taxation/taxation/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
 
-	async taxationOperationCreate(bean) {
-		return this.#zenClient.web.fetchJson("/taxation/taxationOperation", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async taxationOperationCreate(bean) {
+    return this.#zenClient.web.fetchJson("/taxation/taxationOperation", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async taxationOperationDelete(id) {
-		this.#zenClient.web.fetchJson(`/taxation/taxationOperation/${id}`, {
-			method: "DELETE",
-			
-		});
-	}
+  async taxationOperationDelete(id) {
+    this.#zenClient.web.fetchJson(`/taxation/taxationOperation/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
 
-	async taxationOperationOpReadByCode(fiscalRegionCode, code) {
-		return this.#zenClient.web.fetchJson(`/taxation/taxationOperationOpReadByCode?fiscalRegionCode=${fiscalRegionCode}&code=${code}`, {
-			method: "POST",
-			
-		});
-	}
+  async taxationOperationOpReadByCode(fiscalRegionCode, code) {
+    const sp = new URLSearchParams();
+    if (fiscalRegionCode) sp.set("fiscalRegionCode", fiscalRegionCode);
+    if (code) sp.set("code", code);
+    return this.#zenClient.web.fetchJson(`/taxation/taxationOperationOpReadByCode?${sp.toString()}`, {
+      method: "POST",
+      
+    });
+  }
 
-	async taxationOperationRead(search) {
-		return this.#zenClient.web.fetchJson(`/taxation/taxationOperation?${search}`, {
-			method: "GET",
-			
-		});
-	}
+  async taxationOperationRead(search) {
+    return this.#zenClient.web.fetchJson(`/taxation/taxationOperation?${search}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async taxationOperationReadById(id) {
-		return this.#zenClient.web.fetchJson(`/taxation/taxationOperation/${id}`, {
-			method: "GET",
-			
-		});
-	}
+  async taxationOperationReadById(id) {
+    return this.#zenClient.web.fetchJson(`/taxation/taxationOperation/${id}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async taxationOperationUpdate(bean) {
-		return this.#zenClient.web.fetchJson("/taxation/taxationOperation", {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async taxationOperationUpdate(bean) {
+    return this.#zenClient.web.fetchJson("/taxation/taxationOperation", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async taxationRead(search) {
-		return this.#zenClient.web.fetchJson(`/taxation/taxation?${search}`, {
-			method: "GET",
-			
-		});
-	}
+  async taxationRead(search) {
+    return this.#zenClient.web.fetchJson(`/taxation/taxation?${search}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async taxationReadById(id) {
-		return this.#zenClient.web.fetchJson(`/taxation/taxation/${id}`, {
-			method: "GET",
-			
-		});
-	}
+  async taxationReadById(id) {
+    return this.#zenClient.web.fetchJson(`/taxation/taxation/${id}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async taxationRuleCreate(bean) {
-		return this.#zenClient.web.fetchJson("/taxation/taxationRule", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async taxationRuleCreate(bean) {
+    return this.#zenClient.web.fetchJson("/taxation/taxationRule", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async taxationRuleDelete(id) {
-		this.#zenClient.web.fetchJson(`/taxation/taxationRule/${id}`, {
-			method: "DELETE",
-			
-		});
-	}
+  async taxationRuleDelete(id) {
+    this.#zenClient.web.fetchJson(`/taxation/taxationRule/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
 
-	async taxationRuleRead(search) {
-		return this.#zenClient.web.fetchJson(`/taxation/taxationRule?${search}`, {
-			method: "GET",
-			
-		});
-	}
+  async taxationRuleRead(search) {
+    return this.#zenClient.web.fetchJson(`/taxation/taxationRule?${search}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async taxationRuleReadById(id) {
-		return this.#zenClient.web.fetchJson(`/taxation/taxationRule/${id}`, {
-			method: "GET",
-			
-		});
-	}
+  async taxationRuleReadById(id) {
+    return this.#zenClient.web.fetchJson(`/taxation/taxationRule/${id}`, {
+      method: "GET",
+      
+    });
+  }
 
-	async taxationRuleUpdate(bean) {
-		return this.#zenClient.web.fetchJson("/taxation/taxationRule", {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async taxationRuleUpdate(bean) {
+    return this.#zenClient.web.fetchJson("/taxation/taxationRule", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	async taxationUpdate(bean) {
-		return this.#zenClient.web.fetchJson("/taxation/taxation", {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-				},
-				body: JSON.stringify(bean),
+  async taxationUpdate(bean) {
+    return this.#zenClient.web.fetchJson("/taxation/taxation", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
-		});
-	}
+    });
+  }
 
-	}
+  }
