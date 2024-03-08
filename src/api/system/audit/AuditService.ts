@@ -1,13 +1,17 @@
+import { Client } from "../../../Client.js";
+import { Source } from "./Source.js";
+import { Log } from "./Log.js";
+
 export class AuditService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async logCreate(args) {
-    return this.#zenClient.web.fetchJson("/system/audit/log", {
+  async logCreate(args: any): Promise<Log> {
+    return this.#client.web.fetchJson("/system/audit/log", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,53 +21,53 @@ export class AuditService {
     });
   }
 
-  async logOpDeleteExpired() {
-    return this.#zenClient.web.fetchJson("/system/audit/logOpDeleteExpired", {
+  async logOpDeleteExpired(): Promise<number> {
+    return this.#client.web.fetchJson("/system/audit/logOpDeleteExpired", {
       method: "POST",
       
     });
   }
 
-  async logRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/audit/log?${search}`, {
+  async logRead(search: any): Promise<Log[]> {
+    return this.#client.web.fetchJson(`/system/audit/log?${search}`, {
       method: "GET",
       
     });
   }
 
-  async logReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/audit/log/${id}`, {
+  async logReadById(id: number): Promise<Log> {
+    return this.#client.web.fetchJson(`/system/audit/log/${id}`, {
       method: "GET",
       
     });
   }
 
-  async sourceOpReadByEntity(entity, entityId) {
+  async sourceOpReadByEntity(entity: string, entityId: string): Promise<Source> {
     const sp = new URLSearchParams();
-    if (entity) sp.set("entity", entity);
-    if (entityId) sp.set("entityId", entityId);
-    return this.#zenClient.web.fetchJson(`/system/audit/sourceOpReadByEntity?${sp.toString()}`, {
+    if (entity) sp.set("entity", String(entity));
+    if (entityId) sp.set("entityId", String(entityId));
+    return this.#client.web.fetchJson(`/system/audit/sourceOpReadByEntity?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async sourceRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/audit/source?${search}`, {
+  async sourceRead(search: any): Promise<Source[]> {
+    return this.#client.web.fetchJson(`/system/audit/source?${search}`, {
       method: "GET",
       
     });
   }
 
-  async sourceReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/audit/source/${id}`, {
+  async sourceReadById(id: number): Promise<Source> {
+    return this.#client.web.fetchJson(`/system/audit/source/${id}`, {
       method: "GET",
       
     });
   }
 
-  async userLogCreate(args) {
-    return this.#zenClient.web.fetchJson("/system/audit/userLog", {
+  async userLogCreate(args: any): Promise<Log> {
+    return this.#client.web.fetchJson("/system/audit/userLog", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -73,29 +77,29 @@ export class AuditService {
     });
   }
 
-  async userLogDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/audit/userLog/${id}`, {
+  async userLogDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/audit/userLog/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async userLogRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/audit/userLog?${search}`, {
+  async userLogRead(search: any): Promise<Log[]> {
+    return this.#client.web.fetchJson(`/system/audit/userLog?${search}`, {
       method: "GET",
       
     });
   }
 
-  async userLogReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/audit/userLog/${id}`, {
+  async userLogReadById(id: number): Promise<Log> {
+    return this.#client.web.fetchJson(`/system/audit/userLog/${id}`, {
       method: "GET",
       
     });
   }
 
-  async userLogUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/audit/userLog", {
+  async userLogUpdate(bean: Log): Promise<Log> {
+    return this.#client.web.fetchJson("/system/audit/userLog", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

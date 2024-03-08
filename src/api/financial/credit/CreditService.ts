@@ -1,13 +1,17 @@
+import { Client } from "../../../Client.js";
+import { CreditLine } from "./CreditLine.js";
+import { CreditLineItem } from "./CreditLineItem.js";
+
 export class CreditService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async creditLineCreate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/credit/creditLine", {
+  async creditLineCreate(bean: CreditLine): Promise<CreditLine> {
+    return this.#client.web.fetchJson("/financial/credit/creditLine", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +21,15 @@ export class CreditService {
     });
   }
 
-  async creditLineDelete(id) {
-    this.#zenClient.web.fetchJson(`/financial/credit/creditLine/${id}`, {
+  async creditLineDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/financial/credit/creditLine/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async creditLineItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/credit/creditLineItem", {
+  async creditLineItemCreate(bean: CreditLineItem): Promise<CreditLineItem> {
+    return this.#client.web.fetchJson("/financial/credit/creditLineItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,29 +39,29 @@ export class CreditService {
     });
   }
 
-  async creditLineItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/financial/credit/creditLineItem/${id}`, {
+  async creditLineItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/financial/credit/creditLineItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async creditLineItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/credit/creditLineItem?${search}`, {
+  async creditLineItemRead(search: any): Promise<CreditLineItem[]> {
+    return this.#client.web.fetchJson(`/financial/credit/creditLineItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async creditLineItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/credit/creditLineItem/${id}`, {
+  async creditLineItemReadById(id: number): Promise<CreditLineItem> {
+    return this.#client.web.fetchJson(`/financial/credit/creditLineItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async creditLineItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/credit/creditLineItem", {
+  async creditLineItemUpdate(bean: CreditLineItem): Promise<CreditLineItem> {
+    return this.#client.web.fetchJson("/financial/credit/creditLineItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -67,22 +71,22 @@ export class CreditService {
     });
   }
 
-  async creditLineRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/credit/creditLine?${search}`, {
+  async creditLineRead(search: any): Promise<CreditLine[]> {
+    return this.#client.web.fetchJson(`/financial/credit/creditLine?${search}`, {
       method: "GET",
       
     });
   }
 
-  async creditLineReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/credit/creditLine/${id}`, {
+  async creditLineReadById(id: number): Promise<CreditLine> {
+    return this.#client.web.fetchJson(`/financial/credit/creditLine/${id}`, {
       method: "GET",
       
     });
   }
 
-  async creditLineUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/credit/creditLine", {
+  async creditLineUpdate(bean: CreditLine): Promise<CreditLine> {
+    return this.#client.web.fetchJson("/financial/credit/creditLine", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

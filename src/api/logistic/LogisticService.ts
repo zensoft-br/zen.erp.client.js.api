@@ -1,13 +1,17 @@
+import { Client } from "../../Client.js";
+import { IncomingShipping } from "./IncomingShipping.js";
+import { ShippingItem } from "./ShippingItem.js";
+
 export class LogisticService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async shippingCreate(bean) {
-    return this.#zenClient.web.fetchJson("/logistic/shipping", {
+  async shippingCreate(bean: IncomingShipping): Promise<IncomingShipping> {
+    return this.#client.web.fetchJson("/logistic/shipping", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +21,15 @@ export class LogisticService {
     });
   }
 
-  async shippingDelete(id) {
-    this.#zenClient.web.fetchJson(`/logistic/shipping/${id}`, {
+  async shippingDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/logistic/shipping/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async shippingItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/logistic/shippingItem", {
+  async shippingItemCreate(bean: ShippingItem): Promise<ShippingItem> {
+    return this.#client.web.fetchJson("/logistic/shippingItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,29 +39,29 @@ export class LogisticService {
     });
   }
 
-  async shippingItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/logistic/shippingItem/${id}`, {
+  async shippingItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/logistic/shippingItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async shippingItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/logistic/shippingItem?${search}`, {
+  async shippingItemRead(search: any): Promise<ShippingItem[]> {
+    return this.#client.web.fetchJson(`/logistic/shippingItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async shippingItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/logistic/shippingItem/${id}`, {
+  async shippingItemReadById(id: number): Promise<ShippingItem> {
+    return this.#client.web.fetchJson(`/logistic/shippingItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async shippingItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/logistic/shippingItem", {
+  async shippingItemUpdate(bean: ShippingItem): Promise<ShippingItem> {
+    return this.#client.web.fetchJson("/logistic/shippingItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -67,29 +71,29 @@ export class LogisticService {
     });
   }
 
-  async shippingOpApprove(id) {
-    this.#zenClient.web.fetchJson(`/logistic/shippingOpApprove/${id}`, {
+  async shippingOpApprove(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/logistic/shippingOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async shippingRead(search) {
-    return this.#zenClient.web.fetchJson(`/logistic/shipping?${search}`, {
+  async shippingRead(search: any): Promise<IncomingShipping[]> {
+    return this.#client.web.fetchJson(`/logistic/shipping?${search}`, {
       method: "GET",
       
     });
   }
 
-  async shippingReadById(id) {
-    return this.#zenClient.web.fetchJson(`/logistic/shipping/${id}`, {
+  async shippingReadById(id: number): Promise<IncomingShipping> {
+    return this.#client.web.fetchJson(`/logistic/shipping/${id}`, {
       method: "GET",
       
     });
   }
 
-  async shippingUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/logistic/shipping", {
+  async shippingUpdate(bean: IncomingShipping): Promise<IncomingShipping> {
+    return this.#client.web.fetchJson("/logistic/shipping", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

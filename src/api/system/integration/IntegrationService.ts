@@ -1,20 +1,26 @@
+import { Client } from "../../../Client.js";
+import { Queue } from "./Queue.js";
+import { Topic } from "./Topic.js";
+import { Subscription } from "./Subscription.js";
+import { Message } from "./Message.js";
+
 export class IntegrationService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async messageDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/integration/message/${id}`, {
+  async messageDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/integration/message/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async messageOpPost(args) {
-    return this.#zenClient.web.fetchJson("/system/integration/messageOpPost", {
+  async messageOpPost(args: any): Promise<Message> {
+    return this.#client.web.fetchJson("/system/integration/messageOpPost", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -24,31 +30,31 @@ export class IntegrationService {
     });
   }
 
-  async messageOpTransfer(id, queueCode) {
+  async messageOpTransfer(id: number, queueCode: string): Promise<Message> {
     const sp = new URLSearchParams();
-    if (queueCode) sp.set("queueCode", queueCode);
-    return this.#zenClient.web.fetchJson(`/system/integration/messageOpTransfer/${id}?${sp.toString()}`, {
+    if (queueCode) sp.set("queueCode", String(queueCode));
+    return this.#client.web.fetchJson(`/system/integration/messageOpTransfer/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async messageRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/integration/message?${search}`, {
+  async messageRead(search: any): Promise<Message[]> {
+    return this.#client.web.fetchJson(`/system/integration/message?${search}`, {
       method: "GET",
       
     });
   }
 
-  async messageReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/integration/message/${id}`, {
+  async messageReadById(id: number): Promise<Message> {
+    return this.#client.web.fetchJson(`/system/integration/message/${id}`, {
       method: "GET",
       
     });
   }
 
-  async queueCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/integration/queue", {
+  async queueCreate(bean: Queue): Promise<Queue> {
+    return this.#client.web.fetchJson("/system/integration/queue", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -58,59 +64,59 @@ export class IntegrationService {
     });
   }
 
-  async queueDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/integration/queue/${id}`, {
+  async queueDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/integration/queue/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async queueOpDeleteExpiredMessages(queueCode) {
+  async queueOpDeleteExpiredMessages(queueCode: string): Promise<void> {
     const sp = new URLSearchParams();
-    if (queueCode) sp.set("queueCode", queueCode);
-    this.#zenClient.web.fetchJson(`/system/integration/queueOpDeleteExpiredMessages?${sp.toString()}`, {
+    if (queueCode) sp.set("queueCode", String(queueCode));
+    this.#client.web.fetchJson(`/system/integration/queueOpDeleteExpiredMessages?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async queueOpReadMessage(queueCode, maxMessages) {
+  async queueOpReadMessage(queueCode: string, maxMessages: any): Promise<Message[]> {
     const sp = new URLSearchParams();
-    if (queueCode) sp.set("queueCode", queueCode);
-    if (maxMessages) sp.set("maxMessages", maxMessages);
-    return this.#zenClient.web.fetchJson(`/system/integration/queueOpReadMessage?${sp.toString()}`, {
+    if (queueCode) sp.set("queueCode", String(queueCode));
+    if (maxMessages) sp.set("maxMessages", String(maxMessages));
+    return this.#client.web.fetchJson(`/system/integration/queueOpReadMessage?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async queueOpReadMessageTimeout(queueCode, maxMessages, timeoutS) {
+  async queueOpReadMessageTimeout(queueCode: string, maxMessages: any, timeoutS: any): Promise<Message[]> {
     const sp = new URLSearchParams();
-    if (queueCode) sp.set("queueCode", queueCode);
-    if (maxMessages) sp.set("maxMessages", maxMessages);
-    if (timeoutS) sp.set("timeoutS", timeoutS);
-    return this.#zenClient.web.fetchJson(`/system/integration/queueOpReadMessageTimeout?${sp.toString()}`, {
+    if (queueCode) sp.set("queueCode", String(queueCode));
+    if (maxMessages) sp.set("maxMessages", String(maxMessages));
+    if (timeoutS) sp.set("timeoutS", String(timeoutS));
+    return this.#client.web.fetchJson(`/system/integration/queueOpReadMessageTimeout?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async queueRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/integration/queue?${search}`, {
+  async queueRead(search: any): Promise<Queue[]> {
+    return this.#client.web.fetchJson(`/system/integration/queue?${search}`, {
       method: "GET",
       
     });
   }
 
-  async queueReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/integration/queue/${id}`, {
+  async queueReadById(id: number): Promise<Queue> {
+    return this.#client.web.fetchJson(`/system/integration/queue/${id}`, {
       method: "GET",
       
     });
   }
 
-  async queueUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/integration/queue", {
+  async queueUpdate(bean: Queue): Promise<Queue> {
+    return this.#client.web.fetchJson("/system/integration/queue", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -120,8 +126,8 @@ export class IntegrationService {
     });
   }
 
-  async subscriptionCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/integration/subscription", {
+  async subscriptionCreate(bean: Subscription): Promise<Subscription> {
+    return this.#client.web.fetchJson("/system/integration/subscription", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -131,29 +137,29 @@ export class IntegrationService {
     });
   }
 
-  async subscriptionDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/integration/subscription/${id}`, {
+  async subscriptionDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/integration/subscription/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async subscriptionRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/integration/subscription?${search}`, {
+  async subscriptionRead(search: any): Promise<Subscription[]> {
+    return this.#client.web.fetchJson(`/system/integration/subscription?${search}`, {
       method: "GET",
       
     });
   }
 
-  async subscriptionReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/integration/subscription/${id}`, {
+  async subscriptionReadById(id: number): Promise<Subscription> {
+    return this.#client.web.fetchJson(`/system/integration/subscription/${id}`, {
       method: "GET",
       
     });
   }
 
-  async subscriptionUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/integration/subscription", {
+  async subscriptionUpdate(bean: Subscription): Promise<Subscription> {
+    return this.#client.web.fetchJson("/system/integration/subscription", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -163,8 +169,8 @@ export class IntegrationService {
     });
   }
 
-  async topicCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/integration/topic", {
+  async topicCreate(bean: Topic): Promise<Topic> {
+    return this.#client.web.fetchJson("/system/integration/topic", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -174,15 +180,15 @@ export class IntegrationService {
     });
   }
 
-  async topicDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/integration/topic/${id}`, {
+  async topicDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/integration/topic/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async topicOpPublish(args) {
-    this.#zenClient.web.fetchJson("/system/integration/topicOpPublish", {
+  async topicOpPublish(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/integration/topicOpPublish", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -192,22 +198,22 @@ export class IntegrationService {
     });
   }
 
-  async topicRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/integration/topic?${search}`, {
+  async topicRead(search: any): Promise<Topic[]> {
+    return this.#client.web.fetchJson(`/system/integration/topic?${search}`, {
       method: "GET",
       
     });
   }
 
-  async topicReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/integration/topic/${id}`, {
+  async topicReadById(id: number): Promise<Topic> {
+    return this.#client.web.fetchJson(`/system/integration/topic/${id}`, {
       method: "GET",
       
     });
   }
 
-  async topicUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/integration/topic", {
+  async topicUpdate(bean: Topic): Promise<Topic> {
+    return this.#client.web.fetchJson("/system/integration/topic", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -1,13 +1,24 @@
+import { Client } from "../../../Client.js";
+import { CodeConversion } from "./CodeConversion.js";
+import { ProductVariant } from "./ProductVariant.js";
+import { Product } from "./Product.js";
+import { ProductUnitConversion } from "./ProductUnitConversion.js";
+import { CodeConversionList } from "./CodeConversionList.js";
+import { ProductKitComponent } from "./ProductKitComponent.js";
+import { Dimension } from "./Dimension.js";
+import { ProductPacking } from "./ProductPacking.js";
+import { Unit } from "./Unit.js";
+
 export class ProductService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async codeConversionCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/codeConversion", {
+  async codeConversionCreate(bean: CodeConversion): Promise<CodeConversion> {
+    return this.#client.web.fetchJson("/catalog/product/codeConversion", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +28,15 @@ export class ProductService {
     });
   }
 
-  async codeConversionDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/product/codeConversion/${id}`, {
+  async codeConversionDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/product/codeConversion/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async codeConversionListCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/codeConversionList", {
+  async codeConversionListCreate(bean: CodeConversionList): Promise<CodeConversionList> {
+    return this.#client.web.fetchJson("/catalog/product/codeConversionList", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,29 +46,29 @@ export class ProductService {
     });
   }
 
-  async codeConversionListDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/product/codeConversionList/${id}`, {
+  async codeConversionListDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/product/codeConversionList/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async codeConversionListRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/codeConversionList?${search}`, {
+  async codeConversionListRead(search: any): Promise<CodeConversionList[]> {
+    return this.#client.web.fetchJson(`/catalog/product/codeConversionList?${search}`, {
       method: "GET",
       
     });
   }
 
-  async codeConversionListReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/codeConversionList/${id}`, {
+  async codeConversionListReadById(id: number): Promise<CodeConversionList> {
+    return this.#client.web.fetchJson(`/catalog/product/codeConversionList/${id}`, {
       method: "GET",
       
     });
   }
 
-  async codeConversionListUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/codeConversionList", {
+  async codeConversionListUpdate(bean: CodeConversionList): Promise<CodeConversionList> {
+    return this.#client.web.fetchJson("/catalog/product/codeConversionList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -67,22 +78,22 @@ export class ProductService {
     });
   }
 
-  async codeConversionRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/codeConversion?${search}`, {
+  async codeConversionRead(search: any): Promise<CodeConversion[]> {
+    return this.#client.web.fetchJson(`/catalog/product/codeConversion?${search}`, {
       method: "GET",
       
     });
   }
 
-  async codeConversionReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/codeConversion/${id}`, {
+  async codeConversionReadById(id: number): Promise<CodeConversion> {
+    return this.#client.web.fetchJson(`/catalog/product/codeConversion/${id}`, {
       method: "GET",
       
     });
   }
 
-  async codeConversionUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/codeConversion", {
+  async codeConversionUpdate(bean: CodeConversion): Promise<CodeConversion> {
+    return this.#client.web.fetchJson("/catalog/product/codeConversion", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -92,8 +103,8 @@ export class ProductService {
     });
   }
 
-  async dimensionCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/dimension", {
+  async dimensionCreate(bean: Dimension): Promise<Dimension> {
+    return this.#client.web.fetchJson("/catalog/product/dimension", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -103,29 +114,29 @@ export class ProductService {
     });
   }
 
-  async dimensionDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/product/dimension/${id}`, {
+  async dimensionDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/product/dimension/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async dimensionRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/dimension?${search}`, {
+  async dimensionRead(search: any): Promise<Dimension[]> {
+    return this.#client.web.fetchJson(`/catalog/product/dimension?${search}`, {
       method: "GET",
       
     });
   }
 
-  async dimensionReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/dimension/${id}`, {
+  async dimensionReadById(id: number): Promise<Dimension> {
+    return this.#client.web.fetchJson(`/catalog/product/dimension/${id}`, {
       method: "GET",
       
     });
   }
 
-  async dimensionUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/dimension", {
+  async dimensionUpdate(bean: Dimension): Promise<Dimension> {
+    return this.#client.web.fetchJson("/catalog/product/dimension", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -135,8 +146,8 @@ export class ProductService {
     });
   }
 
-  async productCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/product", {
+  async productCreate(bean: Product): Promise<Product> {
+    return this.#client.web.fetchJson("/catalog/product/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -146,15 +157,15 @@ export class ProductService {
     });
   }
 
-  async productDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/product/product/${id}`, {
+  async productDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/product/product/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async productKitComponentCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/productKitComponent", {
+  async productKitComponentCreate(bean: ProductKitComponent): Promise<ProductKitComponent> {
+    return this.#client.web.fetchJson("/catalog/product/productKitComponent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -164,29 +175,29 @@ export class ProductService {
     });
   }
 
-  async productKitComponentDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/product/productKitComponent/${id}`, {
+  async productKitComponentDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/product/productKitComponent/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async productKitComponentRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/productKitComponent?${search}`, {
+  async productKitComponentRead(search: any): Promise<ProductKitComponent[]> {
+    return this.#client.web.fetchJson(`/catalog/product/productKitComponent?${search}`, {
       method: "GET",
       
     });
   }
 
-  async productKitComponentReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/productKitComponent/${id}`, {
+  async productKitComponentReadById(id: number): Promise<ProductKitComponent> {
+    return this.#client.web.fetchJson(`/catalog/product/productKitComponent/${id}`, {
       method: "GET",
       
     });
   }
 
-  async productKitComponentUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/productKitComponent", {
+  async productKitComponentUpdate(bean: ProductKitComponent): Promise<ProductKitComponent> {
+    return this.#client.web.fetchJson("/catalog/product/productKitComponent", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -196,8 +207,8 @@ export class ProductService {
     });
   }
 
-  async productOpClone(id, args) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/productOpClone/${id}`, {
+  async productOpClone(id: number, args: any): Promise<Product> {
+    return this.#client.web.fetchJson(`/catalog/product/productOpClone/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -207,18 +218,18 @@ export class ProductService {
     });
   }
 
-  async productOpConvertToUnit(id, unitId, quantity) {
+  async productOpConvertToUnit(id: number, unitId: number, quantity: number): Promise<number> {
     const sp = new URLSearchParams();
-    if (unitId) sp.set("unitId", unitId);
-    if (quantity) sp.set("quantity", quantity);
-    return this.#zenClient.web.fetchJson(`/catalog/product/productOpConvertToUnit/${id}?${sp.toString()}`, {
+    if (unitId) sp.set("unitId", String(unitId));
+    if (quantity) sp.set("quantity", String(quantity));
+    return this.#client.web.fetchJson(`/catalog/product/productOpConvertToUnit/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async productPackingCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/productPacking", {
+  async productPackingCreate(bean: ProductPacking): Promise<ProductPacking> {
+    return this.#client.web.fetchJson("/catalog/product/productPacking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -228,39 +239,39 @@ export class ProductService {
     });
   }
 
-  async productPackingDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/product/productPacking/${id}`, {
+  async productPackingDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/product/productPacking/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async productPackingOpConvertToUnit(id, unitId, quantity) {
+  async productPackingOpConvertToUnit(id: number, unitId: number, quantity: number): Promise<number> {
     const sp = new URLSearchParams();
-    if (unitId) sp.set("unitId", unitId);
-    if (quantity) sp.set("quantity", quantity);
-    return this.#zenClient.web.fetchJson(`/catalog/product/productPackingOpConvertToUnit/${id}?${sp.toString()}`, {
+    if (unitId) sp.set("unitId", String(unitId));
+    if (quantity) sp.set("quantity", String(quantity));
+    return this.#client.web.fetchJson(`/catalog/product/productPackingOpConvertToUnit/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async productPackingRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/productPacking?${search}`, {
+  async productPackingRead(search: any): Promise<ProductPacking[]> {
+    return this.#client.web.fetchJson(`/catalog/product/productPacking?${search}`, {
       method: "GET",
       
     });
   }
 
-  async productPackingReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/productPacking/${id}`, {
+  async productPackingReadById(id: number): Promise<ProductPacking> {
+    return this.#client.web.fetchJson(`/catalog/product/productPacking/${id}`, {
       method: "GET",
       
     });
   }
 
-  async productPackingUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/productPacking", {
+  async productPackingUpdate(bean: ProductPacking): Promise<ProductPacking> {
+    return this.#client.web.fetchJson("/catalog/product/productPacking", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -270,22 +281,22 @@ export class ProductService {
     });
   }
 
-  async productRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/product?${search}`, {
+  async productRead(search: any): Promise<Product[]> {
+    return this.#client.web.fetchJson(`/catalog/product/product?${search}`, {
       method: "GET",
       
     });
   }
 
-  async productReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/product/${id}`, {
+  async productReadById(id: number): Promise<Product> {
+    return this.#client.web.fetchJson(`/catalog/product/product/${id}`, {
       method: "GET",
       
     });
   }
 
-  async productUnitConversionCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/productUnitConversion", {
+  async productUnitConversionCreate(bean: ProductUnitConversion): Promise<ProductUnitConversion> {
+    return this.#client.web.fetchJson("/catalog/product/productUnitConversion", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -295,29 +306,29 @@ export class ProductService {
     });
   }
 
-  async productUnitConversionDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/product/productUnitConversion/${id}`, {
+  async productUnitConversionDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/product/productUnitConversion/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async productUnitConversionRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/productUnitConversion?${search}`, {
+  async productUnitConversionRead(search: any): Promise<ProductUnitConversion[]> {
+    return this.#client.web.fetchJson(`/catalog/product/productUnitConversion?${search}`, {
       method: "GET",
       
     });
   }
 
-  async productUnitConversionReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/productUnitConversion/${id}`, {
+  async productUnitConversionReadById(id: number): Promise<ProductUnitConversion> {
+    return this.#client.web.fetchJson(`/catalog/product/productUnitConversion/${id}`, {
       method: "GET",
       
     });
   }
 
-  async productUnitConversionUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/productUnitConversion", {
+  async productUnitConversionUpdate(bean: ProductUnitConversion): Promise<ProductUnitConversion> {
+    return this.#client.web.fetchJson("/catalog/product/productUnitConversion", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -327,8 +338,8 @@ export class ProductService {
     });
   }
 
-  async productUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/product", {
+  async productUpdate(bean: Product): Promise<Product> {
+    return this.#client.web.fetchJson("/catalog/product/product", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -338,8 +349,8 @@ export class ProductService {
     });
   }
 
-  async productVariantCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/productVariant", {
+  async productVariantCreate(bean: ProductVariant): Promise<ProductVariant> {
+    return this.#client.web.fetchJson("/catalog/product/productVariant", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -349,29 +360,29 @@ export class ProductService {
     });
   }
 
-  async productVariantDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/product/productVariant/${id}`, {
+  async productVariantDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/product/productVariant/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async productVariantRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/productVariant?${search}`, {
+  async productVariantRead(search: any): Promise<ProductVariant[]> {
+    return this.#client.web.fetchJson(`/catalog/product/productVariant?${search}`, {
       method: "GET",
       
     });
   }
 
-  async productVariantReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/productVariant/${id}`, {
+  async productVariantReadById(id: number): Promise<ProductVariant> {
+    return this.#client.web.fetchJson(`/catalog/product/productVariant/${id}`, {
       method: "GET",
       
     });
   }
 
-  async productVariantUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/productVariant", {
+  async productVariantUpdate(bean: ProductVariant): Promise<ProductVariant> {
+    return this.#client.web.fetchJson("/catalog/product/productVariant", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -381,8 +392,8 @@ export class ProductService {
     });
   }
 
-  async unitCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/unit", {
+  async unitCreate(bean: Unit): Promise<Unit> {
+    return this.#client.web.fetchJson("/catalog/product/unit", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -392,29 +403,29 @@ export class ProductService {
     });
   }
 
-  async unitDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/product/unit/${id}`, {
+  async unitDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/product/unit/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async unitRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/unit?${search}`, {
+  async unitRead(search: any): Promise<Unit[]> {
+    return this.#client.web.fetchJson(`/catalog/product/unit?${search}`, {
       method: "GET",
       
     });
   }
 
-  async unitReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/product/unit/${id}`, {
+  async unitReadById(id: number): Promise<Unit> {
+    return this.#client.web.fetchJson(`/catalog/product/unit/${id}`, {
       method: "GET",
       
     });
   }
 
-  async unitUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/product/unit", {
+  async unitUpdate(bean: Unit): Promise<Unit> {
+    return this.#client.web.fetchJson("/catalog/product/unit", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

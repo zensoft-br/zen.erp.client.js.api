@@ -11,7 +11,7 @@ npm install @zensoft-br/zenclient
 ## Importação
 
 ```js
-import Zen from "@zensoft-br/zenclient";
+import Z from "@zensoft-br/zenclient";
 ```
 
 ## Conexão
@@ -19,7 +19,7 @@ import Zen from "@zensoft-br/zenclient";
 ### Inicializando e conectando um cliente
 
 ```js
-const client = await Zen.connect("tenant_or_host", "user", "password",
+const client = await Z.connect("tenant_or_host", "user", "password",
   {
     "locale": "pt-BR",
     "timeZone": "America/Sao_Paulo",
@@ -31,7 +31,7 @@ const client = await Zen.connect("tenant_or_host", "user", "password",
 ### Criando um cliente a partir de um token
 
 ```js
-const client = Zen.createFromToken("tenant_or_host", "token");
+const client = Z.createFromToken("tenant_or_host", "token");
 ```
 
 ## Métodos `fetch` (client.web)
@@ -79,7 +79,7 @@ const response = await client.web.fetch("/catalog/category");
 await client.web.handleResponse(response);
 ```
 
-## Encapsulamento de API (Zen.api)
+## Encapsulamento de API (Z.api)
 
 Coleção de objetos que representam a estrutura da API e podem ser utilizados para acessar a API de forma mais simplificada e orientada a objetos.
 
@@ -88,21 +88,21 @@ Coleção de objetos que representam a estrutura da API e podem ser utilizados p
 As classes de serviços devem ser instanciadas com uma instância do cliente como argumento do construtor.
 
 ```js
-const categoryService = new Zen.api.catalog.Service(client);
+const catalogService = new Z.api.catalog.CatalogService(client);
 ```
 
 ```js
-const categoryService = new Zen.api.catalog.Service(client);
+const catalogService = new Z.api.catalog.CatalogService(client);
 
-let category = new Zen.api.catalog.Category();
+let category = new Z.api.catalog.Category();
 category.code = "TOOLS";
 category.description = "Tools";
 
-category = await categoryService.categoryCreate(category);
+category = await catalogService.categoryCreate(category);
 ```
 
 ```js
-const saleService = new Zen.api.sale.Service(client);
+const saleService = new Z.api.sale.SaleService(client);
 
 let sale;
 
@@ -126,8 +126,8 @@ i18n.format("@@:/catalog/category/error/notFound", "ACESSORIOS"); // retorna "Ca
 ### Formatando dados
 
 ```js
-i18n.formatDate("2000-01-31"); // retorna "31/01/2024" para "pt-BR"
-i18n.formatDate(new Date("2000-01-31")); // retorna "31/01/2024" para "pt-BR"
+i18n.formatDate("2024-01-31"); // retorna "31/01/2024" para "pt-BR"
+i18n.formatDate(new Date("2024-01-31")); // retorna "31/01/2024" para "pt-BR"
 i18n.formatNumber(1000.12345, { digits: 2 }); // retorna "1.000,12" para "pt-BR"
 i18n.formatNumber(1000.12345, { minDigits: 2, maxDigits: 4 }); // retorna "1.000,1234" para "pt-BR"
 ```

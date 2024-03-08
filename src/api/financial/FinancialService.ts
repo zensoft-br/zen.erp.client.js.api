@@ -1,13 +1,22 @@
+import { Client } from "../../Client.js";
+import { Payable } from "./Payable.js";
+import { SettlementMethod } from "./SettlementMethod.js";
+import { Currency } from "./Currency.js";
+import { SettlementBillingTitle } from "./SettlementBillingTitle.js";
+import { Settlement } from "./Settlement.js";
+import { CurrencyExchangeRate } from "./CurrencyExchangeRate.js";
+import { Receivable } from "./Receivable.js";
+
 export class FinancialService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async currencyCreate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/currency", {
+  async currencyCreate(bean: Currency): Promise<Currency> {
+    return this.#client.web.fetchJson("/financial/currency", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +26,15 @@ export class FinancialService {
     });
   }
 
-  async currencyDelete(id) {
-    this.#zenClient.web.fetchJson(`/financial/currency/${id}`, {
+  async currencyDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/financial/currency/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async currencyExchangeRateCreate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/currencyExchangeRate", {
+  async currencyExchangeRateCreate(bean: CurrencyExchangeRate): Promise<CurrencyExchangeRate> {
+    return this.#client.web.fetchJson("/financial/currencyExchangeRate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,52 +44,52 @@ export class FinancialService {
     });
   }
 
-  async currencyExchangeRateDelete(id) {
-    this.#zenClient.web.fetchJson(`/financial/currencyExchangeRate/${id}`, {
+  async currencyExchangeRateDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/financial/currencyExchangeRate/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async currencyExchangeRateOpConvert(sourceId, destinationId, date, value) {
+  async currencyExchangeRateOpConvert(sourceId: number, destinationId: number, date: Date, value: number): Promise<number> {
     const sp = new URLSearchParams();
-    if (sourceId) sp.set("sourceId", sourceId);
-    if (destinationId) sp.set("destinationId", destinationId);
-    if (date) sp.set("date", date);
-    if (value) sp.set("value", value);
-    return this.#zenClient.web.fetchJson(`/financial/currencyExchangeRateOpConvert?${sp.toString()}`, {
+    if (sourceId) sp.set("sourceId", String(sourceId));
+    if (destinationId) sp.set("destinationId", String(destinationId));
+    if (date) sp.set("date", String(date));
+    if (value) sp.set("value", String(value));
+    return this.#client.web.fetchJson(`/financial/currencyExchangeRateOpConvert?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async currencyExchangeRateOpGetExchangeRate(sourceId, destinationId, date) {
+  async currencyExchangeRateOpGetExchangeRate(sourceId: number, destinationId: number, date: Date): Promise<number> {
     const sp = new URLSearchParams();
-    if (sourceId) sp.set("sourceId", sourceId);
-    if (destinationId) sp.set("destinationId", destinationId);
-    if (date) sp.set("date", date);
-    return this.#zenClient.web.fetchJson(`/financial/currencyExchangeRateOpGetExchangeRate?${sp.toString()}`, {
+    if (sourceId) sp.set("sourceId", String(sourceId));
+    if (destinationId) sp.set("destinationId", String(destinationId));
+    if (date) sp.set("date", String(date));
+    return this.#client.web.fetchJson(`/financial/currencyExchangeRateOpGetExchangeRate?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async currencyExchangeRateRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/currencyExchangeRate?${search}`, {
+  async currencyExchangeRateRead(search: any): Promise<CurrencyExchangeRate[]> {
+    return this.#client.web.fetchJson(`/financial/currencyExchangeRate?${search}`, {
       method: "GET",
       
     });
   }
 
-  async currencyExchangeRateReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/currencyExchangeRate/${id}`, {
+  async currencyExchangeRateReadById(id: number): Promise<CurrencyExchangeRate> {
+    return this.#client.web.fetchJson(`/financial/currencyExchangeRate/${id}`, {
       method: "GET",
       
     });
   }
 
-  async currencyExchangeRateUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/currencyExchangeRate", {
+  async currencyExchangeRateUpdate(bean: CurrencyExchangeRate): Promise<CurrencyExchangeRate> {
+    return this.#client.web.fetchJson("/financial/currencyExchangeRate", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -90,31 +99,31 @@ export class FinancialService {
     });
   }
 
-  async currencyOpReadByCode(code) {
+  async currencyOpReadByCode(code: string): Promise<Currency> {
     const sp = new URLSearchParams();
-    if (code) sp.set("code", code);
-    return this.#zenClient.web.fetchJson(`/financial/currencyOpReadByCode?${sp.toString()}`, {
+    if (code) sp.set("code", String(code));
+    return this.#client.web.fetchJson(`/financial/currencyOpReadByCode?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async currencyRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/currency?${search}`, {
+  async currencyRead(search: any): Promise<Currency[]> {
+    return this.#client.web.fetchJson(`/financial/currency?${search}`, {
       method: "GET",
       
     });
   }
 
-  async currencyReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/currency/${id}`, {
+  async currencyReadById(id: number): Promise<Currency> {
+    return this.#client.web.fetchJson(`/financial/currency/${id}`, {
       method: "GET",
       
     });
   }
 
-  async currencyUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/currency", {
+  async currencyUpdate(bean: Currency): Promise<Currency> {
+    return this.#client.web.fetchJson("/financial/currency", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -124,8 +133,8 @@ export class FinancialService {
     });
   }
 
-  async payableCreate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/payable", {
+  async payableCreate(bean: Payable): Promise<Payable> {
+    return this.#client.web.fetchJson("/financial/payable", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -135,40 +144,29 @@ export class FinancialService {
     });
   }
 
-  async payableDelete(id) {
-    this.#zenClient.web.fetchJson(`/financial/payable/${id}`, {
+  async payableDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/financial/payable/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async payableOpApprove(id) {
-    return this.#zenClient.web.fetchJson(`/financial/payableOpApprove/${id}`, {
+  async payableOpApprove(id: number): Promise<Payable> {
+    return this.#client.web.fetchJson(`/financial/payableOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async payableOpApproveRevert(id) {
-    return this.#zenClient.web.fetchJson(`/financial/payableOpApproveRevert/${id}`, {
+  async payableOpApproveRevert(id: number): Promise<Payable> {
+    return this.#client.web.fetchJson(`/financial/payableOpApproveRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async payableOpRepeat(id, args) {
-    return this.#zenClient.web.fetchJson(`/financial/payableOpRepeat/${id}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(args),
-
-    });
-  }
-
-  async payableOpSettle(args) {
-    return this.#zenClient.web.fetchJson("/financial/payableOpSettle", {
+  async payableOpRepeat(id: number, args: any): Promise<Payable[]> {
+    return this.#client.web.fetchJson(`/financial/payableOpRepeat/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -178,8 +176,8 @@ export class FinancialService {
     });
   }
 
-  async payableOpUpdate(id, args) {
-    return this.#zenClient.web.fetchJson(`/financial/payableOpUpdate/${id}`, {
+  async payableOpSettle(args: any): Promise<Settlement> {
+    return this.#client.web.fetchJson("/financial/payableOpSettle", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -189,71 +187,82 @@ export class FinancialService {
     });
   }
 
-  async payableRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/payable?${search}`, {
+  async payableOpUpdate(id: number, args: any): Promise<Payable> {
+    return this.#client.web.fetchJson(`/financial/payableOpUpdate/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
+  async payableRead(search: any): Promise<Payable[]> {
+    return this.#client.web.fetchJson(`/financial/payable?${search}`, {
       method: "GET",
       
     });
   }
 
-  async payableReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/payable/${id}`, {
+  async payableReadById(id: number): Promise<Payable> {
+    return this.#client.web.fetchJson(`/financial/payable/${id}`, {
       method: "GET",
       
     });
   }
 
-  async payableSettlementBillingTitleRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/payableSettlementBillingTitle?${search}`, {
+  async payableSettlementBillingTitleRead(search: any): Promise<SettlementBillingTitle[]> {
+    return this.#client.web.fetchJson(`/financial/payableSettlementBillingTitle?${search}`, {
       method: "GET",
       
     });
   }
 
-  async payableSettlementBillingTitleReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/payableSettlementBillingTitle/${id}`, {
+  async payableSettlementBillingTitleReadById(id: number): Promise<SettlementBillingTitle> {
+    return this.#client.web.fetchJson(`/financial/payableSettlementBillingTitle/${id}`, {
       method: "GET",
       
     });
   }
 
-  async payableSettlementDelete(id) {
-    this.#zenClient.web.fetchJson(`/financial/payableSettlement/${id}`, {
+  async payableSettlementDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/financial/payableSettlement/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async payableSettlementMethodRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/payableSettlementMethod?${search}`, {
+  async payableSettlementMethodRead(search: any): Promise<SettlementMethod[]> {
+    return this.#client.web.fetchJson(`/financial/payableSettlementMethod?${search}`, {
       method: "GET",
       
     });
   }
 
-  async payableSettlementMethodReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/payableSettlementMethod/${id}`, {
+  async payableSettlementMethodReadById(id: number): Promise<SettlementMethod> {
+    return this.#client.web.fetchJson(`/financial/payableSettlementMethod/${id}`, {
       method: "GET",
       
     });
   }
 
-  async payableSettlementRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/payableSettlement?${search}`, {
+  async payableSettlementRead(search: any): Promise<Settlement[]> {
+    return this.#client.web.fetchJson(`/financial/payableSettlement?${search}`, {
       method: "GET",
       
     });
   }
 
-  async payableSettlementReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/payableSettlement/${id}`, {
+  async payableSettlementReadById(id: number): Promise<Settlement> {
+    return this.#client.web.fetchJson(`/financial/payableSettlement/${id}`, {
       method: "GET",
       
     });
   }
 
-  async payableUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/payable", {
+  async payableUpdate(bean: Payable): Promise<Payable> {
+    return this.#client.web.fetchJson("/financial/payable", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -263,8 +272,8 @@ export class FinancialService {
     });
   }
 
-  async receivableCreate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/receivable", {
+  async receivableCreate(bean: Receivable): Promise<Receivable> {
+    return this.#client.web.fetchJson("/financial/receivable", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -274,40 +283,29 @@ export class FinancialService {
     });
   }
 
-  async receivableDelete(id) {
-    this.#zenClient.web.fetchJson(`/financial/receivable/${id}`, {
+  async receivableDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/financial/receivable/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async receivableOpApprove(id) {
-    return this.#zenClient.web.fetchJson(`/financial/receivableOpApprove/${id}`, {
+  async receivableOpApprove(id: number): Promise<Receivable> {
+    return this.#client.web.fetchJson(`/financial/receivableOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async receivableOpApproveRevert(id) {
-    return this.#zenClient.web.fetchJson(`/financial/receivableOpApproveRevert/${id}`, {
+  async receivableOpApproveRevert(id: number): Promise<Receivable> {
+    return this.#client.web.fetchJson(`/financial/receivableOpApproveRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async receivableOpRepeat(id, args) {
-    return this.#zenClient.web.fetchJson(`/financial/receivableOpRepeat/${id}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(args),
-
-    });
-  }
-
-  async receivableOpSend(args) {
-    this.#zenClient.web.fetchJson("/financial/receivableOpSend", {
+  async receivableOpRepeat(id: number, args: any): Promise<Payable[]> {
+    return this.#client.web.fetchJson(`/financial/receivableOpRepeat/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -317,8 +315,8 @@ export class FinancialService {
     });
   }
 
-  async receivableOpSettle(args) {
-    return this.#zenClient.web.fetchJson("/financial/receivableOpSettle", {
+  async receivableOpSend(args: any): Promise<void> {
+    this.#client.web.fetchJson("/financial/receivableOpSend", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -328,8 +326,8 @@ export class FinancialService {
     });
   }
 
-  async receivableOpUpdate(id, args) {
-    return this.#zenClient.web.fetchJson(`/financial/receivableOpUpdate/${id}`, {
+  async receivableOpSettle(args: any): Promise<Settlement> {
+    return this.#client.web.fetchJson("/financial/receivableOpSettle", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -339,71 +337,82 @@ export class FinancialService {
     });
   }
 
-  async receivableRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/receivable?${search}`, {
+  async receivableOpUpdate(id: number, args: any): Promise<Receivable> {
+    return this.#client.web.fetchJson(`/financial/receivableOpUpdate/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
+  async receivableRead(search: any): Promise<Receivable[]> {
+    return this.#client.web.fetchJson(`/financial/receivable?${search}`, {
       method: "GET",
       
     });
   }
 
-  async receivableReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/receivable/${id}`, {
+  async receivableReadById(id: number): Promise<Receivable> {
+    return this.#client.web.fetchJson(`/financial/receivable/${id}`, {
       method: "GET",
       
     });
   }
 
-  async receivableSettlementBillingTitleRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/receivableSettlementBillingTitle?${search}`, {
+  async receivableSettlementBillingTitleRead(search: any): Promise<SettlementBillingTitle[]> {
+    return this.#client.web.fetchJson(`/financial/receivableSettlementBillingTitle?${search}`, {
       method: "GET",
       
     });
   }
 
-  async receivableSettlementBillingTitleReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/receivableSettlementBillingTitle/${id}`, {
+  async receivableSettlementBillingTitleReadById(id: number): Promise<SettlementBillingTitle> {
+    return this.#client.web.fetchJson(`/financial/receivableSettlementBillingTitle/${id}`, {
       method: "GET",
       
     });
   }
 
-  async receivableSettlementDelete(id) {
-    this.#zenClient.web.fetchJson(`/financial/receivableSettlement/${id}`, {
+  async receivableSettlementDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/financial/receivableSettlement/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async receivableSettlementMethodRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/receivableSettlementMethod?${search}`, {
+  async receivableSettlementMethodRead(search: any): Promise<SettlementMethod[]> {
+    return this.#client.web.fetchJson(`/financial/receivableSettlementMethod?${search}`, {
       method: "GET",
       
     });
   }
 
-  async receivableSettlementMethodReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/receivableSettlementMethod/${id}`, {
+  async receivableSettlementMethodReadById(id: number): Promise<SettlementMethod> {
+    return this.#client.web.fetchJson(`/financial/receivableSettlementMethod/${id}`, {
       method: "GET",
       
     });
   }
 
-  async receivableSettlementRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/receivableSettlement?${search}`, {
+  async receivableSettlementRead(search: any): Promise<Settlement[]> {
+    return this.#client.web.fetchJson(`/financial/receivableSettlement?${search}`, {
       method: "GET",
       
     });
   }
 
-  async receivableSettlementReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/receivableSettlement/${id}`, {
+  async receivableSettlementReadById(id: number): Promise<Settlement> {
+    return this.#client.web.fetchJson(`/financial/receivableSettlement/${id}`, {
       method: "GET",
       
     });
   }
 
-  async receivableUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/receivable", {
+  async receivableUpdate(bean: Receivable): Promise<Receivable> {
+    return this.#client.web.fetchJson("/financial/receivable", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

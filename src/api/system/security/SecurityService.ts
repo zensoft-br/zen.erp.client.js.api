@@ -1,13 +1,25 @@
+import { Client } from "../../../Client.js";
+import { AccessPoint } from "./AccessPoint.js";
+import { User } from "./User.js";
+import { AccessProfile } from "./AccessProfile.js";
+import { KeyStore } from "./KeyStore.js";
+import { Group } from "./Group.js";
+import { RoleAccessPoint } from "./RoleAccessPoint.js";
+import { Role } from "./Role.js";
+import { UserPermission } from "./UserPermission.js";
+import { Grant } from "./Grant.js";
+import { Session } from "./Session.js";
+
 export class SecurityService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async accessPointCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/accessPoint", {
+  async accessPointCreate(bean: AccessPoint): Promise<AccessPoint> {
+    return this.#client.web.fetchJson("/system/security/accessPoint", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,38 +29,38 @@ export class SecurityService {
     });
   }
 
-  async accessPointDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/security/accessPoint/${id}`, {
+  async accessPointDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/accessPoint/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async accessPointOpValidate(code) {
+  async accessPointOpValidate(code: string): Promise<boolean> {
     const sp = new URLSearchParams();
-    if (code) sp.set("code", code);
-    return this.#zenClient.web.fetchJson(`/system/security/accessPointOpValidate?${sp.toString()}`, {
+    if (code) sp.set("code", String(code));
+    return this.#client.web.fetchJson(`/system/security/accessPointOpValidate?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async accessPointRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/security/accessPoint?${search}`, {
+  async accessPointRead(search: any): Promise<AccessPoint[]> {
+    return this.#client.web.fetchJson(`/system/security/accessPoint?${search}`, {
       method: "GET",
       
     });
   }
 
-  async accessPointReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/security/accessPoint/${id}`, {
+  async accessPointReadById(id: number): Promise<AccessPoint> {
+    return this.#client.web.fetchJson(`/system/security/accessPoint/${id}`, {
       method: "GET",
       
     });
   }
 
-  async accessPointUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/accessPoint", {
+  async accessPointUpdate(bean: AccessPoint): Promise<AccessPoint> {
+    return this.#client.web.fetchJson("/system/security/accessPoint", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -58,8 +70,8 @@ export class SecurityService {
     });
   }
 
-  async accessProfileCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/accessProfile", {
+  async accessProfileCreate(bean: AccessProfile): Promise<AccessProfile> {
+    return this.#client.web.fetchJson("/system/security/accessProfile", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -69,29 +81,29 @@ export class SecurityService {
     });
   }
 
-  async accessProfileDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/security/accessProfile/${id}`, {
+  async accessProfileDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/accessProfile/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async accessProfileRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/security/accessProfile?${search}`, {
+  async accessProfileRead(search: any): Promise<AccessProfile[]> {
+    return this.#client.web.fetchJson(`/system/security/accessProfile?${search}`, {
       method: "GET",
       
     });
   }
 
-  async accessProfileReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/security/accessProfile/${id}`, {
+  async accessProfileReadById(id: number): Promise<AccessProfile> {
+    return this.#client.web.fetchJson(`/system/security/accessProfile/${id}`, {
       method: "GET",
       
     });
   }
 
-  async accessProfileUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/accessProfile", {
+  async accessProfileUpdate(bean: AccessProfile): Promise<AccessProfile> {
+    return this.#client.web.fetchJson("/system/security/accessProfile", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -101,8 +113,8 @@ export class SecurityService {
     });
   }
 
-  async grantCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/grant", {
+  async grantCreate(bean: Grant): Promise<Grant> {
+    return this.#client.web.fetchJson("/system/security/grant", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -112,29 +124,29 @@ export class SecurityService {
     });
   }
 
-  async grantDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/security/grant/${id}`, {
+  async grantDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/grant/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async grantRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/security/grant?${search}`, {
+  async grantRead(search: any): Promise<Grant[]> {
+    return this.#client.web.fetchJson(`/system/security/grant?${search}`, {
       method: "GET",
       
     });
   }
 
-  async grantReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/security/grant/${id}`, {
+  async grantReadById(id: number): Promise<Grant> {
+    return this.#client.web.fetchJson(`/system/security/grant/${id}`, {
       method: "GET",
       
     });
   }
 
-  async groupCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/group", {
+  async groupCreate(bean: Group): Promise<Group> {
+    return this.#client.web.fetchJson("/system/security/group", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -144,15 +156,15 @@ export class SecurityService {
     });
   }
 
-  async groupDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/security/group/${id}`, {
+  async groupDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/group/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async groupOpClone(id, args) {
-    return this.#zenClient.web.fetchJson(`/system/security/groupOpClone/${id}`, {
+  async groupOpClone(id: number, args: any): Promise<Group> {
+    return this.#client.web.fetchJson(`/system/security/groupOpClone/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -162,22 +174,22 @@ export class SecurityService {
     });
   }
 
-  async groupRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/security/group?${search}`, {
+  async groupRead(search: any): Promise<Group[]> {
+    return this.#client.web.fetchJson(`/system/security/group?${search}`, {
       method: "GET",
       
     });
   }
 
-  async groupReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/security/group/${id}`, {
+  async groupReadById(id: number): Promise<Group> {
+    return this.#client.web.fetchJson(`/system/security/group/${id}`, {
       method: "GET",
       
     });
   }
 
-  async groupUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/group", {
+  async groupUpdate(bean: Group): Promise<Group> {
+    return this.#client.web.fetchJson("/system/security/group", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -187,8 +199,8 @@ export class SecurityService {
     });
   }
 
-  async keyStoreCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/keyStore", {
+  async keyStoreCreate(bean: KeyStore): Promise<KeyStore> {
+    return this.#client.web.fetchJson("/system/security/keyStore", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -198,36 +210,36 @@ export class SecurityService {
     });
   }
 
-  async keyStoreDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/security/keyStore/${id}`, {
+  async keyStoreDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/keyStore/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async keyStoreOpReadContent(id) {
-    return this.#zenClient.web.fetchJson(`/system/security/keyStoreOpReadContent/${id}`, {
+  async keyStoreOpReadContent(id: number): Promise<any> {
+    return this.#client.web.fetchJson(`/system/security/keyStoreOpReadContent/${id}`, {
       method: "POST",
       
     });
   }
 
-  async keyStoreRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/security/keyStore?${search}`, {
+  async keyStoreRead(search: any): Promise<KeyStore[]> {
+    return this.#client.web.fetchJson(`/system/security/keyStore?${search}`, {
       method: "GET",
       
     });
   }
 
-  async keyStoreReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/security/keyStore/${id}`, {
+  async keyStoreReadById(id: number): Promise<KeyStore> {
+    return this.#client.web.fetchJson(`/system/security/keyStore/${id}`, {
       method: "GET",
       
     });
   }
 
-  async keyStoreUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/keyStore", {
+  async keyStoreUpdate(bean: KeyStore): Promise<KeyStore> {
+    return this.#client.web.fetchJson("/system/security/keyStore", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -237,8 +249,8 @@ export class SecurityService {
     });
   }
 
-  async roleAccessPointCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/roleAccessPoint", {
+  async roleAccessPointCreate(bean: RoleAccessPoint): Promise<RoleAccessPoint> {
+    return this.#client.web.fetchJson("/system/security/roleAccessPoint", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -248,71 +260,71 @@ export class SecurityService {
     });
   }
 
-  async roleAccessPointDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/security/roleAccessPoint/${id}`, {
+  async roleAccessPointDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/roleAccessPoint/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async roleAccessPointRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/security/roleAccessPoint?${search}`, {
+  async roleAccessPointRead(search: any): Promise<RoleAccessPoint[]> {
+    return this.#client.web.fetchJson(`/system/security/roleAccessPoint?${search}`, {
       method: "GET",
       
     });
   }
 
-  async roleAccessPointReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/security/roleAccessPoint/${id}`, {
+  async roleAccessPointReadById(id: number): Promise<RoleAccessPoint> {
+    return this.#client.web.fetchJson(`/system/security/roleAccessPoint/${id}`, {
       method: "GET",
       
     });
   }
 
-  async roleRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/security/role?${search}`, {
+  async roleRead(search: any): Promise<Role[]> {
+    return this.#client.web.fetchJson(`/system/security/role?${search}`, {
       method: "GET",
       
     });
   }
 
-  async roleReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/security/role/${id}`, {
+  async roleReadById(id: number): Promise<Role> {
+    return this.#client.web.fetchJson(`/system/security/role/${id}`, {
       method: "GET",
       
     });
   }
 
-  async sessionDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/security/session/${id}`, {
+  async sessionDelete(id: any): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/session/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async sessionOpGetCurrent() {
-    return this.#zenClient.web.fetchJson("/system/security/sessionOpGetCurrent", {
+  async sessionOpGetCurrent(): Promise<Session> {
+    return this.#client.web.fetchJson("/system/security/sessionOpGetCurrent", {
       method: "GET",
       
     });
   }
 
-  async sessionRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/security/session?${search}`, {
+  async sessionRead(search: any): Promise<Session[]> {
+    return this.#client.web.fetchJson(`/system/security/session?${search}`, {
       method: "GET",
       
     });
   }
 
-  async sessionReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/security/session/${id}`, {
+  async sessionReadById(id: any): Promise<Session> {
+    return this.#client.web.fetchJson(`/system/security/session/${id}`, {
       method: "GET",
       
     });
   }
 
-  async tokenOpInvalidate(args) {
-    this.#zenClient.web.fetchJson("/system/security/tokenOpInvalidate", {
+  async tokenOpInvalidate(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/security/tokenOpInvalidate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -322,22 +334,22 @@ export class SecurityService {
     });
   }
 
-  async tokenOpInvalidateCurrent() {
-    this.#zenClient.web.fetchJson("/system/security/tokenOpInvalidateCurrent", {
+  async tokenOpInvalidateCurrent(): Promise<void> {
+    this.#client.web.fetchJson("/system/security/tokenOpInvalidateCurrent", {
       method: "POST",
       
     });
   }
 
-  async tokenOpRenew() {
-    return this.#zenClient.web.fetchJson("/system/security/tokenOpRenew", {
+  async tokenOpRenew(): Promise<string> {
+    return this.#client.web.fetchJson("/system/security/tokenOpRenew", {
       method: "POST",
       
     });
   }
 
-  async tokenOpRequest(args) {
-    return this.#zenClient.web.fetchJson("/system/security/tokenOpRequest", {
+  async tokenOpRequest(args: any): Promise<string> {
+    return this.#client.web.fetchJson("/system/security/tokenOpRequest", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -347,8 +359,8 @@ export class SecurityService {
     });
   }
 
-  async tokenOpRequestPermanent(args) {
-    return this.#zenClient.web.fetchJson("/system/security/tokenOpRequestPermanent", {
+  async tokenOpRequestPermanent(args: any): Promise<string> {
+    return this.#client.web.fetchJson("/system/security/tokenOpRequestPermanent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -358,8 +370,8 @@ export class SecurityService {
     });
   }
 
-  async userCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/user", {
+  async userCreate(bean: User): Promise<User> {
+    return this.#client.web.fetchJson("/system/security/user", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -369,22 +381,22 @@ export class SecurityService {
     });
   }
 
-  async userDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/security/user/${id}`, {
+  async userDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/user/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async userOpActivate(id) {
-    this.#zenClient.web.fetchJson(`/system/security/userOpActivate/${id}`, {
+  async userOpActivate(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/userOpActivate/${id}`, {
       method: "POST",
       
     });
   }
 
-  async userOpAuthenticate(args) {
-    return this.#zenClient.web.fetchJson("/system/security/userOpAuthenticate", {
+  async userOpAuthenticate(args: any): Promise<boolean> {
+    return this.#client.web.fetchJson("/system/security/userOpAuthenticate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -394,8 +406,8 @@ export class SecurityService {
     });
   }
 
-  async userOpChangeEmail(args) {
-    this.#zenClient.web.fetchJson("/system/security/userOpChangeEmail", {
+  async userOpChangeEmail(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/security/userOpChangeEmail", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -405,8 +417,8 @@ export class SecurityService {
     });
   }
 
-  async userOpChangeEmailConfirmation(args) {
-    this.#zenClient.web.fetchJson("/system/security/userOpChangeEmailConfirmation", {
+  async userOpChangeEmailConfirmation(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/security/userOpChangeEmailConfirmation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -416,8 +428,8 @@ export class SecurityService {
     });
   }
 
-  async userOpChangePassword(args) {
-    this.#zenClient.web.fetchJson("/system/security/userOpChangePassword", {
+  async userOpChangePassword(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/security/userOpChangePassword", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -427,8 +439,8 @@ export class SecurityService {
     });
   }
 
-  async userOpChangePasswordThird(id, args) {
-    this.#zenClient.web.fetchJson(`/system/security/userOpChangePasswordThird/${id}`, {
+  async userOpChangePasswordThird(id: number, args: any): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/userOpChangePasswordThird/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -438,8 +450,8 @@ export class SecurityService {
     });
   }
 
-  async userOpCreate(args) {
-    this.#zenClient.web.fetchJson("/system/security/userOpCreate", {
+  async userOpCreate(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/security/userOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -449,8 +461,8 @@ export class SecurityService {
     });
   }
 
-  async userOpCreateConfirmation(args) {
-    this.#zenClient.web.fetchJson("/system/security/userOpCreateConfirmation", {
+  async userOpCreateConfirmation(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/security/userOpCreateConfirmation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -460,8 +472,8 @@ export class SecurityService {
     });
   }
 
-  async userOpCreateResend(args) {
-    this.#zenClient.web.fetchJson("/system/security/userOpCreateResend", {
+  async userOpCreateResend(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/security/userOpCreateResend", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -471,29 +483,29 @@ export class SecurityService {
     });
   }
 
-  async userOpGrantOptionAdd(id) {
-    this.#zenClient.web.fetchJson(`/system/security/userOpGrantOptionAdd/${id}`, {
+  async userOpGrantOptionAdd(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/userOpGrantOptionAdd/${id}`, {
       method: "POST",
       
     });
   }
 
-  async userOpGrantOptionRemove(id) {
-    this.#zenClient.web.fetchJson(`/system/security/userOpGrantOptionRemove/${id}`, {
+  async userOpGrantOptionRemove(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/userOpGrantOptionRemove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async userOpInactivate(id) {
-    this.#zenClient.web.fetchJson(`/system/security/userOpInactivate/${id}`, {
+  async userOpInactivate(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/userOpInactivate/${id}`, {
       method: "POST",
       
     });
   }
 
-  async userOpResetPassword(args) {
-    this.#zenClient.web.fetchJson("/system/security/userOpResetPassword", {
+  async userOpResetPassword(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/security/userOpResetPassword", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -503,8 +515,8 @@ export class SecurityService {
     });
   }
 
-  async userOpResetPasswordConfirmation(args) {
-    this.#zenClient.web.fetchJson("/system/security/userOpResetPasswordConfirmation", {
+  async userOpResetPasswordConfirmation(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/security/userOpResetPasswordConfirmation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -514,16 +526,16 @@ export class SecurityService {
     });
   }
 
-  async userOpUnlock(id) {
-    this.#zenClient.web.fetchJson(`/system/security/userOpUnlock/${id}`, {
+  async userOpUnlock(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/security/userOpUnlock/${id}`, {
       method: "POST",
       
     });
   }
 
-  async userOpUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/userOpUpdate", {
-      method: "POST",
+  async userOpUpdate(bean: User): Promise<User> {
+    return this.#client.web.fetchJson("/system/security/userOpUpdate", {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
         },
@@ -532,29 +544,29 @@ export class SecurityService {
     });
   }
 
-  async userPermissionRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/security/userPermission?${search}`, {
+  async userPermissionRead(search: any): Promise<UserPermission[]> {
+    return this.#client.web.fetchJson(`/system/security/userPermission?${search}`, {
       method: "GET",
       
     });
   }
 
-  async userRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/security/user?${search}`, {
+  async userRead(search: any): Promise<User[]> {
+    return this.#client.web.fetchJson(`/system/security/user?${search}`, {
       method: "GET",
       
     });
   }
 
-  async userReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/security/user/${id}`, {
+  async userReadById(id: number): Promise<User> {
+    return this.#client.web.fetchJson(`/system/security/user/${id}`, {
       method: "GET",
       
     });
   }
 
-  async userUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/security/user", {
+  async userUpdate(bean: User): Promise<User> {
+    return this.#client.web.fetchJson("/system/security/user", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

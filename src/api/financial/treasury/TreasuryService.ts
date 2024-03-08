@@ -1,13 +1,17 @@
+import { Client } from "../../../Client.js";
+import { AccountStatement } from "./AccountStatement.js";
+import { JournalEntry } from "../../accounting/JournalEntry.js";
+
 export class TreasuryService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async accountStatementCreate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/treasury/accountStatement", {
+  async accountStatementCreate(bean: AccountStatement): Promise<AccountStatement> {
+    return this.#client.web.fetchJson("/financial/treasury/accountStatement", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +21,15 @@ export class TreasuryService {
     });
   }
 
-  async accountStatementDelete(id) {
-    this.#zenClient.web.fetchJson(`/financial/treasury/accountStatement/${id}`, {
+  async accountStatementDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/financial/treasury/accountStatement/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async accountStatementOpConsolidate(id, args) {
-    return this.#zenClient.web.fetchJson(`/financial/treasury/accountStatementOpConsolidate/${id}`, {
+  async accountStatementOpConsolidate(id: number, args: any): Promise<AccountStatement> {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatementOpConsolidate/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,71 +39,71 @@ export class TreasuryService {
     });
   }
 
-  async accountStatementOpConsolidateRevert(id) {
-    return this.#zenClient.web.fetchJson(`/financial/treasury/accountStatementOpConsolidateRevert/${id}`, {
+  async accountStatementOpConsolidateRevert(id: number): Promise<AccountStatement> {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatementOpConsolidateRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async accountStatementOpIdentify(id) {
-    return this.#zenClient.web.fetchJson(`/financial/treasury/accountStatementOpIdentify/${id}`, {
+  async accountStatementOpIdentify(id: number): Promise<AccountStatement> {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatementOpIdentify/${id}`, {
       method: "POST",
       
     });
   }
 
-  async accountStatementOpIdentifyRevert(id) {
-    return this.#zenClient.web.fetchJson(`/financial/treasury/accountStatementOpIdentifyRevert/${id}`, {
+  async accountStatementOpIdentifyRevert(id: number): Promise<AccountStatement> {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatementOpIdentifyRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async accountStatementOpIgnore(id) {
-    return this.#zenClient.web.fetchJson(`/financial/treasury/accountStatementOpIgnore/${id}`, {
+  async accountStatementOpIgnore(id: number): Promise<AccountStatement> {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatementOpIgnore/${id}`, {
       method: "POST",
       
     });
   }
 
-  async accountStatementOpIgnoreRevert(id) {
-    return this.#zenClient.web.fetchJson(`/financial/treasury/accountStatementOpIgnoreRevert/${id}`, {
+  async accountStatementOpIgnoreRevert(id: number): Promise<AccountStatement> {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatementOpIgnoreRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async accountStatementOpSettle(id) {
-    return this.#zenClient.web.fetchJson(`/financial/treasury/accountStatementOpSettle/${id}`, {
+  async accountStatementOpSettle(id: number): Promise<AccountStatement> {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatementOpSettle/${id}`, {
       method: "POST",
       
     });
   }
 
-  async accountStatementOpSettleRevert(id) {
-    return this.#zenClient.web.fetchJson(`/financial/treasury/accountStatementOpSettleRevert/${id}`, {
+  async accountStatementOpSettleRevert(id: number): Promise<AccountStatement> {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatementOpSettleRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async accountStatementRead(search) {
-    return this.#zenClient.web.fetchJson(`/financial/treasury/accountStatement?${search}`, {
+  async accountStatementRead(search: any): Promise<AccountStatement[]> {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatement?${search}`, {
       method: "GET",
       
     });
   }
 
-  async accountStatementReadById(id) {
-    return this.#zenClient.web.fetchJson(`/financial/treasury/accountStatement/${id}`, {
+  async accountStatementReadById(id: number): Promise<AccountStatement> {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatement/${id}`, {
       method: "GET",
       
     });
   }
 
-  async accountStatementUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/financial/treasury/accountStatement", {
+  async accountStatementUpdate(bean: AccountStatement): Promise<AccountStatement> {
+    return this.#client.web.fetchJson("/financial/treasury/accountStatement", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -109,8 +113,8 @@ export class TreasuryService {
     });
   }
 
-  async expenseOpCreate(args) {
-    return this.#zenClient.web.fetchJson("/financial/treasury/expenseOpCreate", {
+  async expenseOpCreate(args: any): Promise<JournalEntry> {
+    return this.#client.web.fetchJson("/financial/treasury/expenseOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -120,8 +124,8 @@ export class TreasuryService {
     });
   }
 
-  async revenueOpCreate(args) {
-    return this.#zenClient.web.fetchJson("/financial/treasury/revenueOpCreate", {
+  async revenueOpCreate(args: any): Promise<JournalEntry> {
+    return this.#client.web.fetchJson("/financial/treasury/revenueOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",

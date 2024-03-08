@@ -1,13 +1,16 @@
+import { Client } from "../../../Client.js";
+import { File } from "./File.js";
+
 export class FileService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async fileCreate(args) {
-    return this.#zenClient.web.fetchJson("/system/file/file", {
+  async fileCreate(args: File): Promise<File> {
+    return this.#client.web.fetchJson("/system/file/file", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,36 +20,36 @@ export class FileService {
     });
   }
 
-  async fileDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/file/file/${id}`, {
+  async fileDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/file/file/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async fileOpReadContent(id) {
-    return this.#zenClient.web.fetchJson(`/system/file/fileOpReadContent/${id}`, {
+  async fileOpReadContent(id: number): Promise<any> {
+    return this.#client.web.fetchJson(`/system/file/fileOpReadContent/${id}`, {
       method: "POST",
       
     });
   }
 
-  async fileRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/file/file?${search}`, {
+  async fileRead(search: any): Promise<File[]> {
+    return this.#client.web.fetchJson(`/system/file/file?${search}`, {
       method: "GET",
       
     });
   }
 
-  async fileReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/file/file/${id}`, {
+  async fileReadById(id: number): Promise<File> {
+    return this.#client.web.fetchJson(`/system/file/file/${id}`, {
       method: "GET",
       
     });
   }
 
-  async fileUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/file/file", {
+  async fileUpdate(bean: File): Promise<File> {
+    return this.#client.web.fetchJson("/system/file/file", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

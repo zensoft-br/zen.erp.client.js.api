@@ -1,13 +1,20 @@
+import { Client } from "../../../Client.js";
+import { Geocode } from "./Geocode.js";
+import { City } from "./City.js";
+import { Zipcode } from "./Zipcode.js";
+import { State } from "./State.js";
+import { Country } from "./Country.js";
+
 export class LocationService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async cityCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/location/city", {
+  async cityCreate(bean: City): Promise<City> {
+    return this.#client.web.fetchJson("/catalog/location/city", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +24,15 @@ export class LocationService {
     });
   }
 
-  async cityDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/location/city/${id}`, {
+  async cityDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/location/city/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async cityOpFind(args) {
-    return this.#zenClient.web.fetchJson("/catalog/location/cityOpFind", {
+  async cityOpFind(args: any): Promise<City> {
+    return this.#client.web.fetchJson("/catalog/location/cityOpFind", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,22 +42,22 @@ export class LocationService {
     });
   }
 
-  async cityRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/location/city?${search}`, {
+  async cityRead(search: any): Promise<City[]> {
+    return this.#client.web.fetchJson(`/catalog/location/city?${search}`, {
       method: "GET",
       
     });
   }
 
-  async cityReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/location/city/${id}`, {
+  async cityReadById(id: number): Promise<City> {
+    return this.#client.web.fetchJson(`/catalog/location/city/${id}`, {
       method: "GET",
       
     });
   }
 
-  async cityUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/location/city", {
+  async cityUpdate(bean: City): Promise<City> {
+    return this.#client.web.fetchJson("/catalog/location/city", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -60,8 +67,8 @@ export class LocationService {
     });
   }
 
-  async countryCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/location/country", {
+  async countryCreate(bean: Country): Promise<Country> {
+    return this.#client.web.fetchJson("/catalog/location/country", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -71,29 +78,29 @@ export class LocationService {
     });
   }
 
-  async countryDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/location/country/${id}`, {
+  async countryDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/location/country/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async countryRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/location/country?${search}`, {
+  async countryRead(search: any): Promise<Country[]> {
+    return this.#client.web.fetchJson(`/catalog/location/country?${search}`, {
       method: "GET",
       
     });
   }
 
-  async countryReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/location/country/${id}`, {
+  async countryReadById(id: number): Promise<Country> {
+    return this.#client.web.fetchJson(`/catalog/location/country/${id}`, {
       method: "GET",
       
     });
   }
 
-  async countryUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/location/country", {
+  async countryUpdate(bean: Country): Promise<Country> {
+    return this.#client.web.fetchJson("/catalog/location/country", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -103,17 +110,17 @@ export class LocationService {
     });
   }
 
-  async geocodeRead(address) {
+  async geocodeRead(address: string): Promise<Geocode> {
     const sp = new URLSearchParams();
-    if (address) sp.set("address", address);
-    return this.#zenClient.web.fetchJson(`/catalog/location/geocode?${sp.toString()}`, {
+    if (address) sp.set("address", String(address));
+    return this.#client.web.fetchJson(`/catalog/location/geocode?${sp.toString()}`, {
       method: "GET",
       
     });
   }
 
-  async stateCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/location/state", {
+  async stateCreate(bean: State): Promise<State> {
+    return this.#client.web.fetchJson("/catalog/location/state", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -123,29 +130,29 @@ export class LocationService {
     });
   }
 
-  async stateDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/location/state/${id}`, {
+  async stateDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/location/state/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async stateRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/location/state?${search}`, {
+  async stateRead(search: any): Promise<State[]> {
+    return this.#client.web.fetchJson(`/catalog/location/state?${search}`, {
       method: "GET",
       
     });
   }
 
-  async stateReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/location/state/${id}`, {
+  async stateReadById(id: number): Promise<State> {
+    return this.#client.web.fetchJson(`/catalog/location/state/${id}`, {
       method: "GET",
       
     });
   }
 
-  async stateUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/location/state", {
+  async stateUpdate(bean: State): Promise<State> {
+    return this.#client.web.fetchJson("/catalog/location/state", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -155,11 +162,11 @@ export class LocationService {
     });
   }
 
-  async zipcodeRead(country, zipcode) {
+  async zipcodeRead(country: string, zipcode: string): Promise<Zipcode> {
     const sp = new URLSearchParams();
-    if (country) sp.set("country", country);
-    if (zipcode) sp.set("zipcode", zipcode);
-    return this.#zenClient.web.fetchJson(`/catalog/location/zipcode?${sp.toString()}`, {
+    if (country) sp.set("country", String(country));
+    if (zipcode) sp.set("zipcode", String(zipcode));
+    return this.#client.web.fetchJson(`/catalog/location/zipcode?${sp.toString()}`, {
       method: "GET",
       
     });

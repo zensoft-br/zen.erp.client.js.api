@@ -1,42 +1,43 @@
+import { Client } from "../../../Client.js";
 export class StorageService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async get(key) {
+  async get(key: string): Promise<any> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    return this.#zenClient.web.fetchJson(`/system/storage/?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    return this.#client.web.fetchJson(`/system/storage/?${sp.toString()}`, {
       method: "GET",
       
     });
   }
 
-  async getNumber(key) {
+  async getNumber(key: string): Promise<number> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    return this.#zenClient.web.fetchJson(`/system/storage/number?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    return this.#client.web.fetchJson(`/system/storage/number?${sp.toString()}`, {
       method: "GET",
       
     });
   }
 
-  async getString(key) {
+  async getString(key: string): Promise<string> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    return this.#zenClient.web.fetchJson(`/system/storage/string?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    return this.#client.web.fetchJson(`/system/storage/string?${sp.toString()}`, {
       method: "GET",
       
     });
   }
 
-  async put(key, value) {
+  async put(key: string, value: any): Promise<void> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    this.#zenClient.web.fetchJson(`/system/storage/?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    this.#client.web.fetchJson(`/system/storage/?${sp.toString()}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -46,66 +47,66 @@ export class StorageService {
     });
   }
 
-  async putNumber(key, value) {
+  async putNumber(key: string, value: number): Promise<void> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    if (value) sp.set("value", value);
-    this.#zenClient.web.fetchJson(`/system/storage/number?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    if (value) sp.set("value", String(value));
+    this.#client.web.fetchJson(`/system/storage/number?${sp.toString()}`, {
       method: "PUT",
       
     });
   }
 
-  async putString(key, value) {
+  async putString(key: string, value: string): Promise<void> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    if (value) sp.set("value", value);
-    this.#zenClient.web.fetchJson(`/system/storage/string?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    if (value) sp.set("value", String(value));
+    this.#client.web.fetchJson(`/system/storage/string?${sp.toString()}`, {
       method: "PUT",
       
     });
   }
 
-  async remove(key) {
+  async remove(key: string): Promise<void> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    this.#zenClient.web.fetchJson(`/system/storage/?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    this.#client.web.fetchJson(`/system/storage/?${sp.toString()}`, {
       method: "DELETE",
       
     });
   }
 
-  async userGet(key) {
+  async userGet(key: string): Promise<any> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    return this.#zenClient.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    return this.#client.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
       method: "GET",
       
     });
   }
 
-  async userGetNumber(key) {
+  async userGetNumber(key: string): Promise<number> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    return this.#zenClient.web.fetchJson(`/system/storage/user/number?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    return this.#client.web.fetchJson(`/system/storage/user/number?${sp.toString()}`, {
       method: "GET",
       
     });
   }
 
-  async userGetString(key) {
+  async userGetString(key: string): Promise<string> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    return this.#zenClient.web.fetchJson(`/system/storage/user/string?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    return this.#client.web.fetchJson(`/system/storage/user/string?${sp.toString()}`, {
       method: "GET",
       
     });
   }
 
-  async userPut(key, value) {
+  async userPut(key: string, value: any): Promise<void> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    this.#zenClient.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    this.#client.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -115,30 +116,30 @@ export class StorageService {
     });
   }
 
-  async userPutNumber(key, value) {
+  async userPutNumber(key: string, value: number): Promise<void> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    if (value) sp.set("value", value);
-    this.#zenClient.web.fetchJson(`/system/storage/user/number?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    if (value) sp.set("value", String(value));
+    this.#client.web.fetchJson(`/system/storage/user/number?${sp.toString()}`, {
       method: "PUT",
       
     });
   }
 
-  async userPutString(key, value) {
+  async userPutString(key: string, value: string): Promise<void> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    if (value) sp.set("value", value);
-    this.#zenClient.web.fetchJson(`/system/storage/user/string?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    if (value) sp.set("value", String(value));
+    this.#client.web.fetchJson(`/system/storage/user/string?${sp.toString()}`, {
       method: "PUT",
       
     });
   }
 
-  async userRemove(key) {
+  async userRemove(key: string): Promise<void> {
     const sp = new URLSearchParams();
-    if (key) sp.set("key", key);
-    this.#zenClient.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
+    if (key) sp.set("key", String(key));
+    this.#client.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
       method: "DELETE",
       
     });

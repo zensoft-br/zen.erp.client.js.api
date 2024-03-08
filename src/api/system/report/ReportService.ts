@@ -1,13 +1,18 @@
+import { Client } from "../../../Client.js";
+import { ResponseReportOpPrint } from "./ResponseReportOpPrint.js";
+import { Report } from "./Report.js";
+import { ReportTemplate } from "./ReportTemplate.js";
+
 export class ReportService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async reportCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/report/report", {
+  async reportCreate(bean: Report): Promise<Report> {
+    return this.#client.web.fetchJson("/system/report/report", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,35 +22,24 @@ export class ReportService {
     });
   }
 
-  async reportDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/report/report/${id}`, {
+  async reportDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/report/report/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async reportOpClone(id, newCode) {
+  async reportOpClone(id: number, newCode: string): Promise<Report> {
     const sp = new URLSearchParams();
-    if (newCode) sp.set("newCode", newCode);
-    return this.#zenClient.web.fetchJson(`/system/report/reportOpClone/${id}?${sp.toString()}`, {
+    if (newCode) sp.set("newCode", String(newCode));
+    return this.#client.web.fetchJson(`/system/report/reportOpClone/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async reportOpGenerate(args) {
-    return this.#zenClient.web.fetchJson("/system/report/reportOpGenerate", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(args),
-
-    });
-  }
-
-  async reportOpPrint(args) {
-    return this.#zenClient.web.fetchJson("/system/report/reportOpPrint", {
+  async reportOpGenerate(args: any): Promise<any> {
+    return this.#client.web.fetchJson("/system/report/reportOpGenerate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -55,22 +49,8 @@ export class ReportService {
     });
   }
 
-  async reportRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/report/report?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async reportReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/report/report/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async reportTemplateOpUpdate(id, args) {
-    this.#zenClient.web.fetchJson(`/system/report/reportTemplateOpUpdate/${id}`, {
+  async reportOpPrint(args: any): Promise<any> {
+    return this.#client.web.fetchJson("/system/report/reportOpPrint", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -80,22 +60,47 @@ export class ReportService {
     });
   }
 
-  async reportTemplateRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/report/reportTemplate?${search}`, {
+  async reportRead(search: any): Promise<Report[]> {
+    return this.#client.web.fetchJson(`/system/report/report?${search}`, {
       method: "GET",
       
     });
   }
 
-  async reportTemplateReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/report/reportTemplate/${id}`, {
+  async reportReadById(id: number): Promise<Report> {
+    return this.#client.web.fetchJson(`/system/report/report/${id}`, {
       method: "GET",
       
     });
   }
 
-  async reportUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/report/report", {
+  async reportTemplateOpUpdate(id: number, args: any): Promise<void> {
+    this.#client.web.fetchJson(`/system/report/reportTemplateOpUpdate/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
+  async reportTemplateRead(search: any): Promise<ReportTemplate[]> {
+    return this.#client.web.fetchJson(`/system/report/reportTemplate?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async reportTemplateReadById(id: number): Promise<ReportTemplate> {
+    return this.#client.web.fetchJson(`/system/report/reportTemplate/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async reportUpdate(bean: Report): Promise<Report> {
+    return this.#client.web.fetchJson("/system/report/report", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

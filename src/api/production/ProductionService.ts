@@ -1,13 +1,22 @@
+import { Client } from "../../Client.js";
+import { OperationTypeAccount } from "./OperationTypeAccount.js";
+import { BomItem } from "./BomItem.js";
+import { ProductionOrder } from "./ProductionOrder.js";
+import { Operation } from "./Operation.js";
+import { OperationType } from "./OperationType.js";
+import { Bom } from "./Bom.js";
+import { ProductionSchema } from "./ProductionSchema.js";
+
 export class ProductionService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async bomCreate(bean) {
-    return this.#zenClient.web.fetchJson("/production/bom", {
+  async bomCreate(bean: Bom): Promise<Bom> {
+    return this.#client.web.fetchJson("/production/bom", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +26,15 @@ export class ProductionService {
     });
   }
 
-  async bomDelete(id) {
-    this.#zenClient.web.fetchJson(`/production/bom/${id}`, {
+  async bomDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/production/bom/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async bomItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/production/bomItem", {
+  async bomItemCreate(bean: BomItem): Promise<BomItem> {
+    return this.#client.web.fetchJson("/production/bomItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,29 +44,29 @@ export class ProductionService {
     });
   }
 
-  async bomItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/production/bomItem/${id}`, {
+  async bomItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/production/bomItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async bomItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/production/bomItem?${search}`, {
+  async bomItemRead(search: any): Promise<BomItem[]> {
+    return this.#client.web.fetchJson(`/production/bomItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async bomItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/production/bomItem/${id}`, {
+  async bomItemReadById(id: number): Promise<BomItem> {
+    return this.#client.web.fetchJson(`/production/bomItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async bomItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/production/bomItem", {
+  async bomItemUpdate(bean: BomItem): Promise<BomItem> {
+    return this.#client.web.fetchJson("/production/bomItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -67,29 +76,29 @@ export class ProductionService {
     });
   }
 
-  async bomOpClone(id) {
-    return this.#zenClient.web.fetchJson(`/production/bomOpClone/${id}`, {
+  async bomOpClone(id: number): Promise<Bom> {
+    return this.#client.web.fetchJson(`/production/bomOpClone/${id}`, {
       method: "POST",
       
     });
   }
 
-  async bomRead(search) {
-    return this.#zenClient.web.fetchJson(`/production/bom?${search}`, {
+  async bomRead(search: any): Promise<Bom[]> {
+    return this.#client.web.fetchJson(`/production/bom?${search}`, {
       method: "GET",
       
     });
   }
 
-  async bomReadById(id) {
-    return this.#zenClient.web.fetchJson(`/production/bom/${id}`, {
+  async bomReadById(id: number): Promise<Bom> {
+    return this.#client.web.fetchJson(`/production/bom/${id}`, {
       method: "GET",
       
     });
   }
 
-  async bomUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/production/bom", {
+  async bomUpdate(bean: Bom): Promise<Bom> {
+    return this.#client.web.fetchJson("/production/bom", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -99,8 +108,8 @@ export class ProductionService {
     });
   }
 
-  async operationCreate(bean) {
-    return this.#zenClient.web.fetchJson("/production/operation", {
+  async operationCreate(bean: Operation): Promise<Operation> {
+    return this.#client.web.fetchJson("/production/operation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -110,29 +119,29 @@ export class ProductionService {
     });
   }
 
-  async operationDelete(id) {
-    this.#zenClient.web.fetchJson(`/production/operation/${id}`, {
+  async operationDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/production/operation/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async operationRead(search) {
-    return this.#zenClient.web.fetchJson(`/production/operation?${search}`, {
+  async operationRead(search: any): Promise<Operation[]> {
+    return this.#client.web.fetchJson(`/production/operation?${search}`, {
       method: "GET",
       
     });
   }
 
-  async operationReadById(id) {
-    return this.#zenClient.web.fetchJson(`/production/operation/${id}`, {
+  async operationReadById(id: number): Promise<Operation> {
+    return this.#client.web.fetchJson(`/production/operation/${id}`, {
       method: "GET",
       
     });
   }
 
-  async operationTypeAccountCreate(bean) {
-    return this.#zenClient.web.fetchJson("/production/operationTypeAccount", {
+  async operationTypeAccountCreate(bean: OperationTypeAccount): Promise<OperationTypeAccount> {
+    return this.#client.web.fetchJson("/production/operationTypeAccount", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -142,29 +151,29 @@ export class ProductionService {
     });
   }
 
-  async operationTypeAccountDelete(id) {
-    this.#zenClient.web.fetchJson(`/production/operationTypeAccount/${id}`, {
+  async operationTypeAccountDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/production/operationTypeAccount/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async operationTypeAccountRead(search) {
-    return this.#zenClient.web.fetchJson(`/production/operationTypeAccount?${search}`, {
+  async operationTypeAccountRead(search: any): Promise<OperationTypeAccount[]> {
+    return this.#client.web.fetchJson(`/production/operationTypeAccount?${search}`, {
       method: "GET",
       
     });
   }
 
-  async operationTypeAccountReadById(id) {
-    return this.#zenClient.web.fetchJson(`/production/operationTypeAccount/${id}`, {
+  async operationTypeAccountReadById(id: number): Promise<OperationTypeAccount> {
+    return this.#client.web.fetchJson(`/production/operationTypeAccount/${id}`, {
       method: "GET",
       
     });
   }
 
-  async operationTypeAccountUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/production/operationTypeAccount", {
+  async operationTypeAccountUpdate(bean: OperationTypeAccount): Promise<OperationTypeAccount> {
+    return this.#client.web.fetchJson("/production/operationTypeAccount", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -174,8 +183,8 @@ export class ProductionService {
     });
   }
 
-  async operationTypeCreate(bean) {
-    return this.#zenClient.web.fetchJson("/production/operationType", {
+  async operationTypeCreate(bean: OperationType): Promise<OperationType> {
+    return this.#client.web.fetchJson("/production/operationType", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -185,29 +194,29 @@ export class ProductionService {
     });
   }
 
-  async operationTypeDelete(id) {
-    this.#zenClient.web.fetchJson(`/production/operationType/${id}`, {
+  async operationTypeDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/production/operationType/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async operationTypeRead(search) {
-    return this.#zenClient.web.fetchJson(`/production/operationType?${search}`, {
+  async operationTypeRead(search: any): Promise<OperationType[]> {
+    return this.#client.web.fetchJson(`/production/operationType?${search}`, {
       method: "GET",
       
     });
   }
 
-  async operationTypeReadById(id) {
-    return this.#zenClient.web.fetchJson(`/production/operationType/${id}`, {
+  async operationTypeReadById(id: number): Promise<OperationType> {
+    return this.#client.web.fetchJson(`/production/operationType/${id}`, {
       method: "GET",
       
     });
   }
 
-  async operationTypeUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/production/operationType", {
+  async operationTypeUpdate(bean: OperationType): Promise<OperationType> {
+    return this.#client.web.fetchJson("/production/operationType", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -217,8 +226,8 @@ export class ProductionService {
     });
   }
 
-  async operationUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/production/operation", {
+  async operationUpdate(bean: Operation): Promise<Operation> {
+    return this.#client.web.fetchJson("/production/operation", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -228,8 +237,8 @@ export class ProductionService {
     });
   }
 
-  async productionOrderCreate(bean) {
-    return this.#zenClient.web.fetchJson("/production/productionOrder", {
+  async productionOrderCreate(bean: ProductionOrder): Promise<ProductionOrder> {
+    return this.#client.web.fetchJson("/production/productionOrder", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -239,71 +248,71 @@ export class ProductionService {
     });
   }
 
-  async productionOrderDelete(id) {
-    this.#zenClient.web.fetchJson(`/production/productionOrder/${id}`, {
+  async productionOrderDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/production/productionOrder/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async productionOrderOpApprove(id) {
-    return this.#zenClient.web.fetchJson(`/production/productionOrderOpApprove/${id}`, {
+  async productionOrderOpApprove(id: number): Promise<ProductionOrder> {
+    return this.#client.web.fetchJson(`/production/productionOrderOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async productionOrderOpApproveRevert(id) {
-    return this.#zenClient.web.fetchJson(`/production/productionOrderOpApproveRevert/${id}`, {
+  async productionOrderOpApproveRevert(id: number): Promise<ProductionOrder> {
+    return this.#client.web.fetchJson(`/production/productionOrderOpApproveRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async productionOrderOpFinish(id) {
-    return this.#zenClient.web.fetchJson(`/production/productionOrderOpFinish/${id}`, {
+  async productionOrderOpFinish(id: number): Promise<ProductionOrder> {
+    return this.#client.web.fetchJson(`/production/productionOrderOpFinish/${id}`, {
       method: "POST",
       
     });
   }
 
-  async productionOrderOpFinishRevert(id) {
-    return this.#zenClient.web.fetchJson(`/production/productionOrderOpFinishRevert/${id}`, {
+  async productionOrderOpFinishRevert(id: number): Promise<ProductionOrder> {
+    return this.#client.web.fetchJson(`/production/productionOrderOpFinishRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async productionOrderOpPrepare(id) {
-    return this.#zenClient.web.fetchJson(`/production/productionOrderOpPrepare/${id}`, {
+  async productionOrderOpPrepare(id: number): Promise<ProductionOrder> {
+    return this.#client.web.fetchJson(`/production/productionOrderOpPrepare/${id}`, {
       method: "POST",
       
     });
   }
 
-  async productionOrderOpPrepareRevert(id) {
-    return this.#zenClient.web.fetchJson(`/production/productionOrderOpPrepareRevert/${id}`, {
+  async productionOrderOpPrepareRevert(id: number): Promise<ProductionOrder> {
+    return this.#client.web.fetchJson(`/production/productionOrderOpPrepareRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async productionOrderRead(search) {
-    return this.#zenClient.web.fetchJson(`/production/productionOrder?${search}`, {
+  async productionOrderRead(search: any): Promise<ProductionOrder[]> {
+    return this.#client.web.fetchJson(`/production/productionOrder?${search}`, {
       method: "GET",
       
     });
   }
 
-  async productionOrderReadById(id) {
-    return this.#zenClient.web.fetchJson(`/production/productionOrder/${id}`, {
+  async productionOrderReadById(id: number): Promise<ProductionOrder> {
+    return this.#client.web.fetchJson(`/production/productionOrder/${id}`, {
       method: "GET",
       
     });
   }
 
-  async productionOrderUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/production/productionOrder", {
+  async productionOrderUpdate(bean: ProductionOrder): Promise<ProductionOrder> {
+    return this.#client.web.fetchJson("/production/productionOrder", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -313,15 +322,15 @@ export class ProductionService {
     });
   }
 
-  async productionSchemaRead(search) {
-    return this.#zenClient.web.fetchJson(`/production/productionSchema?${search}`, {
+  async productionSchemaRead(search: any): Promise<ProductionSchema[]> {
+    return this.#client.web.fetchJson(`/production/productionSchema?${search}`, {
       method: "GET",
       
     });
   }
 
-  async productionSchemaReadById(id) {
-    return this.#zenClient.web.fetchJson(`/production/productionSchema/${id}`, {
+  async productionSchemaReadById(id: number): Promise<ProductionSchema> {
+    return this.#client.web.fetchJson(`/production/productionSchema/${id}`, {
       method: "GET",
       
     });

@@ -1,13 +1,17 @@
+import { Client } from "../../../Client.js";
+import { DataSourceParameter } from "./DataSourceParameter.js";
+import { DataSource } from "./DataSource.js";
+
 export class DataService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async dataSourceCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/data/dataSource", {
+  async dataSourceCreate(bean: DataSource): Promise<DataSource> {
+    return this.#client.web.fetchJson("/system/data/dataSource", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +21,15 @@ export class DataService {
     });
   }
 
-  async dataSourceDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/data/dataSource/${id}`, {
+  async dataSourceDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/data/dataSource/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async dataSourceOpRead(args) {
-    return this.#zenClient.web.fetchJson("/system/data/dataSourceOpRead", {
+  async dataSourceOpRead(args: any): Promise<string[]> {
+    return this.#client.web.fetchJson("/system/data/dataSourceOpRead", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,8 +39,8 @@ export class DataService {
     });
   }
 
-  async dataSourceParameterCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/data/dataSourceParameter", {
+  async dataSourceParameterCreate(bean: DataSourceParameter): Promise<DataSourceParameter> {
+    return this.#client.web.fetchJson("/system/data/dataSourceParameter", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -46,29 +50,29 @@ export class DataService {
     });
   }
 
-  async dataSourceParameterDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/data/dataSourceParameter/${id}`, {
+  async dataSourceParameterDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/data/dataSourceParameter/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async dataSourceParameterRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/data/dataSourceParameter?${search}`, {
+  async dataSourceParameterRead(search: any): Promise<DataSourceParameter[]> {
+    return this.#client.web.fetchJson(`/system/data/dataSourceParameter?${search}`, {
       method: "GET",
       
     });
   }
 
-  async dataSourceParameterReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/data/dataSourceParameter/${id}`, {
+  async dataSourceParameterReadById(id: number): Promise<DataSourceParameter> {
+    return this.#client.web.fetchJson(`/system/data/dataSourceParameter/${id}`, {
       method: "GET",
       
     });
   }
 
-  async dataSourceParameterUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/data/dataSourceParameter", {
+  async dataSourceParameterUpdate(bean: DataSourceParameter): Promise<DataSourceParameter> {
+    return this.#client.web.fetchJson("/system/data/dataSourceParameter", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -78,22 +82,22 @@ export class DataService {
     });
   }
 
-  async dataSourceRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/data/dataSource?${search}`, {
+  async dataSourceRead(search: any): Promise<DataSource[]> {
+    return this.#client.web.fetchJson(`/system/data/dataSource?${search}`, {
       method: "GET",
       
     });
   }
 
-  async dataSourceReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/data/dataSource/${id}`, {
+  async dataSourceReadById(id: number): Promise<DataSource> {
+    return this.#client.web.fetchJson(`/system/data/dataSource/${id}`, {
       method: "GET",
       
     });
   }
 
-  async dataSourceUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/data/dataSource", {
+  async dataSourceUpdate(bean: DataSource): Promise<DataSource> {
+    return this.#client.web.fetchJson("/system/data/dataSource", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

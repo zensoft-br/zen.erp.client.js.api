@@ -1,13 +1,28 @@
+import { Client } from "../../Client.js";
+import { FiscalRegion } from "./FiscalRegion.js";
+import { FiscalProfileOperation } from "./FiscalProfileOperation.js";
+import { FiscalProfilePerson } from "./FiscalProfilePerson.js";
+import { FiscalProfileProduct } from "./FiscalProfileProduct.js";
+import { IncomingInvoice } from "./IncomingInvoice.js";
+import { InvoicePayment } from "./InvoicePayment.js";
+import { InvoiceItemAccounting } from "./InvoiceItemAccounting.js";
+import { FiscalYear } from "./FiscalYear.js";
+import { InvoiceSeries } from "./InvoiceSeries.js";
+import { OutgoingInvoiceItem } from "./OutgoingInvoiceItem.js";
+import { OutgoingInvoice } from "./OutgoingInvoice.js";
+import { InvoiceReference } from "./InvoiceReference.js";
+import { IncomingInvoiceItem } from "./IncomingInvoiceItem.js";
+
 export class FiscalService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async fiscalProfileOperationCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/fiscalProfileOperation", {
+  async fiscalProfileOperationCreate(bean: FiscalProfileOperation): Promise<FiscalProfileOperation> {
+    return this.#client.web.fetchJson("/fiscal/fiscalProfileOperation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,39 +32,39 @@ export class FiscalService {
     });
   }
 
-  async fiscalProfileOperationDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/fiscalProfileOperation/${id}`, {
+  async fiscalProfileOperationDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/fiscalProfileOperation/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async fiscalProfileOperationOpReadByCode(fiscalRegionCode, code) {
+  async fiscalProfileOperationOpReadByCode(fiscalRegionCode: string, code: string): Promise<FiscalProfileOperation> {
     const sp = new URLSearchParams();
-    if (fiscalRegionCode) sp.set("fiscalRegionCode", fiscalRegionCode);
-    if (code) sp.set("code", code);
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalProfileOperationOpReadByCode?${sp.toString()}`, {
+    if (fiscalRegionCode) sp.set("fiscalRegionCode", String(fiscalRegionCode));
+    if (code) sp.set("code", String(code));
+    return this.#client.web.fetchJson(`/fiscal/fiscalProfileOperationOpReadByCode?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async fiscalProfileOperationRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalProfileOperation?${search}`, {
+  async fiscalProfileOperationRead(search: any): Promise<FiscalProfileOperation[]> {
+    return this.#client.web.fetchJson(`/fiscal/fiscalProfileOperation?${search}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalProfileOperationReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalProfileOperation/${id}`, {
+  async fiscalProfileOperationReadById(id: number): Promise<FiscalProfileOperation> {
+    return this.#client.web.fetchJson(`/fiscal/fiscalProfileOperation/${id}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalProfileOperationUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/fiscalProfileOperation", {
+  async fiscalProfileOperationUpdate(bean: FiscalProfileOperation): Promise<FiscalProfileOperation> {
+    return this.#client.web.fetchJson("/fiscal/fiscalProfileOperation", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -59,8 +74,8 @@ export class FiscalService {
     });
   }
 
-  async fiscalProfilePersonCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/fiscalProfilePerson", {
+  async fiscalProfilePersonCreate(bean: FiscalProfilePerson): Promise<FiscalProfilePerson> {
+    return this.#client.web.fetchJson("/fiscal/fiscalProfilePerson", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -70,29 +85,29 @@ export class FiscalService {
     });
   }
 
-  async fiscalProfilePersonDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/fiscalProfilePerson/${id}`, {
+  async fiscalProfilePersonDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/fiscalProfilePerson/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async fiscalProfilePersonRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalProfilePerson?${search}`, {
+  async fiscalProfilePersonRead(search: any): Promise<FiscalProfilePerson[]> {
+    return this.#client.web.fetchJson(`/fiscal/fiscalProfilePerson?${search}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalProfilePersonReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalProfilePerson/${id}`, {
+  async fiscalProfilePersonReadById(id: number): Promise<FiscalProfilePerson> {
+    return this.#client.web.fetchJson(`/fiscal/fiscalProfilePerson/${id}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalProfilePersonUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/fiscalProfilePerson", {
+  async fiscalProfilePersonUpdate(bean: FiscalProfilePerson): Promise<FiscalProfilePerson> {
+    return this.#client.web.fetchJson("/fiscal/fiscalProfilePerson", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -102,8 +117,8 @@ export class FiscalService {
     });
   }
 
-  async fiscalProfileProductCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/fiscalProfileProduct", {
+  async fiscalProfileProductCreate(bean: FiscalProfileProduct): Promise<FiscalProfileProduct> {
+    return this.#client.web.fetchJson("/fiscal/fiscalProfileProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -113,29 +128,29 @@ export class FiscalService {
     });
   }
 
-  async fiscalProfileProductDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/fiscalProfileProduct/${id}`, {
+  async fiscalProfileProductDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/fiscalProfileProduct/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async fiscalProfileProductRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalProfileProduct?${search}`, {
+  async fiscalProfileProductRead(search: any): Promise<FiscalProfileProduct[]> {
+    return this.#client.web.fetchJson(`/fiscal/fiscalProfileProduct?${search}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalProfileProductReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalProfileProduct/${id}`, {
+  async fiscalProfileProductReadById(id: number): Promise<FiscalProfileProduct> {
+    return this.#client.web.fetchJson(`/fiscal/fiscalProfileProduct/${id}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalProfileProductUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/fiscalProfileProduct", {
+  async fiscalProfileProductUpdate(bean: FiscalProfileProduct): Promise<FiscalProfileProduct> {
+    return this.#client.web.fetchJson("/fiscal/fiscalProfileProduct", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -145,8 +160,8 @@ export class FiscalService {
     });
   }
 
-  async fiscalRegionCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/fiscalRegion", {
+  async fiscalRegionCreate(bean: FiscalRegion): Promise<FiscalRegion> {
+    return this.#client.web.fetchJson("/fiscal/fiscalRegion", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -156,38 +171,38 @@ export class FiscalService {
     });
   }
 
-  async fiscalRegionDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/fiscalRegion/${id}`, {
+  async fiscalRegionDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/fiscalRegion/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async fiscalRegionOpReadByCode(code) {
+  async fiscalRegionOpReadByCode(code: string): Promise<FiscalRegion> {
     const sp = new URLSearchParams();
-    if (code) sp.set("code", code);
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalRegionOpReadByCode?${sp.toString()}`, {
+    if (code) sp.set("code", String(code));
+    return this.#client.web.fetchJson(`/fiscal/fiscalRegionOpReadByCode?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async fiscalRegionRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalRegion?${search}`, {
+  async fiscalRegionRead(search: any): Promise<FiscalRegion[]> {
+    return this.#client.web.fetchJson(`/fiscal/fiscalRegion?${search}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalRegionReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalRegion/${id}`, {
+  async fiscalRegionReadById(id: number): Promise<FiscalRegion> {
+    return this.#client.web.fetchJson(`/fiscal/fiscalRegion/${id}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalRegionUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/fiscalRegion", {
+  async fiscalRegionUpdate(bean: FiscalRegion): Promise<FiscalRegion> {
+    return this.#client.web.fetchJson("/fiscal/fiscalRegion", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -197,8 +212,8 @@ export class FiscalService {
     });
   }
 
-  async fiscalYearCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/fiscalYear", {
+  async fiscalYearCreate(bean: FiscalYear): Promise<FiscalYear> {
+    return this.#client.web.fetchJson("/fiscal/fiscalYear", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -208,71 +223,71 @@ export class FiscalService {
     });
   }
 
-  async fiscalYearDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/fiscalYear/${id}`, {
+  async fiscalYearDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/fiscalYear/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async fiscalYearOpPartialClosure(id, date) {
+  async fiscalYearOpPartialClosure(id: number, date: Date): Promise<void> {
     const sp = new URLSearchParams();
-    if (date) sp.set("date", date);
-    this.#zenClient.web.fetchJson(`/fiscal/fiscalYearOpPartialClosure/${id}?${sp.toString()}`, {
+    if (date) sp.set("date", String(date));
+    this.#client.web.fetchJson(`/fiscal/fiscalYearOpPartialClosure/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async fiscalYearOpPartialClosureRevert(id, date) {
+  async fiscalYearOpPartialClosureRevert(id: number, date: Date): Promise<void> {
     const sp = new URLSearchParams();
-    if (date) sp.set("date", date);
-    this.#zenClient.web.fetchJson(`/fiscal/fiscalYearOpPartialClosureRevert/${id}?${sp.toString()}`, {
+    if (date) sp.set("date", String(date));
+    this.#client.web.fetchJson(`/fiscal/fiscalYearOpPartialClosureRevert/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async fiscalYearOpPublish(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/fiscalYearOpPublish/${id}`, {
+  async fiscalYearOpPublish(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/fiscalYearOpPublish/${id}`, {
       method: "POST",
       
     });
   }
 
-  async fiscalYearOpPublishRevert(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/fiscalYearOpPublishRevert/${id}`, {
+  async fiscalYearOpPublishRevert(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/fiscalYearOpPublishRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async fiscalYearOpRead(companyId, date) {
+  async fiscalYearOpRead(companyId: number, date: Date): Promise<FiscalYear> {
     const sp = new URLSearchParams();
-    if (companyId) sp.set("companyId", companyId);
-    if (date) sp.set("date", date);
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalYearOpRead?${sp.toString()}`, {
+    if (companyId) sp.set("companyId", String(companyId));
+    if (date) sp.set("date", String(date));
+    return this.#client.web.fetchJson(`/fiscal/fiscalYearOpRead?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async fiscalYearRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalYear?${search}`, {
+  async fiscalYearRead(search: any): Promise<FiscalYear[]> {
+    return this.#client.web.fetchJson(`/fiscal/fiscalYear?${search}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalYearReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/fiscalYear/${id}`, {
+  async fiscalYearReadById(id: number): Promise<FiscalYear> {
+    return this.#client.web.fetchJson(`/fiscal/fiscalYear/${id}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalYearUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/fiscalYear", {
+  async fiscalYearUpdate(bean: FiscalYear): Promise<FiscalYear> {
+    return this.#client.web.fetchJson("/fiscal/fiscalYear", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -282,8 +297,8 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/incomingInvoice", {
+  async incomingInvoiceCreate(bean: IncomingInvoice): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoice", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -293,15 +308,15 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/incomingInvoice/${id}`, {
+  async incomingInvoiceDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/incomingInvoice/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async incomingInvoiceItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/incomingInvoiceItem", {
+  async incomingInvoiceItemCreate(bean: IncomingInvoiceItem): Promise<IncomingInvoiceItem> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoiceItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -311,29 +326,29 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceItem/${id}`, {
+  async incomingInvoiceItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/incomingInvoiceItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async incomingInvoiceItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceItem?${search}`, {
+  async incomingInvoiceItemRead(search: any): Promise<IncomingInvoiceItem[]> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async incomingInvoiceItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceItem/${id}`, {
+  async incomingInvoiceItemReadById(id: number): Promise<IncomingInvoiceItem> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async incomingInvoiceItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/incomingInvoiceItem", {
+  async incomingInvoiceItemUpdate(bean: IncomingInvoiceItem): Promise<IncomingInvoiceItem> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoiceItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -343,15 +358,15 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceOpApprove(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceOpApprove/${id}`, {
+  async incomingInvoiceOpApprove(id: number): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async incomingInvoiceOpApproveDivergences(id, args) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceOpApproveDivergences/${id}`, {
+  async incomingInvoiceOpApproveDivergences(id: number, args: any): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpApproveDivergences/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -361,26 +376,15 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceOpApproveRevert(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceOpApproveRevert/${id}`, {
+  async incomingInvoiceOpApproveRevert(id: number): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpApproveRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async incomingInvoiceOpCreate(args) {
-    return this.#zenClient.web.fetchJson("/fiscal/incomingInvoiceOpCreate", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(args),
-
-    });
-  }
-
-  async incomingInvoiceOpCreateFromIncomingList(args) {
-    return this.#zenClient.web.fetchJson("/fiscal/incomingInvoiceOpCreateFromIncomingList", {
+  async incomingInvoiceOpCreate(args: any): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoiceOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -390,36 +394,8 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceOpPrepare(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceOpPrepare/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async incomingInvoiceOpPrepareRevert(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceOpPrepareRevert/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async incomingInvoiceOpReject(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceOpReject/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async incomingInvoiceOpRejectRevert(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceOpRejectRevert/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async incomingInvoiceOpReturn(id, args) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoiceOpReturn/${id}`, {
+  async incomingInvoiceOpCreateFromIncomingList(args: any): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoiceOpCreateFromIncomingList", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -429,8 +405,47 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoicePaymentCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/incomingInvoicePayment", {
+  async incomingInvoiceOpPrepare(id: number): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpPrepare/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async incomingInvoiceOpPrepareRevert(id: number): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpPrepareRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async incomingInvoiceOpReject(id: number): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpReject/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async incomingInvoiceOpRejectRevert(id: number): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpRejectRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async incomingInvoiceOpReturn(id: number, args: any): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpReturn/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
+  async incomingInvoicePaymentCreate(bean: InvoicePayment): Promise<InvoicePayment> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoicePayment", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -440,29 +455,29 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoicePaymentDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/incomingInvoicePayment/${id}`, {
+  async incomingInvoicePaymentDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/incomingInvoicePayment/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async incomingInvoicePaymentRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoicePayment?${search}`, {
+  async incomingInvoicePaymentRead(search: any): Promise<InvoicePayment[]> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoicePayment?${search}`, {
       method: "GET",
       
     });
   }
 
-  async incomingInvoicePaymentReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoicePayment/${id}`, {
+  async incomingInvoicePaymentReadById(id: number): Promise<InvoicePayment> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoicePayment/${id}`, {
       method: "GET",
       
     });
   }
 
-  async incomingInvoicePaymentUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/incomingInvoicePayment", {
+  async incomingInvoicePaymentUpdate(bean: InvoicePayment): Promise<InvoicePayment> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoicePayment", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -472,22 +487,22 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoice?${search}`, {
+  async incomingInvoiceRead(search: any): Promise<IncomingInvoice[]> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoice?${search}`, {
       method: "GET",
       
     });
   }
 
-  async incomingInvoiceReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/incomingInvoice/${id}`, {
+  async incomingInvoiceReadById(id: number): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoice/${id}`, {
       method: "GET",
       
     });
   }
 
-  async incomingInvoiceUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/incomingInvoice", {
+  async incomingInvoiceUpdate(bean: IncomingInvoice): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoice", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -497,8 +512,8 @@ export class FiscalService {
     });
   }
 
-  async invoiceItemAccountingCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/invoiceItemAccounting", {
+  async invoiceItemAccountingCreate(bean: InvoiceItemAccounting): Promise<InvoiceItemAccounting> {
+    return this.#client.web.fetchJson("/fiscal/invoiceItemAccounting", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -508,22 +523,22 @@ export class FiscalService {
     });
   }
 
-  async invoiceItemAccountingDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/invoiceItemAccounting/${id}`, {
+  async invoiceItemAccountingDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/invoiceItemAccounting/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async invoiceItemAccountingRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/invoiceItemAccounting?${search}`, {
+  async invoiceItemAccountingRead(search: any): Promise<InvoiceItemAccounting[]> {
+    return this.#client.web.fetchJson(`/fiscal/invoiceItemAccounting?${search}`, {
       method: "GET",
       
     });
   }
 
-  async invoiceReferenceCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/invoiceReference", {
+  async invoiceReferenceCreate(bean: InvoiceReference): Promise<InvoiceReference> {
+    return this.#client.web.fetchJson("/fiscal/invoiceReference", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -533,29 +548,29 @@ export class FiscalService {
     });
   }
 
-  async invoiceReferenceDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/invoiceReference/${id}`, {
+  async invoiceReferenceDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/invoiceReference/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async invoiceReferenceRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/invoiceReference?${search}`, {
+  async invoiceReferenceRead(search: any): Promise<InvoiceReference[]> {
+    return this.#client.web.fetchJson(`/fiscal/invoiceReference?${search}`, {
       method: "GET",
       
     });
   }
 
-  async invoiceReferenceReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/invoiceReference/${id}`, {
+  async invoiceReferenceReadById(id: number): Promise<InvoiceReference> {
+    return this.#client.web.fetchJson(`/fiscal/invoiceReference/${id}`, {
       method: "GET",
       
     });
   }
 
-  async invoiceReferenceUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/invoiceReference", {
+  async invoiceReferenceUpdate(bean: InvoiceReference): Promise<InvoiceReference> {
+    return this.#client.web.fetchJson("/fiscal/invoiceReference", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -565,8 +580,8 @@ export class FiscalService {
     });
   }
 
-  async invoiceSeriesCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/invoiceSeries", {
+  async invoiceSeriesCreate(bean: InvoiceSeries): Promise<InvoiceSeries> {
+    return this.#client.web.fetchJson("/fiscal/invoiceSeries", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -576,45 +591,45 @@ export class FiscalService {
     });
   }
 
-  async invoiceSeriesDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/invoiceSeries/${id}`, {
+  async invoiceSeriesDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/invoiceSeries/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async invoiceSeriesOpGetNextNumber(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/invoiceSeriesOpGetNextNumber/${id}`, {
+  async invoiceSeriesOpGetNextNumber(id: number): Promise<number> {
+    return this.#client.web.fetchJson(`/fiscal/invoiceSeriesOpGetNextNumber/${id}`, {
       method: "POST",
       
     });
   }
 
-  async invoiceSeriesOpUpdateLastNumber(id, lastNumber) {
+  async invoiceSeriesOpUpdateLastNumber(id: number, lastNumber: number): Promise<void> {
     const sp = new URLSearchParams();
-    if (lastNumber) sp.set("lastNumber", lastNumber);
-    this.#zenClient.web.fetchJson(`/fiscal/invoiceSeriesOpUpdateLastNumber/${id}?${sp.toString()}`, {
+    if (lastNumber) sp.set("lastNumber", String(lastNumber));
+    this.#client.web.fetchJson(`/fiscal/invoiceSeriesOpUpdateLastNumber/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async invoiceSeriesRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/invoiceSeries?${search}`, {
+  async invoiceSeriesRead(search: any): Promise<InvoiceSeries[]> {
+    return this.#client.web.fetchJson(`/fiscal/invoiceSeries?${search}`, {
       method: "GET",
       
     });
   }
 
-  async invoiceSeriesReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/invoiceSeries/${id}`, {
+  async invoiceSeriesReadById(id: number): Promise<InvoiceSeries> {
+    return this.#client.web.fetchJson(`/fiscal/invoiceSeries/${id}`, {
       method: "GET",
       
     });
   }
 
-  async invoiceSeriesUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/invoiceSeries", {
+  async invoiceSeriesUpdate(bean: InvoiceSeries): Promise<InvoiceSeries> {
+    return this.#client.web.fetchJson("/fiscal/invoiceSeries", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -624,8 +639,8 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/outgoingInvoice", {
+  async outgoingInvoiceCreate(bean: OutgoingInvoice): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/outgoingInvoice", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -635,15 +650,15 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoice/${id}`, {
+  async outgoingInvoiceDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/outgoingInvoice/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async outgoingInvoiceItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/outgoingInvoiceItem", {
+  async outgoingInvoiceItemCreate(bean: OutgoingInvoiceItem): Promise<OutgoingInvoiceItem> {
+    return this.#client.web.fetchJson("/fiscal/outgoingInvoiceItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -653,29 +668,29 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoiceItem/${id}`, {
+  async outgoingInvoiceItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/outgoingInvoiceItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async outgoingInvoiceItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoiceItem?${search}`, {
+  async outgoingInvoiceItemRead(search: any): Promise<OutgoingInvoiceItem[]> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async outgoingInvoiceItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoiceItem/${id}`, {
+  async outgoingInvoiceItemReadById(id: number): Promise<OutgoingInvoiceItem> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async outgoingInvoiceItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/outgoingInvoiceItem", {
+  async outgoingInvoiceItemUpdate(bean: OutgoingInvoiceItem): Promise<OutgoingInvoiceItem> {
+    return this.#client.web.fetchJson("/fiscal/outgoingInvoiceItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -685,22 +700,22 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceOpApprove(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoiceOpApprove/${id}`, {
+  async outgoingInvoiceOpApprove(id: number): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async outgoingInvoiceOpApproveRevert(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoiceOpApproveRevert/${id}`, {
+  async outgoingInvoiceOpApproveRevert(id: number): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpApproveRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async outgoingInvoiceOpCancel(id, args) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoiceOpCancel/${id}`, {
+  async outgoingInvoiceOpCancel(id: number, args: any): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpCancel/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -710,8 +725,8 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceOpCreate(args) {
-    return this.#zenClient.web.fetchJson("/fiscal/outgoingInvoiceOpCreate", {
+  async outgoingInvoiceOpCreate(args: any): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/outgoingInvoiceOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -721,8 +736,8 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceOpDiscount(id, args) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoiceOpDiscount/${id}`, {
+  async outgoingInvoiceOpDiscount(id: number, args: any): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpDiscount/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -732,22 +747,22 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceOpPrepare(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoiceOpPrepare/${id}`, {
+  async outgoingInvoiceOpPrepare(id: number): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpPrepare/${id}`, {
       method: "POST",
       
     });
   }
 
-  async outgoingInvoiceOpPrepareRevert(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoiceOpPrepareRevert/${id}`, {
+  async outgoingInvoiceOpPrepareRevert(id: number): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpPrepareRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async outgoingInvoiceOpReturn(id, args) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoiceOpReturn/${id}`, {
+  async outgoingInvoiceOpReturn(id: number, args: any): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpReturn/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -757,8 +772,8 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoicePaymentCreate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/outgoingInvoicePayment", {
+  async outgoingInvoicePaymentCreate(bean: InvoicePayment): Promise<InvoicePayment> {
+    return this.#client.web.fetchJson("/fiscal/outgoingInvoicePayment", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -768,29 +783,29 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoicePaymentDelete(id) {
-    this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoicePayment/${id}`, {
+  async outgoingInvoicePaymentDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/fiscal/outgoingInvoicePayment/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async outgoingInvoicePaymentRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoicePayment?${search}`, {
+  async outgoingInvoicePaymentRead(search: any): Promise<InvoicePayment[]> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoicePayment?${search}`, {
       method: "GET",
       
     });
   }
 
-  async outgoingInvoicePaymentReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoicePayment/${id}`, {
+  async outgoingInvoicePaymentReadById(id: number): Promise<InvoicePayment> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoicePayment/${id}`, {
       method: "GET",
       
     });
   }
 
-  async outgoingInvoicePaymentUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/outgoingInvoicePayment", {
+  async outgoingInvoicePaymentUpdate(bean: InvoicePayment): Promise<InvoicePayment> {
+    return this.#client.web.fetchJson("/fiscal/outgoingInvoicePayment", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -800,22 +815,22 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceRead(search) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoice?${search}`, {
+  async outgoingInvoiceRead(search: any): Promise<OutgoingInvoice[]> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoice?${search}`, {
       method: "GET",
       
     });
   }
 
-  async outgoingInvoiceReadById(id) {
-    return this.#zenClient.web.fetchJson(`/fiscal/outgoingInvoice/${id}`, {
+  async outgoingInvoiceReadById(id: number): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoice/${id}`, {
       method: "GET",
       
     });
   }
 
-  async outgoingInvoiceUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/fiscal/outgoingInvoice", {
+  async outgoingInvoiceUpdate(bean: OutgoingInvoice): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/outgoingInvoice", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -1,13 +1,17 @@
+import { Client } from "../../../Client.js";
+import { Message } from "./Message.js";
+import { MailerConfig } from "./MailerConfig.js";
+
 export class MailService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async mailerConfigCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/mail/mailerConfig", {
+  async mailerConfigCreate(bean: MailerConfig): Promise<MailerConfig> {
+    return this.#client.web.fetchJson("/system/mail/mailerConfig", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,29 +21,29 @@ export class MailService {
     });
   }
 
-  async mailerConfigDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/mail/mailerConfig/${id}`, {
+  async mailerConfigDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/mail/mailerConfig/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async mailerConfigRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/mail/mailerConfig?${search}`, {
+  async mailerConfigRead(search: any): Promise<MailerConfig[]> {
+    return this.#client.web.fetchJson(`/system/mail/mailerConfig?${search}`, {
       method: "GET",
       
     });
   }
 
-  async mailerConfigReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/mail/mailerConfig/${id}`, {
+  async mailerConfigReadById(id: number): Promise<MailerConfig> {
+    return this.#client.web.fetchJson(`/system/mail/mailerConfig/${id}`, {
       method: "GET",
       
     });
   }
 
-  async mailerConfigUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/mail/mailerConfig", {
+  async mailerConfigUpdate(bean: MailerConfig): Promise<MailerConfig> {
+    return this.#client.web.fetchJson("/system/mail/mailerConfig", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -49,11 +53,11 @@ export class MailService {
     });
   }
 
-  async messageOpSend(mailerConfigId, mailerConfigCode, message) {
+  async messageOpSend(mailerConfigId: number, mailerConfigCode: string, message: Message): Promise<string> {
     const sp = new URLSearchParams();
-    if (mailerConfigId) sp.set("mailerConfigId", mailerConfigId);
-    if (mailerConfigCode) sp.set("mailerConfigCode", mailerConfigCode);
-    return this.#zenClient.web.fetchJson(`/system/mail/messageOpSend?${sp.toString()}`, {
+    if (mailerConfigId) sp.set("mailerConfigId", String(mailerConfigId));
+    if (mailerConfigCode) sp.set("mailerConfigCode", String(mailerConfigCode));
+    return this.#client.web.fetchJson(`/system/mail/messageOpSend?${sp.toString()}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -1,13 +1,28 @@
+import { Client } from "../../Client.js";
+import { Sale } from "./Sale.js";
+import { PriceFormationOpSimulation } from "./PriceFormationOpSimulation.js";
+import { PriceListItem } from "./PriceListItem.js";
+import { SalesCommission } from "./SalesCommission.js";
+import { PickingOrder } from "../material/PickingOrder.js";
+import { SalePayment } from "./SalePayment.js";
+import { Quote } from "./Quote.js";
+import { QuoteItem } from "./QuoteItem.js";
+import { SaleProfile } from "./SaleProfile.js";
+import { SaleItem } from "./SaleItem.js";
+import { PriceFormation } from "./PriceFormation.js";
+import { PriceFormationItem } from "./PriceFormationItem.js";
+import { PriceList } from "./PriceList.js";
+
 export class SaleService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async priceFormationCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/priceFormation", {
+  async priceFormationCreate(bean: PriceFormation): Promise<PriceFormation> {
+    return this.#client.web.fetchJson("/sale/priceFormation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +32,15 @@ export class SaleService {
     });
   }
 
-  async priceFormationDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/priceFormation/${id}`, {
+  async priceFormationDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/priceFormation/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async priceFormationItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/priceFormationItem", {
+  async priceFormationItemCreate(bean: PriceFormationItem): Promise<PriceFormationItem> {
+    return this.#client.web.fetchJson("/sale/priceFormationItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,29 +50,29 @@ export class SaleService {
     });
   }
 
-  async priceFormationItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/priceFormationItem/${id}`, {
+  async priceFormationItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/priceFormationItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async priceFormationItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/priceFormationItem?${search}`, {
+  async priceFormationItemRead(search: any): Promise<PriceFormationItem[]> {
+    return this.#client.web.fetchJson(`/sale/priceFormationItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async priceFormationItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/priceFormationItem/${id}`, {
+  async priceFormationItemReadById(id: number): Promise<PriceFormationItem> {
+    return this.#client.web.fetchJson(`/sale/priceFormationItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async priceFormationItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/priceFormationItem", {
+  async priceFormationItemUpdate(bean: PriceFormationItem): Promise<PriceFormationItem> {
+    return this.#client.web.fetchJson("/sale/priceFormationItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -67,48 +82,48 @@ export class SaleService {
     });
   }
 
-  async priceFormationOpCalculate(id, value) {
+  async priceFormationOpCalculate(id: number, value: number): Promise<PriceFormationOpSimulation> {
     const sp = new URLSearchParams();
-    if (value) sp.set("value", value);
-    return this.#zenClient.web.fetchJson(`/sale/priceFormationOpCalculate/${id}?${sp.toString()}`, {
+    if (value) sp.set("value", String(value));
+    return this.#client.web.fetchJson(`/sale/priceFormationOpCalculate/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async priceFormationOpCalculateProductPacking(id, productPackingId, value) {
+  async priceFormationOpCalculateProductPacking(id: number, productPackingId: number, value: number): Promise<PriceFormationOpSimulation> {
     const sp = new URLSearchParams();
-    if (productPackingId) sp.set("productPackingId", productPackingId);
-    if (value) sp.set("value", value);
-    return this.#zenClient.web.fetchJson(`/sale/priceFormationOpCalculateProductPacking/${id}?${sp.toString()}`, {
+    if (productPackingId) sp.set("productPackingId", String(productPackingId));
+    if (value) sp.set("value", String(value));
+    return this.#client.web.fetchJson(`/sale/priceFormationOpCalculateProductPacking/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async priceFormationOpClone(id) {
-    return this.#zenClient.web.fetchJson(`/sale/priceFormationOpClone/${id}`, {
+  async priceFormationOpClone(id: number): Promise<PriceFormation> {
+    return this.#client.web.fetchJson(`/sale/priceFormationOpClone/${id}`, {
       method: "POST",
       
     });
   }
 
-  async priceFormationRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/priceFormation?${search}`, {
+  async priceFormationRead(search: any): Promise<PriceFormation[]> {
+    return this.#client.web.fetchJson(`/sale/priceFormation?${search}`, {
       method: "GET",
       
     });
   }
 
-  async priceFormationReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/priceFormation/${id}`, {
+  async priceFormationReadById(id: number): Promise<PriceFormation> {
+    return this.#client.web.fetchJson(`/sale/priceFormation/${id}`, {
       method: "GET",
       
     });
   }
 
-  async priceFormationUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/priceFormation", {
+  async priceFormationUpdate(bean: PriceFormation): Promise<PriceFormation> {
+    return this.#client.web.fetchJson("/sale/priceFormation", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -118,8 +133,8 @@ export class SaleService {
     });
   }
 
-  async priceListCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/priceList", {
+  async priceListCreate(bean: PriceList): Promise<PriceList> {
+    return this.#client.web.fetchJson("/sale/priceList", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -129,15 +144,15 @@ export class SaleService {
     });
   }
 
-  async priceListDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/priceList/${id}`, {
+  async priceListDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/priceList/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async priceListItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/priceListItem", {
+  async priceListItemCreate(bean: PriceListItem): Promise<PriceListItem> {
+    return this.#client.web.fetchJson("/sale/priceListItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -147,29 +162,29 @@ export class SaleService {
     });
   }
 
-  async priceListItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/priceListItem/${id}`, {
+  async priceListItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/priceListItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async priceListItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/priceListItem?${search}`, {
+  async priceListItemRead(search: any): Promise<PriceListItem[]> {
+    return this.#client.web.fetchJson(`/sale/priceListItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async priceListItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/priceListItem/${id}`, {
+  async priceListItemReadById(id: number): Promise<PriceListItem> {
+    return this.#client.web.fetchJson(`/sale/priceListItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async priceListItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/priceListItem", {
+  async priceListItemUpdate(bean: PriceListItem): Promise<PriceListItem> {
+    return this.#client.web.fetchJson("/sale/priceListItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -179,22 +194,22 @@ export class SaleService {
     });
   }
 
-  async priceListRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/priceList?${search}`, {
+  async priceListRead(search: any): Promise<PriceList[]> {
+    return this.#client.web.fetchJson(`/sale/priceList?${search}`, {
       method: "GET",
       
     });
   }
 
-  async priceListReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/priceList/${id}`, {
+  async priceListReadById(id: number): Promise<PriceList> {
+    return this.#client.web.fetchJson(`/sale/priceList/${id}`, {
       method: "GET",
       
     });
   }
 
-  async priceListUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/priceList", {
+  async priceListUpdate(bean: PriceList): Promise<PriceList> {
+    return this.#client.web.fetchJson("/sale/priceList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -204,8 +219,8 @@ export class SaleService {
     });
   }
 
-  async quoteCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/quote", {
+  async quoteCreate(bean: Quote): Promise<Quote> {
+    return this.#client.web.fetchJson("/sale/quote", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -215,15 +230,15 @@ export class SaleService {
     });
   }
 
-  async quoteDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/quote/${id}`, {
+  async quoteDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/quote/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async quoteItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/quoteItem", {
+  async quoteItemCreate(bean: QuoteItem): Promise<QuoteItem> {
+    return this.#client.web.fetchJson("/sale/quoteItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -233,15 +248,15 @@ export class SaleService {
     });
   }
 
-  async quoteItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/quoteItem/${id}`, {
+  async quoteItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/quoteItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async quoteItemOpFill(id, args) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteItemOpFill/${id}`, {
+  async quoteItemOpFill(id: number, args: any): Promise<QuoteItem> {
+    return this.#client.web.fetchJson(`/sale/quoteItemOpFill/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -251,22 +266,22 @@ export class SaleService {
     });
   }
 
-  async quoteItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteItem?${search}`, {
+  async quoteItemRead(search: any): Promise<QuoteItem[]> {
+    return this.#client.web.fetchJson(`/sale/quoteItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async quoteItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteItem/${id}`, {
+  async quoteItemReadById(id: number): Promise<QuoteItem> {
+    return this.#client.web.fetchJson(`/sale/quoteItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async quoteItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/quoteItem", {
+  async quoteItemUpdate(bean: QuoteItem): Promise<QuoteItem> {
+    return this.#client.web.fetchJson("/sale/quoteItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -276,8 +291,8 @@ export class SaleService {
     });
   }
 
-  async quoteOpApprove(id, args) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpApprove/${id}`, {
+  async quoteOpApprove(id: number, args: any): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpApprove/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -287,106 +302,106 @@ export class SaleService {
     });
   }
 
-  async quoteOpCancel(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpCancel/${id}`, {
+  async quoteOpCancel(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpCancel/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpCancelRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpCancelRevert/${id}`, {
+  async quoteOpCancelRevert(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpCancelRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpFinish(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpFinish/${id}`, {
+  async quoteOpFinish(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpFinish/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpFinishRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpFinishRevert/${id}`, {
+  async quoteOpFinishRevert(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpFinishRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpPrepare(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpPrepare/${id}`, {
+  async quoteOpPrepare(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpPrepare/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpPrepareRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpPrepareRevert/${id}`, {
+  async quoteOpPrepareRevert(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpPrepareRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpReject(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpReject/${id}`, {
+  async quoteOpReject(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpReject/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpRejectRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpRejectRevert/${id}`, {
+  async quoteOpRejectRevert(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpRejectRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpStart(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpStart/${id}`, {
+  async quoteOpStart(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpStart/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpStartRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpStartRevert/${id}`, {
+  async quoteOpStartRevert(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpStartRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpSubmit(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpSubmit/${id}`, {
+  async quoteOpSubmit(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpSubmit/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpSubmitRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quoteOpSubmitRevert/${id}`, {
+  async quoteOpSubmitRevert(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpSubmitRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/quote?${search}`, {
+  async quoteRead(search: any): Promise<Quote[]> {
+    return this.#client.web.fetchJson(`/sale/quote?${search}`, {
       method: "GET",
       
     });
   }
 
-  async quoteReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/quote/${id}`, {
+  async quoteReadById(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quote/${id}`, {
       method: "GET",
       
     });
   }
 
-  async quoteUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/quote", {
+  async quoteUpdate(bean: Quote): Promise<Quote> {
+    return this.#client.web.fetchJson("/sale/quote", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -396,8 +411,8 @@ export class SaleService {
     });
   }
 
-  async saleCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/sale", {
+  async saleCreate(bean: Sale): Promise<Sale> {
+    return this.#client.web.fetchJson("/sale/sale", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -407,15 +422,15 @@ export class SaleService {
     });
   }
 
-  async saleDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/sale/${id}`, {
+  async saleDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/sale/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async saleItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/saleItem", {
+  async saleItemCreate(bean: SaleItem): Promise<SaleItem> {
+    return this.#client.web.fetchJson("/sale/saleItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -425,29 +440,29 @@ export class SaleService {
     });
   }
 
-  async saleItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/saleItem/${id}`, {
+  async saleItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/saleItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async saleItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/saleItem?${search}`, {
+  async saleItemRead(search: any): Promise<SaleItem[]> {
+    return this.#client.web.fetchJson(`/sale/saleItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async saleItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleItem/${id}`, {
+  async saleItemReadById(id: number): Promise<SaleItem> {
+    return this.#client.web.fetchJson(`/sale/saleItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async saleItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/saleItem", {
+  async saleItemUpdate(bean: SaleItem): Promise<SaleItem> {
+    return this.#client.web.fetchJson("/sale/saleItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -457,29 +472,29 @@ export class SaleService {
     });
   }
 
-  async saleOpApprove(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpApprove/${id}`, {
+  async saleOpApprove(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async saleOpApproveRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpApproveRevert/${id}`, {
+  async saleOpApproveRevert(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpApproveRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async saleOpApproveUnconditionally(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpApproveUnconditionally/${id}`, {
+  async saleOpApproveUnconditionally(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpApproveUnconditionally/${id}`, {
       method: "POST",
       
     });
   }
 
-  async saleOpCancel(id, args) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpCancel/${id}`, {
+  async saleOpCancel(id: number, args: any): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpCancel/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -489,22 +504,22 @@ export class SaleService {
     });
   }
 
-  async saleOpCancelRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpCancelRevert/${id}`, {
+  async saleOpCancelRevert(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpCancelRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async saleOpClone(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpClone/${id}`, {
+  async saleOpClone(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpClone/${id}`, {
       method: "POST",
       
     });
   }
 
-  async saleOpCreate(args) {
-    return this.#zenClient.web.fetchJson("/sale/saleOpCreate", {
+  async saleOpCreate(args: any): Promise<Sale> {
+    return this.#client.web.fetchJson("/sale/saleOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -514,15 +529,15 @@ export class SaleService {
     });
   }
 
-  async saleOpFinishRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpFinishRevert/${id}`, {
+  async saleOpFinishRevert(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpFinishRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async saleOpMerge(ids) {
-    return this.#zenClient.web.fetchJson("/sale/saleOpMerge", {
+  async saleOpMerge(ids: any): Promise<Sale> {
+    return this.#client.web.fetchJson("/sale/saleOpMerge", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -532,8 +547,8 @@ export class SaleService {
     });
   }
 
-  async saleOpPickingOrderCreate(id, args) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpPickingOrderCreate/${id}`, {
+  async saleOpPickingOrderCreate(id: number, args: any): Promise<PickingOrder> {
+    return this.#client.web.fetchJson(`/sale/saleOpPickingOrderCreate/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -543,68 +558,36 @@ export class SaleService {
     });
   }
 
-  async saleOpPrepare(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpPrepare/${id}`, {
+  async saleOpPrepare(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpPrepare/${id}`, {
       method: "POST",
       
     });
   }
 
-  async saleOpPrepareRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpPrepareRevert/${id}`, {
+  async saleOpPrepareRevert(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpPrepareRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async saleOpReleaseForPicking(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpReleaseForPicking/${id}`, {
+  async saleOpReleaseForPicking(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpReleaseForPicking/${id}`, {
       method: "POST",
       
     });
   }
 
-  async saleOpReleaseForPickingRevert(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleOpReleaseForPickingRevert/${id}`, {
+  async saleOpReleaseForPickingRevert(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpReleaseForPickingRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async salePaymentCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/salePayment", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async salePaymentDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/salePayment/${id}`, {
-      method: "DELETE",
-      
-    });
-  }
-
-  async salePaymentRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/salePayment?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async salePaymentReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/salePayment/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async salePaymentUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/salePayment", {
+  async saleOpUpdate(bean: Sale): Promise<Sale> {
+    return this.#client.web.fetchJson("/sale/saleOpUpdate", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -614,8 +597,8 @@ export class SaleService {
     });
   }
 
-  async saleProfileCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/saleProfile", {
+  async salePaymentCreate(bean: SalePayment): Promise<SalePayment> {
+    return this.#client.web.fetchJson("/sale/salePayment", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -625,29 +608,29 @@ export class SaleService {
     });
   }
 
-  async saleProfileDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/saleProfile/${id}`, {
+  async salePaymentDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/salePayment/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async saleProfileRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/saleProfile?${search}`, {
+  async salePaymentRead(search: any): Promise<SalePayment[]> {
+    return this.#client.web.fetchJson(`/sale/salePayment?${search}`, {
       method: "GET",
       
     });
   }
 
-  async saleProfileReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/saleProfile/${id}`, {
+  async salePaymentReadById(id: number): Promise<SalePayment> {
+    return this.#client.web.fetchJson(`/sale/salePayment/${id}`, {
       method: "GET",
       
     });
   }
 
-  async saleProfileUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/saleProfile", {
+  async salePaymentUpdate(bean: SalePayment): Promise<SalePayment> {
+    return this.#client.web.fetchJson("/sale/salePayment", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -657,33 +640,8 @@ export class SaleService {
     });
   }
 
-  async saleRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/sale?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async saleReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/sale/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async saleUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/sale", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async salesCommissionCreate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/salesCommission", {
+  async saleProfileCreate(bean: SaleProfile): Promise<SaleProfile> {
+    return this.#client.web.fetchJson("/sale/saleProfile", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -693,29 +651,97 @@ export class SaleService {
     });
   }
 
-  async salesCommissionDelete(id) {
-    this.#zenClient.web.fetchJson(`/sale/salesCommission/${id}`, {
+  async saleProfileDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/saleProfile/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async salesCommissionRead(search) {
-    return this.#zenClient.web.fetchJson(`/sale/salesCommission?${search}`, {
+  async saleProfileRead(search: any): Promise<SaleProfile[]> {
+    return this.#client.web.fetchJson(`/sale/saleProfile?${search}`, {
       method: "GET",
       
     });
   }
 
-  async salesCommissionReadById(id) {
-    return this.#zenClient.web.fetchJson(`/sale/salesCommission/${id}`, {
+  async saleProfileReadById(id: number): Promise<SaleProfile> {
+    return this.#client.web.fetchJson(`/sale/saleProfile/${id}`, {
       method: "GET",
       
     });
   }
 
-  async salesCommissionUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/sale/salesCommission", {
+  async saleProfileUpdate(bean: SaleProfile): Promise<SaleProfile> {
+    return this.#client.web.fetchJson("/sale/saleProfile", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async saleRead(search: any): Promise<Sale[]> {
+    return this.#client.web.fetchJson(`/sale/sale?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async saleReadById(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/sale/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async saleUpdate(bean: Sale): Promise<Sale> {
+    return this.#client.web.fetchJson("/sale/sale", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async salesCommissionCreate(bean: SalesCommission): Promise<SalesCommission> {
+    return this.#client.web.fetchJson("/sale/salesCommission", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async salesCommissionDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/sale/salesCommission/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async salesCommissionRead(search: any): Promise<SalesCommission[]> {
+    return this.#client.web.fetchJson(`/sale/salesCommission?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async salesCommissionReadById(id: number): Promise<SalesCommission> {
+    return this.#client.web.fetchJson(`/sale/salesCommission/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async salesCommissionUpdate(bean: SalesCommission): Promise<SalesCommission> {
+    return this.#client.web.fetchJson("/sale/salesCommission", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

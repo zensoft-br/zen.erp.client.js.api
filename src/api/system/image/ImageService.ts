@@ -1,13 +1,16 @@
+import { Client } from "../../../Client.js";
+import { Image } from "./Image.js";
+
 export class ImageService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async imageCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/image/image", {
+  async imageCreate(bean: Image): Promise<Image> {
+    return this.#client.web.fetchJson("/system/image/image", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,29 +20,29 @@ export class ImageService {
     });
   }
 
-  async imageDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/image/image/${id}`, {
+  async imageDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/image/image/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async imageRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/image/image?${search}`, {
+  async imageRead(search: any): Promise<Image[]> {
+    return this.#client.web.fetchJson(`/system/image/image?${search}`, {
       method: "GET",
       
     });
   }
 
-  async imageReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/image/image/${id}`, {
+  async imageReadById(id: number): Promise<Image> {
+    return this.#client.web.fetchJson(`/system/image/image/${id}`, {
       method: "GET",
       
     });
   }
 
-  async imageUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/image/image", {
+  async imageUpdate(bean: Image): Promise<Image> {
+    return this.#client.web.fetchJson("/system/image/image", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

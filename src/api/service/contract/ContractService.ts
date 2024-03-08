@@ -1,45 +1,53 @@
+import { Client } from "../../../Client.js";
+import { ContractIndex } from "./ContractIndex.js";
+import { Contract } from "./Contract.js";
+import { ContractProfile } from "./ContractProfile.js";
+import { ContractBilling } from "./ContractBilling.js";
+import { ContractItem } from "./ContractItem.js";
+import { ContractFull } from "./ContractFull.js";
+
 export class ContractService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async contractBillingOpCreate(contractId) {
+  async contractBillingOpCreate(contractId: number): Promise<ContractBilling[]> {
     const sp = new URLSearchParams();
-    if (contractId) sp.set("contractId", contractId);
-    return this.#zenClient.web.fetchJson(`/service/contract/contractBillingOpCreate?${sp.toString()}`, {
+    if (contractId) sp.set("contractId", String(contractId));
+    return this.#client.web.fetchJson(`/service/contract/contractBillingOpCreate?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async contractBillingOpCreateRevert(contractId) {
+  async contractBillingOpCreateRevert(contractId: number): Promise<Contract> {
     const sp = new URLSearchParams();
-    if (contractId) sp.set("contractId", contractId);
-    return this.#zenClient.web.fetchJson(`/service/contract/contractBillingOpCreateRevert?${sp.toString()}`, {
+    if (contractId) sp.set("contractId", String(contractId));
+    return this.#client.web.fetchJson(`/service/contract/contractBillingOpCreateRevert?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async contractBillingRead(search) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractBilling?${search}`, {
+  async contractBillingRead(search: any): Promise<ContractBilling[]> {
+    return this.#client.web.fetchJson(`/service/contract/contractBilling?${search}`, {
       method: "GET",
       
     });
   }
 
-  async contractBillingReadById(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractBilling/${id}`, {
+  async contractBillingReadById(id: number): Promise<ContractBilling> {
+    return this.#client.web.fetchJson(`/service/contract/contractBilling/${id}`, {
       method: "GET",
       
     });
   }
 
-  async contractCreate(bean) {
-    return this.#zenClient.web.fetchJson("/service/contract/contract", {
+  async contractCreate(bean: Contract): Promise<Contract> {
+    return this.#client.web.fetchJson("/service/contract/contract", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -49,15 +57,15 @@ export class ContractService {
     });
   }
 
-  async contractDelete(id) {
-    this.#zenClient.web.fetchJson(`/service/contract/contract/${id}`, {
+  async contractDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/service/contract/contract/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async contractIndexCreate(bean) {
-    return this.#zenClient.web.fetchJson("/service/contract/contractIndex", {
+  async contractIndexCreate(bean: ContractIndex): Promise<ContractIndex> {
+    return this.#client.web.fetchJson("/service/contract/contractIndex", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -67,29 +75,29 @@ export class ContractService {
     });
   }
 
-  async contractIndexDelete(id) {
-    this.#zenClient.web.fetchJson(`/service/contract/contractIndex/${id}`, {
+  async contractIndexDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/service/contract/contractIndex/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async contractIndexRead(search) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractIndex?${search}`, {
+  async contractIndexRead(search: any): Promise<ContractIndex[]> {
+    return this.#client.web.fetchJson(`/service/contract/contractIndex?${search}`, {
       method: "GET",
       
     });
   }
 
-  async contractIndexReadById(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractIndex/${id}`, {
+  async contractIndexReadById(id: number): Promise<ContractIndex> {
+    return this.#client.web.fetchJson(`/service/contract/contractIndex/${id}`, {
       method: "GET",
       
     });
   }
 
-  async contractIndexUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/service/contract/contractIndex", {
+  async contractIndexUpdate(bean: ContractIndex): Promise<ContractIndex> {
+    return this.#client.web.fetchJson("/service/contract/contractIndex", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -99,8 +107,8 @@ export class ContractService {
     });
   }
 
-  async contractItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/service/contract/contractItem", {
+  async contractItemCreate(bean: ContractItem): Promise<ContractItem> {
+    return this.#client.web.fetchJson("/service/contract/contractItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -110,29 +118,29 @@ export class ContractService {
     });
   }
 
-  async contractItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/service/contract/contractItem/${id}`, {
+  async contractItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/service/contract/contractItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async contractItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractItem?${search}`, {
+  async contractItemRead(search: any): Promise<ContractItem[]> {
+    return this.#client.web.fetchJson(`/service/contract/contractItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async contractItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractItem/${id}`, {
+  async contractItemReadById(id: number): Promise<ContractItem> {
+    return this.#client.web.fetchJson(`/service/contract/contractItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async contractItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/service/contract/contractItem", {
+  async contractItemUpdate(bean: ContractItem): Promise<ContractItem> {
+    return this.#client.web.fetchJson("/service/contract/contractItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -142,43 +150,43 @@ export class ContractService {
     });
   }
 
-  async contractOpAdjust(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractOpAdjust/${id}`, {
+  async contractOpAdjust(id: number): Promise<Contract> {
+    return this.#client.web.fetchJson(`/service/contract/contractOpAdjust/${id}`, {
       method: "POST",
       
     });
   }
 
-  async contractOpApprove(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractOpApprove/${id}`, {
+  async contractOpApprove(id: number): Promise<Contract> {
+    return this.#client.web.fetchJson(`/service/contract/contractOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async contractOpApproveRevert(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractOpApproveRevert/${id}`, {
+  async contractOpApproveRevert(id: number): Promise<Contract> {
+    return this.#client.web.fetchJson(`/service/contract/contractOpApproveRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async contractOpCancel(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractOpCancel/${id}`, {
+  async contractOpCancel(id: number): Promise<Contract> {
+    return this.#client.web.fetchJson(`/service/contract/contractOpCancel/${id}`, {
       method: "POST",
       
     });
   }
 
-  async contractOpCancelRevert(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractOpCancelRevert/${id}`, {
+  async contractOpCancelRevert(id: number): Promise<Contract> {
+    return this.#client.web.fetchJson(`/service/contract/contractOpCancelRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async contractOpCreate(args) {
-    return this.#zenClient.web.fetchJson("/service/contract/contractOpCreate", {
+  async contractOpCreate(args: any): Promise<any> {
+    return this.#client.web.fetchJson("/service/contract/contractOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -188,22 +196,22 @@ export class ContractService {
     });
   }
 
-  async contractOpPrepare(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractOpPrepare/${id}`, {
+  async contractOpPrepare(id: number): Promise<Contract> {
+    return this.#client.web.fetchJson(`/service/contract/contractOpPrepare/${id}`, {
       method: "POST",
       
     });
   }
 
-  async contractOpPrepareRevert(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractOpPrepareRevert/${id}`, {
+  async contractOpPrepareRevert(id: number): Promise<Contract> {
+    return this.#client.web.fetchJson(`/service/contract/contractOpPrepareRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async contractProfileCreate(bean) {
-    return this.#zenClient.web.fetchJson("/service/contract/contractProfile", {
+  async contractProfileCreate(bean: ContractProfile): Promise<ContractProfile> {
+    return this.#client.web.fetchJson("/service/contract/contractProfile", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -213,29 +221,29 @@ export class ContractService {
     });
   }
 
-  async contractProfileDelete(id) {
-    this.#zenClient.web.fetchJson(`/service/contract/contractProfile/${id}`, {
+  async contractProfileDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/service/contract/contractProfile/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async contractProfileRead(search) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractProfile?${search}`, {
+  async contractProfileRead(search: any): Promise<ContractProfile[]> {
+    return this.#client.web.fetchJson(`/service/contract/contractProfile?${search}`, {
       method: "GET",
       
     });
   }
 
-  async contractProfileReadById(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contractProfile/${id}`, {
+  async contractProfileReadById(id: number): Promise<ContractProfile> {
+    return this.#client.web.fetchJson(`/service/contract/contractProfile/${id}`, {
       method: "GET",
       
     });
   }
 
-  async contractProfileUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/service/contract/contractProfile", {
+  async contractProfileUpdate(bean: ContractProfile): Promise<ContractProfile> {
+    return this.#client.web.fetchJson("/service/contract/contractProfile", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -245,22 +253,22 @@ export class ContractService {
     });
   }
 
-  async contractRead(search) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contract?${search}`, {
+  async contractRead(search: any): Promise<Contract[]> {
+    return this.#client.web.fetchJson(`/service/contract/contract?${search}`, {
       method: "GET",
       
     });
   }
 
-  async contractReadById(id) {
-    return this.#zenClient.web.fetchJson(`/service/contract/contract/${id}`, {
+  async contractReadById(id: number): Promise<Contract> {
+    return this.#client.web.fetchJson(`/service/contract/contract/${id}`, {
       method: "GET",
       
     });
   }
 
-  async contractUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/service/contract/contract", {
+  async contractUpdate(bean: Contract): Promise<Contract> {
+    return this.#client.web.fetchJson("/service/contract/contract", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

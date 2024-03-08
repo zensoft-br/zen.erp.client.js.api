@@ -1,13 +1,20 @@
+import { Client } from "../../../Client.js";
+import { Watcher } from "./Watcher.js";
+import { Schedule } from "./Schedule.js";
+import { AgentParameter } from "./AgentParameter.js";
+import { Agent } from "./Agent.js";
+import { AgentRun } from "./AgentRun.js";
+
 export class AutomationService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async agentCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/automation/agent", {
+  async agentCreate(bean: Agent): Promise<Agent> {
+    return this.#client.web.fetchJson("/system/automation/agent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,43 +24,43 @@ export class AutomationService {
     });
   }
 
-  async agentDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/automation/agent/${id}`, {
+  async agentDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/automation/agent/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async agentOpGetParameters(id) {
-    return this.#zenClient.web.fetchJson(`/system/automation/agentOpGetParameters/${id}`, {
+  async agentOpGetParameters(id: number): Promise<AgentParameter[]> {
+    return this.#client.web.fetchJson(`/system/automation/agentOpGetParameters/${id}`, {
       method: "POST",
       
     });
   }
 
-  async agentOpGetTopics(id) {
-    return this.#zenClient.web.fetchJson(`/system/automation/agentOpGetTopics/${id}`, {
+  async agentOpGetTopics(id: number): Promise<string[]> {
+    return this.#client.web.fetchJson(`/system/automation/agentOpGetTopics/${id}`, {
       method: "POST",
       
     });
   }
 
-  async agentRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/automation/agent?${search}`, {
+  async agentRead(search: any): Promise<Agent[]> {
+    return this.#client.web.fetchJson(`/system/automation/agent?${search}`, {
       method: "GET",
       
     });
   }
 
-  async agentReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/automation/agent/${id}`, {
+  async agentReadById(id: number): Promise<Agent> {
+    return this.#client.web.fetchJson(`/system/automation/agent/${id}`, {
       method: "GET",
       
     });
   }
 
-  async agentRunCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/automation/agentRun", {
+  async agentRunCreate(bean: AgentRun): Promise<AgentRun> {
+    return this.#client.web.fetchJson("/system/automation/agentRun", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -63,15 +70,15 @@ export class AutomationService {
     });
   }
 
-  async agentRunDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/automation/agentRun/${id}`, {
+  async agentRunDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/automation/agentRun/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async agentRunOpExecute(id, parameters) {
-    this.#zenClient.web.fetchJson(`/system/automation/agentRunOpExecute/${id}`, {
+  async agentRunOpExecute(id: number, parameters: Object): Promise<void> {
+    this.#client.web.fetchJson(`/system/automation/agentRunOpExecute/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -81,22 +88,22 @@ export class AutomationService {
     });
   }
 
-  async agentRunRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/automation/agentRun?${search}`, {
+  async agentRunRead(search: any): Promise<AgentRun[]> {
+    return this.#client.web.fetchJson(`/system/automation/agentRun?${search}`, {
       method: "GET",
       
     });
   }
 
-  async agentRunReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/automation/agentRun/${id}`, {
+  async agentRunReadById(id: number): Promise<AgentRun> {
+    return this.#client.web.fetchJson(`/system/automation/agentRun/${id}`, {
       method: "GET",
       
     });
   }
 
-  async agentRunUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/automation/agentRun", {
+  async agentRunUpdate(bean: AgentRun): Promise<AgentRun> {
+    return this.#client.web.fetchJson("/system/automation/agentRun", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -106,8 +113,8 @@ export class AutomationService {
     });
   }
 
-  async agentUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/automation/agent", {
+  async agentUpdate(bean: Agent): Promise<Agent> {
+    return this.#client.web.fetchJson("/system/automation/agent", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -117,8 +124,8 @@ export class AutomationService {
     });
   }
 
-  async scheduleCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/automation/schedule", {
+  async scheduleCreate(bean: Schedule): Promise<Schedule> {
+    return this.#client.web.fetchJson("/system/automation/schedule", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -128,36 +135,36 @@ export class AutomationService {
     });
   }
 
-  async scheduleDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/automation/schedule/${id}`, {
+  async scheduleDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/automation/schedule/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async scheduleOpExecute(id) {
-    return this.#zenClient.web.fetchJson(`/system/automation/scheduleOpExecute/${id}`, {
+  async scheduleOpExecute(id: number): Promise<Schedule> {
+    return this.#client.web.fetchJson(`/system/automation/scheduleOpExecute/${id}`, {
       method: "POST",
       
     });
   }
 
-  async scheduleRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/automation/schedule?${search}`, {
+  async scheduleRead(search: any): Promise<Schedule[]> {
+    return this.#client.web.fetchJson(`/system/automation/schedule?${search}`, {
       method: "GET",
       
     });
   }
 
-  async scheduleReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/automation/schedule/${id}`, {
+  async scheduleReadById(id: number): Promise<Schedule> {
+    return this.#client.web.fetchJson(`/system/automation/schedule/${id}`, {
       method: "GET",
       
     });
   }
 
-  async scheduleUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/automation/schedule", {
+  async scheduleUpdate(bean: Schedule): Promise<Schedule> {
+    return this.#client.web.fetchJson("/system/automation/schedule", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -167,8 +174,8 @@ export class AutomationService {
     });
   }
 
-  async watcherCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/automation/watcher", {
+  async watcherCreate(bean: Watcher): Promise<Watcher> {
+    return this.#client.web.fetchJson("/system/automation/watcher", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -178,29 +185,29 @@ export class AutomationService {
     });
   }
 
-  async watcherDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/automation/watcher/${id}`, {
+  async watcherDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/automation/watcher/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async watcherRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/automation/watcher?${search}`, {
+  async watcherRead(search: any): Promise<Watcher[]> {
+    return this.#client.web.fetchJson(`/system/automation/watcher?${search}`, {
       method: "GET",
       
     });
   }
 
-  async watcherReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/automation/watcher/${id}`, {
+  async watcherReadById(id: number): Promise<Watcher> {
+    return this.#client.web.fetchJson(`/system/automation/watcher/${id}`, {
       method: "GET",
       
     });
   }
 
-  async watcherUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/automation/watcher", {
+  async watcherUpdate(bean: Watcher): Promise<Watcher> {
+    return this.#client.web.fetchJson("/system/automation/watcher", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

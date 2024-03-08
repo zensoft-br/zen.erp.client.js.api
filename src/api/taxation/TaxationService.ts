@@ -1,13 +1,19 @@
+import { Client } from "../../Client.js";
+import { TaxationRule } from "./TaxationRule.js";
+import { Taxation } from "./Taxation.js";
+import { Tax } from "./Tax.js";
+import { TaxationOperation } from "./TaxationOperation.js";
+
 export class TaxationService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async taxCreate(bean) {
-    return this.#zenClient.web.fetchJson("/taxation/tax", {
+  async taxCreate(bean: Tax): Promise<Tax> {
+    return this.#client.web.fetchJson("/taxation/tax", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,39 +23,39 @@ export class TaxationService {
     });
   }
 
-  async taxDelete(id) {
-    this.#zenClient.web.fetchJson(`/taxation/tax/${id}`, {
+  async taxDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/taxation/tax/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async taxOpReadByCode(fiscalRegionCode, code) {
+  async taxOpReadByCode(fiscalRegionCode: string, code: string): Promise<Tax> {
     const sp = new URLSearchParams();
-    if (fiscalRegionCode) sp.set("fiscalRegionCode", fiscalRegionCode);
-    if (code) sp.set("code", code);
-    return this.#zenClient.web.fetchJson(`/taxation/taxOpReadByCode?${sp.toString()}`, {
+    if (fiscalRegionCode) sp.set("fiscalRegionCode", String(fiscalRegionCode));
+    if (code) sp.set("code", String(code));
+    return this.#client.web.fetchJson(`/taxation/taxOpReadByCode?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async taxRead(search) {
-    return this.#zenClient.web.fetchJson(`/taxation/tax?${search}`, {
+  async taxRead(search: any): Promise<Tax[]> {
+    return this.#client.web.fetchJson(`/taxation/tax?${search}`, {
       method: "GET",
       
     });
   }
 
-  async taxReadById(id) {
-    return this.#zenClient.web.fetchJson(`/taxation/tax/${id}`, {
+  async taxReadById(id: number): Promise<Tax> {
+    return this.#client.web.fetchJson(`/taxation/tax/${id}`, {
       method: "GET",
       
     });
   }
 
-  async taxUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/taxation/tax", {
+  async taxUpdate(bean: Tax): Promise<Tax> {
+    return this.#client.web.fetchJson("/taxation/tax", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -59,8 +65,8 @@ export class TaxationService {
     });
   }
 
-  async taxationCreate(bean) {
-    return this.#zenClient.web.fetchJson("/taxation/taxation", {
+  async taxationCreate(bean: Taxation): Promise<Taxation> {
+    return this.#client.web.fetchJson("/taxation/taxation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -70,15 +76,15 @@ export class TaxationService {
     });
   }
 
-  async taxationDelete(id) {
-    this.#zenClient.web.fetchJson(`/taxation/taxation/${id}`, {
+  async taxationDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/taxation/taxation/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async taxationOperationCreate(bean) {
-    return this.#zenClient.web.fetchJson("/taxation/taxationOperation", {
+  async taxationOperationCreate(bean: TaxationOperation): Promise<TaxationOperation> {
+    return this.#client.web.fetchJson("/taxation/taxationOperation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -88,39 +94,39 @@ export class TaxationService {
     });
   }
 
-  async taxationOperationDelete(id) {
-    this.#zenClient.web.fetchJson(`/taxation/taxationOperation/${id}`, {
+  async taxationOperationDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/taxation/taxationOperation/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async taxationOperationOpReadByCode(fiscalRegionCode, code) {
+  async taxationOperationOpReadByCode(fiscalRegionCode: string, code: string): Promise<TaxationOperation> {
     const sp = new URLSearchParams();
-    if (fiscalRegionCode) sp.set("fiscalRegionCode", fiscalRegionCode);
-    if (code) sp.set("code", code);
-    return this.#zenClient.web.fetchJson(`/taxation/taxationOperationOpReadByCode?${sp.toString()}`, {
+    if (fiscalRegionCode) sp.set("fiscalRegionCode", String(fiscalRegionCode));
+    if (code) sp.set("code", String(code));
+    return this.#client.web.fetchJson(`/taxation/taxationOperationOpReadByCode?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async taxationOperationRead(search) {
-    return this.#zenClient.web.fetchJson(`/taxation/taxationOperation?${search}`, {
+  async taxationOperationRead(search: any): Promise<TaxationOperation[]> {
+    return this.#client.web.fetchJson(`/taxation/taxationOperation?${search}`, {
       method: "GET",
       
     });
   }
 
-  async taxationOperationReadById(id) {
-    return this.#zenClient.web.fetchJson(`/taxation/taxationOperation/${id}`, {
+  async taxationOperationReadById(id: number): Promise<TaxationOperation> {
+    return this.#client.web.fetchJson(`/taxation/taxationOperation/${id}`, {
       method: "GET",
       
     });
   }
 
-  async taxationOperationUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/taxation/taxationOperation", {
+  async taxationOperationUpdate(bean: TaxationOperation): Promise<TaxationOperation> {
+    return this.#client.web.fetchJson("/taxation/taxationOperation", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -130,22 +136,22 @@ export class TaxationService {
     });
   }
 
-  async taxationRead(search) {
-    return this.#zenClient.web.fetchJson(`/taxation/taxation?${search}`, {
+  async taxationRead(search: any): Promise<Taxation[]> {
+    return this.#client.web.fetchJson(`/taxation/taxation?${search}`, {
       method: "GET",
       
     });
   }
 
-  async taxationReadById(id) {
-    return this.#zenClient.web.fetchJson(`/taxation/taxation/${id}`, {
+  async taxationReadById(id: number): Promise<Taxation> {
+    return this.#client.web.fetchJson(`/taxation/taxation/${id}`, {
       method: "GET",
       
     });
   }
 
-  async taxationRuleCreate(bean) {
-    return this.#zenClient.web.fetchJson("/taxation/taxationRule", {
+  async taxationRuleCreate(bean: TaxationRule): Promise<TaxationRule> {
+    return this.#client.web.fetchJson("/taxation/taxationRule", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -155,29 +161,29 @@ export class TaxationService {
     });
   }
 
-  async taxationRuleDelete(id) {
-    this.#zenClient.web.fetchJson(`/taxation/taxationRule/${id}`, {
+  async taxationRuleDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/taxation/taxationRule/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async taxationRuleRead(search) {
-    return this.#zenClient.web.fetchJson(`/taxation/taxationRule?${search}`, {
+  async taxationRuleRead(search: any): Promise<TaxationRule[]> {
+    return this.#client.web.fetchJson(`/taxation/taxationRule?${search}`, {
       method: "GET",
       
     });
   }
 
-  async taxationRuleReadById(id) {
-    return this.#zenClient.web.fetchJson(`/taxation/taxationRule/${id}`, {
+  async taxationRuleReadById(id: number): Promise<TaxationRule> {
+    return this.#client.web.fetchJson(`/taxation/taxationRule/${id}`, {
       method: "GET",
       
     });
   }
 
-  async taxationRuleUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/taxation/taxationRule", {
+  async taxationRuleUpdate(bean: TaxationRule): Promise<TaxationRule> {
+    return this.#client.web.fetchJson("/taxation/taxationRule", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -187,8 +193,8 @@ export class TaxationService {
     });
   }
 
-  async taxationUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/taxation/taxation", {
+  async taxationUpdate(bean: Taxation): Promise<Taxation> {
+    return this.#client.web.fetchJson("/taxation/taxation", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

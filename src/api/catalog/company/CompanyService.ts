@@ -1,13 +1,17 @@
+import { Client } from "../../../Client.js";
+import { Society } from "./Society.js";
+import { Company } from "./Company.js";
+
 export class CompanyService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async companyCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/company/company", {
+  async companyCreate(bean: Company): Promise<Company> {
+    return this.#client.web.fetchJson("/catalog/company/company", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,43 +21,43 @@ export class CompanyService {
     });
   }
 
-  async companyDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/company/company/${id}`, {
+  async companyDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/company/company/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async companyOpGetActive() {
-    return this.#zenClient.web.fetchJson("/catalog/company/companyOpGetActive", {
+  async companyOpGetActive(): Promise<Company> {
+    return this.#client.web.fetchJson("/catalog/company/companyOpGetActive", {
       method: "POST",
       
     });
   }
 
-  async companyOpSetActive(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/company/companyOpSetActive/${id}`, {
+  async companyOpSetActive(id: number): Promise<Company> {
+    return this.#client.web.fetchJson(`/catalog/company/companyOpSetActive/${id}`, {
       method: "POST",
       
     });
   }
 
-  async companyRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/company/company?${search}`, {
+  async companyRead(search: any): Promise<Company[]> {
+    return this.#client.web.fetchJson(`/catalog/company/company?${search}`, {
       method: "GET",
       
     });
   }
 
-  async companyReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/company/company/${id}`, {
+  async companyReadById(id: number): Promise<Company> {
+    return this.#client.web.fetchJson(`/catalog/company/company/${id}`, {
       method: "GET",
       
     });
   }
 
-  async companyUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/company/company", {
+  async companyUpdate(bean: Company): Promise<Company> {
+    return this.#client.web.fetchJson("/catalog/company/company", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -63,8 +67,8 @@ export class CompanyService {
     });
   }
 
-  async societyCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/company/society", {
+  async societyCreate(bean: Society): Promise<Society> {
+    return this.#client.web.fetchJson("/catalog/company/society", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -74,29 +78,29 @@ export class CompanyService {
     });
   }
 
-  async societyDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/company/society/${id}`, {
+  async societyDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/company/society/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async societyRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/company/society?${search}`, {
+  async societyRead(search: any): Promise<Society[]> {
+    return this.#client.web.fetchJson(`/catalog/company/society?${search}`, {
       method: "GET",
       
     });
   }
 
-  async societyReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/company/society/${id}`, {
+  async societyReadById(id: number): Promise<Society> {
+    return this.#client.web.fetchJson(`/catalog/company/society/${id}`, {
       method: "GET",
       
     });
   }
 
-  async societyUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/company/society", {
+  async societyUpdate(bean: Society): Promise<Society> {
+    return this.#client.web.fetchJson("/catalog/company/society", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

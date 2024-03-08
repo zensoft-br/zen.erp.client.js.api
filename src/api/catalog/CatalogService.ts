@@ -1,13 +1,16 @@
+import { Client } from "../../Client.js";
+import { Category } from "./Category.js";
+
 export class CatalogService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async categoryCreate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/category", {
+  async categoryCreate(bean: Category): Promise<Category> {
+    return this.#client.web.fetchJson("/catalog/category", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,29 +20,29 @@ export class CatalogService {
     });
   }
 
-  async categoryDelete(id) {
-    this.#zenClient.web.fetchJson(`/catalog/category/${id}`, {
+  async categoryDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/catalog/category/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async categoryRead(search) {
-    return this.#zenClient.web.fetchJson(`/catalog/category?${search}`, {
+  async categoryRead(search: any): Promise<Category[]> {
+    return this.#client.web.fetchJson(`/catalog/category?${search}`, {
       method: "GET",
       
     });
   }
 
-  async categoryReadById(id) {
-    return this.#zenClient.web.fetchJson(`/catalog/category/${id}`, {
+  async categoryReadById(id: number): Promise<Category> {
+    return this.#client.web.fetchJson(`/catalog/category/${id}`, {
       method: "GET",
       
     });
   }
 
-  async categoryUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/catalog/category", {
+  async categoryUpdate(bean: Category): Promise<Category> {
+    return this.#client.web.fetchJson("/catalog/category", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

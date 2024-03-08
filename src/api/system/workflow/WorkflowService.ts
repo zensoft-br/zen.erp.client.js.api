@@ -1,13 +1,21 @@
+import { Client } from "../../../Client.js";
+import { WorkflowNode } from "./WorkflowNode.js";
+import { WorkpieceNode } from "./WorkpieceNode.js";
+import { WorkflowConnector } from "./WorkflowConnector.js";
+import { Workflow } from "./Workflow.js";
+import { ArgsWorkflowOpCreateOrUpdate } from "./ArgsWorkflowOpCreateOrUpdate.js";
+import { Workpiece } from "./Workpiece.js";
+
 export class WorkflowService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async workflowConnectorCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/workflow/workflowConnector", {
+  async workflowConnectorCreate(bean: WorkflowConnector): Promise<WorkflowConnector> {
+    return this.#client.web.fetchJson("/system/workflow/workflowConnector", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,29 +25,29 @@ export class WorkflowService {
     });
   }
 
-  async workflowConnectorDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/workflow/workflowConnector/${id}`, {
+  async workflowConnectorDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/workflow/workflowConnector/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async workflowConnectorRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflowConnector?${search}`, {
+  async workflowConnectorRead(search: any): Promise<WorkflowConnector[]> {
+    return this.#client.web.fetchJson(`/system/workflow/workflowConnector?${search}`, {
       method: "GET",
       
     });
   }
 
-  async workflowConnectorReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflowConnector/${id}`, {
+  async workflowConnectorReadById(id: number): Promise<WorkflowConnector> {
+    return this.#client.web.fetchJson(`/system/workflow/workflowConnector/${id}`, {
       method: "GET",
       
     });
   }
 
-  async workflowConnectorUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/workflow/workflowConnector", {
+  async workflowConnectorUpdate(bean: WorkflowConnector): Promise<WorkflowConnector> {
+    return this.#client.web.fetchJson("/system/workflow/workflowConnector", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -49,8 +57,8 @@ export class WorkflowService {
     });
   }
 
-  async workflowCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/workflow/workflow", {
+  async workflowCreate(bean: Workflow): Promise<Workflow> {
+    return this.#client.web.fetchJson("/system/workflow/workflow", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -60,15 +68,15 @@ export class WorkflowService {
     });
   }
 
-  async workflowDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/workflow/workflow/${id}`, {
+  async workflowDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/workflow/workflow/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async workflowNodeCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/workflow/workflowNode", {
+  async workflowNodeCreate(bean: WorkflowNode): Promise<WorkflowNode> {
+    return this.#client.web.fetchJson("/system/workflow/workflowNode", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -78,29 +86,29 @@ export class WorkflowService {
     });
   }
 
-  async workflowNodeDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/workflow/workflowNode/${id}`, {
+  async workflowNodeDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/workflow/workflowNode/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async workflowNodeRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflowNode?${search}`, {
+  async workflowNodeRead(search: any): Promise<WorkflowNode[]> {
+    return this.#client.web.fetchJson(`/system/workflow/workflowNode?${search}`, {
       method: "GET",
       
     });
   }
 
-  async workflowNodeReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflowNode/${id}`, {
+  async workflowNodeReadById(id: number): Promise<WorkflowNode> {
+    return this.#client.web.fetchJson(`/system/workflow/workflowNode/${id}`, {
       method: "GET",
       
     });
   }
 
-  async workflowNodeUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/workflow/workflowNode", {
+  async workflowNodeUpdate(bean: WorkflowNode): Promise<WorkflowNode> {
+    return this.#client.web.fetchJson("/system/workflow/workflowNode", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -110,22 +118,22 @@ export class WorkflowService {
     });
   }
 
-  async workflowOpApprove(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflowOpApprove/${id}`, {
+  async workflowOpApprove(id: number): Promise<Workflow> {
+    return this.#client.web.fetchJson(`/system/workflow/workflowOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async workflowOpApproveRevert(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflowOpApproveRevert/${id}`, {
+  async workflowOpApproveRevert(id: number): Promise<Workflow> {
+    return this.#client.web.fetchJson(`/system/workflow/workflowOpApproveRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async workflowOpCreateOrUpdate(args) {
-    return this.#zenClient.web.fetchJson("/system/workflow/workflowOpCreateOrUpdate", {
+  async workflowOpCreateOrUpdate(args: any): Promise<any> {
+    return this.#client.web.fetchJson("/system/workflow/workflowOpCreateOrUpdate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -135,50 +143,50 @@ export class WorkflowService {
     });
   }
 
-  async workflowOpDisable(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflowOpDisable/${id}`, {
+  async workflowOpDisable(id: number): Promise<Workflow> {
+    return this.#client.web.fetchJson(`/system/workflow/workflowOpDisable/${id}`, {
       method: "POST",
       
     });
   }
 
-  async workflowOpDisableRevert(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflowOpDisableRevert/${id}`, {
+  async workflowOpDisableRevert(id: number): Promise<Workflow> {
+    return this.#client.web.fetchJson(`/system/workflow/workflowOpDisableRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async workflowOpPrepare(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflowOpPrepare/${id}`, {
+  async workflowOpPrepare(id: number): Promise<Workflow> {
+    return this.#client.web.fetchJson(`/system/workflow/workflowOpPrepare/${id}`, {
       method: "POST",
       
     });
   }
 
-  async workflowOpPrepareRevert(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflowOpPrepareRevert/${id}`, {
+  async workflowOpPrepareRevert(id: number): Promise<Workflow> {
+    return this.#client.web.fetchJson(`/system/workflow/workflowOpPrepareRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async workflowRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflow?${search}`, {
+  async workflowRead(search: any): Promise<Workflow[]> {
+    return this.#client.web.fetchJson(`/system/workflow/workflow?${search}`, {
       method: "GET",
       
     });
   }
 
-  async workflowReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workflow/${id}`, {
+  async workflowReadById(id: number): Promise<Workflow> {
+    return this.#client.web.fetchJson(`/system/workflow/workflow/${id}`, {
       method: "GET",
       
     });
   }
 
-  async workflowUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/workflow/workflow", {
+  async workflowUpdate(bean: Workflow): Promise<Workflow> {
+    return this.#client.web.fetchJson("/system/workflow/workflow", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -188,47 +196,47 @@ export class WorkflowService {
     });
   }
 
-  async workpieceNodeRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workpieceNode?${search}`, {
+  async workpieceNodeRead(search: any): Promise<WorkpieceNode[]> {
+    return this.#client.web.fetchJson(`/system/workflow/workpieceNode?${search}`, {
       method: "GET",
       
     });
   }
 
-  async workpieceNodeReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workpieceNode/${id}`, {
+  async workpieceNodeReadById(id: number): Promise<WorkpieceNode> {
+    return this.#client.web.fetchJson(`/system/workflow/workpieceNode/${id}`, {
       method: "GET",
       
     });
   }
 
-  async workpieceOpForward(id, workflowNodeId) {
+  async workpieceOpForward(id: number, workflowNodeId: number): Promise<WorkpieceNode> {
     const sp = new URLSearchParams();
-    if (workflowNodeId) sp.set("workflowNodeId", workflowNodeId);
-    return this.#zenClient.web.fetchJson(`/system/workflow/workpieceOpForward/${id}?${sp.toString()}`, {
+    if (workflowNodeId) sp.set("workflowNodeId", String(workflowNodeId));
+    return this.#client.web.fetchJson(`/system/workflow/workpieceOpForward/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async workpieceOpRevert(id, workflowNodeId) {
+  async workpieceOpRevert(id: number, workflowNodeId: number): Promise<WorkpieceNode> {
     const sp = new URLSearchParams();
-    if (workflowNodeId) sp.set("workflowNodeId", workflowNodeId);
-    return this.#zenClient.web.fetchJson(`/system/workflow/workpieceOpRevert/${id}?${sp.toString()}`, {
+    if (workflowNodeId) sp.set("workflowNodeId", String(workflowNodeId));
+    return this.#client.web.fetchJson(`/system/workflow/workpieceOpRevert/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async workpieceRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workpiece?${search}`, {
+  async workpieceRead(search: any): Promise<Workpiece[]> {
+    return this.#client.web.fetchJson(`/system/workflow/workpiece?${search}`, {
       method: "GET",
       
     });
   }
 
-  async workpieceReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/workflow/workpiece/${id}`, {
+  async workpieceReadById(id: number): Promise<Workpiece> {
+    return this.#client.web.fetchJson(`/system/workflow/workpiece/${id}`, {
       method: "GET",
       
     });

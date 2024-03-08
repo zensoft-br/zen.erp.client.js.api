@@ -1,13 +1,30 @@
+import { Client } from "../../Client.js";
+import { LedgerItem } from "./LedgerItem.js";
+import { ResultCenterChart } from "./ResultCenterChart.js";
+import { AccountChart } from "./AccountChart.js";
+import { LedgerItemBalance } from "./LedgerItemBalance.js";
+import { JournalEntry } from "./JournalEntry.js";
+import { AccountConversionChart } from "./AccountConversionChart.js";
+import { AccountDefault } from "./AccountDefault.js";
+import { AccountFiscalYear } from "./AccountFiscalYear.js";
+import { ResultCenter } from "./ResultCenter.js";
+import { AssetTag } from "./AssetTag.js";
+import { Account } from "./Account.js";
+import { AssetInventory } from "./AssetInventory.js";
+import { JournalItem } from "./JournalItem.js";
+import { AccountCategory } from "./AccountCategory.js";
+import { AccountConversion } from "./AccountConversion.js";
+
 export class AccountingService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async accountCategoryCreate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/accountCategory", {
+  async accountCategoryCreate(bean: AccountCategory): Promise<AccountCategory> {
+    return this.#client.web.fetchJson("/accounting/accountCategory", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,29 +34,29 @@ export class AccountingService {
     });
   }
 
-  async accountCategoryDelete(id) {
-    this.#zenClient.web.fetchJson(`/accounting/accountCategory/${id}`, {
+  async accountCategoryDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/accountCategory/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async accountCategoryRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountCategory?${search}`, {
+  async accountCategoryRead(search: any): Promise<AccountCategory[]> {
+    return this.#client.web.fetchJson(`/accounting/accountCategory?${search}`, {
       method: "GET",
       
     });
   }
 
-  async accountCategoryReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountCategory/${id}`, {
+  async accountCategoryReadById(id: number): Promise<AccountCategory> {
+    return this.#client.web.fetchJson(`/accounting/accountCategory/${id}`, {
       method: "GET",
       
     });
   }
 
-  async accountCategoryUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/accountCategory", {
+  async accountCategoryUpdate(bean: AccountCategory): Promise<AccountCategory> {
+    return this.#client.web.fetchJson("/accounting/accountCategory", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -49,8 +66,8 @@ export class AccountingService {
     });
   }
 
-  async accountChartCreate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/accountChart", {
+  async accountChartCreate(bean: AccountChart): Promise<AccountChart> {
+    return this.#client.web.fetchJson("/accounting/accountChart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -60,22 +77,22 @@ export class AccountingService {
     });
   }
 
-  async accountChartDelete(id) {
-    this.#zenClient.web.fetchJson(`/accounting/accountChart/${id}`, {
+  async accountChartDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/accountChart/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async accountChartOpClone(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountChartOpClone/${id}`, {
+  async accountChartOpClone(id: number): Promise<AccountChart> {
+    return this.#client.web.fetchJson(`/accounting/accountChartOpClone/${id}`, {
       method: "POST",
       
     });
   }
 
-  async accountChartOpImport(id, args) {
-    this.#zenClient.web.fetchJson(`/accounting/accountChartOpImport/${id}`, {
+  async accountChartOpImport(id: number, args: any): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/accountChartOpImport/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -85,58 +102,58 @@ export class AccountingService {
     });
   }
 
-  async accountChartOpLevelCreate(id, level, digits) {
+  async accountChartOpLevelCreate(id: number, level: number, digits: number): Promise<AccountChart> {
     const sp = new URLSearchParams();
-    if (level) sp.set("level", level);
-    if (digits) sp.set("digits", digits);
-    return this.#zenClient.web.fetchJson(`/accounting/accountChartOpLevelCreate/${id}?${sp.toString()}`, {
+    if (level) sp.set("level", String(level));
+    if (digits) sp.set("digits", String(digits));
+    return this.#client.web.fetchJson(`/accounting/accountChartOpLevelCreate/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async accountChartOpLevelDelete(id, level) {
+  async accountChartOpLevelDelete(id: number, level: number): Promise<AccountChart> {
     const sp = new URLSearchParams();
-    if (level) sp.set("level", level);
-    return this.#zenClient.web.fetchJson(`/accounting/accountChartOpLevelDelete/${id}?${sp.toString()}`, {
+    if (level) sp.set("level", String(level));
+    return this.#client.web.fetchJson(`/accounting/accountChartOpLevelDelete/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async accountChartOpLevelUpdate(id, level, digits) {
+  async accountChartOpLevelUpdate(id: number, level: number, digits: number): Promise<AccountChart> {
     const sp = new URLSearchParams();
-    if (level) sp.set("level", level);
-    if (digits) sp.set("digits", digits);
-    return this.#zenClient.web.fetchJson(`/accounting/accountChartOpLevelUpdate/${id}?${sp.toString()}`, {
+    if (level) sp.set("level", String(level));
+    if (digits) sp.set("digits", String(digits));
+    return this.#client.web.fetchJson(`/accounting/accountChartOpLevelUpdate/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async accountChartOpNextShortCode(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountChartOpNextShortCode/${id}`, {
+  async accountChartOpNextShortCode(id: number): Promise<number> {
+    return this.#client.web.fetchJson(`/accounting/accountChartOpNextShortCode/${id}`, {
       method: "POST",
       
     });
   }
 
-  async accountChartRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountChart?${search}`, {
+  async accountChartRead(search: any): Promise<AccountChart[]> {
+    return this.#client.web.fetchJson(`/accounting/accountChart?${search}`, {
       method: "GET",
       
     });
   }
 
-  async accountChartReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountChart/${id}`, {
+  async accountChartReadById(id: number): Promise<AccountChart> {
+    return this.#client.web.fetchJson(`/accounting/accountChart/${id}`, {
       method: "GET",
       
     });
   }
 
-  async accountChartUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/accountChart", {
+  async accountChartUpdate(bean: AccountChart): Promise<AccountChart> {
+    return this.#client.web.fetchJson("/accounting/accountChart", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -146,8 +163,8 @@ export class AccountingService {
     });
   }
 
-  async accountConversionChartCreate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/accountConversionChart", {
+  async accountConversionChartCreate(bean: AccountConversionChart): Promise<AccountConversionChart> {
+    return this.#client.web.fetchJson("/accounting/accountConversionChart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -157,29 +174,29 @@ export class AccountingService {
     });
   }
 
-  async accountConversionChartDelete(id) {
-    this.#zenClient.web.fetchJson(`/accounting/accountConversionChart/${id}`, {
+  async accountConversionChartDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/accountConversionChart/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async accountConversionChartRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountConversionChart?${search}`, {
+  async accountConversionChartRead(search: any): Promise<AccountConversionChart[]> {
+    return this.#client.web.fetchJson(`/accounting/accountConversionChart?${search}`, {
       method: "GET",
       
     });
   }
 
-  async accountConversionChartReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountConversionChart/${id}`, {
+  async accountConversionChartReadById(id: number): Promise<AccountConversionChart> {
+    return this.#client.web.fetchJson(`/accounting/accountConversionChart/${id}`, {
       method: "GET",
       
     });
   }
 
-  async accountConversionChartUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/accountConversionChart", {
+  async accountConversionChartUpdate(bean: AccountConversionChart): Promise<AccountConversionChart> {
+    return this.#client.web.fetchJson("/accounting/accountConversionChart", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -189,8 +206,8 @@ export class AccountingService {
     });
   }
 
-  async accountConversionCreate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/accountConversion", {
+  async accountConversionCreate(bean: AccountConversion): Promise<AccountConversion> {
+    return this.#client.web.fetchJson("/accounting/accountConversion", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -200,29 +217,29 @@ export class AccountingService {
     });
   }
 
-  async accountConversionDelete(id) {
-    this.#zenClient.web.fetchJson(`/accounting/accountConversion/${id}`, {
+  async accountConversionDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/accountConversion/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async accountConversionRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountConversion?${search}`, {
+  async accountConversionRead(search: any): Promise<AccountConversion[]> {
+    return this.#client.web.fetchJson(`/accounting/accountConversion?${search}`, {
       method: "GET",
       
     });
   }
 
-  async accountConversionReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountConversion/${id}`, {
+  async accountConversionReadById(id: number): Promise<AccountConversion> {
+    return this.#client.web.fetchJson(`/accounting/accountConversion/${id}`, {
       method: "GET",
       
     });
   }
 
-  async accountConversionUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/accountConversion", {
+  async accountConversionUpdate(bean: AccountConversion): Promise<AccountConversion> {
+    return this.#client.web.fetchJson("/accounting/accountConversion", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -232,8 +249,8 @@ export class AccountingService {
     });
   }
 
-  async accountCreate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/account", {
+  async accountCreate(bean: Account): Promise<Account> {
+    return this.#client.web.fetchJson("/accounting/account", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -243,8 +260,8 @@ export class AccountingService {
     });
   }
 
-  async accountDefaultCreate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/accountDefault", {
+  async accountDefaultCreate(bean: AccountDefault): Promise<AccountDefault> {
+    return this.#client.web.fetchJson("/accounting/accountDefault", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -254,15 +271,15 @@ export class AccountingService {
     });
   }
 
-  async accountDefaultDelete(id) {
-    this.#zenClient.web.fetchJson(`/accounting/accountDefault/${id}`, {
+  async accountDefaultDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/accountDefault/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async accountDefaultOpRead(args) {
-    return this.#zenClient.web.fetchJson("/accounting/accountDefaultOpRead", {
+  async accountDefaultOpRead(args: any): Promise<Account> {
+    return this.#client.web.fetchJson("/accounting/accountDefaultOpRead", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -272,22 +289,22 @@ export class AccountingService {
     });
   }
 
-  async accountDefaultRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountDefault?${search}`, {
+  async accountDefaultRead(search: any): Promise<AccountDefault[]> {
+    return this.#client.web.fetchJson(`/accounting/accountDefault?${search}`, {
       method: "GET",
       
     });
   }
 
-  async accountDefaultReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountDefault/${id}`, {
+  async accountDefaultReadById(id: number): Promise<AccountDefault> {
+    return this.#client.web.fetchJson(`/accounting/accountDefault/${id}`, {
       method: "GET",
       
     });
   }
 
-  async accountDefaultUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/accountDefault", {
+  async accountDefaultUpdate(bean: AccountDefault): Promise<AccountDefault> {
+    return this.#client.web.fetchJson("/accounting/accountDefault", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -297,36 +314,36 @@ export class AccountingService {
     });
   }
 
-  async accountDelete(id) {
-    this.#zenClient.web.fetchJson(`/accounting/account/${id}`, {
+  async accountDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/account/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async accountFiscalYearRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/accountFiscalYear?${search}`, {
+  async accountFiscalYearRead(search: any): Promise<AccountFiscalYear[]> {
+    return this.#client.web.fetchJson(`/accounting/accountFiscalYear?${search}`, {
       method: "GET",
       
     });
   }
 
-  async accountRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/account?${search}`, {
+  async accountRead(search: any): Promise<Account[]> {
+    return this.#client.web.fetchJson(`/accounting/account?${search}`, {
       method: "GET",
       
     });
   }
 
-  async accountReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/account/${id}`, {
+  async accountReadById(id: number): Promise<Account> {
+    return this.#client.web.fetchJson(`/accounting/account/${id}`, {
       method: "GET",
       
     });
   }
 
-  async accountUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/account", {
+  async accountUpdate(bean: Account): Promise<Account> {
+    return this.#client.web.fetchJson("/accounting/account", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -336,43 +353,43 @@ export class AccountingService {
     });
   }
 
-  async assetInventoryCurrentRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/assetInventoryCurrent?${search}`, {
+  async assetInventoryCurrentRead(search: any): Promise<AssetInventory[]> {
+    return this.#client.web.fetchJson(`/accounting/assetInventoryCurrent?${search}`, {
       method: "GET",
       
     });
   }
 
-  async assetInventoryRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/assetInventory?${search}`, {
+  async assetInventoryRead(search: any): Promise<AssetInventory[]> {
+    return this.#client.web.fetchJson(`/accounting/assetInventory?${search}`, {
       method: "GET",
       
     });
   }
 
-  async assetTagRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/assetTag?${search}`, {
+  async assetTagRead(search: any): Promise<AssetTag[]> {
+    return this.#client.web.fetchJson(`/accounting/assetTag?${search}`, {
       method: "GET",
       
     });
   }
 
-  async assetTagReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/assetTag/${id}`, {
+  async assetTagReadById(id: number): Promise<AssetTag> {
+    return this.#client.web.fetchJson(`/accounting/assetTag/${id}`, {
       method: "GET",
       
     });
   }
 
-  async fiscalYearOpClose(id) {
-    this.#zenClient.web.fetchJson(`/accounting/fiscalYearOpClose/${id}`, {
+  async fiscalYearOpClose(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/fiscalYearOpClose/${id}`, {
       method: "POST",
       
     });
   }
 
-  async journalEntryCreate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/journalEntry", {
+  async journalEntryCreate(bean: JournalEntry): Promise<JournalEntry> {
+    return this.#client.web.fetchJson("/accounting/journalEntry", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -382,15 +399,15 @@ export class AccountingService {
     });
   }
 
-  async journalEntryDelete(id) {
-    this.#zenClient.web.fetchJson(`/accounting/journalEntry/${id}`, {
+  async journalEntryDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/journalEntry/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async journalEntryOpCreate(args) {
-    return this.#zenClient.web.fetchJson("/accounting/journalEntryOpCreate", {
+  async journalEntryOpCreate(args: any): Promise<JournalEntry> {
+    return this.#client.web.fetchJson("/accounting/journalEntryOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -400,22 +417,22 @@ export class AccountingService {
     });
   }
 
-  async journalEntryOpPublish(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/journalEntryOpPublish/${id}`, {
+  async journalEntryOpPublish(id: number): Promise<JournalEntry> {
+    return this.#client.web.fetchJson(`/accounting/journalEntryOpPublish/${id}`, {
       method: "POST",
       
     });
   }
 
-  async journalEntryOpPublishRevert(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/journalEntryOpPublishRevert/${id}`, {
+  async journalEntryOpPublishRevert(id: number): Promise<JournalEntry> {
+    return this.#client.web.fetchJson(`/accounting/journalEntryOpPublishRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async journalEntryOpUpdate(args) {
-    return this.#zenClient.web.fetchJson("/accounting/journalEntryOpUpdate", {
+  async journalEntryOpUpdate(args: any): Promise<JournalEntry> {
+    return this.#client.web.fetchJson("/accounting/journalEntryOpUpdate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -425,22 +442,22 @@ export class AccountingService {
     });
   }
 
-  async journalEntryRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/journalEntry?${search}`, {
+  async journalEntryRead(search: any): Promise<JournalEntry[]> {
+    return this.#client.web.fetchJson(`/accounting/journalEntry?${search}`, {
       method: "GET",
       
     });
   }
 
-  async journalEntryReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/journalEntry/${id}`, {
+  async journalEntryReadById(id: number): Promise<JournalEntry> {
+    return this.#client.web.fetchJson(`/accounting/journalEntry/${id}`, {
       method: "GET",
       
     });
   }
 
-  async journalEntryUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/journalEntry", {
+  async journalEntryUpdate(bean: JournalEntry): Promise<JournalEntry> {
+    return this.#client.web.fetchJson("/accounting/journalEntry", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -450,8 +467,8 @@ export class AccountingService {
     });
   }
 
-  async journalItemCreate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/journalItem", {
+  async journalItemCreate(bean: JournalItem): Promise<JournalItem> {
+    return this.#client.web.fetchJson("/accounting/journalItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -461,29 +478,29 @@ export class AccountingService {
     });
   }
 
-  async journalItemDelete(id) {
-    this.#zenClient.web.fetchJson(`/accounting/journalItem/${id}`, {
+  async journalItemDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/journalItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async journalItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/journalItem?${search}`, {
+  async journalItemRead(search: any): Promise<JournalItem[]> {
+    return this.#client.web.fetchJson(`/accounting/journalItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async journalItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/journalItem/${id}`, {
+  async journalItemReadById(id: number): Promise<JournalItem> {
+    return this.#client.web.fetchJson(`/accounting/journalItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async journalItemUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/journalItem", {
+  async journalItemUpdate(bean: JournalItem): Promise<JournalItem> {
+    return this.#client.web.fetchJson("/accounting/journalItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -493,29 +510,29 @@ export class AccountingService {
     });
   }
 
-  async ledgerItemBalanceRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/ledgerItemBalance?${search}`, {
+  async ledgerItemBalanceRead(search: any): Promise<LedgerItemBalance[]> {
+    return this.#client.web.fetchJson(`/accounting/ledgerItemBalance?${search}`, {
       method: "GET",
       
     });
   }
 
-  async ledgerItemRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/ledgerItem?${search}`, {
+  async ledgerItemRead(search: any): Promise<LedgerItem[]> {
+    return this.#client.web.fetchJson(`/accounting/ledgerItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async ledgerItemReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/ledgerItem/${id}`, {
+  async ledgerItemReadById(id: number): Promise<LedgerItem> {
+    return this.#client.web.fetchJson(`/accounting/ledgerItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async resultCenterChartCreate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/resultCenterChart", {
+  async resultCenterChartCreate(bean: ResultCenterChart): Promise<ResultCenterChart> {
+    return this.#client.web.fetchJson("/accounting/resultCenterChart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -525,58 +542,58 @@ export class AccountingService {
     });
   }
 
-  async resultCenterChartDelete(id) {
-    this.#zenClient.web.fetchJson(`/accounting/resultCenterChart/${id}`, {
+  async resultCenterChartDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/resultCenterChart/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async resultCenterChartOpLevelCreate(id, level, digits) {
+  async resultCenterChartOpLevelCreate(id: number, level: number, digits: number): Promise<ResultCenterChart> {
     const sp = new URLSearchParams();
-    if (level) sp.set("level", level);
-    if (digits) sp.set("digits", digits);
-    return this.#zenClient.web.fetchJson(`/accounting/resultCenterChartOpLevelCreate/${id}?${sp.toString()}`, {
+    if (level) sp.set("level", String(level));
+    if (digits) sp.set("digits", String(digits));
+    return this.#client.web.fetchJson(`/accounting/resultCenterChartOpLevelCreate/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async resultCenterChartOpLevelDelete(id, level) {
+  async resultCenterChartOpLevelDelete(id: number, level: number): Promise<ResultCenterChart> {
     const sp = new URLSearchParams();
-    if (level) sp.set("level", level);
-    return this.#zenClient.web.fetchJson(`/accounting/resultCenterChartOpLevelDelete/${id}?${sp.toString()}`, {
+    if (level) sp.set("level", String(level));
+    return this.#client.web.fetchJson(`/accounting/resultCenterChartOpLevelDelete/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async resultCenterChartOpLevelUpdate(id, level, digits) {
+  async resultCenterChartOpLevelUpdate(id: number, level: number, digits: number): Promise<ResultCenterChart> {
     const sp = new URLSearchParams();
-    if (level) sp.set("level", level);
-    if (digits) sp.set("digits", digits);
-    return this.#zenClient.web.fetchJson(`/accounting/resultCenterChartOpLevelUpdate/${id}?${sp.toString()}`, {
+    if (level) sp.set("level", String(level));
+    if (digits) sp.set("digits", String(digits));
+    return this.#client.web.fetchJson(`/accounting/resultCenterChartOpLevelUpdate/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async resultCenterChartRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/resultCenterChart?${search}`, {
+  async resultCenterChartRead(search: any): Promise<ResultCenterChart[]> {
+    return this.#client.web.fetchJson(`/accounting/resultCenterChart?${search}`, {
       method: "GET",
       
     });
   }
 
-  async resultCenterChartReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/resultCenterChart/${id}`, {
+  async resultCenterChartReadById(id: number): Promise<ResultCenterChart> {
+    return this.#client.web.fetchJson(`/accounting/resultCenterChart/${id}`, {
       method: "GET",
       
     });
   }
 
-  async resultCenterChartUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/resultCenterChart", {
+  async resultCenterChartUpdate(bean: ResultCenterChart): Promise<ResultCenterChart> {
+    return this.#client.web.fetchJson("/accounting/resultCenterChart", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -586,8 +603,8 @@ export class AccountingService {
     });
   }
 
-  async resultCenterCreate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/resultCenter", {
+  async resultCenterCreate(bean: ResultCenter): Promise<ResultCenter> {
+    return this.#client.web.fetchJson("/accounting/resultCenter", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -597,29 +614,29 @@ export class AccountingService {
     });
   }
 
-  async resultCenterDelete(id) {
-    this.#zenClient.web.fetchJson(`/accounting/resultCenter/${id}`, {
+  async resultCenterDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/accounting/resultCenter/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async resultCenterRead(search) {
-    return this.#zenClient.web.fetchJson(`/accounting/resultCenter?${search}`, {
+  async resultCenterRead(search: any): Promise<ResultCenter[]> {
+    return this.#client.web.fetchJson(`/accounting/resultCenter?${search}`, {
       method: "GET",
       
     });
   }
 
-  async resultCenterReadById(id) {
-    return this.#zenClient.web.fetchJson(`/accounting/resultCenter/${id}`, {
+  async resultCenterReadById(id: number): Promise<ResultCenter> {
+    return this.#client.web.fetchJson(`/accounting/resultCenter/${id}`, {
       method: "GET",
       
     });
   }
 
-  async resultCenterUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/accounting/resultCenter", {
+  async resultCenterUpdate(bean: ResultCenter): Promise<ResultCenter> {
+    return this.#client.web.fetchJson("/accounting/resultCenter", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

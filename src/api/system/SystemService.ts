@@ -1,20 +1,25 @@
+import { Client } from "../../Client.js";
+import { Info } from "./Info.js";
+import { Test } from "./Test.js";
+import { Status } from "./Status.js";
+
 export class SystemService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async checkAuth() {
-    this.#zenClient.web.fetchJson("/system/checkAuth", {
+  async checkAuth(): Promise<void> {
+    this.#client.web.fetchJson("/system/checkAuth", {
       method: "GET",
       
     });
   }
 
-  async customPropertiesOpSet(args) {
-    this.#zenClient.web.fetchJson("/system/customPropertiesOpSet", {
+  async customPropertiesOpSet(args: any): Promise<void> {
+    this.#client.web.fetchJson("/system/customPropertiesOpSet", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -24,32 +29,32 @@ export class SystemService {
     });
   }
 
-  async customTagsOpSet(entity, tag) {
+  async customTagsOpSet(entity: string, tag: string): Promise<void> {
     const sp = new URLSearchParams();
-    if (entity) sp.set("entity", entity);
-    if (tag) sp.set("tag", tag);
-    this.#zenClient.web.fetchJson(`/system/customTagsOpSet?${sp.toString()}`, {
+    if (entity) sp.set("entity", String(entity));
+    if (tag) sp.set("tag", String(tag));
+    this.#client.web.fetchJson(`/system/customTagsOpSet?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async infoRead() {
-    return this.#zenClient.web.fetchJson("/system/info", {
+  async infoRead(): Promise<Info> {
+    return this.#client.web.fetchJson("/system/info", {
       method: "GET",
       
     });
   }
 
-  async resourcesRead() {
-    return this.#zenClient.web.fetchJson("/system/resources", {
+  async resourcesRead(): Promise<Object> {
+    return this.#client.web.fetchJson("/system/resources", {
       method: "GET",
       
     });
   }
 
-  async statusCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/status", {
+  async statusCreate(bean: Status): Promise<Status> {
+    return this.#client.web.fetchJson("/system/status", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -59,29 +64,29 @@ export class SystemService {
     });
   }
 
-  async statusDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/status/${id}`, {
+  async statusDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/status/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async statusRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/status?${search}`, {
+  async statusRead(search: any): Promise<Status[]> {
+    return this.#client.web.fetchJson(`/system/status?${search}`, {
       method: "GET",
       
     });
   }
 
-  async statusReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/status/${id}`, {
+  async statusReadById(id: number): Promise<Status> {
+    return this.#client.web.fetchJson(`/system/status/${id}`, {
       method: "GET",
       
     });
   }
 
-  async statusUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/status", {
+  async statusUpdate(bean: Status): Promise<Status> {
+    return this.#client.web.fetchJson("/system/status", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -91,8 +96,8 @@ export class SystemService {
     });
   }
 
-  async testCreate(test) {
-    return this.#zenClient.web.fetchJson("/system/test", {
+  async testCreate(test: Test): Promise<Test> {
+    return this.#client.web.fetchJson("/system/test", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -102,8 +107,8 @@ export class SystemService {
     });
   }
 
-  async testRead() {
-    return this.#zenClient.web.fetchJson("/system/test", {
+  async testRead(): Promise<Test> {
+    return this.#client.web.fetchJson("/system/test", {
       method: "GET",
       
     });

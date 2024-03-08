@@ -10,8 +10,7 @@ const client = await Z.connect(
   process.env.USER,
   process.env.PASSWORD);
 
-const categoryList = await client.web.fetchJson("/catalog/category");
-// console.log(categoryList);
+const catalogService = new Z.api.catalog.CatalogService(client);
+const categoryList = await catalogService.categoryRead();
 
-const catalogService = new Z.api.catalog.Service(client);
-console.log(await catalogService.categoryRead());
+console.log(categoryList);

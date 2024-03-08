@@ -1,13 +1,16 @@
+import { Client } from "../../../Client.js";
+import { Plugin } from "./Plugin.js";
+
 export class PluginService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async pluginCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/plugin/plugin", {
+  async pluginCreate(bean: any): Promise<Plugin> {
+    return this.#client.web.fetchJson("/system/plugin/plugin", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +20,15 @@ export class PluginService {
     });
   }
 
-  async pluginDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/plugin/plugin/${id}`, {
+  async pluginDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/plugin/plugin/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async pluginRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/plugin/plugin?${search}`, {
+  async pluginRead(search: any): Promise<Plugin[]> {
+    return this.#client.web.fetchJson(`/system/plugin/plugin?${search}`, {
       method: "GET",
       
     });

@@ -1,13 +1,18 @@
+import { Client } from "../../Client.js";
+import { PriceListTransformation } from "./PriceListTransformation.js";
+import { PriceList } from "./PriceList.js";
+import { PriceListChangeRequest } from "./PriceListChangeRequest.js";
+
 export class CommercialService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async priceListChangeRequestCreate(bean) {
-    return this.#zenClient.web.fetchJson("/commercial/priceListChangeRequest", {
+  async priceListChangeRequestCreate(bean: PriceListChangeRequest): Promise<PriceListChangeRequest> {
+    return this.#client.web.fetchJson("/commercial/priceListChangeRequest", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,54 +22,54 @@ export class CommercialService {
     });
   }
 
-  async priceListChangeRequestDelete(id) {
-    this.#zenClient.web.fetchJson(`/commercial/priceListChangeRequest/${id}`, {
+  async priceListChangeRequestDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/commercial/priceListChangeRequest/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async priceListChangeRequestOpApprove(id) {
-    this.#zenClient.web.fetchJson(`/commercial/priceListChangeRequestOpApprove/${id}`, {
+  async priceListChangeRequestOpApprove(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/commercial/priceListChangeRequestOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
-  async priceListChangeRequestOpReject(id) {
-    this.#zenClient.web.fetchJson(`/commercial/priceListChangeRequestOpReject/${id}`, {
+  async priceListChangeRequestOpReject(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/commercial/priceListChangeRequestOpReject/${id}`, {
       method: "POST",
       
     });
   }
 
-  async priceListChangeRequestRead(search) {
-    return this.#zenClient.web.fetchJson(`/commercial/priceListChangeRequest?${search}`, {
+  async priceListChangeRequestRead(search: any): Promise<PriceListChangeRequest[]> {
+    return this.#client.web.fetchJson(`/commercial/priceListChangeRequest?${search}`, {
       method: "GET",
       
     });
   }
 
-  async priceListChangeRequestReadById(id) {
-    return this.#zenClient.web.fetchJson(`/commercial/priceListChangeRequest/${id}`, {
+  async priceListChangeRequestReadById(id: number): Promise<PriceListChangeRequest> {
+    return this.#client.web.fetchJson(`/commercial/priceListChangeRequest/${id}`, {
       method: "GET",
       
     });
   }
 
-  async priceListOpFind(id, productId, productPackingId, currencyId) {
+  async priceListOpFind(id: number, productId: number, productPackingId: number, currencyId: number): Promise<number> {
     const sp = new URLSearchParams();
-    if (productId) sp.set("productId", productId);
-    if (productPackingId) sp.set("productPackingId", productPackingId);
-    if (currencyId) sp.set("currencyId", currencyId);
-    return this.#zenClient.web.fetchJson(`/commercial/priceListOpFind/${id}?${sp.toString()}`, {
+    if (productId) sp.set("productId", String(productId));
+    if (productPackingId) sp.set("productPackingId", String(productPackingId));
+    if (currencyId) sp.set("currencyId", String(currencyId));
+    return this.#client.web.fetchJson(`/commercial/priceListOpFind/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
-  async priceListOpImport(id, args) {
-    return this.#zenClient.web.fetchJson(`/commercial/priceListOpImport/${id}`, {
+  async priceListOpImport(id: number, args: any): Promise<PriceList> {
+    return this.#client.web.fetchJson(`/commercial/priceListOpImport/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -74,8 +79,8 @@ export class CommercialService {
     });
   }
 
-  async priceListTransformationCreate(bean) {
-    return this.#zenClient.web.fetchJson("/commercial/priceListTransformation", {
+  async priceListTransformationCreate(bean: PriceListTransformation): Promise<PriceListTransformation> {
+    return this.#client.web.fetchJson("/commercial/priceListTransformation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -85,36 +90,36 @@ export class CommercialService {
     });
   }
 
-  async priceListTransformationDelete(id) {
-    this.#zenClient.web.fetchJson(`/commercial/priceListTransformation/${id}`, {
+  async priceListTransformationDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/commercial/priceListTransformation/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async priceListTransformationOpCalculate(id) {
-    this.#zenClient.web.fetchJson(`/commercial/priceListTransformationOpCalculate/${id}`, {
+  async priceListTransformationOpCalculate(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/commercial/priceListTransformationOpCalculate/${id}`, {
       method: "POST",
       
     });
   }
 
-  async priceListTransformationRead(search) {
-    return this.#zenClient.web.fetchJson(`/commercial/priceListTransformation?${search}`, {
+  async priceListTransformationRead(search: any): Promise<PriceListTransformation[]> {
+    return this.#client.web.fetchJson(`/commercial/priceListTransformation?${search}`, {
       method: "GET",
       
     });
   }
 
-  async priceListTransformationReadById(id) {
-    return this.#zenClient.web.fetchJson(`/commercial/priceListTransformation/${id}`, {
+  async priceListTransformationReadById(id: number): Promise<PriceListTransformation> {
+    return this.#client.web.fetchJson(`/commercial/priceListTransformation/${id}`, {
       method: "GET",
       
     });
   }
 
-  async priceListTransformationUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/commercial/priceListTransformation", {
+  async priceListTransformationUpdate(bean: PriceListTransformation): Promise<PriceListTransformation> {
+    return this.#client.web.fetchJson("/commercial/priceListTransformation", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

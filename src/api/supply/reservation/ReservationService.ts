@@ -1,13 +1,16 @@
+import { Client } from "../../../Client.js";
+import { Reservation } from "./Reservation.js";
+
 export class ReservationService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async reservationCreate(args) {
-    return this.#zenClient.web.fetchJson("/supply/reservation/reservation", {
+  async reservationCreate(args: any): Promise<Reservation> {
+    return this.#client.web.fetchJson("/supply/reservation/reservation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,29 +20,29 @@ export class ReservationService {
     });
   }
 
-  async reservationDelete(id) {
-    this.#zenClient.web.fetchJson(`/supply/reservation/reservation/${id}`, {
+  async reservationDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/supply/reservation/reservation/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async reservationRead(search) {
-    return this.#zenClient.web.fetchJson(`/supply/reservation/reservation?${search}`, {
+  async reservationRead(search: any): Promise<Reservation[]> {
+    return this.#client.web.fetchJson(`/supply/reservation/reservation?${search}`, {
       method: "GET",
       
     });
   }
 
-  async reservationReadById(id) {
-    return this.#zenClient.web.fetchJson(`/supply/reservation/reservation/${id}`, {
+  async reservationReadById(id: number): Promise<Reservation> {
+    return this.#client.web.fetchJson(`/supply/reservation/reservation/${id}`, {
       method: "GET",
       
     });
   }
 
-  async reservationUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/supply/reservation/reservation", {
+  async reservationUpdate(bean: Reservation): Promise<Reservation> {
+    return this.#client.web.fetchJson("/supply/reservation/reservation", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

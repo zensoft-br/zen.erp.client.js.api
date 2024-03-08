@@ -1,13 +1,18 @@
+import { Client } from "../../../Client.js";
+import { PrinterJobData } from "./PrinterJobData.js";
+import { Printer } from "./Printer.js";
+import { PrinterJob } from "./PrinterJob.js";
+
 export class PrintingService {
 
-  #zenClient;
+  #client: Client;
 
-  constructor(zenClient) {
-    this.#zenClient = zenClient;
+  constructor(client: Client) {
+    this.#client = client;
   }
   
-  async printerCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/printing/printer", {
+  async printerCreate(bean: Printer): Promise<Printer> {
+    return this.#client.web.fetchJson("/system/printing/printer", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,15 +22,15 @@ export class PrintingService {
     });
   }
 
-  async printerDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/printing/printer/${id}`, {
+  async printerDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/printing/printer/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async printerJobCreate(bean) {
-    return this.#zenClient.web.fetchJson("/system/printing/printerJob", {
+  async printerJobCreate(bean: any): Promise<PrinterJob> {
+    return this.#client.web.fetchJson("/system/printing/printerJob", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,99 +40,99 @@ export class PrintingService {
     });
   }
 
-  async printerJobDataReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/printing/printerJobData/${id}`, {
+  async printerJobDataReadById(id: number): Promise<PrinterJobData> {
+    return this.#client.web.fetchJson(`/system/printing/printerJobData/${id}`, {
       method: "GET",
       
     });
   }
 
-  async printerJobDelete(id) {
-    this.#zenClient.web.fetchJson(`/system/printing/printerJob/${id}`, {
+  async printerJobDelete(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/printing/printerJob/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async printerJobOpFetch(id) {
-    return this.#zenClient.web.fetchJson(`/system/printing/printerJobOpFetch/${id}`, {
+  async printerJobOpFetch(id: number): Promise<PrinterJobData> {
+    return this.#client.web.fetchJson(`/system/printing/printerJobOpFetch/${id}`, {
       method: "POST",
       
     });
   }
 
-  async printerJobOpPrinted(id) {
-    this.#zenClient.web.fetchJson(`/system/printing/printerJobOpPrinted/${id}`, {
+  async printerJobOpPrinted(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/printing/printerJobOpPrinted/${id}`, {
       method: "POST",
       
     });
   }
 
-  async printerJobOpUnlock(id) {
-    this.#zenClient.web.fetchJson(`/system/printing/printerJobOpUnlock/${id}`, {
+  async printerJobOpUnlock(id: number): Promise<void> {
+    this.#client.web.fetchJson(`/system/printing/printerJobOpUnlock/${id}`, {
       method: "POST",
       
     });
   }
 
-  async printerJobRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/printing/printerJob?${search}`, {
+  async printerJobRead(search: any): Promise<PrinterJob[]> {
+    return this.#client.web.fetchJson(`/system/printing/printerJob?${search}`, {
       method: "GET",
       
     });
   }
 
-  async printerJobReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/printing/printerJob/${id}`, {
+  async printerJobReadById(id: number): Promise<PrinterJob> {
+    return this.#client.web.fetchJson(`/system/printing/printerJob/${id}`, {
       method: "GET",
       
     });
   }
 
-  async printerOpPause(id) {
-    return this.#zenClient.web.fetchJson(`/system/printing/printerOpPause/${id}`, {
+  async printerOpPause(id: number): Promise<Printer> {
+    return this.#client.web.fetchJson(`/system/printing/printerOpPause/${id}`, {
       method: "POST",
       
     });
   }
 
-  async printerOpPauseRevert(id) {
-    return this.#zenClient.web.fetchJson(`/system/printing/printerOpPauseRevert/${id}`, {
+  async printerOpPauseRevert(id: number): Promise<Printer> {
+    return this.#client.web.fetchJson(`/system/printing/printerOpPauseRevert/${id}`, {
       method: "POST",
       
     });
   }
 
-  async printerOpPrintTestPage(id) {
-    return this.#zenClient.web.fetchJson(`/system/printing/printerOpPrintTestPage/${id}`, {
+  async printerOpPrintTestPage(id: number): Promise<PrinterJob> {
+    return this.#client.web.fetchJson(`/system/printing/printerOpPrintTestPage/${id}`, {
       method: "POST",
       
     });
   }
 
-  async printerOpPrinterJobFetch(id) {
-    return this.#zenClient.web.fetchJson(`/system/printing/printerOpPrinterJobFetch/${id}`, {
+  async printerOpPrinterJobFetch(id: number): Promise<PrinterJobData> {
+    return this.#client.web.fetchJson(`/system/printing/printerOpPrinterJobFetch/${id}`, {
       method: "POST",
       
     });
   }
 
-  async printerRead(search) {
-    return this.#zenClient.web.fetchJson(`/system/printing/printer?${search}`, {
+  async printerRead(search: any): Promise<Printer[]> {
+    return this.#client.web.fetchJson(`/system/printing/printer?${search}`, {
       method: "GET",
       
     });
   }
 
-  async printerReadById(id) {
-    return this.#zenClient.web.fetchJson(`/system/printing/printer/${id}`, {
+  async printerReadById(id: number): Promise<Printer> {
+    return this.#client.web.fetchJson(`/system/printing/printer/${id}`, {
       method: "GET",
       
     });
   }
 
-  async printerUpdate(bean) {
-    return this.#zenClient.web.fetchJson("/system/printing/printer", {
+  async printerUpdate(bean: Printer): Promise<Printer> {
+    return this.#client.web.fetchJson("/system/printing/printer", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
