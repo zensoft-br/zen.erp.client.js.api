@@ -1,6 +1,6 @@
 import { Client } from "../../../Client.js";
-import { DataSourceParameter } from "./DataSourceParameter.js";
 import { DataSource } from "./DataSource.js";
+import { DataSourceParameter } from "./DataSourceParameter.js";
 
 export class DataService {
 

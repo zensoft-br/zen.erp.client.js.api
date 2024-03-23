@@ -1,9 +1,9 @@
 import { Client } from "../../../Client.js";
-import { Watcher } from "./Watcher.js";
-import { Schedule } from "./Schedule.js";
-import { AgentParameter } from "./AgentParameter.js";
 import { Agent } from "./Agent.js";
+import { AgentParameter } from "./AgentParameter.js";
 import { AgentRun } from "./AgentRun.js";
+import { Schedule } from "./Schedule.js";
+import { Watcher } from "./Watcher.js";
 
 export class AutomationService {
 

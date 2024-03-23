@@ -1,7 +1,7 @@
 import { Client } from "../../../Client.js";
-import { PrinterJobData } from "./PrinterJobData.js";
 import { Printer } from "./Printer.js";
 import { PrinterJob } from "./PrinterJob.js";
+import { PrinterJobData } from "./PrinterJobData.js";
 
 export class PrintingService {
 

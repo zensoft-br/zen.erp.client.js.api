@@ -1,14 +1,14 @@
 import { Client } from "../../../Client.js";
 import { AccessPoint } from "./AccessPoint.js";
-import { User } from "./User.js";
 import { AccessProfile } from "./AccessProfile.js";
-import { KeyStore } from "./KeyStore.js";
-import { Group } from "./Group.js";
-import { RoleAccessPoint } from "./RoleAccessPoint.js";
-import { Role } from "./Role.js";
-import { UserPermission } from "./UserPermission.js";
 import { Grant } from "./Grant.js";
+import { Group } from "./Group.js";
+import { KeyStore } from "./KeyStore.js";
+import { Role } from "./Role.js";
+import { RoleAccessPoint } from "./RoleAccessPoint.js";
 import { Session } from "./Session.js";
+import { User } from "./User.js";
+import { UserPermission } from "./UserPermission.js";
 
 export class SecurityService {
 

@@ -1,10 +1,10 @@
 import { Client } from "../../../Client.js";
-import { InstructionResponse } from "./InstructionResponse.js";
 import { Batch } from "./Batch.js";
 import { BatchRequest } from "./BatchRequest.js";
-import { Wallet } from "./Wallet.js";
-import { InstructionRequest } from "./InstructionRequest.js";
 import { BatchResponse } from "./BatchResponse.js";
+import { InstructionRequest } from "./InstructionRequest.js";
+import { InstructionResponse } from "./InstructionResponse.js";
+import { Wallet } from "./Wallet.js";
 
 export class BillingService {
 

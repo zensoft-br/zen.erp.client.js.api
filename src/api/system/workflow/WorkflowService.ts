@@ -1,10 +1,10 @@
 import { Client } from "../../../Client.js";
-import { WorkflowNode } from "./WorkflowNode.js";
-import { WorkpieceNode } from "./WorkpieceNode.js";
-import { WorkflowConnector } from "./WorkflowConnector.js";
-import { Workflow } from "./Workflow.js";
 import { ArgsWorkflowOpCreateOrUpdate } from "./ArgsWorkflowOpCreateOrUpdate.js";
+import { Workflow } from "./Workflow.js";
+import { WorkflowConnector } from "./WorkflowConnector.js";
+import { WorkflowNode } from "./WorkflowNode.js";
 import { Workpiece } from "./Workpiece.js";
+import { WorkpieceNode } from "./WorkpieceNode.js";
 
 export class WorkflowService {
 

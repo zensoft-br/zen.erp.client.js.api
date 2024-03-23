@@ -11,12 +11,14 @@ export class InvoiceItem {
   OTHER_VALUES_INSURANCE!: string;
   OTHER_VALUES_OTHER!: string;
   id!: number;
+  accountingType!: string;
   productPacking!: ProductPacking;
   taxationRule!: TaxationRule;
   taxationOperation!: TaxationOperation;
   quantity!: number;
   unit!: Unit;
-  internalQuantity!: number;
+  physicalProductPacking!: ProductPacking;
+  physicalQuantity!: number;
   netWeightKg!: number;
   grossWeightKg!: number;
   unitValue!: number;

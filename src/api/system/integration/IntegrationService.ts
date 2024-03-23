@@ -1,8 +1,8 @@
 import { Client } from "../../../Client.js";
-import { Queue } from "./Queue.js";
-import { Topic } from "./Topic.js";
-import { Subscription } from "./Subscription.js";
 import { Message } from "./Message.js";
+import { Queue } from "./Queue.js";
+import { Subscription } from "./Subscription.js";
+import { Topic } from "./Topic.js";
 
 export class IntegrationService {
 

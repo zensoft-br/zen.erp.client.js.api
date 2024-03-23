@@ -1,7 +1,7 @@
 import { Client } from "../../Client.js";
-import { PriceListTransformation } from "./PriceListTransformation.js";
 import { PriceList } from "./PriceList.js";
 import { PriceListChangeRequest } from "./PriceListChangeRequest.js";
+import { PriceListTransformation } from "./PriceListTransformation.js";
 
 export class CommercialService {
 

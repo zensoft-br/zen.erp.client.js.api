@@ -4,7 +4,7 @@ Este projeto visa desenvolver um software cliente inovador, projetado para integ
 
 ## Instalação
 
-```js
+```bash
 npm install @zensoft-br/zenclient
 ```
 
@@ -19,7 +19,7 @@ import Z from "@zensoft-br/zenclient";
 ### Inicializando e conectando um cliente
 
 ```js
-const client = await Z.connect("tenant_or_host", "user", "password",
+const z = await Z.connect("tenant_or_host", "user", "password",
   {
     "locale": "pt-BR",
     "timeZone": "America/Sao_Paulo",
@@ -31,35 +31,35 @@ const client = await Z.connect("tenant_or_host", "user", "password",
 ### Criando um cliente a partir de um token
 
 ```js
-const client = Z.createFromToken("tenant_or_host", "token");
+const z = Z.createFromToken("tenant_or_host", "token");
 ```
 
-## Métodos `fetch` (client.web)
+## Métodos `fetch` (Z.web)
 
 Coleção de métodos otimizados para interação direta com endpoints via solicitações fetch.
 
 ### Fetch de blob
 
 ```js
-const blob = await client.web.fetchBlob("/catalog/category");
+const blob = await z.web.fetchBlob("/catalog/category");
 ```
 
 ### Fetch de json
 
 ```js
-const json = await client.web.fetchJson("/catalog/category");
+const json = await z.web.fetchJson("/catalog/category");
 ```
 
 ### Fetch de texto
 
 ```js
-const text = await client.web.fetchText("/catalog/category");
+const text = await z.web.fetchText("/catalog/category");
 ```
 
 ### Fetch de response
 
 ```js
-const response = await client.web.fetch("/catalog/category");
+const response = await z.web.fetch("/catalog/category");
 ```
 
 ### Fetch de response com validação de status 
@@ -67,7 +67,7 @@ const response = await client.web.fetch("/catalog/category");
 Este método lança um erro se o status for >= 300
 
 ```js
-const response = await client.web.fetchOk("/catalog/category");
+const response = await z.web.fetchOk("/catalog/category");
 ```
 
 ### Tratamento de response
@@ -75,8 +75,8 @@ const response = await client.web.fetchOk("/catalog/category");
 Este método lança um erro se o status for >= 300
 
 ```js
-const response = await client.web.fetch("/catalog/category");
-await client.web.handleResponse(response);
+const response = await z.web.fetch("/catalog/category");
+await z.web.handleResponse(response);
 ```
 
 ## Encapsulamento de API (Z.api)
@@ -88,11 +88,11 @@ Coleção de objetos que representam a estrutura da API e podem ser utilizados p
 As classes de serviços devem ser instanciadas com uma instância do cliente como argumento do construtor.
 
 ```js
-const catalogService = new Z.api.catalog.CatalogService(client);
+const catalogService = new Z.api.catalog.CatalogService(z);
 ```
 
 ```js
-const catalogService = new Z.api.catalog.CatalogService(client);
+const catalogService = new Z.api.catalog.CatalogService(z);
 
 let category = new Z.api.catalog.Category();
 category.code = "TOOLS";
@@ -102,7 +102,7 @@ category = await catalogService.categoryCreate(category);
 ```
 
 ```js
-const saleService = new Z.api.sale.SaleService(client);
+const saleService = new Z.api.sale.SaleService(z);
 
 let sale;
 
@@ -110,14 +110,14 @@ sale = await saleService.saleOpPrepare(1001);
 sale = await saleService.saleOpApprove(1001);
 ```
 
-## Internacionalização (client.i18n)
+## Internacionalização (Z.i18n)
 
 Conjunto avançado de funções especializadas na tradução de textos e na formatação de datas, horas e números de acordo com a nacionalidade e localização do operador.
 
 ### Traduzindo chaves de recursos
 
 ```js
-const i18n = await client.i18n; // primeira chamada retorna uma promise, próximas chamadas retornam um objeto
+const i18n = await z.i18n; // primeira chamada retorna uma promise, próximas chamadas retornam um objeto
 
 i18n.getResource("@@:/@word/yes"); // retorna "Sim" para "pt-BR", "Yes" para "en-US"
 i18n.format("@@:/catalog/category/error/notFound", "ACESSORIOS"); // retorna "Categoria ACESSORIOS não encontrada" para "pt-BR"

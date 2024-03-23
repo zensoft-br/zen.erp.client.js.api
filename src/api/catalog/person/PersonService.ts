@@ -1,11 +1,11 @@
 import { Client } from "../../../Client.js";
-import { PersonDocument } from "./PersonDocument.js";
-import { PersonBasic } from "./PersonBasic.js";
-import { PersonAddress } from "./PersonAddress.js";
 import { Person } from "./Person.js";
-import { PersonGroup } from "./PersonGroup.js";
-import { PersonContact } from "./PersonContact.js";
+import { PersonAddress } from "./PersonAddress.js";
+import { PersonBasic } from "./PersonBasic.js";
 import { PersonComment } from "./PersonComment.js";
+import { PersonContact } from "./PersonContact.js";
+import { PersonDocument } from "./PersonDocument.js";
+import { PersonGroup } from "./PersonGroup.js";
 
 export class PersonService {
 

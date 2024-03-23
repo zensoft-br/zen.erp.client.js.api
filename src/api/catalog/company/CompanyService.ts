@@ -1,6 +1,6 @@
 import { Client } from "../../../Client.js";
-import { Society } from "./Society.js";
 import { Company } from "./Company.js";
+import { Society } from "./Society.js";
 
 export class CompanyService {
 

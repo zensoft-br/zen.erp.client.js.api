@@ -1,8 +1,8 @@
 import { Client } from "../../Client.js";
-import { TaxationRule } from "./TaxationRule.js";
-import { Taxation } from "./Taxation.js";
 import { Tax } from "./Tax.js";
+import { Taxation } from "./Taxation.js";
 import { TaxationOperation } from "./TaxationOperation.js";
+import { TaxationRule } from "./TaxationRule.js";
 
 export class TaxationService {
 

@@ -1,12 +1,12 @@
 import { Client } from "../../../Client.js";
 import { CodeConversion } from "./CodeConversion.js";
-import { ProductVariant } from "./ProductVariant.js";
-import { Product } from "./Product.js";
-import { ProductUnitConversion } from "./ProductUnitConversion.js";
 import { CodeConversionList } from "./CodeConversionList.js";
-import { ProductKitComponent } from "./ProductKitComponent.js";
 import { Dimension } from "./Dimension.js";
+import { Product } from "./Product.js";
+import { ProductKitComponent } from "./ProductKitComponent.js";
 import { ProductPacking } from "./ProductPacking.js";
+import { ProductUnitConversion } from "./ProductUnitConversion.js";
+import { ProductVariant } from "./ProductVariant.js";
 import { Unit } from "./Unit.js";
 
 export class ProductService {

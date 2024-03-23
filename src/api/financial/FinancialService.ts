@@ -1,11 +1,11 @@
 import { Client } from "../../Client.js";
-import { Payable } from "./Payable.js";
-import { SettlementMethod } from "./SettlementMethod.js";
 import { Currency } from "./Currency.js";
-import { SettlementBillingTitle } from "./SettlementBillingTitle.js";
-import { Settlement } from "./Settlement.js";
 import { CurrencyExchangeRate } from "./CurrencyExchangeRate.js";
+import { Payable } from "./Payable.js";
 import { Receivable } from "./Receivable.js";
+import { Settlement } from "./Settlement.js";
+import { SettlementBillingTitle } from "./SettlementBillingTitle.js";
+import { SettlementMethod } from "./SettlementMethod.js";
 
 export class FinancialService {
 

@@ -1,14 +1,14 @@
 import { Client } from "../../../Client.js";
-import { DfeResNFeIn } from "./DfeResNFeIn.js";
-import { DfeNfeProcIn } from "./DfeNfeProcIn.js";
-import { DfeResEvento } from "./DfeResEvento.js";
-import { IncomingInvoice } from "../IncomingInvoice.js";
-import { DfeProcInutNFe } from "./DfeProcInutNFe.js";
-import { OutgoingInvoice } from "../OutgoingInvoice.js";
-import { DfeProcEventoNFeOut } from "./DfeProcEventoNFeOut.js";
-import { DfeProcEventoNFeIn } from "./DfeProcEventoNFeIn.js";
 import { Dfe } from "./Dfe.js";
+import { DfeNfeProcIn } from "./DfeNfeProcIn.js";
 import { DfeNfeProcOut } from "./DfeNfeProcOut.js";
+import { DfeProcEventoNFeIn } from "./DfeProcEventoNFeIn.js";
+import { DfeProcEventoNFeOut } from "./DfeProcEventoNFeOut.js";
+import { DfeProcInutNFe } from "./DfeProcInutNFe.js";
+import { DfeResEvento } from "./DfeResEvento.js";
+import { DfeResNFeIn } from "./DfeResNFeIn.js";
+import { IncomingInvoice } from "../IncomingInvoice.js";
+import { OutgoingInvoice } from "../OutgoingInvoice.js";
 
 export class FiscalBrService {
 

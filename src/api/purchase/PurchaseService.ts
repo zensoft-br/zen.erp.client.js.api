@@ -1,14 +1,14 @@
 import { Client } from "../../Client.js";
-import { PurchaseProfile } from "./PurchaseProfile.js";
-import { PurchaseItem } from "./PurchaseItem.js";
-import { Proposal } from "./Proposal.js";
+import { PriceList } from "./PriceList.js";
 import { PriceListItem } from "./PriceListItem.js";
-import { PurchasePayment } from "./PurchasePayment.js";
+import { Proposal } from "./Proposal.js";
 import { ProposalItem } from "./ProposalItem.js";
+import { Purchase } from "./Purchase.js";
+import { PurchaseItem } from "./PurchaseItem.js";
+import { PurchasePayment } from "./PurchasePayment.js";
+import { PurchaseProfile } from "./PurchaseProfile.js";
 import { Quote } from "./Quote.js";
 import { QuoteItem } from "./QuoteItem.js";
-import { Purchase } from "./Purchase.js";
-import { PriceList } from "./PriceList.js";
 
 export class PurchaseService {
 
@@ -351,6 +351,17 @@ export class PurchaseService {
     return this.#client.web.fetchJson(`/purchase/purchaseOpClone/${id}`, {
       method: "POST",
       
+    });
+  }
+
+  async purchaseOpCreate(args: any): Promise<Purchase> {
+    return this.#client.web.fetchJson("/purchase/purchaseOpCreate", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
+
     });
   }
 

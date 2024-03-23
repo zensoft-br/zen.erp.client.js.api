@@ -1,6 +1,6 @@
 import { Client } from "../../../Client.js";
-import { Message } from "./Message.js";
 import { MailerConfig } from "./MailerConfig.js";
+import { Message } from "./Message.js";
 
 export class MailService {
 

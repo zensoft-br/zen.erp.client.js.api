@@ -1,7 +1,7 @@
 import { Client } from "../../../Client.js";
-import { ResponseReportOpPrint } from "./ResponseReportOpPrint.js";
 import { Report } from "./Report.js";
 import { ReportTemplate } from "./ReportTemplate.js";
+import { ResponseReportOpPrint } from "./ResponseReportOpPrint.js";
 
 export class ReportService {
 
