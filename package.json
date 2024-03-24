@@ -1,6 +1,6 @@
 {
   "name": "@zensoft-br/zenclient",
-  "version": "1.0.18",
+  "version": "1.0.20",
   "description": "Javascript client for Zen Erp",
   "type": "module",
   "main": "./dist/cjs/index.js",
@@ -15,18 +15,19 @@
       "require": "./dist/cjs/api/*.js"
     }
   },
-  "types": "./dist/types/index.d.ts",
   "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/zensoft-br/zen.client.javascript.git"
   },
+  "bugs": "",
   "keywords": [
     "Zen Erp"
   ],
   "author": {
     "name": "Fabiano Bonin",
-    "email": "fabiano.bonin@zensoft.com.br"
+    "email": "fabiano.bonin@zensoft.com.br",
+    "url": ""
   },
   "files": [
     "dist"
