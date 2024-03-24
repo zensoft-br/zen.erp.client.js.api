@@ -3,13 +3,13 @@
 * Commit the project
 
 ```bash
-git commit -m "v1.0.22"
+git commit -m "v1.0.23"
 ```
 
 * Create an annotated tag
 
 ```bash
-git tag -a v1.0.22 -m "v1.0.22"
+git tag -a v1.0.23 -m "v1.0.23"
 ```
 
 * Push
@@ -24,7 +24,7 @@ git push
 git push origin --tags -f
 ```
 
-* Publish project
+* Publish the project
 
 ```bash
 npm publish
