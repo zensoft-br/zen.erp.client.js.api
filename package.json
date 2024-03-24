@@ -15,7 +15,7 @@
       "require": "./dist/cjs/api/*.js"
     }
   },
-  "types": "./dist/esm/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -35,7 +35,8 @@
   "scripts": {
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
-    "build": "npm run build:cjs && npm run build:esm",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build": "npm run build:types && npm run build:cjs && npm run build:esm",
     "prepublishOnly": "npm run build",
     "rollup": "rollup --config",
     "test": "echo \"Error: no test specified\" && exit 1",
