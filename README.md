@@ -6,7 +6,6 @@ Este projeto visa desenvolver um software cliente inovador, projetado para integ
 
 ```bash
 npm install @zensoft-br/zenclient
-npm install -D @zensoft-br/zenclient-types
 ```
 
 ## Importação

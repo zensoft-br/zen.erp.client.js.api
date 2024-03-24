@@ -2,24 +2,30 @@
 
 * Commit the project
 
-```
-git commit -m "v1.0.20"
+```bash
+git commit -m "v1.0.21"
 ```
 
 * Create an annotated tag
 
+```bash
+git tag -a v1.0.21 -m "v1.0.21"
 ```
-git tag -a v1.0.20 -m "v1.0.20"
+
+* Push
+
+```bash
+git push
 ```
 
 * Push tag to remote
 
-```
+```bash
 git push origin --tags -f
 ```
 
 * Publish project
 
-```
+```bash
 npm publish
 ```
