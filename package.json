@@ -1,6 +1,6 @@
 {
   "name": "@zensoft-br/zenclient",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Javascript client for Zen Erp",
   "type": "module",
   "main": "./dist/cjs/index.js",
