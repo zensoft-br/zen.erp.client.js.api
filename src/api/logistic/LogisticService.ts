@@ -22,7 +22,7 @@ export class LogisticService {
   }
 
   async shippingDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/logistic/shipping/${id}`, {
+    return this.#client.web.fetchJson(`/logistic/shipping/${id}`, {
       method: "DELETE",
       
     });
@@ -40,7 +40,7 @@ export class LogisticService {
   }
 
   async shippingItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/logistic/shippingItem/${id}`, {
+    return this.#client.web.fetchJson(`/logistic/shippingItem/${id}`, {
       method: "DELETE",
       
     });
@@ -72,7 +72,7 @@ export class LogisticService {
   }
 
   async shippingOpApprove(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/logistic/shippingOpApprove/${id}`, {
+    return this.#client.web.fetchJson(`/logistic/shippingOpApprove/${id}`, {
       method: "POST",
       
     });

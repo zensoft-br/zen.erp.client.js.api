@@ -25,7 +25,7 @@ export class LocationService {
   }
 
   async cityDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/location/city/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/location/city/${id}`, {
       method: "DELETE",
       
     });
@@ -79,7 +79,7 @@ export class LocationService {
   }
 
   async countryDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/location/country/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/location/country/${id}`, {
       method: "DELETE",
       
     });
@@ -131,7 +131,7 @@ export class LocationService {
   }
 
   async stateDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/location/state/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/location/state/${id}`, {
       method: "DELETE",
       
     });

@@ -35,7 +35,7 @@ export class AccountingService {
   }
 
   async accountCategoryDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/accountCategory/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/accountCategory/${id}`, {
       method: "DELETE",
       
     });
@@ -78,7 +78,7 @@ export class AccountingService {
   }
 
   async accountChartDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/accountChart/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/accountChart/${id}`, {
       method: "DELETE",
       
     });
@@ -92,7 +92,7 @@ export class AccountingService {
   }
 
   async accountChartOpImport(id: number, args: any): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/accountChartOpImport/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/accountChartOpImport/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -132,7 +132,7 @@ export class AccountingService {
   }
 
   async accountChartOpNextShortCode(id: number): Promise<number> {
-    return this.#client.web.fetchJson(`/accounting/accountChartOpNextShortCode/${id}`, {
+    return this.#client.web.fetchText(`/accounting/accountChartOpNextShortCode/${id}`, {
       method: "POST",
       
     });
@@ -175,7 +175,7 @@ export class AccountingService {
   }
 
   async accountConversionChartDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/accountConversionChart/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/accountConversionChart/${id}`, {
       method: "DELETE",
       
     });
@@ -218,7 +218,7 @@ export class AccountingService {
   }
 
   async accountConversionDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/accountConversion/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/accountConversion/${id}`, {
       method: "DELETE",
       
     });
@@ -272,7 +272,7 @@ export class AccountingService {
   }
 
   async accountDefaultDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/accountDefault/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/accountDefault/${id}`, {
       method: "DELETE",
       
     });
@@ -315,7 +315,7 @@ export class AccountingService {
   }
 
   async accountDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/account/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/account/${id}`, {
       method: "DELETE",
       
     });
@@ -382,7 +382,7 @@ export class AccountingService {
   }
 
   async fiscalYearOpClose(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/fiscalYearOpClose/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/fiscalYearOpClose/${id}`, {
       method: "POST",
       
     });
@@ -400,7 +400,7 @@ export class AccountingService {
   }
 
   async journalEntryDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/journalEntry/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/journalEntry/${id}`, {
       method: "DELETE",
       
     });
@@ -479,7 +479,7 @@ export class AccountingService {
   }
 
   async journalItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/journalItem/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/journalItem/${id}`, {
       method: "DELETE",
       
     });
@@ -543,7 +543,7 @@ export class AccountingService {
   }
 
   async resultCenterChartDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/resultCenterChart/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/resultCenterChart/${id}`, {
       method: "DELETE",
       
     });
@@ -615,7 +615,7 @@ export class AccountingService {
   }
 
   async resultCenterDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/accounting/resultCenter/${id}`, {
+    return this.#client.web.fetchJson(`/accounting/resultCenter/${id}`, {
       method: "DELETE",
       
     });

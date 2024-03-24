@@ -22,7 +22,7 @@ export class TreasuryService {
   }
 
   async accountStatementDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/financial/treasury/accountStatement/${id}`, {
+    return this.#client.web.fetchJson(`/financial/treasury/accountStatement/${id}`, {
       method: "DELETE",
       
     });

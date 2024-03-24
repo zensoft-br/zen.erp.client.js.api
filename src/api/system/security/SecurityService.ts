@@ -30,7 +30,7 @@ export class SecurityService {
   }
 
   async accessPointDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/accessPoint/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/accessPoint/${id}`, {
       method: "DELETE",
       
     });
@@ -39,7 +39,7 @@ export class SecurityService {
   async accessPointOpValidate(code: string): Promise<boolean> {
     const sp = new URLSearchParams();
     if (code) sp.set("code", String(code));
-    return this.#client.web.fetchJson(`/system/security/accessPointOpValidate?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/system/security/accessPointOpValidate?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -82,7 +82,7 @@ export class SecurityService {
   }
 
   async accessProfileDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/accessProfile/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/accessProfile/${id}`, {
       method: "DELETE",
       
     });
@@ -125,7 +125,7 @@ export class SecurityService {
   }
 
   async grantDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/grant/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/grant/${id}`, {
       method: "DELETE",
       
     });
@@ -157,7 +157,7 @@ export class SecurityService {
   }
 
   async groupDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/group/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/group/${id}`, {
       method: "DELETE",
       
     });
@@ -211,14 +211,14 @@ export class SecurityService {
   }
 
   async keyStoreDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/keyStore/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/keyStore/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async keyStoreOpReadContent(id: number): Promise<any> {
-    return this.#client.web.fetchJson(`/system/security/keyStoreOpReadContent/${id}`, {
+    return this.#client.web.fetchBlob(`/system/security/keyStoreOpReadContent/${id}`, {
       method: "POST",
       
     });
@@ -261,7 +261,7 @@ export class SecurityService {
   }
 
   async roleAccessPointDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/roleAccessPoint/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/roleAccessPoint/${id}`, {
       method: "DELETE",
       
     });
@@ -296,7 +296,7 @@ export class SecurityService {
   }
 
   async sessionDelete(id: any): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/session/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/session/${id}`, {
       method: "DELETE",
       
     });
@@ -324,7 +324,7 @@ export class SecurityService {
   }
 
   async tokenOpInvalidate(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/security/tokenOpInvalidate", {
+    return this.#client.web.fetchJson("/system/security/tokenOpInvalidate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -335,21 +335,21 @@ export class SecurityService {
   }
 
   async tokenOpInvalidateCurrent(): Promise<void> {
-    this.#client.web.fetchJson("/system/security/tokenOpInvalidateCurrent", {
+    return this.#client.web.fetchJson("/system/security/tokenOpInvalidateCurrent", {
       method: "POST",
       
     });
   }
 
   async tokenOpRenew(): Promise<string> {
-    return this.#client.web.fetchJson("/system/security/tokenOpRenew", {
+    return this.#client.web.fetchText("/system/security/tokenOpRenew", {
       method: "POST",
       
     });
   }
 
   async tokenOpRequest(args: any): Promise<string> {
-    return this.#client.web.fetchJson("/system/security/tokenOpRequest", {
+    return this.#client.web.fetchText("/system/security/tokenOpRequest", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -360,7 +360,7 @@ export class SecurityService {
   }
 
   async tokenOpRequestPermanent(args: any): Promise<string> {
-    return this.#client.web.fetchJson("/system/security/tokenOpRequestPermanent", {
+    return this.#client.web.fetchText("/system/security/tokenOpRequestPermanent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -382,21 +382,21 @@ export class SecurityService {
   }
 
   async userDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/user/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/user/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async userOpActivate(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/userOpActivate/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/userOpActivate/${id}`, {
       method: "POST",
       
     });
   }
 
   async userOpAuthenticate(args: any): Promise<boolean> {
-    return this.#client.web.fetchJson("/system/security/userOpAuthenticate", {
+    return this.#client.web.fetchText("/system/security/userOpAuthenticate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -407,7 +407,7 @@ export class SecurityService {
   }
 
   async userOpChangeEmail(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/security/userOpChangeEmail", {
+    return this.#client.web.fetchJson("/system/security/userOpChangeEmail", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -418,7 +418,7 @@ export class SecurityService {
   }
 
   async userOpChangeEmailConfirmation(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/security/userOpChangeEmailConfirmation", {
+    return this.#client.web.fetchJson("/system/security/userOpChangeEmailConfirmation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -429,7 +429,7 @@ export class SecurityService {
   }
 
   async userOpChangePassword(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/security/userOpChangePassword", {
+    return this.#client.web.fetchJson("/system/security/userOpChangePassword", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -440,7 +440,7 @@ export class SecurityService {
   }
 
   async userOpChangePasswordThird(id: number, args: any): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/userOpChangePasswordThird/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/userOpChangePasswordThird/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -451,7 +451,7 @@ export class SecurityService {
   }
 
   async userOpCreate(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/security/userOpCreate", {
+    return this.#client.web.fetchJson("/system/security/userOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -462,7 +462,7 @@ export class SecurityService {
   }
 
   async userOpCreateConfirmation(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/security/userOpCreateConfirmation", {
+    return this.#client.web.fetchJson("/system/security/userOpCreateConfirmation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -473,7 +473,7 @@ export class SecurityService {
   }
 
   async userOpCreateResend(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/security/userOpCreateResend", {
+    return this.#client.web.fetchJson("/system/security/userOpCreateResend", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -484,28 +484,28 @@ export class SecurityService {
   }
 
   async userOpGrantOptionAdd(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/userOpGrantOptionAdd/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/userOpGrantOptionAdd/${id}`, {
       method: "POST",
       
     });
   }
 
   async userOpGrantOptionRemove(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/userOpGrantOptionRemove/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/userOpGrantOptionRemove/${id}`, {
       method: "POST",
       
     });
   }
 
   async userOpInactivate(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/userOpInactivate/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/userOpInactivate/${id}`, {
       method: "POST",
       
     });
   }
 
   async userOpResetPassword(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/security/userOpResetPassword", {
+    return this.#client.web.fetchJson("/system/security/userOpResetPassword", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -516,7 +516,7 @@ export class SecurityService {
   }
 
   async userOpResetPasswordConfirmation(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/security/userOpResetPasswordConfirmation", {
+    return this.#client.web.fetchJson("/system/security/userOpResetPasswordConfirmation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -527,7 +527,7 @@ export class SecurityService {
   }
 
   async userOpUnlock(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/security/userOpUnlock/${id}`, {
+    return this.#client.web.fetchJson(`/system/security/userOpUnlock/${id}`, {
       method: "POST",
       
     });

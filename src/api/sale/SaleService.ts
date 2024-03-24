@@ -33,7 +33,7 @@ export class SaleService {
   }
 
   async priceFormationDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/priceFormation/${id}`, {
+    return this.#client.web.fetchJson(`/sale/priceFormation/${id}`, {
       method: "DELETE",
       
     });
@@ -51,7 +51,7 @@ export class SaleService {
   }
 
   async priceFormationItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/priceFormationItem/${id}`, {
+    return this.#client.web.fetchJson(`/sale/priceFormationItem/${id}`, {
       method: "DELETE",
       
     });
@@ -145,7 +145,7 @@ export class SaleService {
   }
 
   async priceListDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/priceList/${id}`, {
+    return this.#client.web.fetchJson(`/sale/priceList/${id}`, {
       method: "DELETE",
       
     });
@@ -163,7 +163,7 @@ export class SaleService {
   }
 
   async priceListItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/priceListItem/${id}`, {
+    return this.#client.web.fetchJson(`/sale/priceListItem/${id}`, {
       method: "DELETE",
       
     });
@@ -231,7 +231,7 @@ export class SaleService {
   }
 
   async quoteDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/quote/${id}`, {
+    return this.#client.web.fetchJson(`/sale/quote/${id}`, {
       method: "DELETE",
       
     });
@@ -249,7 +249,7 @@ export class SaleService {
   }
 
   async quoteItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/quoteItem/${id}`, {
+    return this.#client.web.fetchJson(`/sale/quoteItem/${id}`, {
       method: "DELETE",
       
     });
@@ -423,7 +423,7 @@ export class SaleService {
   }
 
   async saleDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/sale/${id}`, {
+    return this.#client.web.fetchJson(`/sale/sale/${id}`, {
       method: "DELETE",
       
     });
@@ -441,7 +441,7 @@ export class SaleService {
   }
 
   async saleItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/saleItem/${id}`, {
+    return this.#client.web.fetchJson(`/sale/saleItem/${id}`, {
       method: "DELETE",
       
     });
@@ -609,7 +609,7 @@ export class SaleService {
   }
 
   async salePaymentDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/salePayment/${id}`, {
+    return this.#client.web.fetchJson(`/sale/salePayment/${id}`, {
       method: "DELETE",
       
     });
@@ -652,7 +652,7 @@ export class SaleService {
   }
 
   async saleProfileDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/saleProfile/${id}`, {
+    return this.#client.web.fetchJson(`/sale/saleProfile/${id}`, {
       method: "DELETE",
       
     });
@@ -720,7 +720,7 @@ export class SaleService {
   }
 
   async salesCommissionDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/sale/salesCommission/${id}`, {
+    return this.#client.web.fetchJson(`/sale/salesCommission/${id}`, {
       method: "DELETE",
       
     });

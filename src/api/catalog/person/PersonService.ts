@@ -27,7 +27,7 @@ export class PersonService {
   }
 
   async personAddressDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/person/personAddress/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/person/personAddress/${id}`, {
       method: "DELETE",
       
     });
@@ -91,7 +91,7 @@ export class PersonService {
   }
 
   async personCommentDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/person/personComment/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/person/personComment/${id}`, {
       method: "DELETE",
       
     });
@@ -134,7 +134,7 @@ export class PersonService {
   }
 
   async personContactDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/person/personContact/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/person/personContact/${id}`, {
       method: "DELETE",
       
     });
@@ -177,7 +177,7 @@ export class PersonService {
   }
 
   async personDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/person/person/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/person/person/${id}`, {
       method: "DELETE",
       
     });
@@ -195,7 +195,7 @@ export class PersonService {
   }
 
   async personDocumentDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/person/personDocument/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/person/personDocument/${id}`, {
       method: "DELETE",
       
     });
@@ -238,7 +238,7 @@ export class PersonService {
   }
 
   async personGroupDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/person/personGroup/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/person/personGroup/${id}`, {
       method: "DELETE",
       
     });

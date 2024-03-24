@@ -27,7 +27,7 @@ export class ProductionService {
   }
 
   async bomDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/production/bom/${id}`, {
+    return this.#client.web.fetchJson(`/production/bom/${id}`, {
       method: "DELETE",
       
     });
@@ -45,7 +45,7 @@ export class ProductionService {
   }
 
   async bomItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/production/bomItem/${id}`, {
+    return this.#client.web.fetchJson(`/production/bomItem/${id}`, {
       method: "DELETE",
       
     });
@@ -120,7 +120,7 @@ export class ProductionService {
   }
 
   async operationDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/production/operation/${id}`, {
+    return this.#client.web.fetchJson(`/production/operation/${id}`, {
       method: "DELETE",
       
     });
@@ -152,7 +152,7 @@ export class ProductionService {
   }
 
   async operationTypeAccountDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/production/operationTypeAccount/${id}`, {
+    return this.#client.web.fetchJson(`/production/operationTypeAccount/${id}`, {
       method: "DELETE",
       
     });
@@ -195,7 +195,7 @@ export class ProductionService {
   }
 
   async operationTypeDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/production/operationType/${id}`, {
+    return this.#client.web.fetchJson(`/production/operationType/${id}`, {
       method: "DELETE",
       
     });
@@ -249,7 +249,7 @@ export class ProductionService {
   }
 
   async productionOrderDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/production/productionOrder/${id}`, {
+    return this.#client.web.fetchJson(`/production/productionOrder/${id}`, {
       method: "DELETE",
       
     });

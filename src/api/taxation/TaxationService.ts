@@ -24,7 +24,7 @@ export class TaxationService {
   }
 
   async taxDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/taxation/tax/${id}`, {
+    return this.#client.web.fetchJson(`/taxation/tax/${id}`, {
       method: "DELETE",
       
     });
@@ -77,7 +77,7 @@ export class TaxationService {
   }
 
   async taxationDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/taxation/taxation/${id}`, {
+    return this.#client.web.fetchJson(`/taxation/taxation/${id}`, {
       method: "DELETE",
       
     });
@@ -95,7 +95,7 @@ export class TaxationService {
   }
 
   async taxationOperationDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/taxation/taxationOperation/${id}`, {
+    return this.#client.web.fetchJson(`/taxation/taxationOperation/${id}`, {
       method: "DELETE",
       
     });
@@ -162,7 +162,7 @@ export class TaxationService {
   }
 
   async taxationRuleDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/taxation/taxationRule/${id}`, {
+    return this.#client.web.fetchJson(`/taxation/taxationRule/${id}`, {
       method: "DELETE",
       
     });

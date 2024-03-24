@@ -21,7 +21,7 @@ export class ShippingService {
   }
 
   async shipmentDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/shipping/shipment/${id}`, {
+    return this.#client.web.fetchJson(`/shipping/shipment/${id}`, {
       method: "DELETE",
       
     });

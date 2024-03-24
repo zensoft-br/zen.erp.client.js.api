@@ -12,14 +12,14 @@ export class SystemService {
   }
   
   async checkAuth(): Promise<void> {
-    this.#client.web.fetchJson("/system/checkAuth", {
+    return this.#client.web.fetchJson("/system/checkAuth", {
       method: "GET",
       
     });
   }
 
   async customPropertiesOpSet(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/customPropertiesOpSet", {
+    return this.#client.web.fetchJson("/system/customPropertiesOpSet", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -33,7 +33,7 @@ export class SystemService {
     const sp = new URLSearchParams();
     if (entity) sp.set("entity", String(entity));
     if (tag) sp.set("tag", String(tag));
-    this.#client.web.fetchJson(`/system/customTagsOpSet?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/customTagsOpSet?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -51,7 +51,7 @@ export class SystemService {
     if (id) sp.set("id", String(id));
     if (waitTime) sp.set("waitTime", String(waitTime));
     if (leaseTime) sp.set("leaseTime", String(leaseTime));
-    return this.#client.web.fetchJson(`/system/lockOpAcquire?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/system/lockOpAcquire?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -62,7 +62,7 @@ export class SystemService {
     if (id) sp.set("id", String(id));
     if (lockToken) sp.set("lockToken", String(lockToken));
     if (leaseTime) sp.set("leaseTime", String(leaseTime));
-    this.#client.web.fetchJson(`/system/lockOpExtend?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/lockOpExtend?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -72,14 +72,14 @@ export class SystemService {
     const sp = new URLSearchParams();
     if (id) sp.set("id", String(id));
     if (lockToken) sp.set("lockToken", String(lockToken));
-    this.#client.web.fetchJson(`/system/lockOpRelease?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/lockOpRelease?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
   async resourcesRead(): Promise<Object> {
-    return this.#client.web.fetchJson("/system/resources", {
+    return this.#client.web.fetchText("/system/resources", {
       method: "GET",
       
     });
@@ -97,7 +97,7 @@ export class SystemService {
   }
 
   async statusDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/status/${id}`, {
+    return this.#client.web.fetchJson(`/system/status/${id}`, {
       method: "DELETE",
       
     });

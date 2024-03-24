@@ -26,7 +26,7 @@ export class WorkflowService {
   }
 
   async workflowConnectorDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/workflow/workflowConnector/${id}`, {
+    return this.#client.web.fetchJson(`/system/workflow/workflowConnector/${id}`, {
       method: "DELETE",
       
     });
@@ -69,7 +69,7 @@ export class WorkflowService {
   }
 
   async workflowDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/workflow/workflow/${id}`, {
+    return this.#client.web.fetchJson(`/system/workflow/workflow/${id}`, {
       method: "DELETE",
       
     });
@@ -87,7 +87,7 @@ export class WorkflowService {
   }
 
   async workflowNodeDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/workflow/workflowNode/${id}`, {
+    return this.#client.web.fetchJson(`/system/workflow/workflowNode/${id}`, {
       method: "DELETE",
       
     });

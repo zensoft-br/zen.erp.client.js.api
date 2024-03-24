@@ -23,21 +23,21 @@ export class CommercialService {
   }
 
   async priceListChangeRequestDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/commercial/priceListChangeRequest/${id}`, {
+    return this.#client.web.fetchJson(`/commercial/priceListChangeRequest/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async priceListChangeRequestOpApprove(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/commercial/priceListChangeRequestOpApprove/${id}`, {
+    return this.#client.web.fetchJson(`/commercial/priceListChangeRequestOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
   async priceListChangeRequestOpReject(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/commercial/priceListChangeRequestOpReject/${id}`, {
+    return this.#client.web.fetchJson(`/commercial/priceListChangeRequestOpReject/${id}`, {
       method: "POST",
       
     });
@@ -62,7 +62,7 @@ export class CommercialService {
     if (productId) sp.set("productId", String(productId));
     if (productPackingId) sp.set("productPackingId", String(productPackingId));
     if (currencyId) sp.set("currencyId", String(currencyId));
-    return this.#client.web.fetchJson(`/commercial/priceListOpFind/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/commercial/priceListOpFind/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -91,14 +91,14 @@ export class CommercialService {
   }
 
   async priceListTransformationDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/commercial/priceListTransformation/${id}`, {
+    return this.#client.web.fetchJson(`/commercial/priceListTransformation/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async priceListTransformationOpCalculate(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/commercial/priceListTransformationOpCalculate/${id}`, {
+    return this.#client.web.fetchJson(`/commercial/priceListTransformationOpCalculate/${id}`, {
       method: "POST",
       
     });

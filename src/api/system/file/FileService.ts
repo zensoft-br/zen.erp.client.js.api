@@ -21,14 +21,14 @@ export class FileService {
   }
 
   async fileDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/file/file/${id}`, {
+    return this.#client.web.fetchJson(`/system/file/file/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async fileOpReadContent(id: number): Promise<any> {
-    return this.#client.web.fetchJson(`/system/file/fileOpReadContent/${id}`, {
+    return this.#client.web.fetchBlob(`/system/file/fileOpReadContent/${id}`, {
       method: "POST",
       
     });

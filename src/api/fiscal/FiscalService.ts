@@ -33,7 +33,7 @@ export class FiscalService {
   }
 
   async fiscalProfileOperationDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/fiscalProfileOperation/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/fiscalProfileOperation/${id}`, {
       method: "DELETE",
       
     });
@@ -86,7 +86,7 @@ export class FiscalService {
   }
 
   async fiscalProfilePersonDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/fiscalProfilePerson/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/fiscalProfilePerson/${id}`, {
       method: "DELETE",
       
     });
@@ -129,7 +129,7 @@ export class FiscalService {
   }
 
   async fiscalProfileProductDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/fiscalProfileProduct/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/fiscalProfileProduct/${id}`, {
       method: "DELETE",
       
     });
@@ -172,7 +172,7 @@ export class FiscalService {
   }
 
   async fiscalRegionDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/fiscalRegion/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/fiscalRegion/${id}`, {
       method: "DELETE",
       
     });
@@ -224,7 +224,7 @@ export class FiscalService {
   }
 
   async fiscalYearDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/fiscalYear/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/fiscalYear/${id}`, {
       method: "DELETE",
       
     });
@@ -233,7 +233,7 @@ export class FiscalService {
   async fiscalYearOpPartialClosure(id: number, date: Date): Promise<void> {
     const sp = new URLSearchParams();
     if (date) sp.set("date", String(date));
-    this.#client.web.fetchJson(`/fiscal/fiscalYearOpPartialClosure/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/fiscal/fiscalYearOpPartialClosure/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -242,21 +242,21 @@ export class FiscalService {
   async fiscalYearOpPartialClosureRevert(id: number, date: Date): Promise<void> {
     const sp = new URLSearchParams();
     if (date) sp.set("date", String(date));
-    this.#client.web.fetchJson(`/fiscal/fiscalYearOpPartialClosureRevert/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/fiscal/fiscalYearOpPartialClosureRevert/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
   async fiscalYearOpPublish(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/fiscalYearOpPublish/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/fiscalYearOpPublish/${id}`, {
       method: "POST",
       
     });
   }
 
   async fiscalYearOpPublishRevert(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/fiscalYearOpPublishRevert/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/fiscalYearOpPublishRevert/${id}`, {
       method: "POST",
       
     });
@@ -309,7 +309,7 @@ export class FiscalService {
   }
 
   async incomingInvoiceDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/incomingInvoice/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoice/${id}`, {
       method: "DELETE",
       
     });
@@ -327,7 +327,7 @@ export class FiscalService {
   }
 
   async incomingInvoiceItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/incomingInvoiceItem/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoiceItem/${id}`, {
       method: "DELETE",
       
     });
@@ -456,7 +456,7 @@ export class FiscalService {
   }
 
   async incomingInvoicePaymentDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/incomingInvoicePayment/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/incomingInvoicePayment/${id}`, {
       method: "DELETE",
       
     });
@@ -524,7 +524,7 @@ export class FiscalService {
   }
 
   async invoiceItemAccountingDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/invoiceItemAccounting/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/invoiceItemAccounting/${id}`, {
       method: "DELETE",
       
     });
@@ -549,7 +549,7 @@ export class FiscalService {
   }
 
   async invoiceReferenceDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/invoiceReference/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/invoiceReference/${id}`, {
       method: "DELETE",
       
     });
@@ -592,14 +592,14 @@ export class FiscalService {
   }
 
   async invoiceSeriesDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/invoiceSeries/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/invoiceSeries/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async invoiceSeriesOpGetNextNumber(id: number): Promise<number> {
-    return this.#client.web.fetchJson(`/fiscal/invoiceSeriesOpGetNextNumber/${id}`, {
+    return this.#client.web.fetchText(`/fiscal/invoiceSeriesOpGetNextNumber/${id}`, {
       method: "POST",
       
     });
@@ -608,7 +608,7 @@ export class FiscalService {
   async invoiceSeriesOpUpdateLastNumber(id: number, lastNumber: number): Promise<void> {
     const sp = new URLSearchParams();
     if (lastNumber) sp.set("lastNumber", String(lastNumber));
-    this.#client.web.fetchJson(`/fiscal/invoiceSeriesOpUpdateLastNumber/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/fiscal/invoiceSeriesOpUpdateLastNumber/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -651,7 +651,7 @@ export class FiscalService {
   }
 
   async outgoingInvoiceDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/outgoingInvoice/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoice/${id}`, {
       method: "DELETE",
       
     });
@@ -669,7 +669,7 @@ export class FiscalService {
   }
 
   async outgoingInvoiceItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/outgoingInvoiceItem/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceItem/${id}`, {
       method: "DELETE",
       
     });
@@ -784,7 +784,7 @@ export class FiscalService {
   }
 
   async outgoingInvoicePaymentDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/outgoingInvoicePayment/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoicePayment/${id}`, {
       method: "DELETE",
       
     });

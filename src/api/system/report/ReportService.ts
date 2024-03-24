@@ -23,7 +23,7 @@ export class ReportService {
   }
 
   async reportDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/report/report/${id}`, {
+    return this.#client.web.fetchJson(`/system/report/report/${id}`, {
       method: "DELETE",
       
     });
@@ -39,7 +39,7 @@ export class ReportService {
   }
 
   async reportOpGenerate(args: any): Promise<any> {
-    return this.#client.web.fetchJson("/system/report/reportOpGenerate", {
+    return this.#client.web.fetchBlob("/system/report/reportOpGenerate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -75,7 +75,7 @@ export class ReportService {
   }
 
   async reportTemplateOpUpdate(id: number, args: any): Promise<void> {
-    this.#client.web.fetchJson(`/system/report/reportTemplateOpUpdate/${id}`, {
+    return this.#client.web.fetchJson(`/system/report/reportTemplateOpUpdate/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

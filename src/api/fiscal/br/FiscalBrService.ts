@@ -30,7 +30,7 @@ export class FiscalBrService {
   }
 
   async dfeNfeProcInDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcIn/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcIn/${id}`, {
       method: "DELETE",
       
     });
@@ -48,7 +48,7 @@ export class FiscalBrService {
   }
 
   async dfeNfeProcInOpIncomingInvoiceCreateRevert(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcInOpIncomingInvoiceCreateRevert/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcInOpIncomingInvoiceCreateRevert/${id}`, {
       method: "POST",
       
     });
@@ -69,7 +69,7 @@ export class FiscalBrService {
   }
 
   async dfeNfeProcOutDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOut/${id}`, {
+    return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOut/${id}`, {
       method: "DELETE",
       
     });
@@ -114,7 +114,7 @@ export class FiscalBrService {
   }
 
   async dfeNfeProcOutOpDownload(args: any): Promise<any> {
-    return this.#client.web.fetchJson("/fiscal/br/dfeNfeProcOutOpDownload", {
+    return this.#client.web.fetchBlob("/fiscal/br/dfeNfeProcOutOpDownload", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -182,7 +182,7 @@ export class FiscalBrService {
   }
 
   async dfeOpReadContent(id: number): Promise<any> {
-    return this.#client.web.fetchJson(`/fiscal/br/dfeOpReadContent/${id}`, {
+    return this.#client.web.fetchBlob(`/fiscal/br/dfeOpReadContent/${id}`, {
       method: "POST",
       
     });
@@ -272,7 +272,7 @@ export class FiscalBrService {
   async dfeResNFeInOpManifest(id: number, status: string): Promise<void> {
     const sp = new URLSearchParams();
     if (status) sp.set("status", String(status));
-    this.#client.web.fetchJson(`/fiscal/br/dfeResNFeInOpManifest/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/fiscal/br/dfeResNFeInOpManifest/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -293,7 +293,7 @@ export class FiscalBrService {
   }
 
   async documentSefazOpFetch(args: any): Promise<void> {
-    this.#client.web.fetchJson("/fiscal/br/documentSefazOpFetch", {
+    return this.#client.web.fetchJson("/fiscal/br/documentSefazOpFetch", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -304,7 +304,7 @@ export class FiscalBrService {
   }
 
   async spedOpExport(args: any): Promise<any> {
-    return this.#client.web.fetchJson("/fiscal/br/spedOpExport", {
+    return this.#client.web.fetchBlob("/fiscal/br/spedOpExport", {
       method: "POST",
       headers: {
         "content-type": "application/json",

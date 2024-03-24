@@ -21,7 +21,7 @@ export class ReservationService {
   }
 
   async reservationDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/supply/reservation/reservation/${id}`, {
+    return this.#client.web.fetchJson(`/supply/reservation/reservation/${id}`, {
       method: "DELETE",
       
     });

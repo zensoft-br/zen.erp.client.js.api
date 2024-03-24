@@ -22,7 +22,7 @@ export class AuditService {
   }
 
   async logOpDeleteExpired(): Promise<number> {
-    return this.#client.web.fetchJson("/system/audit/logOpDeleteExpired", {
+    return this.#client.web.fetchText("/system/audit/logOpDeleteExpired", {
       method: "POST",
       
     });
@@ -78,7 +78,7 @@ export class AuditService {
   }
 
   async userLogDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/audit/userLog/${id}`, {
+    return this.#client.web.fetchJson(`/system/audit/userLog/${id}`, {
       method: "DELETE",
       
     });

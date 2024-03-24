@@ -26,7 +26,7 @@ export class BillingService {
   }
 
   async batchRequestDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/financial/billing/batchRequest/${id}`, {
+    return this.#client.web.fetchJson(`/financial/billing/batchRequest/${id}`, {
       method: "DELETE",
       
     });
@@ -118,7 +118,7 @@ export class BillingService {
   }
 
   async batchResponseDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/financial/billing/batchResponse/${id}`, {
+    return this.#client.web.fetchJson(`/financial/billing/batchResponse/${id}`, {
       method: "DELETE",
       
     });
@@ -185,7 +185,7 @@ export class BillingService {
   }
 
   async instructionRequestDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/financial/billing/instructionRequest/${id}`, {
+    return this.#client.web.fetchJson(`/financial/billing/instructionRequest/${id}`, {
       method: "DELETE",
       
     });
@@ -284,7 +284,7 @@ export class BillingService {
   }
 
   async instructionResponseDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/financial/billing/instructionResponse/${id}`, {
+    return this.#client.web.fetchJson(`/financial/billing/instructionResponse/${id}`, {
       method: "DELETE",
       
     });
@@ -348,14 +348,14 @@ export class BillingService {
   }
 
   async walletDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/financial/billing/wallet/${id}`, {
+    return this.#client.web.fetchJson(`/financial/billing/wallet/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async walletOpGetSequence(id: number): Promise<number> {
-    return this.#client.web.fetchJson(`/financial/billing/walletOpGetSequence/${id}`, {
+    return this.#client.web.fetchText(`/financial/billing/walletOpGetSequence/${id}`, {
       method: "POST",
       
     });

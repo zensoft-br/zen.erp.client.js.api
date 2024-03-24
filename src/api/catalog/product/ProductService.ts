@@ -29,7 +29,7 @@ export class ProductService {
   }
 
   async codeConversionDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/product/codeConversion/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/product/codeConversion/${id}`, {
       method: "DELETE",
       
     });
@@ -47,7 +47,7 @@ export class ProductService {
   }
 
   async codeConversionListDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/product/codeConversionList/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/product/codeConversionList/${id}`, {
       method: "DELETE",
       
     });
@@ -115,7 +115,7 @@ export class ProductService {
   }
 
   async dimensionDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/product/dimension/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/product/dimension/${id}`, {
       method: "DELETE",
       
     });
@@ -158,7 +158,7 @@ export class ProductService {
   }
 
   async productDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/product/product/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/product/product/${id}`, {
       method: "DELETE",
       
     });
@@ -176,7 +176,7 @@ export class ProductService {
   }
 
   async productKitComponentDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/product/productKitComponent/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/product/productKitComponent/${id}`, {
       method: "DELETE",
       
     });
@@ -222,7 +222,7 @@ export class ProductService {
     const sp = new URLSearchParams();
     if (unitId) sp.set("unitId", String(unitId));
     if (quantity) sp.set("quantity", String(quantity));
-    return this.#client.web.fetchJson(`/catalog/product/productOpConvertToUnit/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/catalog/product/productOpConvertToUnit/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -240,7 +240,7 @@ export class ProductService {
   }
 
   async productPackingDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/product/productPacking/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/product/productPacking/${id}`, {
       method: "DELETE",
       
     });
@@ -250,7 +250,7 @@ export class ProductService {
     const sp = new URLSearchParams();
     if (unitId) sp.set("unitId", String(unitId));
     if (quantity) sp.set("quantity", String(quantity));
-    return this.#client.web.fetchJson(`/catalog/product/productPackingOpConvertToUnit/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/catalog/product/productPackingOpConvertToUnit/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -307,7 +307,7 @@ export class ProductService {
   }
 
   async productUnitConversionDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/product/productUnitConversion/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/product/productUnitConversion/${id}`, {
       method: "DELETE",
       
     });
@@ -361,7 +361,7 @@ export class ProductService {
   }
 
   async productVariantDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/product/productVariant/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/product/productVariant/${id}`, {
       method: "DELETE",
       
     });
@@ -404,7 +404,7 @@ export class ProductService {
   }
 
   async unitDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/product/unit/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/product/unit/${id}`, {
       method: "DELETE",
       
     });

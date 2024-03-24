@@ -13,7 +13,7 @@ export class IntegrationService {
   }
   
   async messageDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/integration/message/${id}`, {
+    return this.#client.web.fetchJson(`/system/integration/message/${id}`, {
       method: "DELETE",
       
     });
@@ -65,7 +65,7 @@ export class IntegrationService {
   }
 
   async queueDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/integration/queue/${id}`, {
+    return this.#client.web.fetchJson(`/system/integration/queue/${id}`, {
       method: "DELETE",
       
     });
@@ -74,7 +74,7 @@ export class IntegrationService {
   async queueOpDeleteExpiredMessages(queueCode: string): Promise<void> {
     const sp = new URLSearchParams();
     if (queueCode) sp.set("queueCode", String(queueCode));
-    this.#client.web.fetchJson(`/system/integration/queueOpDeleteExpiredMessages?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/integration/queueOpDeleteExpiredMessages?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -138,7 +138,7 @@ export class IntegrationService {
   }
 
   async subscriptionDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/integration/subscription/${id}`, {
+    return this.#client.web.fetchJson(`/system/integration/subscription/${id}`, {
       method: "DELETE",
       
     });
@@ -181,14 +181,14 @@ export class IntegrationService {
   }
 
   async topicDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/integration/topic/${id}`, {
+    return this.#client.web.fetchJson(`/system/integration/topic/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async topicOpPublish(args: any): Promise<void> {
-    this.#client.web.fetchJson("/system/integration/topicOpPublish", {
+    return this.#client.web.fetchJson("/system/integration/topicOpPublish", {
       method: "POST",
       headers: {
         "content-type": "application/json",

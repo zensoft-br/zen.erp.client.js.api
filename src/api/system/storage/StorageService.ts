@@ -10,7 +10,7 @@ export class StorageService {
   async get(key: string): Promise<any> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchJson(`/system/storage/?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/system/storage/?${sp.toString()}`, {
       method: "GET",
       
     });
@@ -19,7 +19,7 @@ export class StorageService {
   async getNumber(key: string): Promise<number> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchJson(`/system/storage/number?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/system/storage/number?${sp.toString()}`, {
       method: "GET",
       
     });
@@ -28,7 +28,7 @@ export class StorageService {
   async getString(key: string): Promise<string> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchJson(`/system/storage/string?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/system/storage/string?${sp.toString()}`, {
       method: "GET",
       
     });
@@ -37,7 +37,7 @@ export class StorageService {
   async put(key: string, value: any): Promise<void> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    this.#client.web.fetchJson(`/system/storage/?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/?${sp.toString()}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -51,7 +51,7 @@ export class StorageService {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
     if (value) sp.set("value", String(value));
-    this.#client.web.fetchJson(`/system/storage/number?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/number?${sp.toString()}`, {
       method: "PUT",
       
     });
@@ -61,7 +61,7 @@ export class StorageService {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
     if (value) sp.set("value", String(value));
-    this.#client.web.fetchJson(`/system/storage/string?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/string?${sp.toString()}`, {
       method: "PUT",
       
     });
@@ -70,7 +70,7 @@ export class StorageService {
   async remove(key: string): Promise<void> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    this.#client.web.fetchJson(`/system/storage/?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/?${sp.toString()}`, {
       method: "DELETE",
       
     });
@@ -79,7 +79,7 @@ export class StorageService {
   async userGet(key: string): Promise<any> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/system/storage/user?${sp.toString()}`, {
       method: "GET",
       
     });
@@ -88,7 +88,7 @@ export class StorageService {
   async userGetNumber(key: string): Promise<number> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchJson(`/system/storage/user/number?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/system/storage/user/number?${sp.toString()}`, {
       method: "GET",
       
     });
@@ -97,7 +97,7 @@ export class StorageService {
   async userGetString(key: string): Promise<string> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchJson(`/system/storage/user/string?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/system/storage/user/string?${sp.toString()}`, {
       method: "GET",
       
     });
@@ -106,7 +106,7 @@ export class StorageService {
   async userPut(key: string, value: any): Promise<void> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    this.#client.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -120,7 +120,7 @@ export class StorageService {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
     if (value) sp.set("value", String(value));
-    this.#client.web.fetchJson(`/system/storage/user/number?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/user/number?${sp.toString()}`, {
       method: "PUT",
       
     });
@@ -130,7 +130,7 @@ export class StorageService {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
     if (value) sp.set("value", String(value));
-    this.#client.web.fetchJson(`/system/storage/user/string?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/user/string?${sp.toString()}`, {
       method: "PUT",
       
     });
@@ -139,7 +139,7 @@ export class StorageService {
   async userRemove(key: string): Promise<void> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    this.#client.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
       method: "DELETE",
       
     });

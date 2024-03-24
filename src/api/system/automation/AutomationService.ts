@@ -25,7 +25,7 @@ export class AutomationService {
   }
 
   async agentDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/automation/agent/${id}`, {
+    return this.#client.web.fetchJson(`/system/automation/agent/${id}`, {
       method: "DELETE",
       
     });
@@ -71,14 +71,14 @@ export class AutomationService {
   }
 
   async agentRunDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/automation/agentRun/${id}`, {
+    return this.#client.web.fetchJson(`/system/automation/agentRun/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async agentRunOpExecute(id: number, parameters: Object): Promise<void> {
-    this.#client.web.fetchJson(`/system/automation/agentRunOpExecute/${id}`, {
+    return this.#client.web.fetchJson(`/system/automation/agentRunOpExecute/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -136,7 +136,7 @@ export class AutomationService {
   }
 
   async scheduleDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/automation/schedule/${id}`, {
+    return this.#client.web.fetchJson(`/system/automation/schedule/${id}`, {
       method: "DELETE",
       
     });
@@ -186,7 +186,7 @@ export class AutomationService {
   }
 
   async watcherDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/automation/watcher/${id}`, {
+    return this.#client.web.fetchJson(`/system/automation/watcher/${id}`, {
       method: "DELETE",
       
     });

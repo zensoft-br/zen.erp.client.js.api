@@ -21,7 +21,7 @@ export class PluginService {
   }
 
   async pluginDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/plugin/plugin/${id}`, {
+    return this.#client.web.fetchJson(`/system/plugin/plugin/${id}`, {
       method: "DELETE",
       
     });

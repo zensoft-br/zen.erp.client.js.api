@@ -21,7 +21,7 @@ export class CatalogService {
   }
 
   async categoryDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/catalog/category/${id}`, {
+    return this.#client.web.fetchJson(`/catalog/category/${id}`, {
       method: "DELETE",
       
     });

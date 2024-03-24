@@ -21,7 +21,7 @@ export class ImageService {
   }
 
   async imageDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/system/image/image/${id}`, {
+    return this.#client.web.fetchJson(`/system/image/image/${id}`, {
       method: "DELETE",
       
     });

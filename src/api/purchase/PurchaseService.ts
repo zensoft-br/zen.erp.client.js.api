@@ -30,7 +30,7 @@ export class PurchaseService {
   }
 
   async priceListDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/purchase/priceList/${id}`, {
+    return this.#client.web.fetchJson(`/purchase/priceList/${id}`, {
       method: "DELETE",
       
     });
@@ -48,7 +48,7 @@ export class PurchaseService {
   }
 
   async priceListItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/purchase/priceListItem/${id}`, {
+    return this.#client.web.fetchJson(`/purchase/priceListItem/${id}`, {
       method: "DELETE",
       
     });
@@ -116,7 +116,7 @@ export class PurchaseService {
   }
 
   async proposalDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/purchase/proposal/${id}`, {
+    return this.#client.web.fetchJson(`/purchase/proposal/${id}`, {
       method: "DELETE",
       
     });
@@ -134,7 +134,7 @@ export class PurchaseService {
   }
 
   async proposalItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/purchase/proposalItem/${id}`, {
+    return this.#client.web.fetchJson(`/purchase/proposalItem/${id}`, {
       method: "DELETE",
       
     });
@@ -266,7 +266,7 @@ export class PurchaseService {
   }
 
   async purchaseDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/purchase/purchase/${id}`, {
+    return this.#client.web.fetchJson(`/purchase/purchase/${id}`, {
       method: "DELETE",
       
     });
@@ -284,7 +284,7 @@ export class PurchaseService {
   }
 
   async purchaseItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/purchase/purchaseItem/${id}`, {
+    return this.#client.web.fetchJson(`/purchase/purchaseItem/${id}`, {
       method: "DELETE",
       
     });
@@ -405,7 +405,7 @@ export class PurchaseService {
   }
 
   async purchasePaymentDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/purchase/purchasePayment/${id}`, {
+    return this.#client.web.fetchJson(`/purchase/purchasePayment/${id}`, {
       method: "DELETE",
       
     });
@@ -448,7 +448,7 @@ export class PurchaseService {
   }
 
   async purchaseProfileDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/purchase/purchaseProfile/${id}`, {
+    return this.#client.web.fetchJson(`/purchase/purchaseProfile/${id}`, {
       method: "DELETE",
       
     });
@@ -516,7 +516,7 @@ export class PurchaseService {
   }
 
   async quoteDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/purchase/quote/${id}`, {
+    return this.#client.web.fetchJson(`/purchase/quote/${id}`, {
       method: "DELETE",
       
     });
@@ -534,7 +534,7 @@ export class PurchaseService {
   }
 
   async quoteItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/purchase/quoteItem/${id}`, {
+    return this.#client.web.fetchJson(`/purchase/quoteItem/${id}`, {
       method: "DELETE",
       
     });

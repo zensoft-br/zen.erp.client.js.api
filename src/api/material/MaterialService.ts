@@ -55,7 +55,7 @@ export class MaterialService {
   }
 
   async addressDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/address/${id}`, {
+    return this.#client.web.fetchJson(`/material/address/${id}`, {
       method: "DELETE",
       
     });
@@ -98,7 +98,7 @@ export class MaterialService {
   }
 
   async handlingUnitDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/handlingUnit/${id}`, {
+    return this.#client.web.fetchJson(`/material/handlingUnit/${id}`, {
       method: "DELETE",
       
     });
@@ -141,7 +141,7 @@ export class MaterialService {
   }
 
   async incomingListDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/incomingList/${id}`, {
+    return this.#client.web.fetchJson(`/material/incomingList/${id}`, {
       method: "DELETE",
       
     });
@@ -159,7 +159,7 @@ export class MaterialService {
   }
 
   async incomingListItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/incomingListItem/${id}`, {
+    return this.#client.web.fetchJson(`/material/incomingListItem/${id}`, {
       method: "DELETE",
       
     });
@@ -291,7 +291,7 @@ export class MaterialService {
   }
 
   async inventoryAdjustmentDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/inventoryAdjustment/${id}`, {
+    return this.#client.web.fetchJson(`/material/inventoryAdjustment/${id}`, {
       method: "DELETE",
       
     });
@@ -344,7 +344,7 @@ export class MaterialService {
   }
 
   async inventoryCheckDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/inventoryCheck/${id}`, {
+    return this.#client.web.fetchJson(`/material/inventoryCheck/${id}`, {
       method: "DELETE",
       
     });
@@ -387,7 +387,7 @@ export class MaterialService {
   }
 
   async inventoryDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/inventory/${id}`, {
+    return this.#client.web.fetchJson(`/material/inventory/${id}`, {
       method: "DELETE",
       
     });
@@ -489,7 +489,7 @@ export class MaterialService {
   }
 
   async inventoryStockDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/inventoryStock/${id}`, {
+    return this.#client.web.fetchJson(`/material/inventoryStock/${id}`, {
       method: "DELETE",
       
     });
@@ -552,7 +552,7 @@ export class MaterialService {
   }
 
   async lotDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/lot/${id}`, {
+    return this.#client.web.fetchJson(`/material/lot/${id}`, {
       method: "DELETE",
       
     });
@@ -595,14 +595,14 @@ export class MaterialService {
   }
 
   async movingOrderDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/movingOrder/${id}`, {
+    return this.#client.web.fetchJson(`/material/movingOrder/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async movingOrderItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/movingOrderItem/${id}`, {
+    return this.#client.web.fetchJson(`/material/movingOrderItem/${id}`, {
       method: "DELETE",
       
     });
@@ -758,7 +758,7 @@ export class MaterialService {
   }
 
   async outgoingListDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/outgoingList/${id}`, {
+    return this.#client.web.fetchJson(`/material/outgoingList/${id}`, {
       method: "DELETE",
       
     });
@@ -869,7 +869,7 @@ export class MaterialService {
   }
 
   async outgoingRequestDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/outgoingRequest/${id}`, {
+    return this.#client.web.fetchJson(`/material/outgoingRequest/${id}`, {
       method: "DELETE",
       
     });
@@ -887,7 +887,7 @@ export class MaterialService {
   }
 
   async outgoingRequestItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/outgoingRequestItem/${id}`, {
+    return this.#client.web.fetchJson(`/material/outgoingRequestItem/${id}`, {
       method: "DELETE",
       
     });
@@ -1008,7 +1008,7 @@ export class MaterialService {
   }
 
   async pickingOrderDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/pickingOrder/${id}`, {
+    return this.#client.web.fetchJson(`/material/pickingOrder/${id}`, {
       method: "DELETE",
       
     });
@@ -1026,7 +1026,7 @@ export class MaterialService {
   }
 
   async pickingOrderItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/pickingOrderItem/${id}`, {
+    return this.#client.web.fetchJson(`/material/pickingOrderItem/${id}`, {
       method: "DELETE",
       
     });
@@ -1189,7 +1189,7 @@ export class MaterialService {
   }
 
   async pickingProfileDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/pickingProfile/${id}`, {
+    return this.#client.web.fetchJson(`/material/pickingProfile/${id}`, {
       method: "DELETE",
       
     });
@@ -1232,7 +1232,7 @@ export class MaterialService {
   }
 
   async qualityDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/quality/${id}`, {
+    return this.#client.web.fetchJson(`/material/quality/${id}`, {
       method: "DELETE",
       
     });
@@ -1275,7 +1275,7 @@ export class MaterialService {
   }
 
   async reservationDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/reservation/${id}`, {
+    return this.#client.web.fetchJson(`/material/reservation/${id}`, {
       method: "DELETE",
       
     });
@@ -1426,7 +1426,7 @@ export class MaterialService {
   }
 
   async reservationTargetDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/reservationTarget/${id}`, {
+    return this.#client.web.fetchJson(`/material/reservationTarget/${id}`, {
       method: "DELETE",
       
     });
@@ -1480,7 +1480,7 @@ export class MaterialService {
   }
 
   async serialDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/serial/${id}`, {
+    return this.#client.web.fetchJson(`/material/serial/${id}`, {
       method: "DELETE",
       
     });
@@ -1530,7 +1530,7 @@ export class MaterialService {
   }
 
   async stockClusterDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/stockCluster/${id}`, {
+    return this.#client.web.fetchJson(`/material/stockCluster/${id}`, {
       method: "DELETE",
       
     });
@@ -1573,7 +1573,7 @@ export class MaterialService {
   }
 
   async stockManagementDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/stockManagement/${id}`, {
+    return this.#client.web.fetchJson(`/material/stockManagement/${id}`, {
       method: "DELETE",
       
     });
@@ -1591,7 +1591,7 @@ export class MaterialService {
   }
 
   async stockManagementItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/stockManagementItem/${id}`, {
+    return this.#client.web.fetchJson(`/material/stockManagementItem/${id}`, {
       method: "DELETE",
       
     });
@@ -1623,7 +1623,7 @@ export class MaterialService {
   }
 
   async stockManagementOpImport(args: any): Promise<void> {
-    this.#client.web.fetchJson("/material/stockManagementOpImport", {
+    return this.#client.web.fetchJson("/material/stockManagementOpImport", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -1634,7 +1634,7 @@ export class MaterialService {
   }
 
   async stockManagementOpUpdateAverageDailyConsumption(args: any): Promise<void> {
-    this.#client.web.fetchJson("/material/stockManagementOpUpdateAverageDailyConsumption", {
+    return this.#client.web.fetchJson("/material/stockManagementOpUpdateAverageDailyConsumption", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -1736,7 +1736,7 @@ export class MaterialService {
   }
 
   async volumeDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/volume/${id}`, {
+    return this.#client.web.fetchJson(`/material/volume/${id}`, {
       method: "DELETE",
       
     });
@@ -1754,7 +1754,7 @@ export class MaterialService {
   }
 
   async volumeItemDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/volumeItem/${id}`, {
+    return this.#client.web.fetchJson(`/material/volumeItem/${id}`, {
       method: "DELETE",
       
     });
@@ -1822,7 +1822,7 @@ export class MaterialService {
   }
 
   async warehouseDelete(id: number): Promise<void> {
-    this.#client.web.fetchJson(`/material/warehouse/${id}`, {
+    return this.#client.web.fetchJson(`/material/warehouse/${id}`, {
       method: "DELETE",
       
     });

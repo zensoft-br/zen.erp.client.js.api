@@ -10,7 +10,19 @@ const client = await Z.connect(
   process.env.USER,
   process.env.PASSWORD);
 
-const catalogService = new Z.api.catalog.CatalogService(client);
-const categoryList = await catalogService.categoryRead();
+// const systemService = new Z.api.system.SystemService(client);
+// let lockToken = await systemService.lockOpAcquire("mylock", undefined, "5s");
+// lockToken = await systemService.lockOpAcquire("mylock", "5s", "5s");
+// await systemService.lockOpExtend("mylock", lockToken, "5s");
+// await systemService.lockOpRelease("mylock", lockToken);
 
-console.log(categoryList);
+const storageService = new Z.api.system.storage.StorageService(client);
+
+await storageService.userPutNumber("test", 1.5);
+console.log(await storageService.userGetNumber("test"));
+
+await storageService.userPutString("test", "1");
+console.log(await storageService.userGetString("test"));
+
+await storageService.userPut("test", { a: 1 });
+console.log(await storageService.userGet("test"));
