@@ -8,18 +8,61 @@ Este projeto visa desenvolver um software cliente inovador, projetado para integ
 npm install @zensoft-br/zenclient
 ```
 
+## jsconfig.json
+
+Pode ser necessário configurar o arquivo `jsconfig.json` para que o intellisense do VSCode funcione corretamente.
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@zensoft-br/zenclient": [
+        "node_modules/@zensoft-br/zenclient/dist/esm/index.js",
+      ],
+      "@zensoft-br/zenclient/*": [
+        "node_modules/@zensoft-br/zenclient/dist/esm/*",
+        "node_modules/@zensoft-br/zenclient/dist/types/*"
+      ],
+    },
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
+```
+
 ## Importação
+
+Os componentes devem ser importados individualmente, possibilitando a realização de tree-shaking no projeto.
+
+```js
+import { connect } from "@zensoft-br/zenclient";
+import { Person } from "@zensoft-br/zenclient/api/catalog/person/Person";
+
+await connect(...);
+
+const person = new Person();
+```
+
+Também é possível importar o bundle completo em uma variável e utilizar esta variável para acessar os componentes.
 
 ```js
 import * as Z from "@zensoft-br/zenclient";
+
+const z = await Z.connect(...);
+const person = new Z.api.catalog.person.Person();
 ```
+
+> Independentemente do formato utilizado, procure manter um padrão de uso no projeto para facilitar manutenções no código.
 
 ## Conexão
 
 ### Inicializando e conectando um cliente
 
 ```js
-const z = await Z.connect("tenant_or_host", "user", "password",
+import { connect } from "@zensoft-br/zenclient";
+
+const z = await connect("tenant", "user", "password",
   {
     "locale": "pt-BR",
     "timeZone": "America/Sao_Paulo",
@@ -31,10 +74,12 @@ const z = await Z.connect("tenant_or_host", "user", "password",
 ### Criando um cliente a partir de um token
 
 ```js
-const z = Z.createFromToken("tenant_or_host", "token");
+import { createFromToken } from "@zensoft-br/zenclient";
+
+const z = createFromToken("tenant_or_host", "token");
 ```
 
-## Métodos `fetch` (Z.web)
+## Métodos `fetch` (z.web)
 
 Coleção de métodos otimizados para interação direta com endpoints via solicitações fetch.
 
@@ -79,7 +124,7 @@ const response = await z.web.fetch("/catalog/category");
 await z.web.handleResponse(response);
 ```
 
-## Encapsulamento de API (Z.api)
+## Encapsulamento de API (z.api)
 
 Coleção de objetos que representam a estrutura da API e podem ser utilizados para acessar a API de forma mais simplificada e orientada a objetos.
 
@@ -88,13 +133,18 @@ Coleção de objetos que representam a estrutura da API e podem ser utilizados p
 As classes de serviços devem ser instanciadas com uma instância do cliente como argumento do construtor.
 
 ```js
-const catalogService = new Z.api.catalog.CatalogService(z);
+import { CatalogService } from "@zensoft-br/zenclient/api/catalog/CatalogService";
+
+const catalogService = new CatalogService(z);
 ```
 
 ```js
-const catalogService = new Z.api.catalog.CatalogService(z);
+import { CatalogService } from "@zensoft-br/zenclient/api/catalog/CatalogService";
+import { Category } from "@zensoft-br/zenclient/api/catalog/Category";
 
-let category = new Z.api.catalog.Category();
+const catalogService = new CatalogService(z);
+
+let category = new Category();
 category.code = "TOOLS";
 category.description = "Tools";
 
@@ -102,7 +152,9 @@ category = await catalogService.categoryCreate(category);
 ```
 
 ```js
-const saleService = new Z.api.sale.SaleService(z);
+import { SaleService } from "@zensoft-br/zenclient/api/sale/SaleService";
+
+const saleService = SaleService(z);
 
 let sale;
 
@@ -110,7 +162,7 @@ sale = await saleService.saleOpPrepare(1001);
 sale = await saleService.saleOpApprove(1001);
 ```
 
-## Internacionalização (Z.i18n)
+## Internacionalização (z.i18n)
 
 Conjunto avançado de funções especializadas na tradução de textos e na formatação de datas, horas e números de acordo com a nacionalidade e localização do operador.
 
