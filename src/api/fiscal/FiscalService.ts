@@ -599,10 +599,10 @@ export class FiscalService {
   }
 
   async invoiceSeriesOpGetNextNumber(id: number): Promise<number> {
-    return this.#client.web.fetchText(`/fiscal/invoiceSeriesOpGetNextNumber/${id}`, {
+    return Number(this.#client.web.fetchText(`/fiscal/invoiceSeriesOpGetNextNumber/${id}`, {
       method: "POST",
       
-    });
+    }));
   }
 
   async invoiceSeriesOpUpdateLastNumber(id: number, lastNumber: number): Promise<void> {

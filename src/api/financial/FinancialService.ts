@@ -57,10 +57,10 @@ export class FinancialService {
     if (destinationId) sp.set("destinationId", String(destinationId));
     if (date) sp.set("date", String(date));
     if (value) sp.set("value", String(value));
-    return this.#client.web.fetchText(`/financial/currencyExchangeRateOpConvert?${sp.toString()}`, {
+    return Number(this.#client.web.fetchText(`/financial/currencyExchangeRateOpConvert?${sp.toString()}`, {
       method: "POST",
       
-    });
+    }));
   }
 
   async currencyExchangeRateOpGetExchangeRate(sourceId: number, destinationId: number, date: Date): Promise<number> {
@@ -68,10 +68,10 @@ export class FinancialService {
     if (sourceId) sp.set("sourceId", String(sourceId));
     if (destinationId) sp.set("destinationId", String(destinationId));
     if (date) sp.set("date", String(date));
-    return this.#client.web.fetchText(`/financial/currencyExchangeRateOpGetExchangeRate?${sp.toString()}`, {
+    return Number(this.#client.web.fetchText(`/financial/currencyExchangeRateOpGetExchangeRate?${sp.toString()}`, {
       method: "POST",
       
-    });
+    }));
   }
 
   async currencyExchangeRateRead(search: any): Promise<CurrencyExchangeRate[]> {

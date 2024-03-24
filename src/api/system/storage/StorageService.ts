@@ -19,10 +19,10 @@ export class StorageService {
   async getNumber(key: string): Promise<number> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchText(`/system/storage/number?${sp.toString()}`, {
+    return Number(this.#client.web.fetchText(`/system/storage/number?${sp.toString()}`, {
       method: "GET",
       
-    });
+    }));
   }
 
   async getString(key: string): Promise<string> {
@@ -88,10 +88,10 @@ export class StorageService {
   async userGetNumber(key: string): Promise<number> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchText(`/system/storage/user/number?${sp.toString()}`, {
+    return Number(this.#client.web.fetchText(`/system/storage/user/number?${sp.toString()}`, {
       method: "GET",
       
-    });
+    }));
   }
 
   async userGetString(key: string): Promise<string> {

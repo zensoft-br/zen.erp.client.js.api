@@ -355,10 +355,10 @@ export class BillingService {
   }
 
   async walletOpGetSequence(id: number): Promise<number> {
-    return this.#client.web.fetchText(`/financial/billing/walletOpGetSequence/${id}`, {
+    return Number(this.#client.web.fetchText(`/financial/billing/walletOpGetSequence/${id}`, {
       method: "POST",
       
-    });
+    }));
   }
 
   async walletRead(search: any): Promise<Wallet[]> {
