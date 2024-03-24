@@ -9,6 +9,10 @@
     ".": {
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
+    },
+    "./api/*": {
+      "import": "./dist/esm/api/*.js",
+      "require": "./dist/cjs/api/*.js"
     }
   },
   "types": "./dist/esm/index.d.ts",

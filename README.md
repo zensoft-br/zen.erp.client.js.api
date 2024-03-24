@@ -11,7 +11,7 @@ npm install @zensoft-br/zenclient
 ## Importação
 
 ```js
-import Z from "@zensoft-br/zenclient";
+import * as Z from "@zensoft-br/zenclient";
 ```
 
 ## Conexão

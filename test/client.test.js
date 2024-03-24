@@ -1,5 +1,5 @@
 import "dotenv/config";
-import Z from "../dist/esm/index.js";
+import * as Z from "../dist/esm/index.js";
 
 // const client = Z.createFromToken(
 //   process.env.TENANT,
@@ -26,3 +26,6 @@ console.log(await storageService.userGetString("test"));
 
 await storageService.userPut("test", { a: 1 });
 console.log(await storageService.userGet("test"));
+
+const fileService = new Z.api.system.file.FileService(client);
+console.log(await fileService.fileOpReadContent(25969));
