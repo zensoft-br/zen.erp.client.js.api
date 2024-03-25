@@ -1,16 +1,16 @@
-# @zensoft-br/zenclient
+# @zensoftbr/zenerpclient
 
-Este projeto visa desenvolver um software cliente inovador, projetado para integrar-se perfeitamente com o sistema de gestão Zen ERP. Nosso objetivo é oferecer uma solução que não apenas melhore a eficiência operacional, mas também enriqueça a experiência dos desenvolvedores através de funcionalidades intuitivas e personalizadas. Ideal para desenvolvedores que desejam explorar novas possibilidades e criar soluções impactantes no ecossistema Zen ERP.
+Este projeto visa desenvolver um software cliente inovador, projetado para integrar-se perfeitamente com o sistema de gestão Zen Erp. Nosso objetivo é oferecer uma solução que não apenas melhore a eficiência operacional, mas também enriqueça a experiência dos desenvolvedores através de funcionalidades intuitivas e personalizadas. Ideal para desenvolvedores que desejam explorar novas possibilidades e criar soluções impactantes no ecossistema Zen Erp.
 
 ## Instalação
 
 ```bash
-npm install @zensoft-br/zenclient
+npm install @zensoftbr/zenerpclient
 ```
 
 ## jsconfig.json
 
-Pode ser necessário configurar o arquivo `jsconfig.json` para que o intellisense do VSCode funcione corretamente.
+Pode ser necessário configurar o arquivo `jsconfig.json` para que o intellisense do VS Code funcione corretamente.
 
 ```json
 {
@@ -25,8 +25,8 @@ Pode ser necessário configurar o arquivo `jsconfig.json` para que o intellisens
 Os componentes devem ser importados individualmente, possibilitando a realização de tree-shaking no projeto.
 
 ```js
-import { connect } from "@zensoft-br/zenclient";
-import { PersonService } from "@zensoft-br/zenclient/api/catalog/person/PersonService";
+import { connect } from "@zensoftbr/zenerpclient";
+import { PersonService } from "@zensoftbr/zenerpclient/api/catalog/person/PersonService";
 
 const z = await connect("tenant", "user", "password", {
   locale: "pt-BR",
@@ -40,7 +40,7 @@ const person = await personService.personReadById(1001);
 Também é possível importar o bundle completo em uma variável e utilizar esta variável para acessar os componentes.
 
 ```js
-import * as Z from "@zensoft-br/zenclient";
+import * as Z from "@zensoftbr/zenerpclient";
 
 const z = await Z.connect("tenant", "user", "password", {
   locale: "pt-BR",
@@ -59,7 +59,7 @@ const person = await personService.personReadById(1001);
 ### Inicializando e conectando um cliente
 
 ```js
-import { connect } from "@zensoft-br/zenclient";
+import { connect } from "@zensoftbr/zenerpclient";
 
 const z = await connect("tenant", "user", "password", {
   locale: "pt-BR",
@@ -71,7 +71,7 @@ const z = await connect("tenant", "user", "password", {
 ### Criando um cliente a partir de um token
 
 ```js
-import { createFromToken } from "@zensoft-br/zenclient";
+import { createFromToken } from "@zensoftbr/zenerpclient";
 
 const z = createFromToken("tenant", "token");
 ```
@@ -130,14 +130,14 @@ Coleção de objetos que representam a estrutura da API e podem ser utilizados p
 As classes de serviços devem ser instanciadas com uma instância do cliente como argumento do construtor.
 
 ```js
-import { CatalogService } from "@zensoft-br/zenclient/api/catalog/CatalogService";
+import { CatalogService } from "@zensoftbr/zenerpclient/api/catalog/CatalogService";
 
 const catalogService = new CatalogService(z);
 ```
 
 ```js
-import { CatalogService } from "@zensoft-br/zenclient/api/catalog/CatalogService";
-import { Category } from "@zensoft-br/zenclient/api/catalog/Category";
+import { CatalogService } from "@zensoftbr/zenerpclient/api/catalog/CatalogService";
+import { Category } from "@zensoftbr/zenerpclient/api/catalog/Category";
 
 const catalogService = new CatalogService(z);
 
@@ -149,7 +149,7 @@ category = await catalogService.categoryCreate(category);
 ```
 
 ```js
-import { SaleService } from "@zensoft-br/zenclient/api/sale/SaleService";
+import { SaleService } from "@zensoftbr/zenerpclient/api/sale/SaleService";
 
 const saleService = SaleService(z);
 

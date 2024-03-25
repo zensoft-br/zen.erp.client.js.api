@@ -4,13 +4,13 @@
 
 ```bash
 git stage *
-git commit -m "v1.0.24"
+git commit -m "v1.0.0"
 ```
 
 * Create an annotated tag
 
 ```bash
-git tag -a v1.0.24 -m "v1.0.24"
+git tag -a v1.0.0 -m "v1.0.0"
 ```
 
 * Push

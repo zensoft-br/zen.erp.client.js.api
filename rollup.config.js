@@ -24,7 +24,7 @@ export default {
     //   // file: "dist/global/zen.bundle.js",
     //   file: "dist/iife/bundle.js",
     //   format: "iife",
-    //   name: "zenclient",
+    //   name: "zenerpclient",
     //   plugins: [
     //     // terser(),
     //   ],
