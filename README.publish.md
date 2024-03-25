@@ -3,13 +3,14 @@
 * Commit the project
 
 ```bash
-git commit -m "v1.0.23"
+git stage *
+git commit -m "v1.0.24"
 ```
 
 * Create an annotated tag
 
 ```bash
-git tag -a v1.0.23 -m "v1.0.23"
+git tag -a v1.0.24 -m "v1.0.24"
 ```
 
 * Push

@@ -1,21 +1,22 @@
 {
   "name": "@zensoft-br/zenclient",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "Javascript client for Zen Erp",
   "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
       "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "default": "./dist/esm/index.js"
     },
-    "./api/*": {
-      "import": "./dist/esm/api/*.js",
-      "require": "./dist/cjs/api/*.js"
+    "./*": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/*.js",
+      "import": "./dist/esm/*.js",
+      "default": "./dist/esm/*.js"
     }
   },
-  "types": "./dist/types/index.d.ts",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
   },
   "bugs": "",
   "keywords": [
-    "Zen Erp"
+    "Zen Erp",
+    "Zen Soft"
   ],
   "author": {
     "name": "Fabiano Bonin",

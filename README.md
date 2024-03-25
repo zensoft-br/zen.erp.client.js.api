@@ -15,19 +15,8 @@ Pode ser necessário configurar o arquivo `jsconfig.json` para que o intellisens
 ```json
 {
   "compilerOptions": {
-    "paths": {
-      "@zensoft-br/zenclient": [
-        "node_modules/@zensoft-br/zenclient/dist/esm/index.js",
-      ],
-      "@zensoft-br/zenclient/*": [
-        "node_modules/@zensoft-br/zenclient/dist/esm/*",
-        "node_modules/@zensoft-br/zenclient/dist/types/*"
-      ],
-    },
-  },
-  "exclude": [
-    "node_modules"
-  ]
+    "module": "NodeNext"
+  }
 }
 ```
 
@@ -37,11 +26,15 @@ Os componentes devem ser importados individualmente, possibilitando a realizaç�
 
 ```js
 import { connect } from "@zensoft-br/zenclient";
-import { Person } from "@zensoft-br/zenclient/api/catalog/person/Person";
+import { PersonService } from "@zensoft-br/zenclient/api/catalog/person/PersonService";
 
-await connect(...);
+const z = await connect("tenant", "user", "password", {
+  locale: "pt-BR",
+  timeZone: "America/Sao_Paulo",
+});
 
-const person = new Person();
+const personService = new PersonService(z);
+const person = await personService.personReadById(1001);
 ```
 
 Também é possível importar o bundle completo em uma variável e utilizar esta variável para acessar os componentes.
@@ -49,10 +42,16 @@ Também é possível importar o bundle completo em uma variável e utilizar esta
 ```js
 import * as Z from "@zensoft-br/zenclient";
 
-const z = await Z.connect(...);
-const person = new Z.api.catalog.person.Person();
+const z = await Z.connect("tenant", "user", "password", {
+  locale: "pt-BR",
+  timeZone: "America/Sao_Paulo",
+});
+
+const personService = new Z.api.catalog.person.PersonService(z);
+const person = await personService.personReadById(1001);
 ```
 
+> **Atenção**
 > Independentemente do formato utilizado, procure manter um padrão de uso no projeto para facilitar manutenções no código.
 
 ## Conexão
@@ -62,12 +61,10 @@ const person = new Z.api.catalog.person.Person();
 ```js
 import { connect } from "@zensoft-br/zenclient";
 
-const z = await connect("tenant", "user", "password",
-  {
-    "locale": "pt-BR",
-    "timeZone": "America/Sao_Paulo",
-  },
-);
+const z = await connect("tenant", "user", "password", {
+  locale: "pt-BR",
+  timeZone: "America/Sao_Paulo",
+});
 
 ```
 
@@ -76,7 +73,7 @@ const z = await connect("tenant", "user", "password",
 ```js
 import { createFromToken } from "@zensoft-br/zenclient";
 
-const z = createFromToken("tenant_or_host", "token");
+const z = createFromToken("tenant", "token");
 ```
 
 ## Métodos `fetch` (z.web)
