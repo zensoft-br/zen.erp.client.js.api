@@ -1,40 +1,33 @@
 import resolver from "@rollup/plugin-node-resolve";
+import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 
 export default {
-  input: "src/index.js",
+  input: "src/index.ts",
   output: [
-    // {
-    //   file: "dist/cjs/bundle.js",
-    //   format: "cjs",
-    // },
     {
-      dir: "dist/es",
-      format: "es",
+      file: "dist/iife/zenerpclient.js",
+      format: "iife",
       sourcemap: true,
-      // plugins: [
-      //   typescript(),
-      //   resolver({
-      //     extensions: [".js", ".ts"],
-      //   }),
-      //   // terser(), // Optional, for minification
-      // ],
+      name: "zenerpclient",
+      plugins: [
+        terser(),
+      ],
     },
-    // {
-    //   // file: "dist/global/zen.bundle.js",
-    //   file: "dist/iife/bundle.js",
-    //   format: "iife",
-    //   name: "zenerpclient",
-    //   plugins: [
-    //     // terser(),
-    //   ],
-    // },
   ],
   plugins: [
-    typescript(),
     resolver({
       extensions: [".js", ".ts"],
     }),
-    // terser(), // Optional, for minification
+    typescript({
+      compilerOptions: {
+        target: "es2022",
+      },
+    }),
   ],
+  // onwarn(warning) {
+  //   if (warning.code !== "CIRCULAR_DEPENDENCY") {
+  //     console.error(`(!) ${warning.message}`);
+  //   }
+  // },
 };
