@@ -1,6 +1,6 @@
 import { Account } from "./Account.js";
 import { AccountComplement } from "./AccountComplement.js";
-import { FiscalProfileProduct } from "../fiscal/FiscalProfileProduct.js";
+import { FiscalProfileProduct } from "../../fiscal/FiscalProfileProduct.js";
 
 export class AssetTag {
   id!: number;

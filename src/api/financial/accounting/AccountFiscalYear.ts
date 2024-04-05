@@ -1,5 +1,5 @@
 import { AccountChart } from "./AccountChart.js";
-import { FiscalYear } from "../fiscal/FiscalYear.js";
+import { FiscalYear } from "../../fiscal/FiscalYear.js";
 
 export class AccountFiscalYear {
   fiscalYear!: FiscalYear;

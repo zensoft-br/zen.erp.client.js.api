@@ -1,6 +1,6 @@
-import { Account } from "../accounting/Account.js";
-import { AccountComplement } from "../accounting/AccountComplement.js";
-import { AssetTag } from "../accounting/AssetTag.js";
+import { Account } from "../financial/accounting/Account.js";
+import { AccountComplement } from "../financial/accounting/AccountComplement.js";
+import { AssetTag } from "../financial/accounting/AssetTag.js";
 import { OutgoingInvoice } from "./OutgoingInvoice.js";
 import { ProductPacking } from "../catalog/product/ProductPacking.js";
 import { TaxationOperation } from "../taxation/TaxationOperation.js";

@@ -1,4 +1,4 @@
-import { Client } from "../../Client.js";
+import { Client } from "../../../Client.js";
 import { Account } from "./Account.js";
 import { AccountCategory } from "./AccountCategory.js";
 import { AccountChart } from "./AccountChart.js";
@@ -24,7 +24,7 @@ export class AccountingService {
   }
   
   async accountCategoryCreate(bean: AccountCategory): Promise<AccountCategory> {
-    return this.#client.web.fetchJson("/accounting/accountCategory", {
+    return this.#client.web.fetchJson("/financial/accounting/accountCategory", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,28 +35,28 @@ export class AccountingService {
   }
 
   async accountCategoryDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/accountCategory/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountCategory/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async accountCategoryRead(search: any): Promise<AccountCategory[]> {
-    return this.#client.web.fetchJson(`/accounting/accountCategory?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountCategory?${search}`, {
       method: "GET",
       
     });
   }
 
   async accountCategoryReadById(id: number): Promise<AccountCategory> {
-    return this.#client.web.fetchJson(`/accounting/accountCategory/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountCategory/${id}`, {
       method: "GET",
       
     });
   }
 
   async accountCategoryUpdate(bean: AccountCategory): Promise<AccountCategory> {
-    return this.#client.web.fetchJson("/accounting/accountCategory", {
+    return this.#client.web.fetchJson("/financial/accounting/accountCategory", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -67,7 +67,7 @@ export class AccountingService {
   }
 
   async accountChartCreate(bean: AccountChart): Promise<AccountChart> {
-    return this.#client.web.fetchJson("/accounting/accountChart", {
+    return this.#client.web.fetchJson("/financial/accounting/accountChart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -78,21 +78,21 @@ export class AccountingService {
   }
 
   async accountChartDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/accountChart/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountChart/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async accountChartOpClone(id: number): Promise<AccountChart> {
-    return this.#client.web.fetchJson(`/accounting/accountChartOpClone/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountChartOpClone/${id}`, {
       method: "POST",
       
     });
   }
 
   async accountChartOpImport(id: number, args: any): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/accountChartOpImport/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountChartOpImport/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -106,7 +106,7 @@ export class AccountingService {
     const sp = new URLSearchParams();
     if (level) sp.set("level", String(level));
     if (digits) sp.set("digits", String(digits));
-    return this.#client.web.fetchJson(`/accounting/accountChartOpLevelCreate/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountChartOpLevelCreate/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -115,7 +115,7 @@ export class AccountingService {
   async accountChartOpLevelDelete(id: number, level: number): Promise<AccountChart> {
     const sp = new URLSearchParams();
     if (level) sp.set("level", String(level));
-    return this.#client.web.fetchJson(`/accounting/accountChartOpLevelDelete/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountChartOpLevelDelete/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -125,35 +125,35 @@ export class AccountingService {
     const sp = new URLSearchParams();
     if (level) sp.set("level", String(level));
     if (digits) sp.set("digits", String(digits));
-    return this.#client.web.fetchJson(`/accounting/accountChartOpLevelUpdate/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountChartOpLevelUpdate/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
   async accountChartOpNextShortCode(id: number): Promise<number> {
-    return Number(this.#client.web.fetchText(`/accounting/accountChartOpNextShortCode/${id}`, {
+    return Number(this.#client.web.fetchText(`/financial/accounting/accountChartOpNextShortCode/${id}`, {
       method: "POST",
       
     }));
   }
 
   async accountChartRead(search: any): Promise<AccountChart[]> {
-    return this.#client.web.fetchJson(`/accounting/accountChart?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountChart?${search}`, {
       method: "GET",
       
     });
   }
 
   async accountChartReadById(id: number): Promise<AccountChart> {
-    return this.#client.web.fetchJson(`/accounting/accountChart/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountChart/${id}`, {
       method: "GET",
       
     });
   }
 
   async accountChartUpdate(bean: AccountChart): Promise<AccountChart> {
-    return this.#client.web.fetchJson("/accounting/accountChart", {
+    return this.#client.web.fetchJson("/financial/accounting/accountChart", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -164,7 +164,7 @@ export class AccountingService {
   }
 
   async accountConversionChartCreate(bean: AccountConversionChart): Promise<AccountConversionChart> {
-    return this.#client.web.fetchJson("/accounting/accountConversionChart", {
+    return this.#client.web.fetchJson("/financial/accounting/accountConversionChart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -175,28 +175,28 @@ export class AccountingService {
   }
 
   async accountConversionChartDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/accountConversionChart/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountConversionChart/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async accountConversionChartRead(search: any): Promise<AccountConversionChart[]> {
-    return this.#client.web.fetchJson(`/accounting/accountConversionChart?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountConversionChart?${search}`, {
       method: "GET",
       
     });
   }
 
   async accountConversionChartReadById(id: number): Promise<AccountConversionChart> {
-    return this.#client.web.fetchJson(`/accounting/accountConversionChart/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountConversionChart/${id}`, {
       method: "GET",
       
     });
   }
 
   async accountConversionChartUpdate(bean: AccountConversionChart): Promise<AccountConversionChart> {
-    return this.#client.web.fetchJson("/accounting/accountConversionChart", {
+    return this.#client.web.fetchJson("/financial/accounting/accountConversionChart", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -207,7 +207,7 @@ export class AccountingService {
   }
 
   async accountConversionCreate(bean: AccountConversion): Promise<AccountConversion> {
-    return this.#client.web.fetchJson("/accounting/accountConversion", {
+    return this.#client.web.fetchJson("/financial/accounting/accountConversion", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -218,28 +218,28 @@ export class AccountingService {
   }
 
   async accountConversionDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/accountConversion/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountConversion/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async accountConversionRead(search: any): Promise<AccountConversion[]> {
-    return this.#client.web.fetchJson(`/accounting/accountConversion?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountConversion?${search}`, {
       method: "GET",
       
     });
   }
 
   async accountConversionReadById(id: number): Promise<AccountConversion> {
-    return this.#client.web.fetchJson(`/accounting/accountConversion/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountConversion/${id}`, {
       method: "GET",
       
     });
   }
 
   async accountConversionUpdate(bean: AccountConversion): Promise<AccountConversion> {
-    return this.#client.web.fetchJson("/accounting/accountConversion", {
+    return this.#client.web.fetchJson("/financial/accounting/accountConversion", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -250,7 +250,7 @@ export class AccountingService {
   }
 
   async accountCreate(bean: Account): Promise<Account> {
-    return this.#client.web.fetchJson("/accounting/account", {
+    return this.#client.web.fetchJson("/financial/accounting/account", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -261,7 +261,7 @@ export class AccountingService {
   }
 
   async accountDefaultCreate(bean: AccountDefault): Promise<AccountDefault> {
-    return this.#client.web.fetchJson("/accounting/accountDefault", {
+    return this.#client.web.fetchJson("/financial/accounting/accountDefault", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -272,14 +272,14 @@ export class AccountingService {
   }
 
   async accountDefaultDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/accountDefault/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountDefault/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async accountDefaultOpRead(args: any): Promise<Account> {
-    return this.#client.web.fetchJson("/accounting/accountDefaultOpRead", {
+    return this.#client.web.fetchJson("/financial/accounting/accountDefaultOpRead", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -290,21 +290,21 @@ export class AccountingService {
   }
 
   async accountDefaultRead(search: any): Promise<AccountDefault[]> {
-    return this.#client.web.fetchJson(`/accounting/accountDefault?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountDefault?${search}`, {
       method: "GET",
       
     });
   }
 
   async accountDefaultReadById(id: number): Promise<AccountDefault> {
-    return this.#client.web.fetchJson(`/accounting/accountDefault/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountDefault/${id}`, {
       method: "GET",
       
     });
   }
 
   async accountDefaultUpdate(bean: AccountDefault): Promise<AccountDefault> {
-    return this.#client.web.fetchJson("/accounting/accountDefault", {
+    return this.#client.web.fetchJson("/financial/accounting/accountDefault", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -315,35 +315,35 @@ export class AccountingService {
   }
 
   async accountDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/account/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/account/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async accountFiscalYearRead(search: any): Promise<AccountFiscalYear[]> {
-    return this.#client.web.fetchJson(`/accounting/accountFiscalYear?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountFiscalYear?${search}`, {
       method: "GET",
       
     });
   }
 
   async accountRead(search: any): Promise<Account[]> {
-    return this.#client.web.fetchJson(`/accounting/account?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/account?${search}`, {
       method: "GET",
       
     });
   }
 
   async accountReadById(id: number): Promise<Account> {
-    return this.#client.web.fetchJson(`/accounting/account/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/account/${id}`, {
       method: "GET",
       
     });
   }
 
   async accountUpdate(bean: Account): Promise<Account> {
-    return this.#client.web.fetchJson("/accounting/account", {
+    return this.#client.web.fetchJson("/financial/accounting/account", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -354,42 +354,42 @@ export class AccountingService {
   }
 
   async assetInventoryCurrentRead(search: any): Promise<AssetInventory[]> {
-    return this.#client.web.fetchJson(`/accounting/assetInventoryCurrent?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/assetInventoryCurrent?${search}`, {
       method: "GET",
       
     });
   }
 
   async assetInventoryRead(search: any): Promise<AssetInventory[]> {
-    return this.#client.web.fetchJson(`/accounting/assetInventory?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/assetInventory?${search}`, {
       method: "GET",
       
     });
   }
 
   async assetTagRead(search: any): Promise<AssetTag[]> {
-    return this.#client.web.fetchJson(`/accounting/assetTag?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/assetTag?${search}`, {
       method: "GET",
       
     });
   }
 
   async assetTagReadById(id: number): Promise<AssetTag> {
-    return this.#client.web.fetchJson(`/accounting/assetTag/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/assetTag/${id}`, {
       method: "GET",
       
     });
   }
 
   async fiscalYearOpClose(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/fiscalYearOpClose/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/fiscalYearOpClose/${id}`, {
       method: "POST",
       
     });
   }
 
   async journalEntryCreate(bean: JournalEntry): Promise<JournalEntry> {
-    return this.#client.web.fetchJson("/accounting/journalEntry", {
+    return this.#client.web.fetchJson("/financial/accounting/journalEntry", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -400,14 +400,14 @@ export class AccountingService {
   }
 
   async journalEntryDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/journalEntry/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/journalEntry/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async journalEntryOpCreate(args: any): Promise<JournalEntry> {
-    return this.#client.web.fetchJson("/accounting/journalEntryOpCreate", {
+    return this.#client.web.fetchJson("/financial/accounting/journalEntryOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -418,21 +418,21 @@ export class AccountingService {
   }
 
   async journalEntryOpPublish(id: number): Promise<JournalEntry> {
-    return this.#client.web.fetchJson(`/accounting/journalEntryOpPublish/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/journalEntryOpPublish/${id}`, {
       method: "POST",
       
     });
   }
 
   async journalEntryOpPublishRevert(id: number): Promise<JournalEntry> {
-    return this.#client.web.fetchJson(`/accounting/journalEntryOpPublishRevert/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/journalEntryOpPublishRevert/${id}`, {
       method: "POST",
       
     });
   }
 
   async journalEntryOpUpdate(args: any): Promise<JournalEntry> {
-    return this.#client.web.fetchJson("/accounting/journalEntryOpUpdate", {
+    return this.#client.web.fetchJson("/financial/accounting/journalEntryOpUpdate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -443,21 +443,21 @@ export class AccountingService {
   }
 
   async journalEntryRead(search: any): Promise<JournalEntry[]> {
-    return this.#client.web.fetchJson(`/accounting/journalEntry?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/journalEntry?${search}`, {
       method: "GET",
       
     });
   }
 
   async journalEntryReadById(id: number): Promise<JournalEntry> {
-    return this.#client.web.fetchJson(`/accounting/journalEntry/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/journalEntry/${id}`, {
       method: "GET",
       
     });
   }
 
   async journalEntryUpdate(bean: JournalEntry): Promise<JournalEntry> {
-    return this.#client.web.fetchJson("/accounting/journalEntry", {
+    return this.#client.web.fetchJson("/financial/accounting/journalEntry", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -468,7 +468,7 @@ export class AccountingService {
   }
 
   async journalItemCreate(bean: JournalItem): Promise<JournalItem> {
-    return this.#client.web.fetchJson("/accounting/journalItem", {
+    return this.#client.web.fetchJson("/financial/accounting/journalItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -479,28 +479,28 @@ export class AccountingService {
   }
 
   async journalItemDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/journalItem/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/journalItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async journalItemRead(search: any): Promise<JournalItem[]> {
-    return this.#client.web.fetchJson(`/accounting/journalItem?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/journalItem?${search}`, {
       method: "GET",
       
     });
   }
 
   async journalItemReadById(id: number): Promise<JournalItem> {
-    return this.#client.web.fetchJson(`/accounting/journalItem/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/journalItem/${id}`, {
       method: "GET",
       
     });
   }
 
   async journalItemUpdate(bean: JournalItem): Promise<JournalItem> {
-    return this.#client.web.fetchJson("/accounting/journalItem", {
+    return this.#client.web.fetchJson("/financial/accounting/journalItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -511,28 +511,28 @@ export class AccountingService {
   }
 
   async ledgerItemBalanceRead(search: any): Promise<LedgerItemBalance[]> {
-    return this.#client.web.fetchJson(`/accounting/ledgerItemBalance?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/ledgerItemBalance?${search}`, {
       method: "GET",
       
     });
   }
 
   async ledgerItemRead(search: any): Promise<LedgerItem[]> {
-    return this.#client.web.fetchJson(`/accounting/ledgerItem?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/ledgerItem?${search}`, {
       method: "GET",
       
     });
   }
 
   async ledgerItemReadById(id: number): Promise<LedgerItem> {
-    return this.#client.web.fetchJson(`/accounting/ledgerItem/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/ledgerItem/${id}`, {
       method: "GET",
       
     });
   }
 
   async resultCenterChartCreate(bean: ResultCenterChart): Promise<ResultCenterChart> {
-    return this.#client.web.fetchJson("/accounting/resultCenterChart", {
+    return this.#client.web.fetchJson("/financial/accounting/resultCenterChart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -543,7 +543,7 @@ export class AccountingService {
   }
 
   async resultCenterChartDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/resultCenterChart/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/resultCenterChart/${id}`, {
       method: "DELETE",
       
     });
@@ -553,7 +553,7 @@ export class AccountingService {
     const sp = new URLSearchParams();
     if (level) sp.set("level", String(level));
     if (digits) sp.set("digits", String(digits));
-    return this.#client.web.fetchJson(`/accounting/resultCenterChartOpLevelCreate/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/resultCenterChartOpLevelCreate/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -562,7 +562,7 @@ export class AccountingService {
   async resultCenterChartOpLevelDelete(id: number, level: number): Promise<ResultCenterChart> {
     const sp = new URLSearchParams();
     if (level) sp.set("level", String(level));
-    return this.#client.web.fetchJson(`/accounting/resultCenterChartOpLevelDelete/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/resultCenterChartOpLevelDelete/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -572,28 +572,28 @@ export class AccountingService {
     const sp = new URLSearchParams();
     if (level) sp.set("level", String(level));
     if (digits) sp.set("digits", String(digits));
-    return this.#client.web.fetchJson(`/accounting/resultCenterChartOpLevelUpdate/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/resultCenterChartOpLevelUpdate/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
   }
 
   async resultCenterChartRead(search: any): Promise<ResultCenterChart[]> {
-    return this.#client.web.fetchJson(`/accounting/resultCenterChart?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/resultCenterChart?${search}`, {
       method: "GET",
       
     });
   }
 
   async resultCenterChartReadById(id: number): Promise<ResultCenterChart> {
-    return this.#client.web.fetchJson(`/accounting/resultCenterChart/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/resultCenterChart/${id}`, {
       method: "GET",
       
     });
   }
 
   async resultCenterChartUpdate(bean: ResultCenterChart): Promise<ResultCenterChart> {
-    return this.#client.web.fetchJson("/accounting/resultCenterChart", {
+    return this.#client.web.fetchJson("/financial/accounting/resultCenterChart", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -604,7 +604,7 @@ export class AccountingService {
   }
 
   async resultCenterCreate(bean: ResultCenter): Promise<ResultCenter> {
-    return this.#client.web.fetchJson("/accounting/resultCenter", {
+    return this.#client.web.fetchJson("/financial/accounting/resultCenter", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -615,28 +615,28 @@ export class AccountingService {
   }
 
   async resultCenterDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/accounting/resultCenter/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/resultCenter/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async resultCenterRead(search: any): Promise<ResultCenter[]> {
-    return this.#client.web.fetchJson(`/accounting/resultCenter?${search}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/resultCenter?${search}`, {
       method: "GET",
       
     });
   }
 
   async resultCenterReadById(id: number): Promise<ResultCenter> {
-    return this.#client.web.fetchJson(`/accounting/resultCenter/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/resultCenter/${id}`, {
       method: "GET",
       
     });
   }
 
   async resultCenterUpdate(bean: ResultCenter): Promise<ResultCenter> {
-    return this.#client.web.fetchJson("/accounting/resultCenter", {
+    return this.#client.web.fetchJson("/financial/accounting/resultCenter", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

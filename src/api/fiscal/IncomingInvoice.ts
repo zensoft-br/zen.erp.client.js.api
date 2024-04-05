@@ -3,7 +3,7 @@ import { FiscalProfileOperation } from "./FiscalProfileOperation.js";
 import { FiscalProfilePerson } from "./FiscalProfilePerson.js";
 import { IncomingList } from "../material/IncomingList.js";
 import { InvoiceSeries } from "./InvoiceSeries.js";
-import { JournalEntry } from "../accounting/JournalEntry.js";
+import { JournalEntry } from "../financial/accounting/JournalEntry.js";
 import { Person } from "../catalog/person/Person.js";
 import { PersonAddress } from "../catalog/person/PersonAddress.js";
 import { Workflow } from "../system/workflow/Workflow.js";

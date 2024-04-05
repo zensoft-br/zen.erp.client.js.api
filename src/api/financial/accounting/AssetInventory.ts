@@ -1,8 +1,8 @@
 import { AssetTag } from "./AssetTag.js";
-import { ProductPacking } from "../catalog/product/ProductPacking.js";
-import { StockCluster } from "../material/StockCluster.js";
+import { ProductPacking } from "../../catalog/product/ProductPacking.js";
+import { StockCluster } from "../../material/StockCluster.js";
 
-export class AssetInventoryCurrent {
+export class AssetInventory {
   id!: number;
   stockCluster!: StockCluster;
   productPacking!: ProductPacking;

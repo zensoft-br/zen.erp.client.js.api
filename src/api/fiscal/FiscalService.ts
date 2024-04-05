@@ -444,6 +444,17 @@ export class FiscalService {
     });
   }
 
+  async incomingInvoiceOpUpdate(bean: IncomingInvoice): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoiceOpUpdate", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
   async incomingInvoicePaymentCreate(bean: InvoicePayment): Promise<InvoicePayment> {
     return this.#client.web.fetchJson("/fiscal/incomingInvoicePayment", {
       method: "POST",
@@ -534,6 +545,24 @@ export class FiscalService {
     return this.#client.web.fetchJson(`/fiscal/invoiceItemAccounting?${search}`, {
       method: "GET",
       
+    });
+  }
+
+  async invoiceItemAccountingReadById(id: number): Promise<InvoiceItemAccounting> {
+    return this.#client.web.fetchJson(`/fiscal/invoiceItemAccounting/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async invoiceItemAccountingUpdate(bean: InvoiceItemAccounting): Promise<InvoiceItemAccounting> {
+    return this.#client.web.fetchJson("/fiscal/invoiceItemAccounting", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
     });
   }
 
@@ -768,6 +797,17 @@ export class FiscalService {
         "content-type": "application/json",
         },
         body: JSON.stringify(args),
+
+    });
+  }
+
+  async outgoingInvoiceOpUpdate(bean: OutgoingInvoice): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/outgoingInvoiceOpUpdate", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
     });
   }

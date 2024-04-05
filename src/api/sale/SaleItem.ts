@@ -1,5 +1,5 @@
-import { Account } from "../accounting/Account.js";
-import { AccountComplement } from "../accounting/AccountComplement.js";
+import { Account } from "../financial/accounting/Account.js";
+import { AccountComplement } from "../financial/accounting/AccountComplement.js";
 import { FiscalProfileProduct } from "../fiscal/FiscalProfileProduct.js";
 import { ProductPacking } from "../catalog/product/ProductPacking.js";
 import { PurchaseItem } from "../purchase/PurchaseItem.js";

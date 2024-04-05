@@ -1,4 +1,4 @@
-import { Person } from "../catalog/person/Person.js";
+import { Person } from "../../catalog/person/Person.js";
 import { ResultCenter } from "./ResultCenter.js";
 
 export class AccountComplement {

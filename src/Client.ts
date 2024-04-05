@@ -5,7 +5,7 @@ export class Client {
 
   #tenant: string;
   #token: string;
-  #jwt;
+  #jwt: any;
   #debug = false;
 
   #i18n: Promise<I18n> | undefined;

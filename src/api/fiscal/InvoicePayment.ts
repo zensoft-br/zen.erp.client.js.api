@@ -1,5 +1,5 @@
-import { Account } from "../accounting/Account.js";
-import { AccountComplement } from "../accounting/AccountComplement.js";
+import { Account } from "../financial/accounting/Account.js";
+import { AccountComplement } from "../financial/accounting/AccountComplement.js";
 import { Invoice } from "./Invoice.js";
 
 export class InvoicePayment {

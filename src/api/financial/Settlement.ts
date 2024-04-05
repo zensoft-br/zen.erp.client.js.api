@@ -1,5 +1,5 @@
 import { Company } from "../catalog/company/Company.js";
-import { JournalEntry } from "../accounting/JournalEntry.js";
+import { JournalEntry } from "./accounting/JournalEntry.js";
 import { Person } from "../catalog/person/Person.js";
 
 export class Settlement {

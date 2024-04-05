@@ -1,4 +1,3 @@
-export * as accounting from "./accounting/accounting.module.js";
 export * as catalog from "./catalog/catalog.module.js";
 export * as commercial from "./commercial/commercial.module.js";
 export * as financial from "./financial/financial.module.js";

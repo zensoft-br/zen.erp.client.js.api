@@ -1,4 +1,4 @@
-import { Account } from "../../accounting/Account.js";
+import { Account } from "../accounting/Account.js";
 import { Company } from "../../catalog/company/Company.js";
 
 export class AccountStatement {

@@ -1,5 +1,5 @@
-import { Account } from "../accounting/Account.js";
-import { AccountComplement } from "../accounting/AccountComplement.js";
+import { Account } from "./accounting/Account.js";
+import { AccountComplement } from "./accounting/AccountComplement.js";
 import { BillingTitle } from "./BillingTitle.js";
 import { Settlement } from "./Settlement.js";
 

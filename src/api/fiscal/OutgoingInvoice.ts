@@ -2,7 +2,7 @@ import { Company } from "../catalog/company/Company.js";
 import { FiscalProfileOperation } from "./FiscalProfileOperation.js";
 import { FiscalProfilePerson } from "./FiscalProfilePerson.js";
 import { InvoiceSeries } from "./InvoiceSeries.js";
-import { JournalEntry } from "../accounting/JournalEntry.js";
+import { JournalEntry } from "../financial/accounting/JournalEntry.js";
 import { OutgoingList } from "../material/OutgoingList.js";
 import { Person } from "../catalog/person/Person.js";
 import { PersonAddress } from "../catalog/person/PersonAddress.js";

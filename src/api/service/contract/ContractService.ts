@@ -5,6 +5,7 @@ import { ContractFull } from "./ContractFull.js";
 import { ContractIndex } from "./ContractIndex.js";
 import { ContractItem } from "./ContractItem.js";
 import { ContractProfile } from "./ContractProfile.js";
+import { OutgoingInvoice } from "../../fiscal/OutgoingInvoice.js";
 
 export class ContractService {
 
@@ -20,6 +21,17 @@ export class ContractService {
     return this.#client.web.fetchJson(`/service/contract/contractBillingOpCreate?${sp.toString()}`, {
       method: "POST",
       
+    });
+  }
+
+  async contractBillingOpCreateInvoice(ids: any): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson("/service/contract/contractBillingOpCreateInvoice", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(ids),
+
     });
   }
 

@@ -1,5 +1,5 @@
 import { Address } from "./Address.js";
-import { AssetTag } from "../accounting/AssetTag.js";
+import { AssetTag } from "../financial/accounting/AssetTag.js";
 import { HandlingUnit } from "./HandlingUnit.js";
 import { Inventory } from "./Inventory.js";
 import { Lot } from "./Lot.js";

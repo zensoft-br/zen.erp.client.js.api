@@ -1,7 +1,7 @@
 import { Account } from "./Account.js";
 import { AccountComplement } from "./AccountComplement.js";
-import { Company } from "../catalog/company/Company.js";
-import { FiscalYear } from "../fiscal/FiscalYear.js";
+import { Company } from "../../catalog/company/Company.js";
+import { FiscalYear } from "../../fiscal/FiscalYear.js";
 import { JournalEntry } from "./JournalEntry.js";
 
 export class LedgerItem {

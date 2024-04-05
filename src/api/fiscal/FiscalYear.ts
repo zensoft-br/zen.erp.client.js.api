@@ -1,6 +1,6 @@
-import { AccountChart } from "../accounting/AccountChart.js";
+import { AccountChart } from "../financial/accounting/AccountChart.js";
 import { Company } from "../catalog/company/Company.js";
-import { ResultCenterChart } from "../accounting/ResultCenterChart.js";
+import { ResultCenterChart } from "../financial/accounting/ResultCenterChart.js";
 
 export class FiscalYear {
   id!: number;

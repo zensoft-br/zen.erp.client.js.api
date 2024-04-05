@@ -1,4 +1,4 @@
-import { Company } from "../catalog/company/Company.js";
+import { Company } from "../../catalog/company/Company.js";
 
 export class JournalEntry {
   id!: number;

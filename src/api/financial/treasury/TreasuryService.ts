@@ -1,6 +1,6 @@
 import { Client } from "../../../Client.js";
 import { AccountStatement } from "./AccountStatement.js";
-import { JournalEntry } from "../../accounting/JournalEntry.js";
+import { JournalEntry } from "../accounting/JournalEntry.js";
 
 export class TreasuryService {
 
