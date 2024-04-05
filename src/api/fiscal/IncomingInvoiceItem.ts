@@ -4,8 +4,8 @@ import { AssetTag } from "../financial/accounting/AssetTag.js";
 import { IncomingInvoice } from "./IncomingInvoice.js";
 import { IncomingRequest } from "../material/IncomingRequest.js";
 import { ProductPacking } from "../catalog/product/ProductPacking.js";
-import { TaxationOperation } from "../taxation/TaxationOperation.js";
-import { TaxationRule } from "../taxation/TaxationRule.js";
+import { TaxationOperation } from "./taxation/TaxationOperation.js";
+import { TaxationRule } from "./taxation/TaxationRule.js";
 import { Unit } from "../catalog/product/Unit.js";
 
 export class IncomingInvoiceItem {

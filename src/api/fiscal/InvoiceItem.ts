@@ -2,8 +2,8 @@ import { Account } from "../financial/accounting/Account.js";
 import { AccountComplement } from "../financial/accounting/AccountComplement.js";
 import { AssetTag } from "../financial/accounting/AssetTag.js";
 import { ProductPacking } from "../catalog/product/ProductPacking.js";
-import { TaxationOperation } from "../taxation/TaxationOperation.js";
-import { TaxationRule } from "../taxation/TaxationRule.js";
+import { TaxationOperation } from "./taxation/TaxationOperation.js";
+import { TaxationRule } from "./taxation/TaxationRule.js";
 import { Unit } from "../catalog/product/Unit.js";
 
 export class InvoiceItem {

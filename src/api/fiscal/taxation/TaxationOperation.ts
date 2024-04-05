@@ -1,4 +1,4 @@
-import { FiscalRegion } from "../fiscal/FiscalRegion.js";
+import { FiscalRegion } from "../FiscalRegion.js";
 
 export class TaxationOperation {
   id!: number;

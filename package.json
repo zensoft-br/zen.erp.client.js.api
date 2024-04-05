@@ -1,6 +1,6 @@
 {
   "name": "@zensoftbr/zenerpclient",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Javascript client for Zen Erp",
   "type": "module",
   "exports": {

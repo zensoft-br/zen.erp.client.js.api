@@ -4,8 +4,8 @@ import { FiscalProfileProduct } from "../fiscal/FiscalProfileProduct.js";
 import { ProductPacking } from "../catalog/product/ProductPacking.js";
 import { PurchaseItem } from "../purchase/PurchaseItem.js";
 import { Sale } from "./Sale.js";
-import { TaxationOperation } from "../taxation/TaxationOperation.js";
-import { TaxationRule } from "../taxation/TaxationRule.js";
+import { TaxationOperation } from "../fiscal/taxation/TaxationOperation.js";
+import { TaxationRule } from "../fiscal/taxation/TaxationRule.js";
 
 export class SaleItem {
   id!: number;

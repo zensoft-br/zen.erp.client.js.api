@@ -1,6 +1,6 @@
-import { FiscalProfileOperation } from "../fiscal/FiscalProfileOperation.js";
-import { FiscalProfilePerson } from "../fiscal/FiscalProfilePerson.js";
-import { FiscalProfileProduct } from "../fiscal/FiscalProfileProduct.js";
+import { FiscalProfileOperation } from "../FiscalProfileOperation.js";
+import { FiscalProfilePerson } from "../FiscalProfilePerson.js";
+import { FiscalProfileProduct } from "../FiscalProfileProduct.js";
 import { TaxationOperation } from "./TaxationOperation.js";
 
 export class TaxationRule {

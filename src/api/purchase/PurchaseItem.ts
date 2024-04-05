@@ -3,8 +3,8 @@ import { AccountComplement } from "../financial/accounting/AccountComplement.js"
 import { FiscalProfileProduct } from "../fiscal/FiscalProfileProduct.js";
 import { ProductPacking } from "../catalog/product/ProductPacking.js";
 import { Purchase } from "./Purchase.js";
-import { TaxationOperation } from "../taxation/TaxationOperation.js";
-import { TaxationRule } from "../taxation/TaxationRule.js";
+import { TaxationOperation } from "../fiscal/taxation/TaxationOperation.js";
+import { TaxationRule } from "../fiscal/taxation/TaxationRule.js";
 import { Unit } from "../catalog/product/Unit.js";
 
 export class PurchaseItem {

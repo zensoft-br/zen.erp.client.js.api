@@ -1,4 +1,5 @@
 export * as br from "./br/br.module.js";
+export * as taxation from "./taxation/taxation.module.js";
 
 export { FiscalService } from "./FiscalService.js";
 
