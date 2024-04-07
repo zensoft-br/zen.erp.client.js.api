@@ -7,7 +7,6 @@ export * as material from "./material/material.module.js";
 export * as production from "./production/production.module.js";
 export * as purchase from "./purchase/purchase.module.js";
 export * as sale from "./sale/sale.module.js";
-export * as service from "./service/service.module.js";
 export * as shipping from "./shipping/shipping.module.js";
 export * as supply from "./supply/supply.module.js";
 export * as system from "./system/system.module.js";

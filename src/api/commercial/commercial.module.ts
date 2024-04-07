@@ -1,3 +1,5 @@
+export * as contract from "./contract/contract.module.js";
+
 export { CommercialService } from "./CommercialService.js";
 
 export { PriceList } from "./PriceList.js";
