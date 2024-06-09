@@ -21,7 +21,7 @@ export class MailService {
     });
   }
 
-  async mailerConfigDelete(id: number): Promise<void> {
+  async mailerConfigDelete(id: number): Promise<MailerConfig> {
     return this.#client.web.fetchJson(`/system/mail/mailerConfig/${id}`, {
       method: "DELETE",
       

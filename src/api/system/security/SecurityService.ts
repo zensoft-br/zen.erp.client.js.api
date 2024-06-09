@@ -29,7 +29,7 @@ export class SecurityService {
     });
   }
 
-  async accessPointDelete(id: number): Promise<void> {
+  async accessPointDelete(id: number): Promise<AccessPoint> {
     return this.#client.web.fetchJson(`/system/security/accessPoint/${id}`, {
       method: "DELETE",
       
@@ -81,7 +81,7 @@ export class SecurityService {
     });
   }
 
-  async accessProfileDelete(id: number): Promise<void> {
+  async accessProfileDelete(id: number): Promise<AccessProfile> {
     return this.#client.web.fetchJson(`/system/security/accessProfile/${id}`, {
       method: "DELETE",
       
@@ -124,7 +124,7 @@ export class SecurityService {
     });
   }
 
-  async grantDelete(id: number): Promise<void> {
+  async grantDelete(id: number): Promise<Grant> {
     return this.#client.web.fetchJson(`/system/security/grant/${id}`, {
       method: "DELETE",
       
@@ -156,7 +156,7 @@ export class SecurityService {
     });
   }
 
-  async groupDelete(id: number): Promise<void> {
+  async groupDelete(id: number): Promise<Group> {
     return this.#client.web.fetchJson(`/system/security/group/${id}`, {
       method: "DELETE",
       
@@ -210,7 +210,7 @@ export class SecurityService {
     });
   }
 
-  async keyStoreDelete(id: number): Promise<void> {
+  async keyStoreDelete(id: number): Promise<KeyStore> {
     return this.#client.web.fetchJson(`/system/security/keyStore/${id}`, {
       method: "DELETE",
       
@@ -260,7 +260,7 @@ export class SecurityService {
     });
   }
 
-  async roleAccessPointDelete(id: number): Promise<void> {
+  async roleAccessPointDelete(id: number): Promise<RoleAccessPoint> {
     return this.#client.web.fetchJson(`/system/security/roleAccessPoint/${id}`, {
       method: "DELETE",
       
@@ -295,7 +295,7 @@ export class SecurityService {
     });
   }
 
-  async sessionDelete(id: any): Promise<void> {
+  async sessionDelete(id: any): Promise<Session> {
     return this.#client.web.fetchJson(`/system/security/session/${id}`, {
       method: "DELETE",
       
@@ -381,7 +381,7 @@ export class SecurityService {
     });
   }
 
-  async userDelete(id: number): Promise<void> {
+  async userDelete(id: number): Promise<User> {
     return this.#client.web.fetchJson(`/system/security/user/${id}`, {
       method: "DELETE",
       

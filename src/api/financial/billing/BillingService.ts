@@ -25,7 +25,7 @@ export class BillingService {
     });
   }
 
-  async batchRequestDelete(id: number): Promise<void> {
+  async batchRequestDelete(id: number): Promise<BatchRequest> {
     return this.#client.web.fetchJson(`/financial/billing/batchRequest/${id}`, {
       method: "DELETE",
       
@@ -117,7 +117,7 @@ export class BillingService {
     });
   }
 
-  async batchResponseDelete(id: number): Promise<void> {
+  async batchResponseDelete(id: number): Promise<BatchResponse> {
     return this.#client.web.fetchJson(`/financial/billing/batchResponse/${id}`, {
       method: "DELETE",
       
@@ -184,7 +184,7 @@ export class BillingService {
     });
   }
 
-  async instructionRequestDelete(id: number): Promise<void> {
+  async instructionRequestDelete(id: number): Promise<InstructionRequest> {
     return this.#client.web.fetchJson(`/financial/billing/instructionRequest/${id}`, {
       method: "DELETE",
       
@@ -283,7 +283,7 @@ export class BillingService {
     });
   }
 
-  async instructionResponseDelete(id: number): Promise<void> {
+  async instructionResponseDelete(id: number): Promise<InstructionResponse> {
     return this.#client.web.fetchJson(`/financial/billing/instructionResponse/${id}`, {
       method: "DELETE",
       
@@ -347,7 +347,7 @@ export class BillingService {
     });
   }
 
-  async walletDelete(id: number): Promise<void> {
+  async walletDelete(id: number): Promise<Wallet> {
     return this.#client.web.fetchJson(`/financial/billing/wallet/${id}`, {
       method: "DELETE",
       

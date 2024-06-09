@@ -1,4 +1,4 @@
-import { AgentRun } from "./AgentRun.js";
+import { Agent } from "./Agent.js";
 
 export class Schedule {
   id!: number;
@@ -8,7 +8,7 @@ export class Schedule {
   expression!: string;
   nextRun!: Date;
   lastRun!: Date;
-  agentRun!: AgentRun;
+  agent!: Agent;
   tags!: string;
   properties!: Object;
 }

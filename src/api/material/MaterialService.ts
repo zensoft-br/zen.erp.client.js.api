@@ -14,7 +14,6 @@ import { MovingOrder } from "./MovingOrder.js";
 import { MovingOrderItem } from "./MovingOrderItem.js";
 import { OutgoingInvoice } from "../fiscal/OutgoingInvoice.js";
 import { OutgoingList } from "./OutgoingList.js";
-import { OutgoingListItem } from "./OutgoingListItem.js";
 import { OutgoingRequest } from "./OutgoingRequest.js";
 import { OutgoingRequestItem } from "./OutgoingRequestItem.js";
 import { PickingOrder } from "./PickingOrder.js";
@@ -22,6 +21,7 @@ import { PickingOrderItem } from "./PickingOrderItem.js";
 import { PickingProfile } from "./PickingProfile.js";
 import { Quality } from "./Quality.js";
 import { Reservation } from "./Reservation.js";
+import { ReservationItem } from "./ReservationItem.js";
 import { ReservationTarget } from "./ReservationTarget.js";
 import { Serial } from "./Serial.js";
 import { Stock } from "./Stock.js";
@@ -54,7 +54,7 @@ export class MaterialService {
     });
   }
 
-  async addressDelete(id: number): Promise<void> {
+  async addressDelete(id: number): Promise<Address> {
     return this.#client.web.fetchJson(`/material/address/${id}`, {
       method: "DELETE",
       
@@ -97,7 +97,7 @@ export class MaterialService {
     });
   }
 
-  async handlingUnitDelete(id: number): Promise<void> {
+  async handlingUnitDelete(id: number): Promise<HandlingUnit> {
     return this.#client.web.fetchJson(`/material/handlingUnit/${id}`, {
       method: "DELETE",
       
@@ -140,7 +140,7 @@ export class MaterialService {
     });
   }
 
-  async incomingListDelete(id: number): Promise<void> {
+  async incomingListDelete(id: number): Promise<IncomingList> {
     return this.#client.web.fetchJson(`/material/incomingList/${id}`, {
       method: "DELETE",
       
@@ -158,7 +158,7 @@ export class MaterialService {
     });
   }
 
-  async incomingListItemDelete(id: number): Promise<void> {
+  async incomingListItemDelete(id: number): Promise<IncomingListItem> {
     return this.#client.web.fetchJson(`/material/incomingListItem/${id}`, {
       method: "DELETE",
       
@@ -290,7 +290,7 @@ export class MaterialService {
     });
   }
 
-  async inventoryAdjustmentDelete(id: number): Promise<void> {
+  async inventoryAdjustmentDelete(id: number): Promise<InventoryAdjustment> {
     return this.#client.web.fetchJson(`/material/inventoryAdjustment/${id}`, {
       method: "DELETE",
       
@@ -343,7 +343,7 @@ export class MaterialService {
     });
   }
 
-  async inventoryCheckDelete(id: number): Promise<void> {
+  async inventoryCheckDelete(id: number): Promise<InventoryCheck> {
     return this.#client.web.fetchJson(`/material/inventoryCheck/${id}`, {
       method: "DELETE",
       
@@ -386,7 +386,7 @@ export class MaterialService {
     });
   }
 
-  async inventoryDelete(id: number): Promise<void> {
+  async inventoryDelete(id: number): Promise<Inventory> {
     return this.#client.web.fetchJson(`/material/inventory/${id}`, {
       method: "DELETE",
       
@@ -488,7 +488,7 @@ export class MaterialService {
     });
   }
 
-  async inventoryStockDelete(id: number): Promise<void> {
+  async inventoryStockDelete(id: number): Promise<InventoryStock> {
     return this.#client.web.fetchJson(`/material/inventoryStock/${id}`, {
       method: "DELETE",
       
@@ -551,7 +551,7 @@ export class MaterialService {
     });
   }
 
-  async lotDelete(id: number): Promise<void> {
+  async lotDelete(id: number): Promise<Lot> {
     return this.#client.web.fetchJson(`/material/lot/${id}`, {
       method: "DELETE",
       
@@ -594,28 +594,17 @@ export class MaterialService {
     });
   }
 
-  async movingOrderDelete(id: number): Promise<void> {
+  async movingOrderDelete(id: number): Promise<MovingOrder> {
     return this.#client.web.fetchJson(`/material/movingOrder/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async movingOrderItemDelete(id: number): Promise<void> {
+  async movingOrderItemDelete(id: number): Promise<MovingOrderItem> {
     return this.#client.web.fetchJson(`/material/movingOrderItem/${id}`, {
       method: "DELETE",
       
-    });
-  }
-
-  async movingOrderItemOpCreate(args: any): Promise<MovingOrderItem> {
-    return this.#client.web.fetchJson("/material/movingOrderItemOpCreate", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(args),
-
     });
   }
 
@@ -651,13 +640,6 @@ export class MaterialService {
     });
   }
 
-  async movingOrderItemOpUnload(id: number): Promise<MovingOrderItem> {
-    return this.#client.web.fetchJson(`/material/movingOrderItemOpUnload/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
   async movingOrderItemRead(search: any): Promise<MovingOrderItem[]> {
     return this.#client.web.fetchJson(`/material/movingOrderItem?${search}`, {
       method: "GET",
@@ -679,6 +661,17 @@ export class MaterialService {
         "content-type": "application/json",
         },
         body: JSON.stringify(bean),
+
+    });
+  }
+
+  async movingOrderOpAllocateStock(id: number, args: any): Promise<MovingOrderItem> {
+    return this.#client.web.fetchJson(`/material/movingOrderOpAllocateStock/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
 
     });
   }
@@ -732,6 +725,15 @@ export class MaterialService {
     });
   }
 
+  async movingOrderOpUnload(id: number, userId: number): Promise<MovingOrder> {
+    const sp = new URLSearchParams();
+    if (userId) sp.set("userId", String(userId));
+    return this.#client.web.fetchJson(`/material/movingOrderOpUnload/${id}?${sp.toString()}`, {
+      method: "POST",
+      
+    });
+  }
+
   async movingOrderRead(search: any): Promise<MovingOrder[]> {
     return this.#client.web.fetchJson(`/material/movingOrder?${search}`, {
       method: "GET",
@@ -757,23 +759,9 @@ export class MaterialService {
     });
   }
 
-  async outgoingListDelete(id: number): Promise<void> {
+  async outgoingListDelete(id: number): Promise<OutgoingList> {
     return this.#client.web.fetchJson(`/material/outgoingList/${id}`, {
       method: "DELETE",
-      
-    });
-  }
-
-  async outgoingListItemRead(search: any): Promise<OutgoingListItem[]> {
-    return this.#client.web.fetchJson(`/material/outgoingListItem?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async outgoingListItemReadById(id: number): Promise<OutgoingListItem> {
-    return this.#client.web.fetchJson(`/material/outgoingListItem/${id}`, {
-      method: "GET",
       
     });
   }
@@ -868,7 +856,7 @@ export class MaterialService {
     });
   }
 
-  async outgoingRequestDelete(id: number): Promise<void> {
+  async outgoingRequestDelete(id: number): Promise<OutgoingRequest> {
     return this.#client.web.fetchJson(`/material/outgoingRequest/${id}`, {
       method: "DELETE",
       
@@ -886,7 +874,7 @@ export class MaterialService {
     });
   }
 
-  async outgoingRequestItemDelete(id: number): Promise<void> {
+  async outgoingRequestItemDelete(id: number): Promise<OutgoingRequestItem> {
     return this.#client.web.fetchJson(`/material/outgoingRequestItem/${id}`, {
       method: "DELETE",
       
@@ -1007,7 +995,7 @@ export class MaterialService {
     });
   }
 
-  async pickingOrderDelete(id: number): Promise<void> {
+  async pickingOrderDelete(id: number): Promise<PickingOrder> {
     return this.#client.web.fetchJson(`/material/pickingOrder/${id}`, {
       method: "DELETE",
       
@@ -1025,7 +1013,7 @@ export class MaterialService {
     });
   }
 
-  async pickingOrderItemDelete(id: number): Promise<void> {
+  async pickingOrderItemDelete(id: number): Promise<PickingOrderItem> {
     return this.#client.web.fetchJson(`/material/pickingOrderItem/${id}`, {
       method: "DELETE",
       
@@ -1188,7 +1176,7 @@ export class MaterialService {
     });
   }
 
-  async pickingProfileDelete(id: number): Promise<void> {
+  async pickingProfileDelete(id: number): Promise<PickingProfile> {
     return this.#client.web.fetchJson(`/material/pickingProfile/${id}`, {
       method: "DELETE",
       
@@ -1231,7 +1219,7 @@ export class MaterialService {
     });
   }
 
-  async qualityDelete(id: number): Promise<void> {
+  async qualityDelete(id: number): Promise<Quality> {
     return this.#client.web.fetchJson(`/material/quality/${id}`, {
       method: "DELETE",
       
@@ -1274,9 +1262,23 @@ export class MaterialService {
     });
   }
 
-  async reservationDelete(id: number): Promise<void> {
+  async reservationDelete(id: number): Promise<Reservation> {
     return this.#client.web.fetchJson(`/material/reservation/${id}`, {
       method: "DELETE",
+      
+    });
+  }
+
+  async reservationItemRead(search: any): Promise<ReservationItem[]> {
+    return this.#client.web.fetchJson(`/material/reservationItem?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async reservationItemReadById(id: number): Promise<ReservationItem> {
+    return this.#client.web.fetchJson(`/material/reservationItem/${id}`, {
+      method: "GET",
       
     });
   }
@@ -1425,7 +1427,7 @@ export class MaterialService {
     });
   }
 
-  async reservationTargetDelete(id: number): Promise<void> {
+  async reservationTargetDelete(id: number): Promise<ReservationTarget> {
     return this.#client.web.fetchJson(`/material/reservationTarget/${id}`, {
       method: "DELETE",
       
@@ -1479,7 +1481,7 @@ export class MaterialService {
     });
   }
 
-  async serialDelete(id: number): Promise<void> {
+  async serialDelete(id: number): Promise<Serial> {
     return this.#client.web.fetchJson(`/material/serial/${id}`, {
       method: "DELETE",
       
@@ -1529,7 +1531,7 @@ export class MaterialService {
     });
   }
 
-  async stockClusterDelete(id: number): Promise<void> {
+  async stockClusterDelete(id: number): Promise<StockCluster> {
     return this.#client.web.fetchJson(`/material/stockCluster/${id}`, {
       method: "DELETE",
       
@@ -1572,7 +1574,7 @@ export class MaterialService {
     });
   }
 
-  async stockManagementDelete(id: number): Promise<void> {
+  async stockManagementDelete(id: number): Promise<StockManagement> {
     return this.#client.web.fetchJson(`/material/stockManagement/${id}`, {
       method: "DELETE",
       
@@ -1590,7 +1592,7 @@ export class MaterialService {
     });
   }
 
-  async stockManagementItemDelete(id: number): Promise<void> {
+  async stockManagementItemDelete(id: number): Promise<StockManagementItem> {
     return this.#client.web.fetchJson(`/material/stockManagementItem/${id}`, {
       method: "DELETE",
       
@@ -1717,8 +1719,22 @@ export class MaterialService {
     });
   }
 
+  async stockTransactionOpRevert(id: number): Promise<StockTransaction[]> {
+    return this.#client.web.fetchJson(`/material/stockTransactionOpRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async stockTransactionRead(search: any): Promise<StockTransaction[]> {
     return this.#client.web.fetchJson(`/material/stockTransaction?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async stockTransactionReadById(id: number): Promise<StockTransaction> {
+    return this.#client.web.fetchJson(`/material/stockTransaction/${id}`, {
       method: "GET",
       
     });
@@ -1735,7 +1751,7 @@ export class MaterialService {
     });
   }
 
-  async volumeDelete(id: number): Promise<void> {
+  async volumeDelete(id: number): Promise<Volume> {
     return this.#client.web.fetchJson(`/material/volume/${id}`, {
       method: "DELETE",
       
@@ -1753,7 +1769,7 @@ export class MaterialService {
     });
   }
 
-  async volumeItemDelete(id: number): Promise<void> {
+  async volumeItemDelete(id: number): Promise<VolumeItem> {
     return this.#client.web.fetchJson(`/material/volumeItem/${id}`, {
       method: "DELETE",
       
@@ -1774,6 +1790,24 @@ export class MaterialService {
     });
   }
 
+  async volumeOpCheck(id: number, args: any): Promise<Volume> {
+    return this.#client.web.fetchJson(`/material/volumeOpCheck/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
+  async volumeOpCheckRevert(id: number): Promise<Volume> {
+    return this.#client.web.fetchJson(`/material/volumeOpCheckRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async volumeOpCreate(args: any): Promise<Volume> {
     return this.#client.web.fetchJson("/material/volumeOpCreate", {
       method: "POST",
@@ -1782,6 +1816,15 @@ export class MaterialService {
         },
         body: JSON.stringify(args),
 
+    });
+  }
+
+  async volumeOpHandlingUnitSet(id: number, handlingUnitId: number): Promise<Volume> {
+    const sp = new URLSearchParams();
+    if (handlingUnitId) sp.set("handlingUnitId", String(handlingUnitId));
+    return this.#client.web.fetchJson(`/material/volumeOpHandlingUnitSet/${id}?${sp.toString()}`, {
+      method: "POST",
+      
     });
   }
 
@@ -1821,7 +1864,7 @@ export class MaterialService {
     });
   }
 
-  async warehouseDelete(id: number): Promise<void> {
+  async warehouseDelete(id: number): Promise<Warehouse> {
     return this.#client.web.fetchJson(`/material/warehouse/${id}`, {
       method: "DELETE",
       

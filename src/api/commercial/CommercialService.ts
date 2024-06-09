@@ -22,7 +22,7 @@ export class CommercialService {
     });
   }
 
-  async priceListChangeRequestDelete(id: number): Promise<void> {
+  async priceListChangeRequestDelete(id: number): Promise<PriceListChangeRequest> {
     return this.#client.web.fetchJson(`/commercial/priceListChangeRequest/${id}`, {
       method: "DELETE",
       
@@ -90,7 +90,7 @@ export class CommercialService {
     });
   }
 
-  async priceListTransformationDelete(id: number): Promise<void> {
+  async priceListTransformationDelete(id: number): Promise<PriceListTransformation> {
     return this.#client.web.fetchJson(`/commercial/priceListTransformation/${id}`, {
       method: "DELETE",
       

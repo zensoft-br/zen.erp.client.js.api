@@ -22,20 +22,20 @@ export class PrintingService {
     });
   }
 
-  async printerDelete(id: number): Promise<void> {
+  async printerDelete(id: number): Promise<Printer> {
     return this.#client.web.fetchJson(`/system/printing/printer/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async printerJobCreate(bean: any): Promise<PrinterJob> {
+  async printerJobCreate(args: any): Promise<PrinterJob> {
     return this.#client.web.fetchJson("/system/printing/printerJob", {
       method: "POST",
       headers: {
         "content-type": "application/json",
         },
-        body: JSON.stringify(bean),
+        body: JSON.stringify(args),
 
     });
   }
@@ -47,7 +47,7 @@ export class PrintingService {
     });
   }
 
-  async printerJobDelete(id: number): Promise<void> {
+  async printerJobDelete(id: number): Promise<PrinterJob> {
     return this.#client.web.fetchJson(`/system/printing/printerJob/${id}`, {
       method: "DELETE",
       

@@ -69,7 +69,7 @@ export class ContractService {
     });
   }
 
-  async contractDelete(id: number): Promise<void> {
+  async contractDelete(id: number): Promise<Contract> {
     return this.#client.web.fetchJson(`/commercial/contract/contract/${id}`, {
       method: "DELETE",
       
@@ -87,7 +87,7 @@ export class ContractService {
     });
   }
 
-  async contractIndexDelete(id: number): Promise<void> {
+  async contractIndexDelete(id: number): Promise<ContractIndex> {
     return this.#client.web.fetchJson(`/commercial/contract/contractIndex/${id}`, {
       method: "DELETE",
       
@@ -130,7 +130,7 @@ export class ContractService {
     });
   }
 
-  async contractItemDelete(id: number): Promise<void> {
+  async contractItemDelete(id: number): Promise<ContractItem> {
     return this.#client.web.fetchJson(`/commercial/contract/contractItem/${id}`, {
       method: "DELETE",
       
@@ -233,7 +233,7 @@ export class ContractService {
     });
   }
 
-  async contractProfileDelete(id: number): Promise<void> {
+  async contractProfileDelete(id: number): Promise<ContractProfile> {
     return this.#client.web.fetchJson(`/commercial/contract/contractProfile/${id}`, {
       method: "DELETE",
       

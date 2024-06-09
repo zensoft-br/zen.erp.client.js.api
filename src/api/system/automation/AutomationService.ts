@@ -1,7 +1,5 @@
 import { Client } from "../../../Client.js";
 import { Agent } from "./Agent.js";
-import { AgentParameter } from "./AgentParameter.js";
-import { AgentRun } from "./AgentRun.js";
 import { Schedule } from "./Schedule.js";
 import { Watcher } from "./Watcher.js";
 
@@ -24,24 +22,21 @@ export class AutomationService {
     });
   }
 
-  async agentDelete(id: number): Promise<void> {
+  async agentDelete(id: number): Promise<Agent> {
     return this.#client.web.fetchJson(`/system/automation/agent/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async agentOpGetParameters(id: number): Promise<AgentParameter[]> {
-    return this.#client.web.fetchJson(`/system/automation/agentOpGetParameters/${id}`, {
+  async agentOpExecute(id: number, parameters: Object): Promise<void> {
+    return this.#client.web.fetchJson(`/system/automation/agentOpExecute/${id}`, {
       method: "POST",
-      
-    });
-  }
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(parameters),
 
-  async agentOpGetTopics(id: number): Promise<string[]> {
-    return this.#client.web.fetchJson(`/system/automation/agentOpGetTopics/${id}`, {
-      method: "POST",
-      
     });
   }
 
@@ -56,60 +51,6 @@ export class AutomationService {
     return this.#client.web.fetchJson(`/system/automation/agent/${id}`, {
       method: "GET",
       
-    });
-  }
-
-  async agentRunCreate(bean: AgentRun): Promise<AgentRun> {
-    return this.#client.web.fetchJson("/system/automation/agentRun", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async agentRunDelete(id: number): Promise<void> {
-    return this.#client.web.fetchJson(`/system/automation/agentRun/${id}`, {
-      method: "DELETE",
-      
-    });
-  }
-
-  async agentRunOpExecute(id: number, parameters: Object): Promise<void> {
-    return this.#client.web.fetchJson(`/system/automation/agentRunOpExecute/${id}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(parameters),
-
-    });
-  }
-
-  async agentRunRead(search: any): Promise<AgentRun[]> {
-    return this.#client.web.fetchJson(`/system/automation/agentRun?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async agentRunReadById(id: number): Promise<AgentRun> {
-    return this.#client.web.fetchJson(`/system/automation/agentRun/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async agentRunUpdate(bean: AgentRun): Promise<AgentRun> {
-    return this.#client.web.fetchJson("/system/automation/agentRun", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(bean),
-
     });
   }
 
@@ -135,7 +76,7 @@ export class AutomationService {
     });
   }
 
-  async scheduleDelete(id: number): Promise<void> {
+  async scheduleDelete(id: number): Promise<Schedule> {
     return this.#client.web.fetchJson(`/system/automation/schedule/${id}`, {
       method: "DELETE",
       
@@ -185,7 +126,7 @@ export class AutomationService {
     });
   }
 
-  async watcherDelete(id: number): Promise<void> {
+  async watcherDelete(id: number): Promise<Watcher> {
     return this.#client.web.fetchJson(`/system/automation/watcher/${id}`, {
       method: "DELETE",
       

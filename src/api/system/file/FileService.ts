@@ -9,18 +9,18 @@ export class FileService {
     this.#client = client;
   }
   
-  async fileCreate(args: File): Promise<File> {
+  async fileCreate(bean: File): Promise<File> {
     return this.#client.web.fetchJson("/system/file/file", {
       method: "POST",
       headers: {
         "content-type": "application/json",
         },
-        body: JSON.stringify(args),
+        body: JSON.stringify(bean),
 
     });
   }
 
-  async fileDelete(id: number): Promise<void> {
+  async fileDelete(id: number): Promise<File> {
     return this.#client.web.fetchJson(`/system/file/file/${id}`, {
       method: "DELETE",
       

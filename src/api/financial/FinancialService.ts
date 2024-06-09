@@ -26,7 +26,7 @@ export class FinancialService {
     });
   }
 
-  async currencyDelete(id: number): Promise<void> {
+  async currencyDelete(id: number): Promise<Currency> {
     return this.#client.web.fetchJson(`/financial/currency/${id}`, {
       method: "DELETE",
       
@@ -44,7 +44,7 @@ export class FinancialService {
     });
   }
 
-  async currencyExchangeRateDelete(id: number): Promise<void> {
+  async currencyExchangeRateDelete(id: number): Promise<CurrencyExchangeRate> {
     return this.#client.web.fetchJson(`/financial/currencyExchangeRate/${id}`, {
       method: "DELETE",
       
@@ -144,7 +144,7 @@ export class FinancialService {
     });
   }
 
-  async payableDelete(id: number): Promise<void> {
+  async payableDelete(id: number): Promise<Payable> {
     return this.#client.web.fetchJson(`/financial/payable/${id}`, {
       method: "DELETE",
       
@@ -226,7 +226,7 @@ export class FinancialService {
     });
   }
 
-  async payableSettlementDelete(id: number): Promise<void> {
+  async payableSettlementDelete(id: number): Promise<Settlement> {
     return this.#client.web.fetchJson(`/financial/payableSettlement/${id}`, {
       method: "DELETE",
       
@@ -283,7 +283,7 @@ export class FinancialService {
     });
   }
 
-  async receivableDelete(id: number): Promise<void> {
+  async receivableDelete(id: number): Promise<Receivable> {
     return this.#client.web.fetchJson(`/financial/receivable/${id}`, {
       method: "DELETE",
       
@@ -376,7 +376,7 @@ export class FinancialService {
     });
   }
 
-  async receivableSettlementDelete(id: number): Promise<void> {
+  async receivableSettlementDelete(id: number): Promise<Settlement> {
     return this.#client.web.fetchJson(`/financial/receivableSettlement/${id}`, {
       method: "DELETE",
       

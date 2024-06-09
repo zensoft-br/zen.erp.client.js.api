@@ -21,7 +21,7 @@ export class DataService {
     });
   }
 
-  async dataSourceDelete(id: number): Promise<void> {
+  async dataSourceDelete(id: number): Promise<DataSource> {
     return this.#client.web.fetchJson(`/system/data/dataSource/${id}`, {
       method: "DELETE",
       
@@ -50,7 +50,7 @@ export class DataService {
     });
   }
 
-  async dataSourceParameterDelete(id: number): Promise<void> {
+  async dataSourceParameterDelete(id: number): Promise<DataSourceParameter> {
     return this.#client.web.fetchJson(`/system/data/dataSourceParameter/${id}`, {
       method: "DELETE",
       

@@ -20,7 +20,7 @@ export class ReservationService {
     });
   }
 
-  async reservationDelete(id: number): Promise<void> {
+  async reservationDelete(id: number): Promise<Reservation> {
     return this.#client.web.fetchJson(`/supply/reservation/reservation/${id}`, {
       method: "DELETE",
       

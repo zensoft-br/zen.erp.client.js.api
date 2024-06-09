@@ -31,6 +31,7 @@ export class Purchase {
   totalValue!: number;
   incomingRequest!: IncomingRequest;
   quote!: Quote;
+  purchaseSource!: number;
   tags!: string;
   properties!: Object;
 }

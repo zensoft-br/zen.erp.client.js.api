@@ -29,7 +29,7 @@ export class FiscalBrService {
     });
   }
 
-  async dfeNfeProcInDelete(id: number): Promise<void> {
+  async dfeNfeProcInDelete(id: number): Promise<DfeNfeProcIn> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcIn/${id}`, {
       method: "DELETE",
       
@@ -68,7 +68,7 @@ export class FiscalBrService {
     });
   }
 
-  async dfeNfeProcOutDelete(id: number): Promise<void> {
+  async dfeNfeProcOutDelete(id: number): Promise<DfeNfeProcOut> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOut/${id}`, {
       method: "DELETE",
       

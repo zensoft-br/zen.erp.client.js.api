@@ -3,6 +3,7 @@ export class ArgsOpSettleSettlement {
   type!: string;
   value!: number;
   accountId!: number;
+  resultCenterId!: number;
   tag!: string;
   properties!: Object;
 }

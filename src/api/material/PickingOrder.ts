@@ -1,4 +1,5 @@
 import { Company } from "../catalog/company/Company.js";
+import { MovingOrder } from "./MovingOrder.js";
 import { OutgoingRequest } from "./OutgoingRequest.js";
 import { Person } from "../catalog/person/Person.js";
 import { PickingProfile } from "./PickingProfile.js";
@@ -14,6 +15,7 @@ export class PickingOrder {
   outgoingRequest!: OutgoingRequest;
   person!: Person;
   reservation!: Reservation;
+  movingOrder!: MovingOrder;
   date!: Date;
   description!: string;
   netWeightKg!: number;

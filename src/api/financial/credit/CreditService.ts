@@ -21,7 +21,7 @@ export class CreditService {
     });
   }
 
-  async creditLineDelete(id: number): Promise<void> {
+  async creditLineDelete(id: number): Promise<CreditLine> {
     return this.#client.web.fetchJson(`/financial/credit/creditLine/${id}`, {
       method: "DELETE",
       
@@ -39,7 +39,7 @@ export class CreditService {
     });
   }
 
-  async creditLineItemDelete(id: number): Promise<void> {
+  async creditLineItemDelete(id: number): Promise<CreditLineItem> {
     return this.#client.web.fetchJson(`/financial/credit/creditLineItem/${id}`, {
       method: "DELETE",
       

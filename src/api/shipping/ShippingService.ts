@@ -20,7 +20,7 @@ export class ShippingService {
     });
   }
 
-  async shipmentDelete(id: number): Promise<void> {
+  async shipmentDelete(id: number): Promise<Shipment> {
     return this.#client.web.fetchJson(`/shipping/shipment/${id}`, {
       method: "DELETE",
       
@@ -36,6 +36,41 @@ export class ShippingService {
 
   async shipmentOpApproveRevert(id: number): Promise<Shipment> {
     return this.#client.web.fetchJson(`/shipping/shipmentOpApproveRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async shipmentOpCheckFinish(id: number): Promise<Shipment> {
+    return this.#client.web.fetchJson(`/shipping/shipmentOpCheckFinish/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async shipmentOpCheckFinishRevert(id: number): Promise<Shipment> {
+    return this.#client.web.fetchJson(`/shipping/shipmentOpCheckFinishRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async shipmentOpCheckIgnore(id: number): Promise<Shipment> {
+    return this.#client.web.fetchJson(`/shipping/shipmentOpCheckIgnore/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async shipmentOpCheckStart(id: number): Promise<Shipment> {
+    return this.#client.web.fetchJson(`/shipping/shipmentOpCheckStart/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async shipmentOpCheckStartRevert(id: number): Promise<Shipment> {
+    return this.#client.web.fetchJson(`/shipping/shipmentOpCheckStartRevert/${id}`, {
       method: "POST",
       
     });

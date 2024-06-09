@@ -1,3 +1,4 @@
+import { HandlingUnit } from "./HandlingUnit.js";
 import { OutgoingList } from "./OutgoingList.js";
 
 export class Volume {
@@ -10,6 +11,8 @@ export class Volume {
   netWeightKg!: number;
   grossWeightKg!: number;
   volumeM3!: number;
+  handlingUnit!: HandlingUnit;
+  checked!: boolean;
   loaded!: boolean;
   tags!: string;
   properties!: Object;

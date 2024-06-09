@@ -1,4 +1,4 @@
-import { AgentRun } from "../automation/AgentRun.js";
+import { Agent } from "../automation/Agent.js";
 import { Queue } from "./Queue.js";
 import { Topic } from "./Topic.js";
 
@@ -8,7 +8,7 @@ export class Subscription {
   protocol!: string;
   target!: string;
   queue!: Queue;
-  agentRun!: AgentRun;
+  agent!: Agent;
   tags!: string;
   properties!: Object;
 }

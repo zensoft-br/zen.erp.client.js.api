@@ -20,7 +20,7 @@ export class PluginService {
     });
   }
 
-  async pluginDelete(id: number): Promise<void> {
+  async pluginDelete(id: number): Promise<Plugin> {
     return this.#client.web.fetchJson(`/system/plugin/plugin/${id}`, {
       method: "DELETE",
       

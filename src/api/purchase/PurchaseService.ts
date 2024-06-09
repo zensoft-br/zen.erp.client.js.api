@@ -29,7 +29,7 @@ export class PurchaseService {
     });
   }
 
-  async priceListDelete(id: number): Promise<void> {
+  async priceListDelete(id: number): Promise<PriceList> {
     return this.#client.web.fetchJson(`/purchase/priceList/${id}`, {
       method: "DELETE",
       
@@ -47,7 +47,7 @@ export class PurchaseService {
     });
   }
 
-  async priceListItemDelete(id: number): Promise<void> {
+  async priceListItemDelete(id: number): Promise<PriceListItem> {
     return this.#client.web.fetchJson(`/purchase/priceListItem/${id}`, {
       method: "DELETE",
       
@@ -115,7 +115,7 @@ export class PurchaseService {
     });
   }
 
-  async proposalDelete(id: number): Promise<void> {
+  async proposalDelete(id: number): Promise<Proposal> {
     return this.#client.web.fetchJson(`/purchase/proposal/${id}`, {
       method: "DELETE",
       
@@ -133,7 +133,7 @@ export class PurchaseService {
     });
   }
 
-  async proposalItemDelete(id: number): Promise<void> {
+  async proposalItemDelete(id: number): Promise<ProposalItem> {
     return this.#client.web.fetchJson(`/purchase/proposalItem/${id}`, {
       method: "DELETE",
       
@@ -265,7 +265,7 @@ export class PurchaseService {
     });
   }
 
-  async purchaseDelete(id: number): Promise<void> {
+  async purchaseDelete(id: number): Promise<Purchase> {
     return this.#client.web.fetchJson(`/purchase/purchase/${id}`, {
       method: "DELETE",
       
@@ -283,7 +283,7 @@ export class PurchaseService {
     });
   }
 
-  async purchaseItemDelete(id: number): Promise<void> {
+  async purchaseItemDelete(id: number): Promise<PurchaseItem> {
     return this.#client.web.fetchJson(`/purchase/purchaseItem/${id}`, {
       method: "DELETE",
       
@@ -404,7 +404,7 @@ export class PurchaseService {
     });
   }
 
-  async purchasePaymentDelete(id: number): Promise<void> {
+  async purchasePaymentDelete(id: number): Promise<PurchasePayment> {
     return this.#client.web.fetchJson(`/purchase/purchasePayment/${id}`, {
       method: "DELETE",
       
@@ -447,7 +447,7 @@ export class PurchaseService {
     });
   }
 
-  async purchaseProfileDelete(id: number): Promise<void> {
+  async purchaseProfileDelete(id: number): Promise<PurchaseProfile> {
     return this.#client.web.fetchJson(`/purchase/purchaseProfile/${id}`, {
       method: "DELETE",
       
@@ -515,7 +515,7 @@ export class PurchaseService {
     });
   }
 
-  async quoteDelete(id: number): Promise<void> {
+  async quoteDelete(id: number): Promise<Quote> {
     return this.#client.web.fetchJson(`/purchase/quote/${id}`, {
       method: "DELETE",
       
@@ -533,7 +533,7 @@ export class PurchaseService {
     });
   }
 
-  async quoteItemDelete(id: number): Promise<void> {
+  async quoteItemDelete(id: number): Promise<QuoteItem> {
     return this.#client.web.fetchJson(`/purchase/quoteItem/${id}`, {
       method: "DELETE",
       

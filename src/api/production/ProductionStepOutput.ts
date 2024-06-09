@@ -1,13 +1,13 @@
-import { Bom } from "./Bom.js";
 import { ProductPacking } from "../catalog/product/ProductPacking.js";
+import { ProductionStep } from "./ProductionStep.js";
 
-export class BomItem {
+export class ProductionStepOutput {
   id!: number;
-  bom!: Bom;
+  productionStep!: ProductionStep;
   productPacking!: ProductPacking;
-  lotQuantity!: number;
-  type!: string;
   quantity!: number;
+  weight!: number;
+  servedQuantity!: number;
   tags!: string;
   properties!: Object;
 }

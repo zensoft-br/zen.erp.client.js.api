@@ -17,8 +17,6 @@ export class Invoice {
   workpiece!: Workpiece;
   person!: Person;
   personAddressShipping!: PersonAddress;
-  personShipping!: Person;
-  freightType!: string;
   fiscalProfilePerson!: FiscalProfilePerson;
   returned!: boolean;
   invoiceSeries!: InvoiceSeries;
@@ -30,8 +28,10 @@ export class Invoice {
   netWeightKg!: number;
   volumeM3!: number;
   totalValue!: number;
-  journalEntry!: JournalEntry;
   personSalesperson!: Person;
+  personShipping!: Person;
+  freightType!: string;
+  journalEntry!: JournalEntry;
   tags!: string;
   properties!: Object;
 }

@@ -7,6 +7,7 @@ import { Person } from "../catalog/person/Person.js";
 import { PersonAddress } from "../catalog/person/PersonAddress.js";
 import { PriceList } from "./PriceList.js";
 import { SaleProfile } from "./SaleProfile.js";
+import { Shipment } from "../shipping/Shipment.js";
 import { Workflow } from "../system/workflow/Workflow.js";
 import { Workpiece } from "../system/workflow/Workpiece.js";
 
@@ -30,6 +31,7 @@ export class Sale {
   currency!: Currency;
   totalValue!: number;
   outgoingRequest!: OutgoingRequest;
+  shipment!: Shipment;
   outgoingInvoice!: OutgoingInvoice;
   tags!: string;
   properties!: Object;

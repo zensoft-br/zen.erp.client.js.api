@@ -34,7 +34,7 @@ export class AccountingService {
     });
   }
 
-  async accountCategoryDelete(id: number): Promise<void> {
+  async accountCategoryDelete(id: number): Promise<AccountCategory> {
     return this.#client.web.fetchJson(`/financial/accounting/accountCategory/${id}`, {
       method: "DELETE",
       
@@ -77,7 +77,7 @@ export class AccountingService {
     });
   }
 
-  async accountChartDelete(id: number): Promise<void> {
+  async accountChartDelete(id: number): Promise<AccountChart> {
     return this.#client.web.fetchJson(`/financial/accounting/accountChart/${id}`, {
       method: "DELETE",
       
@@ -174,7 +174,7 @@ export class AccountingService {
     });
   }
 
-  async accountConversionChartDelete(id: number): Promise<void> {
+  async accountConversionChartDelete(id: number): Promise<AccountConversionChart> {
     return this.#client.web.fetchJson(`/financial/accounting/accountConversionChart/${id}`, {
       method: "DELETE",
       
@@ -217,7 +217,7 @@ export class AccountingService {
     });
   }
 
-  async accountConversionDelete(id: number): Promise<void> {
+  async accountConversionDelete(id: number): Promise<AccountConversion> {
     return this.#client.web.fetchJson(`/financial/accounting/accountConversion/${id}`, {
       method: "DELETE",
       
@@ -271,7 +271,7 @@ export class AccountingService {
     });
   }
 
-  async accountDefaultDelete(id: number): Promise<void> {
+  async accountDefaultDelete(id: number): Promise<AccountDefault> {
     return this.#client.web.fetchJson(`/financial/accounting/accountDefault/${id}`, {
       method: "DELETE",
       
@@ -314,7 +314,7 @@ export class AccountingService {
     });
   }
 
-  async accountDelete(id: number): Promise<void> {
+  async accountDelete(id: number): Promise<Account> {
     return this.#client.web.fetchJson(`/financial/accounting/account/${id}`, {
       method: "DELETE",
       
@@ -399,7 +399,7 @@ export class AccountingService {
     });
   }
 
-  async journalEntryDelete(id: number): Promise<void> {
+  async journalEntryDelete(id: number): Promise<JournalEntry> {
     return this.#client.web.fetchJson(`/financial/accounting/journalEntry/${id}`, {
       method: "DELETE",
       
@@ -478,7 +478,7 @@ export class AccountingService {
     });
   }
 
-  async journalItemDelete(id: number): Promise<void> {
+  async journalItemDelete(id: number): Promise<JournalItem> {
     return this.#client.web.fetchJson(`/financial/accounting/journalItem/${id}`, {
       method: "DELETE",
       
@@ -542,7 +542,7 @@ export class AccountingService {
     });
   }
 
-  async resultCenterChartDelete(id: number): Promise<void> {
+  async resultCenterChartDelete(id: number): Promise<ResultCenterChart> {
     return this.#client.web.fetchJson(`/financial/accounting/resultCenterChart/${id}`, {
       method: "DELETE",
       
@@ -614,7 +614,7 @@ export class AccountingService {
     });
   }
 
-  async resultCenterDelete(id: number): Promise<void> {
+  async resultCenterDelete(id: number): Promise<ResultCenter> {
     return this.#client.web.fetchJson(`/financial/accounting/resultCenter/${id}`, {
       method: "DELETE",
       

@@ -78,6 +78,13 @@ export class SystemService {
     });
   }
 
+  async metricsRead(): Promise<Object> {
+    return this.#client.web.fetchText("/system/metrics", {
+      method: "GET",
+      
+    });
+  }
+
   async resourcesRead(): Promise<Object> {
     return this.#client.web.fetchText("/system/resources", {
       method: "GET",
@@ -96,7 +103,7 @@ export class SystemService {
     });
   }
 
-  async statusDelete(id: number): Promise<void> {
+  async statusDelete(id: number): Promise<Status> {
     return this.#client.web.fetchJson(`/system/status/${id}`, {
       method: "DELETE",
       

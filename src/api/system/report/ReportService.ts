@@ -22,7 +22,7 @@ export class ReportService {
     });
   }
 
-  async reportDelete(id: number): Promise<void> {
+  async reportDelete(id: number): Promise<Report> {
     return this.#client.web.fetchJson(`/system/report/report/${id}`, {
       method: "DELETE",
       

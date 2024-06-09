@@ -12,7 +12,7 @@ export class IntegrationService {
     this.#client = client;
   }
   
-  async messageDelete(id: number): Promise<void> {
+  async messageDelete(id: number): Promise<Message> {
     return this.#client.web.fetchJson(`/system/integration/message/${id}`, {
       method: "DELETE",
       
@@ -64,7 +64,7 @@ export class IntegrationService {
     });
   }
 
-  async queueDelete(id: number): Promise<void> {
+  async queueDelete(id: number): Promise<Queue> {
     return this.#client.web.fetchJson(`/system/integration/queue/${id}`, {
       method: "DELETE",
       
@@ -137,7 +137,7 @@ export class IntegrationService {
     });
   }
 
-  async subscriptionDelete(id: number): Promise<void> {
+  async subscriptionDelete(id: number): Promise<Subscription> {
     return this.#client.web.fetchJson(`/system/integration/subscription/${id}`, {
       method: "DELETE",
       
@@ -180,7 +180,7 @@ export class IntegrationService {
     });
   }
 
-  async topicDelete(id: number): Promise<void> {
+  async topicDelete(id: number): Promise<Topic> {
     return this.#client.web.fetchJson(`/system/integration/topic/${id}`, {
       method: "DELETE",
       

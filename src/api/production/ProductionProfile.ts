@@ -1,7 +1,6 @@
-export class Lot {
+export class ProductionProfile {
   id!: number;
   code!: string;
-  date!: Date;
   tags!: string;
   properties!: Object;
 }

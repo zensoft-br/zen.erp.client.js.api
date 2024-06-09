@@ -77,7 +77,7 @@ export class AuditService {
     });
   }
 
-  async userLogDelete(id: number): Promise<void> {
+  async userLogDelete(id: number): Promise<Log> {
     return this.#client.web.fetchJson(`/system/audit/userLog/${id}`, {
       method: "DELETE",
       

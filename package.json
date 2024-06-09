@@ -1,6 +1,6 @@
 {
   "name": "@zensoftbr/zenerpclient",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Javascript client for Zen Erp",
   "type": "module",
   "exports": {
@@ -42,6 +42,7 @@
     "build:types": "tsc -p tsconfig.types.json",
     "build": "npm run build:types && npm run build:cjs && npm run build:esm && npm run rollup",
     "prepublishOnly": "npm run build",
+    "publish": "npm publish",
     "rollup": "rollup --config",
     "test": "echo \"Error: no test specified\" && exit 1",
     "zip": "npx npm-pack-zip"

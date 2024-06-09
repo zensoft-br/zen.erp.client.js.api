@@ -28,7 +28,7 @@ export class ProductService {
     });
   }
 
-  async codeConversionDelete(id: number): Promise<void> {
+  async codeConversionDelete(id: number): Promise<CodeConversion> {
     return this.#client.web.fetchJson(`/catalog/product/codeConversion/${id}`, {
       method: "DELETE",
       
@@ -46,7 +46,7 @@ export class ProductService {
     });
   }
 
-  async codeConversionListDelete(id: number): Promise<void> {
+  async codeConversionListDelete(id: number): Promise<CodeConversionList> {
     return this.#client.web.fetchJson(`/catalog/product/codeConversionList/${id}`, {
       method: "DELETE",
       
@@ -114,7 +114,7 @@ export class ProductService {
     });
   }
 
-  async dimensionDelete(id: number): Promise<void> {
+  async dimensionDelete(id: number): Promise<Dimension> {
     return this.#client.web.fetchJson(`/catalog/product/dimension/${id}`, {
       method: "DELETE",
       
@@ -157,7 +157,7 @@ export class ProductService {
     });
   }
 
-  async productDelete(id: number): Promise<void> {
+  async productDelete(id: number): Promise<Product> {
     return this.#client.web.fetchJson(`/catalog/product/product/${id}`, {
       method: "DELETE",
       
@@ -175,7 +175,7 @@ export class ProductService {
     });
   }
 
-  async productKitComponentDelete(id: number): Promise<void> {
+  async productKitComponentDelete(id: number): Promise<ProductKitComponent> {
     return this.#client.web.fetchJson(`/catalog/product/productKitComponent/${id}`, {
       method: "DELETE",
       
@@ -239,7 +239,7 @@ export class ProductService {
     });
   }
 
-  async productPackingDelete(id: number): Promise<void> {
+  async productPackingDelete(id: number): Promise<ProductPacking> {
     return this.#client.web.fetchJson(`/catalog/product/productPacking/${id}`, {
       method: "DELETE",
       
@@ -306,7 +306,7 @@ export class ProductService {
     });
   }
 
-  async productUnitConversionDelete(id: number): Promise<void> {
+  async productUnitConversionDelete(id: number): Promise<ProductUnitConversion> {
     return this.#client.web.fetchJson(`/catalog/product/productUnitConversion/${id}`, {
       method: "DELETE",
       
@@ -360,7 +360,7 @@ export class ProductService {
     });
   }
 
-  async productVariantDelete(id: number): Promise<void> {
+  async productVariantDelete(id: number): Promise<ProductVariant> {
     return this.#client.web.fetchJson(`/catalog/product/productVariant/${id}`, {
       method: "DELETE",
       
@@ -403,7 +403,7 @@ export class ProductService {
     });
   }
 
-  async unitDelete(id: number): Promise<void> {
+  async unitDelete(id: number): Promise<Unit> {
     return this.#client.web.fetchJson(`/catalog/product/unit/${id}`, {
       method: "DELETE",
       

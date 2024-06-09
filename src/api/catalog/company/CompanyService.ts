@@ -21,7 +21,7 @@ export class CompanyService {
     });
   }
 
-  async companyDelete(id: number): Promise<void> {
+  async companyDelete(id: number): Promise<Company> {
     return this.#client.web.fetchJson(`/catalog/company/company/${id}`, {
       method: "DELETE",
       
@@ -78,7 +78,7 @@ export class CompanyService {
     });
   }
 
-  async societyDelete(id: number): Promise<void> {
+  async societyDelete(id: number): Promise<Society> {
     return this.#client.web.fetchJson(`/catalog/company/society/${id}`, {
       method: "DELETE",
       

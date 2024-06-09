@@ -1,8 +1,8 @@
-import { ProductionSchema } from "./ProductionSchema.js";
+import { ProductionProfile } from "./ProductionProfile.js";
 
 export class OperationType {
   id!: number;
-  productionSchema!: ProductionSchema;
+  productionProfile!: ProductionProfile;
   code!: string;
   tags!: string;
   properties!: Object;
