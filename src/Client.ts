@@ -134,11 +134,14 @@ export async function connect(host: string, user: string, password: string, prop
 }
 
 function jwt(token: string): any {
-  var base64Url = token.split(".")[1];
-  var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  var jsonPayload = decodeURIComponent(globalThis.atob(base64).split("").map(function (c) {
-    return `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`;
-  }).join(""));
-
-  return JSON.parse(jsonPayload);
+  try {
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(globalThis.atob(base64).split("").map(function (c) {
+      return `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`;
+    }).join(""));
+    return JSON.parse(jsonPayload);
+  } catch (error) {
+    throw new Error("Error parsing token " + token);
+  }
 }

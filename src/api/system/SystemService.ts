@@ -39,6 +39,13 @@ export class SystemService {
     });
   }
 
+  async databaseOpOptimize(): Promise<void> {
+    return this.#client.web.fetchJson("/system/databaseOpOptimize", {
+      method: "POST",
+      
+    });
+  }
+
   async infoRead(): Promise<Info> {
     return this.#client.web.fetchJson("/system/info", {
       method: "GET",
