@@ -222,10 +222,10 @@ export class ProductService {
     const sp = new URLSearchParams();
     if (unitId) sp.set("unitId", String(unitId));
     if (quantity) sp.set("quantity", String(quantity));
-    return Number(this.#client.web.fetchText(`/catalog/product/productOpConvertToUnit/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/catalog/product/productOpConvertToUnit/${id}?${sp.toString()}`, {
       method: "POST",
       
-    }));
+    });
   }
 
   async productPackingCreate(bean: ProductPacking): Promise<ProductPacking> {
@@ -250,10 +250,10 @@ export class ProductService {
     const sp = new URLSearchParams();
     if (unitId) sp.set("unitId", String(unitId));
     if (quantity) sp.set("quantity", String(quantity));
-    return Number(this.#client.web.fetchText(`/catalog/product/productPackingOpConvertToUnit/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/catalog/product/productPackingOpConvertToUnit/${id}?${sp.toString()}`, {
       method: "POST",
       
-    }));
+    });
   }
 
   async productPackingRead(search: any): Promise<ProductPacking[]> {

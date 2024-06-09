@@ -62,10 +62,10 @@ export class CommercialService {
     if (productId) sp.set("productId", String(productId));
     if (productPackingId) sp.set("productPackingId", String(productPackingId));
     if (currencyId) sp.set("currencyId", String(currencyId));
-    return Number(this.#client.web.fetchText(`/commercial/priceListOpFind/${id}?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/commercial/priceListOpFind/${id}?${sp.toString()}`, {
       method: "POST",
       
-    }));
+    });
   }
 
   async priceListOpImport(id: number, args: any): Promise<PriceList> {

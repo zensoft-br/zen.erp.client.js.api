@@ -132,10 +132,10 @@ export class AccountingService {
   }
 
   async accountChartOpNextShortCode(id: number): Promise<number> {
-    return Number(this.#client.web.fetchText(`/financial/accounting/accountChartOpNextShortCode/${id}`, {
+    return this.#client.web.fetchJson(`/financial/accounting/accountChartOpNextShortCode/${id}`, {
       method: "POST",
       
-    }));
+    });
   }
 
   async accountChartRead(search: any): Promise<AccountChart[]> {

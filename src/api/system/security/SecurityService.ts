@@ -39,10 +39,10 @@ export class SecurityService {
   async accessPointOpValidate(code: string): Promise<boolean> {
     const sp = new URLSearchParams();
     if (code) sp.set("code", String(code));
-    return Boolean(this.#client.web.fetchText(`/system/security/accessPointOpValidate?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/security/accessPointOpValidate?${sp.toString()}`, {
       method: "POST",
       
-    }));
+    });
   }
 
   async accessPointRead(search: any): Promise<AccessPoint[]> {
@@ -396,14 +396,14 @@ export class SecurityService {
   }
 
   async userOpAuthenticate(args: any): Promise<boolean> {
-    return Boolean(this.#client.web.fetchText("/system/security/userOpAuthenticate", {
+    return this.#client.web.fetchJson("/system/security/userOpAuthenticate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
         },
         body: JSON.stringify(args),
 
-    }));
+    });
   }
 
   async userOpChangeEmail(args: any): Promise<void> {

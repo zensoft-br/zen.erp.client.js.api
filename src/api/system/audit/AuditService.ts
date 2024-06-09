@@ -22,10 +22,10 @@ export class AuditService {
   }
 
   async logOpDeleteExpired(): Promise<number> {
-    return Number(this.#client.web.fetchText("/system/audit/logOpDeleteExpired", {
+    return this.#client.web.fetchJson("/system/audit/logOpDeleteExpired", {
       method: "POST",
       
-    }));
+    });
   }
 
   async logRead(search: any): Promise<Log[]> {

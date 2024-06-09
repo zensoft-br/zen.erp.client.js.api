@@ -27,5 +27,8 @@ console.log(await storageService.userGetString("test"));
 await storageService.userPut("test", { a: 1 });
 console.log(await storageService.userGet("test"));
 
-const fileService = new Z.api.system.file.FileService(client);
-console.log(await fileService.fileOpReadContent(25969));
+// const fileService = new Z.api.system.file.FileService(client);
+// console.log(await fileService.fileOpReadContent(25969));
+
+const auditService = new Z.api.system.audit.AuditService(client);
+console.log(await auditService.logOpDeleteExpired());
