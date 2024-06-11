@@ -1,11 +1,11 @@
 export class ArgsBillingTitleOpRepeat {
-  code!: string;
-  description!: string;
-  date!: Date;
-  issueDateFix!: boolean;
   interval!: string;
   frequency!: number;
-  count!: number;
+  prefix!: string;
+  description!: string;
   installmentStart!: number;
+  issueDateFix!: boolean;
+  count!: number;
+  accountId!: number;
   approve!: boolean;
 }
