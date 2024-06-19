@@ -1,4 +1,4 @@
-import { Currency } from "../financial/Currency.js";
+import { Currency } from "../../financial/Currency.js";
 
 export class PriceList {
   id!: number;

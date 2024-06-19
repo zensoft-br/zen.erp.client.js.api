@@ -15,6 +15,38 @@ export class ContractService {
     this.#client = client;
   }
   
+  async contractBillingCreate(bean: ContractBilling): Promise<ContractBilling> {
+    return this.#client.web.fetchJson("/commercial/contract/contractBilling", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async contractBillingDelete(id: number): Promise<ContractBilling> {
+    return this.#client.web.fetchJson(`/commercial/contract/contractBilling/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async contractBillingOpApprove(id: number): Promise<ContractBilling> {
+    return this.#client.web.fetchJson(`/commercial/contract/contractBillingOpApprove/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async contractBillingOpApproveRevert(id: number): Promise<ContractBilling> {
+    return this.#client.web.fetchJson(`/commercial/contract/contractBillingOpApproveRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async contractBillingOpCreate(contractId: number): Promise<ContractBilling[]> {
     const sp = new URLSearchParams();
     if (contractId) sp.set("contractId", String(contractId));
@@ -44,6 +76,20 @@ export class ContractService {
     });
   }
 
+  async contractBillingOpPrepare(id: number): Promise<ContractBilling> {
+    return this.#client.web.fetchJson(`/commercial/contract/contractBillingOpPrepare/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async contractBillingOpPrepareRevert(id: number): Promise<ContractBilling> {
+    return this.#client.web.fetchJson(`/commercial/contract/contractBillingOpPrepareRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async contractBillingRead(search: any): Promise<ContractBilling[]> {
     return this.#client.web.fetchJson(`/commercial/contract/contractBilling?${search}`, {
       method: "GET",
@@ -55,6 +101,17 @@ export class ContractService {
     return this.#client.web.fetchJson(`/commercial/contract/contractBilling/${id}`, {
       method: "GET",
       
+    });
+  }
+
+  async contractBillingUpdate(bean: ContractBilling): Promise<ContractBilling> {
+    return this.#client.web.fetchJson("/commercial/contract/contractBilling", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
     });
   }
 

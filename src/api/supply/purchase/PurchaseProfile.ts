@@ -1,5 +1,5 @@
-import { FiscalProfileOperation } from "../fiscal/FiscalProfileOperation.js";
-import { Workflow } from "../system/workflow/Workflow.js";
+import { FiscalProfileOperation } from "../../fiscal/FiscalProfileOperation.js";
+import { Workflow } from "../../system/workflow/Workflow.js";
 
 export class PurchaseProfile {
   id!: number;

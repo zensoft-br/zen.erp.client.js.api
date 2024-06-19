@@ -1,4 +1,4 @@
-import { Client } from "../../Client.js";
+import { Client } from "../../../Client.js";
 import { Bom } from "./Bom.js";
 import { BomItem } from "./BomItem.js";
 import { Operation } from "./Operation.js";
@@ -20,7 +20,7 @@ export class ProductionService {
   }
   
   async bomCreate(bean: Bom): Promise<Bom> {
-    return this.#client.web.fetchJson("/production/bom", {
+    return this.#client.web.fetchJson("/supply/production/bom", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -31,14 +31,14 @@ export class ProductionService {
   }
 
   async bomDelete(id: number): Promise<Bom> {
-    return this.#client.web.fetchJson(`/production/bom/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/bom/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async bomItemCreate(bean: BomItem): Promise<BomItem> {
-    return this.#client.web.fetchJson("/production/bomItem", {
+    return this.#client.web.fetchJson("/supply/production/bomItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -49,28 +49,28 @@ export class ProductionService {
   }
 
   async bomItemDelete(id: number): Promise<BomItem> {
-    return this.#client.web.fetchJson(`/production/bomItem/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/bomItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async bomItemRead(search: any): Promise<BomItem[]> {
-    return this.#client.web.fetchJson(`/production/bomItem?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/bomItem?${search}`, {
       method: "GET",
       
     });
   }
 
   async bomItemReadById(id: number): Promise<BomItem> {
-    return this.#client.web.fetchJson(`/production/bomItem/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/bomItem/${id}`, {
       method: "GET",
       
     });
   }
 
   async bomItemUpdate(bean: BomItem): Promise<BomItem> {
-    return this.#client.web.fetchJson("/production/bomItem", {
+    return this.#client.web.fetchJson("/supply/production/bomItem", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -81,28 +81,28 @@ export class ProductionService {
   }
 
   async bomOpClone(id: number): Promise<Bom> {
-    return this.#client.web.fetchJson(`/production/bomOpClone/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/bomOpClone/${id}`, {
       method: "POST",
       
     });
   }
 
   async bomRead(search: any): Promise<Bom[]> {
-    return this.#client.web.fetchJson(`/production/bom?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/bom?${search}`, {
       method: "GET",
       
     });
   }
 
   async bomReadById(id: number): Promise<Bom> {
-    return this.#client.web.fetchJson(`/production/bom/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/bom/${id}`, {
       method: "GET",
       
     });
   }
 
   async bomUpdate(bean: Bom): Promise<Bom> {
-    return this.#client.web.fetchJson("/production/bom", {
+    return this.#client.web.fetchJson("/supply/production/bom", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -113,7 +113,7 @@ export class ProductionService {
   }
 
   async operationCreate(bean: Operation): Promise<Operation> {
-    return this.#client.web.fetchJson("/production/operation", {
+    return this.#client.web.fetchJson("/supply/production/operation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -124,28 +124,28 @@ export class ProductionService {
   }
 
   async operationDelete(id: number): Promise<Operation> {
-    return this.#client.web.fetchJson(`/production/operation/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/operation/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async operationRead(search: any): Promise<Operation[]> {
-    return this.#client.web.fetchJson(`/production/operation?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/operation?${search}`, {
       method: "GET",
       
     });
   }
 
   async operationReadById(id: number): Promise<Operation> {
-    return this.#client.web.fetchJson(`/production/operation/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/operation/${id}`, {
       method: "GET",
       
     });
   }
 
   async operationTypeAccountCreate(bean: OperationTypeAccount): Promise<OperationTypeAccount> {
-    return this.#client.web.fetchJson("/production/operationTypeAccount", {
+    return this.#client.web.fetchJson("/supply/production/operationTypeAccount", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -156,28 +156,28 @@ export class ProductionService {
   }
 
   async operationTypeAccountDelete(id: number): Promise<OperationTypeAccount> {
-    return this.#client.web.fetchJson(`/production/operationTypeAccount/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/operationTypeAccount/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async operationTypeAccountRead(search: any): Promise<OperationTypeAccount[]> {
-    return this.#client.web.fetchJson(`/production/operationTypeAccount?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/operationTypeAccount?${search}`, {
       method: "GET",
       
     });
   }
 
   async operationTypeAccountReadById(id: number): Promise<OperationTypeAccount> {
-    return this.#client.web.fetchJson(`/production/operationTypeAccount/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/operationTypeAccount/${id}`, {
       method: "GET",
       
     });
   }
 
   async operationTypeAccountUpdate(bean: OperationTypeAccount): Promise<OperationTypeAccount> {
-    return this.#client.web.fetchJson("/production/operationTypeAccount", {
+    return this.#client.web.fetchJson("/supply/production/operationTypeAccount", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -188,7 +188,7 @@ export class ProductionService {
   }
 
   async operationTypeCreate(bean: OperationType): Promise<OperationType> {
-    return this.#client.web.fetchJson("/production/operationType", {
+    return this.#client.web.fetchJson("/supply/production/operationType", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -199,28 +199,28 @@ export class ProductionService {
   }
 
   async operationTypeDelete(id: number): Promise<OperationType> {
-    return this.#client.web.fetchJson(`/production/operationType/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/operationType/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async operationTypeRead(search: any): Promise<OperationType[]> {
-    return this.#client.web.fetchJson(`/production/operationType?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/operationType?${search}`, {
       method: "GET",
       
     });
   }
 
   async operationTypeReadById(id: number): Promise<OperationType> {
-    return this.#client.web.fetchJson(`/production/operationType/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/operationType/${id}`, {
       method: "GET",
       
     });
   }
 
   async operationTypeUpdate(bean: OperationType): Promise<OperationType> {
-    return this.#client.web.fetchJson("/production/operationType", {
+    return this.#client.web.fetchJson("/supply/production/operationType", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -231,7 +231,7 @@ export class ProductionService {
   }
 
   async operationUpdate(bean: Operation): Promise<Operation> {
-    return this.#client.web.fetchJson("/production/operation", {
+    return this.#client.web.fetchJson("/supply/production/operation", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -242,7 +242,7 @@ export class ProductionService {
   }
 
   async productionBatchCreate(bean: ProductionBatch): Promise<ProductionBatch> {
-    return this.#client.web.fetchJson("/production/productionBatch", {
+    return this.#client.web.fetchJson("/supply/production/productionBatch", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -253,56 +253,56 @@ export class ProductionService {
   }
 
   async productionBatchDelete(id: number): Promise<ProductionBatch> {
-    return this.#client.web.fetchJson(`/production/productionBatch/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionBatch/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async productionBatchOpApprove(id: number): Promise<ProductionBatch> {
-    return this.#client.web.fetchJson(`/production/productionBatchOpApprove/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionBatchOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionBatchOpApproveRevert(id: number): Promise<ProductionBatch> {
-    return this.#client.web.fetchJson(`/production/productionBatchOpApproveRevert/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionBatchOpApproveRevert/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionBatchOpPrepare(id: number): Promise<ProductionBatch> {
-    return this.#client.web.fetchJson(`/production/productionBatchOpPrepare/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionBatchOpPrepare/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionBatchOpPrepareRevert(id: number): Promise<ProductionBatch> {
-    return this.#client.web.fetchJson(`/production/productionBatchOpPrepareRevert/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionBatchOpPrepareRevert/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionBatchRead(search: any): Promise<ProductionBatch[]> {
-    return this.#client.web.fetchJson(`/production/productionBatch?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionBatch?${search}`, {
       method: "GET",
       
     });
   }
 
   async productionBatchReadById(id: number): Promise<ProductionBatch> {
-    return this.#client.web.fetchJson(`/production/productionBatch/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionBatch/${id}`, {
       method: "GET",
       
     });
   }
 
   async productionBatchUpdate(bean: ProductionBatch): Promise<ProductionBatch> {
-    return this.#client.web.fetchJson("/production/productionBatch", {
+    return this.#client.web.fetchJson("/supply/production/productionBatch", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -313,7 +313,7 @@ export class ProductionService {
   }
 
   async productionOrderCreate(bean: ProductionOrder): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson("/production/productionOrder", {
+    return this.#client.web.fetchJson("/supply/production/productionOrder", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -324,28 +324,28 @@ export class ProductionService {
   }
 
   async productionOrderDelete(id: number): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson(`/production/productionOrder/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionOrder/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async productionOrderOpApprove(id: number): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson(`/production/productionOrderOpApprove/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionOrderOpApprove/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionOrderOpApproveRevert(id: number): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson(`/production/productionOrderOpApproveRevert/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionOrderOpApproveRevert/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionOrderOpCreate(args: any): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson("/production/productionOrderOpCreate", {
+    return this.#client.web.fetchJson("/supply/production/productionOrderOpCreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -356,49 +356,49 @@ export class ProductionService {
   }
 
   async productionOrderOpFinish(id: number): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson(`/production/productionOrderOpFinish/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionOrderOpFinish/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionOrderOpFinishRevert(id: number): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson(`/production/productionOrderOpFinishRevert/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionOrderOpFinishRevert/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionOrderOpPrepare(id: number): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson(`/production/productionOrderOpPrepare/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionOrderOpPrepare/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionOrderOpPrepareRevert(id: number): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson(`/production/productionOrderOpPrepareRevert/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionOrderOpPrepareRevert/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionOrderRead(search: any): Promise<ProductionOrder[]> {
-    return this.#client.web.fetchJson(`/production/productionOrder?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionOrder?${search}`, {
       method: "GET",
       
     });
   }
 
   async productionOrderReadById(id: number): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson(`/production/productionOrder/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionOrder/${id}`, {
       method: "GET",
       
     });
   }
 
   async productionOrderUpdate(bean: ProductionOrder): Promise<ProductionOrder> {
-    return this.#client.web.fetchJson("/production/productionOrder", {
+    return this.#client.web.fetchJson("/supply/production/productionOrder", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -409,7 +409,7 @@ export class ProductionService {
   }
 
   async productionProfileCreate(bean: ProductionProfile): Promise<ProductionProfile> {
-    return this.#client.web.fetchJson("/production/productionProfile", {
+    return this.#client.web.fetchJson("/supply/production/productionProfile", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -420,28 +420,28 @@ export class ProductionService {
   }
 
   async productionProfileDelete(id: number): Promise<ProductionProfile> {
-    return this.#client.web.fetchJson(`/production/productionProfile/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionProfile/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async productionProfileRead(search: any): Promise<ProductionProfile[]> {
-    return this.#client.web.fetchJson(`/production/productionProfile?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionProfile?${search}`, {
       method: "GET",
       
     });
   }
 
   async productionProfileReadById(id: number): Promise<ProductionProfile> {
-    return this.#client.web.fetchJson(`/production/productionProfile/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionProfile/${id}`, {
       method: "GET",
       
     });
   }
 
   async productionProfileUpdate(bean: ProductionProfile): Promise<ProductionProfile> {
-    return this.#client.web.fetchJson("/production/productionProfile", {
+    return this.#client.web.fetchJson("/supply/production/productionProfile", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -452,7 +452,7 @@ export class ProductionService {
   }
 
   async productionStepCreate(bean: ProductionStep): Promise<ProductionStep> {
-    return this.#client.web.fetchJson("/production/productionStep", {
+    return this.#client.web.fetchJson("/supply/production/productionStep", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -463,14 +463,14 @@ export class ProductionService {
   }
 
   async productionStepDelete(id: number): Promise<ProductionStep> {
-    return this.#client.web.fetchJson(`/production/productionStep/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionStep/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async productionStepInputCreate(bean: ProductionStepInput): Promise<ProductionStepInput> {
-    return this.#client.web.fetchJson("/production/productionStepInput", {
+    return this.#client.web.fetchJson("/supply/production/productionStepInput", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -481,28 +481,28 @@ export class ProductionService {
   }
 
   async productionStepInputDelete(id: number): Promise<ProductionStepInput> {
-    return this.#client.web.fetchJson(`/production/productionStepInput/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionStepInput/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async productionStepInputRead(search: any): Promise<ProductionStepInput[]> {
-    return this.#client.web.fetchJson(`/production/productionStepInput?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionStepInput?${search}`, {
       method: "GET",
       
     });
   }
 
   async productionStepInputReadById(id: number): Promise<ProductionStepInput> {
-    return this.#client.web.fetchJson(`/production/productionStepInput/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionStepInput/${id}`, {
       method: "GET",
       
     });
   }
 
   async productionStepInputUpdate(bean: ProductionStepInput): Promise<ProductionStepInput> {
-    return this.#client.web.fetchJson("/production/productionStepInput", {
+    return this.#client.web.fetchJson("/supply/production/productionStepInput", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -513,14 +513,14 @@ export class ProductionService {
   }
 
   async productionStepOpCalculateInput(id: number): Promise<ProductionStep> {
-    return this.#client.web.fetchJson(`/production/productionStepOpCalculateInput/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionStepOpCalculateInput/${id}`, {
       method: "POST",
       
     });
   }
 
   async productionStepOutputCreate(bean: ProductionStepOutput): Promise<ProductionStepOutput> {
-    return this.#client.web.fetchJson("/production/productionStepOutput", {
+    return this.#client.web.fetchJson("/supply/production/productionStepOutput", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -531,28 +531,28 @@ export class ProductionService {
   }
 
   async productionStepOutputDelete(id: number): Promise<ProductionStepOutput> {
-    return this.#client.web.fetchJson(`/production/productionStepOutput/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionStepOutput/${id}`, {
       method: "DELETE",
       
     });
   }
 
   async productionStepOutputRead(search: any): Promise<ProductionStepOutput[]> {
-    return this.#client.web.fetchJson(`/production/productionStepOutput?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionStepOutput?${search}`, {
       method: "GET",
       
     });
   }
 
   async productionStepOutputReadById(id: number): Promise<ProductionStepOutput> {
-    return this.#client.web.fetchJson(`/production/productionStepOutput/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionStepOutput/${id}`, {
       method: "GET",
       
     });
   }
 
   async productionStepOutputUpdate(bean: ProductionStepOutput): Promise<ProductionStepOutput> {
-    return this.#client.web.fetchJson("/production/productionStepOutput", {
+    return this.#client.web.fetchJson("/supply/production/productionStepOutput", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -563,21 +563,21 @@ export class ProductionService {
   }
 
   async productionStepRead(search: any): Promise<ProductionStep[]> {
-    return this.#client.web.fetchJson(`/production/productionStep?${search}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionStep?${search}`, {
       method: "GET",
       
     });
   }
 
   async productionStepReadById(id: number): Promise<ProductionStep> {
-    return this.#client.web.fetchJson(`/production/productionStep/${id}`, {
+    return this.#client.web.fetchJson(`/supply/production/productionStep/${id}`, {
       method: "GET",
       
     });
   }
 
   async productionStepUpdate(bean: ProductionStep): Promise<ProductionStep> {
-    return this.#client.web.fetchJson("/production/productionStep", {
+    return this.#client.web.fetchJson("/supply/production/productionStep", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -7,7 +7,6 @@ export { OperationType } from "./OperationType.js";
 export { OperationTypeAccount } from "./OperationTypeAccount.js";
 export { ProductionBatch } from "./ProductionBatch.js";
 export { ProductionOrder } from "./ProductionOrder.js";
-export { ProductionOrderProduction } from "./ProductionOrderProduction.js";
 export { ProductionProfile } from "./ProductionProfile.js";
 export { ProductionStep } from "./ProductionStep.js";
 export { ProductionStepInput } from "./ProductionStepInput.js";

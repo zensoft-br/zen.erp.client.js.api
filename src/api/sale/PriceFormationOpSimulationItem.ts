@@ -3,6 +3,6 @@ export class PriceFormationOpSimulationItem {
   code!: string;
   description!: string;
   type!: string;
+  expression!: string;
   value!: number;
-  itemValue!: number;
 }

@@ -4,8 +4,6 @@ export * as financial from "./financial/financial.module.js";
 export * as fiscal from "./fiscal/fiscal.module.js";
 export * as logistic from "./logistic/logistic.module.js";
 export * as material from "./material/material.module.js";
-export * as production from "./production/production.module.js";
-export * as purchase from "./purchase/purchase.module.js";
 export * as sale from "./sale/sale.module.js";
 export * as shipping from "./shipping/shipping.module.js";
 export * as supply from "./supply/supply.module.js";

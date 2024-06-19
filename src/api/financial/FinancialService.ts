@@ -198,6 +198,17 @@ export class FinancialService {
     });
   }
 
+  async payableOpUpdatePrepared(bean: Payable): Promise<Payable> {
+    return this.#client.web.fetchJson("/financial/payableOpUpdatePrepared", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
   async payableRead(search: any): Promise<Payable[]> {
     return this.#client.web.fetchJson(`/financial/payable?${search}`, {
       method: "GET",
@@ -344,6 +355,17 @@ export class FinancialService {
         "content-type": "application/json",
         },
         body: JSON.stringify(args),
+
+    });
+  }
+
+  async receivableOpUpdatePrepared(bean: Receivable): Promise<Receivable> {
+    return this.#client.web.fetchJson("/financial/receivableOpUpdatePrepared", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
     });
   }

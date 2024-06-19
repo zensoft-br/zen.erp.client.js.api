@@ -1,4 +1,4 @@
-import { ProductPacking } from "../catalog/product/ProductPacking.js";
+import { ProductPacking } from "../../catalog/product/ProductPacking.js";
 import { ProductionStep } from "./ProductionStep.js";
 
 export class ProductionStepInput {

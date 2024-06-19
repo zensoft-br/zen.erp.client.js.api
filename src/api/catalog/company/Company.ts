@@ -5,7 +5,7 @@ import { FiscalRegion } from "../../fiscal/FiscalRegion.js";
 import { Image } from "../../system/image/Image.js";
 import { MailerConfig } from "../../system/mail/MailerConfig.js";
 import { Person } from "../person/Person.js";
-import { PriceList } from "../../purchase/PriceList.js";
+import { PriceList } from "../../supply/purchase/PriceList.js";
 import { Society } from "./Society.js";
 import { StockCluster } from "../../material/StockCluster.js";
 import { Warehouse } from "../../material/Warehouse.js";

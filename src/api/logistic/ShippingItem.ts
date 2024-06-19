@@ -1,5 +1,5 @@
 import { IncomingShipping } from "./IncomingShipping.js";
-import { PurchaseItem } from "../purchase/PurchaseItem.js";
+import { PurchaseItem } from "../supply/purchase/PurchaseItem.js";
 
 export class ShippingItem {
   id!: number;

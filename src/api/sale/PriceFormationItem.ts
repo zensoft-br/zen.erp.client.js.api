@@ -7,7 +7,6 @@ export class PriceFormationItem {
   description!: string;
   type!: string;
   expression!: string;
-  value!: number;
   tags!: string;
   properties!: Object;
 }

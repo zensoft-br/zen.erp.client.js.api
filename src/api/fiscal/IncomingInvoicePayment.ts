@@ -1,14 +1,14 @@
 import { Account } from "../financial/accounting/Account.js";
 import { AccountComplement } from "../financial/accounting/AccountComplement.js";
-import { Purchase } from "./Purchase.js";
+import { Invoice } from "./Invoice.js";
 
-export class PurchasePayment {
+export class IncomingInvoicePayment {
   id!: number;
-  purchase!: Purchase;
+  invoice!: Invoice;
   type!: string;
   account!: Account;
   accountComplement!: AccountComplement;
-  term!: number;
+  dueDate!: Date;
   value!: number;
   tags!: string;
   properties!: Object;

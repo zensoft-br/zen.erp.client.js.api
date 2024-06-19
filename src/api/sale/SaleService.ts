@@ -82,22 +82,14 @@ export class SaleService {
     });
   }
 
-  async priceFormationOpCalculate(id: number, value: number): Promise<PriceFormationOpSimulation> {
-    const sp = new URLSearchParams();
-    if (value) sp.set("value", String(value));
-    return this.#client.web.fetchJson(`/sale/priceFormationOpCalculate/${id}?${sp.toString()}`, {
+  async priceFormationOpCalculate(id: number, args: any): Promise<number> {
+    return this.#client.web.fetchJson(`/sale/priceFormationOpCalculate/${id}`, {
       method: "POST",
-      
-    });
-  }
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
 
-  async priceFormationOpCalculateProductPacking(id: number, productPackingId: number, value: number): Promise<PriceFormationOpSimulation> {
-    const sp = new URLSearchParams();
-    if (productPackingId) sp.set("productPackingId", String(productPackingId));
-    if (value) sp.set("value", String(value));
-    return this.#client.web.fetchJson(`/sale/priceFormationOpCalculateProductPacking/${id}?${sp.toString()}`, {
-      method: "POST",
-      
     });
   }
 
@@ -105,6 +97,17 @@ export class SaleService {
     return this.#client.web.fetchJson(`/sale/priceFormationOpClone/${id}`, {
       method: "POST",
       
+    });
+  }
+
+  async priceFormationOpSimulation(id: number, args: any): Promise<PriceFormationOpSimulation> {
+    return this.#client.web.fetchJson(`/sale/priceFormationOpSimulation/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
+
     });
   }
 
@@ -602,9 +605,9 @@ export class SaleService {
     });
   }
 
-  async saleOpUpdate(bean: Sale): Promise<Sale> {
-    return this.#client.web.fetchJson("/sale/saleOpUpdate", {
-      method: "PUT",
+  async saleOpUpdatePrepared(bean: Sale): Promise<Sale> {
+    return this.#client.web.fetchJson("/sale/saleOpUpdatePrepared", {
+      method: "POST",
       headers: {
         "content-type": "application/json",
         },

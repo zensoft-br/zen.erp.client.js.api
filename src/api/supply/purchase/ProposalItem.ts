@@ -1,11 +1,11 @@
-import { Currency } from "../financial/Currency.js";
-import { FiscalProfileProduct } from "../fiscal/FiscalProfileProduct.js";
-import { ProductPacking } from "../catalog/product/ProductPacking.js";
+import { Currency } from "../../financial/Currency.js";
+import { FiscalProfileProduct } from "../../fiscal/FiscalProfileProduct.js";
+import { ProductPacking } from "../../catalog/product/ProductPacking.js";
 import { Proposal } from "./Proposal.js";
 import { QuoteItem } from "./QuoteItem.js";
-import { TaxationOperation } from "../fiscal/taxation/TaxationOperation.js";
-import { TaxationRule } from "../fiscal/taxation/TaxationRule.js";
-import { Unit } from "../catalog/product/Unit.js";
+import { TaxationOperation } from "../../fiscal/taxation/TaxationOperation.js";
+import { TaxationRule } from "../../fiscal/taxation/TaxationRule.js";
+import { Unit } from "../../catalog/product/Unit.js";
 
 export class ProposalItem {
   id!: number;

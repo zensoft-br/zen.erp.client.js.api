@@ -1,5 +1,5 @@
-import { Account } from "../financial/accounting/Account.js";
-import { AccountChart } from "../financial/accounting/AccountChart.js";
+import { Account } from "../../financial/accounting/Account.js";
+import { AccountChart } from "../../financial/accounting/AccountChart.js";
 import { OperationType } from "./OperationType.js";
 
 export class OperationTypeAccount {

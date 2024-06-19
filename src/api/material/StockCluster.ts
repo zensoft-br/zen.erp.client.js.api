@@ -1,5 +1,5 @@
 import { PriceList } from "../sale/PriceList.js";
-import { PriceList as PriceList1 } from "../purchase/PriceList.js";
+import { PriceList as PriceList1 } from "../supply/purchase/PriceList.js";
 
 export class StockCluster {
   id!: number;
