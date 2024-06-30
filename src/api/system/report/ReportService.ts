@@ -1,4 +1,6 @@
 import { Client } from "../../../Client.js";
+import { ArgsReportOpGenerate } from "./ArgsReportOpGenerate.js";
+import { ArgsReportTemplateOpUpdate } from "./ArgsReportTemplateOpUpdate.js";
 import { Report } from "./Report.js";
 import { ReportTemplate } from "./ReportTemplate.js";
 import { ResponseReportOpPrint } from "./ResponseReportOpPrint.js";
@@ -38,7 +40,7 @@ export class ReportService {
     });
   }
 
-  async reportOpGenerate(args: any): Promise<any> {
+  async reportOpGenerate(args: ArgsReportOpGenerate): Promise<any> {
     return this.#client.web.fetchBlob("/system/report/reportOpGenerate", {
       method: "POST",
       headers: {
@@ -49,7 +51,7 @@ export class ReportService {
     });
   }
 
-  async reportOpPrint(args: any): Promise<any> {
+  async reportOpPrint(args: ArgsReportOpGenerate): Promise<ResponseReportOpPrint> {
     return this.#client.web.fetchJson("/system/report/reportOpPrint", {
       method: "POST",
       headers: {
@@ -74,7 +76,7 @@ export class ReportService {
     });
   }
 
-  async reportTemplateOpUpdate(id: number, args: any): Promise<void> {
+  async reportTemplateOpUpdate(id: number, args: ArgsReportTemplateOpUpdate): Promise<void> {
     return this.#client.web.fetchJson(`/system/report/reportTemplateOpUpdate/${id}`, {
       method: "POST",
       headers: {

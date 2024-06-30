@@ -1,3 +1,5 @@
+import { ArgsAccountDefault } from "./ArgsAccountDefault.js";
+
 export class ArgsAccountDefaultOpRead {
   accountCategoryId!: number;
   accountCategoryCode!: string;
@@ -6,5 +8,5 @@ export class ArgsAccountDefaultOpRead {
   companyId!: number;
   date!: Date;
   restricted!: boolean;
-  options!: any;
+  options!: ArgsAccountDefault;
 }

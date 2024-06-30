@@ -1,10 +1,13 @@
+import { ArgsOpSettleMethod } from "./ArgsOpSettleMethod.js";
+import { ArgsOpSettleSettlement } from "./ArgsOpSettleSettlement.js";
+
 export class ArgsOpSettle {
   companyId!: number;
   personId!: number;
   date!: Date;
   settlementDate!: Date;
-  settlements!: any;
-  methods!: any;
+  settlements!: ArgsOpSettleSettlement[];
+  methods!: ArgsOpSettleMethod[];
   tags!: string;
   properties!: Object;
 }

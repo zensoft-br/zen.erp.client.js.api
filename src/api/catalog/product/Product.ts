@@ -1,10 +1,12 @@
 import { Category } from "../Category.js";
 import { FiscalProfileProduct } from "../../fiscal/FiscalProfileProduct.js";
+import { ProductProfile } from "./ProductProfile.js";
 import { ProductVariant } from "./ProductVariant.js";
 import { Unit } from "./Unit.js";
 
 export class Product {
   id!: number;
+  productProfile!: ProductProfile;
   type!: string;
   code!: string;
   description!: string;

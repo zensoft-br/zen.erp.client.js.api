@@ -1,4 +1,11 @@
 import { Client } from "../../Client.js";
+import { ArgsIncomingInvoiceOpApprove } from "./ArgsIncomingInvoiceOpApprove.js";
+import { ArgsIncomingInvoiceOpCreate } from "./ArgsIncomingInvoiceOpCreate.js";
+import { ArgsIncomingInvoiceOpCreateFromIncomingList } from "./ArgsIncomingInvoiceOpCreateFromIncomingList.js";
+import { ArgsInvoiceOpReturn } from "./ArgsInvoiceOpReturn.js";
+import { ArgsOutgoingInvoiceOpCancel } from "./ArgsOutgoingInvoiceOpCancel.js";
+import { ArgsOutgoingInvoiceOpCreate } from "./ArgsOutgoingInvoiceOpCreate.js";
+import { ArgsOutgoingInvoiceOpDiscount } from "./ArgsOutgoingInvoiceOpDiscount.js";
 import { FiscalProfileOperation } from "./FiscalProfileOperation.js";
 import { FiscalProfilePerson } from "./FiscalProfilePerson.js";
 import { FiscalProfileProduct } from "./FiscalProfileProduct.js";
@@ -365,7 +372,7 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceOpApproveDivergences(id: number, args: any): Promise<IncomingInvoice> {
+  async incomingInvoiceOpApproveDivergences(id: number, args: ArgsIncomingInvoiceOpApprove): Promise<IncomingInvoice> {
     return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpApproveDivergences/${id}`, {
       method: "POST",
       headers: {
@@ -383,7 +390,7 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceOpCreate(args: any): Promise<IncomingInvoice> {
+  async incomingInvoiceOpCreate(args: ArgsIncomingInvoiceOpCreate): Promise<IncomingInvoice> {
     return this.#client.web.fetchJson("/fiscal/incomingInvoiceOpCreate", {
       method: "POST",
       headers: {
@@ -394,7 +401,7 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceOpCreateFromIncomingList(args: any): Promise<IncomingInvoice> {
+  async incomingInvoiceOpCreateFromIncomingList(args: ArgsIncomingInvoiceOpCreateFromIncomingList): Promise<IncomingInvoice> {
     return this.#client.web.fetchJson("/fiscal/incomingInvoiceOpCreateFromIncomingList", {
       method: "POST",
       headers: {
@@ -433,7 +440,7 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceOpReturn(id: number, args: any): Promise<OutgoingInvoice> {
+  async incomingInvoiceOpReturn(id: number, args: ArgsInvoiceOpReturn): Promise<OutgoingInvoice> {
     return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpReturn/${id}`, {
       method: "POST",
       headers: {
@@ -743,7 +750,7 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceOpCancel(id: number, args: any): Promise<OutgoingInvoice> {
+  async outgoingInvoiceOpCancel(id: number, args: ArgsOutgoingInvoiceOpCancel): Promise<OutgoingInvoice> {
     return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpCancel/${id}`, {
       method: "POST",
       headers: {
@@ -754,7 +761,7 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceOpCreate(args: any): Promise<OutgoingInvoice> {
+  async outgoingInvoiceOpCreate(args: ArgsOutgoingInvoiceOpCreate): Promise<OutgoingInvoice> {
     return this.#client.web.fetchJson("/fiscal/outgoingInvoiceOpCreate", {
       method: "POST",
       headers: {
@@ -765,7 +772,7 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceOpDiscount(id: number, args: any): Promise<OutgoingInvoice> {
+  async outgoingInvoiceOpDiscount(id: number, args: ArgsOutgoingInvoiceOpDiscount): Promise<OutgoingInvoice> {
     return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpDiscount/${id}`, {
       method: "POST",
       headers: {
@@ -790,7 +797,7 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceOpReturn(id: number, args: any): Promise<IncomingInvoice> {
+  async outgoingInvoiceOpReturn(id: number, args: ArgsInvoiceOpReturn): Promise<IncomingInvoice> {
     return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpReturn/${id}`, {
       method: "POST",
       headers: {

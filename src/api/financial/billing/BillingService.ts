@@ -1,4 +1,7 @@
 import { Client } from "../../../Client.js";
+import { ArgsBatchRequestOpAddInstructions } from "./ArgsBatchRequestOpAddInstructions.js";
+import { ArgsBatchResponseOpCreate } from "./ArgsBatchResponseOpCreate.js";
+import { ArgsInstructionRequestOpCreate } from "./ArgsInstructionRequestOpCreate.js";
 import { Batch } from "./Batch.js";
 import { BatchRequest } from "./BatchRequest.js";
 import { BatchResponse } from "./BatchResponse.js";
@@ -32,7 +35,7 @@ export class BillingService {
     });
   }
 
-  async batchRequestOpAddInstructions(id: number, args: any): Promise<BatchRequest> {
+  async batchRequestOpAddInstructions(id: number, args: ArgsBatchRequestOpAddInstructions): Promise<BatchRequest> {
     return this.#client.web.fetchJson(`/financial/billing/batchRequestOpAddInstructions/${id}`, {
       method: "POST",
       headers: {
@@ -138,7 +141,7 @@ export class BillingService {
     });
   }
 
-  async batchResponseOpCreate(args: any): Promise<BatchResponse> {
+  async batchResponseOpCreate(args: ArgsBatchResponseOpCreate): Promise<BatchResponse> {
     return this.#client.web.fetchJson("/financial/billing/batchResponseOpCreate", {
       method: "POST",
       headers: {
@@ -200,7 +203,7 @@ export class BillingService {
     });
   }
 
-  async instructionRequestOpCreate(args: any): Promise<InstructionRequest> {
+  async instructionRequestOpCreate(args: ArgsInstructionRequestOpCreate): Promise<InstructionRequest> {
     return this.#client.web.fetchJson("/financial/billing/instructionRequestOpCreate", {
       method: "POST",
       headers: {

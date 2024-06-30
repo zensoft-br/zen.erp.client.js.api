@@ -132,7 +132,7 @@ export class WorkflowService {
     });
   }
 
-  async workflowOpCreateOrUpdate(args: any): Promise<any> {
+  async workflowOpCreateOrUpdate(args: ArgsWorkflowOpCreateOrUpdate): Promise<ArgsWorkflowOpCreateOrUpdate> {
     return this.#client.web.fetchJson("/system/workflow/workflowOpCreateOrUpdate", {
       method: "POST",
       headers: {

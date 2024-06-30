@@ -1,4 +1,6 @@
 import { Client } from "../../../Client.js";
+import { ArgsMessageOpCreate } from "./ArgsMessageOpCreate.js";
+import { ArgsTopicOpPublish } from "./ArgsTopicOpPublish.js";
 import { Message } from "./Message.js";
 import { Queue } from "./Queue.js";
 import { Subscription } from "./Subscription.js";
@@ -19,7 +21,7 @@ export class IntegrationService {
     });
   }
 
-  async messageOpPost(args: any): Promise<Message> {
+  async messageOpPost(args: ArgsMessageOpCreate): Promise<Message> {
     return this.#client.web.fetchJson("/system/integration/messageOpPost", {
       method: "POST",
       headers: {
@@ -187,7 +189,7 @@ export class IntegrationService {
     });
   }
 
-  async topicOpPublish(args: any): Promise<void> {
+  async topicOpPublish(args: ArgsTopicOpPublish): Promise<void> {
     return this.#client.web.fetchJson("/system/integration/topicOpPublish", {
       method: "POST",
       headers: {

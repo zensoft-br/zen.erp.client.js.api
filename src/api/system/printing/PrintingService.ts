@@ -1,4 +1,5 @@
 import { Client } from "../../../Client.js";
+import { ArgsPrinterJobCreate } from "./ArgsPrinterJobCreate.js";
 import { Printer } from "./Printer.js";
 import { PrinterJob } from "./PrinterJob.js";
 import { PrinterJobData } from "./PrinterJobData.js";
@@ -29,7 +30,7 @@ export class PrintingService {
     });
   }
 
-  async printerJobCreate(args: any): Promise<PrinterJob> {
+  async printerJobCreate(args: ArgsPrinterJobCreate): Promise<PrinterJob> {
     return this.#client.web.fetchJson("/system/printing/printerJob", {
       method: "POST",
       headers: {

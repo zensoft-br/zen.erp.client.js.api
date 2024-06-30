@@ -27,7 +27,7 @@ export class ProposalItem {
   discountType!: string;
   discountAmount!: number;
   discountValue!: number;
-  otherValues!: Object;
+  otherValues!: Map<string,number>;
   operationValue!: number;
   insideTaxValue!: number;
   outsideTaxValue!: number;

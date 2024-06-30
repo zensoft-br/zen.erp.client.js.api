@@ -1,12 +1,27 @@
 import { Client } from "../../../Client.js";
 import { AccessPoint } from "./AccessPoint.js";
 import { AccessProfile } from "./AccessProfile.js";
+import { ArgsGroupOpClone } from "./ArgsGroupOpClone.js";
+import { ArgsTokenOpInvalidate } from "./ArgsTokenOpInvalidate.js";
+import { ArgsTokenOpRequest } from "./ArgsTokenOpRequest.js";
+import { ArgsTokenOpRequestPermanent } from "./ArgsTokenOpRequestPermanent.js";
+import { ArgsUserOpAuthenticate } from "./ArgsUserOpAuthenticate.js";
+import { ArgsUserOpChangeEmail } from "./ArgsUserOpChangeEmail.js";
+import { ArgsUserOpChangeEmailConfirmation } from "./ArgsUserOpChangeEmailConfirmation.js";
+import { ArgsUserOpChangePassword } from "./ArgsUserOpChangePassword.js";
+import { ArgsUserOpChangePasswordThird } from "./ArgsUserOpChangePasswordThird.js";
+import { ArgsUserOpCreate } from "./ArgsUserOpCreate.js";
+import { ArgsUserOpCreateConfirmation } from "./ArgsUserOpCreateConfirmation.js";
+import { ArgsUserOpCreateResend } from "./ArgsUserOpCreateResend.js";
+import { ArgsUserOpResetPassword } from "./ArgsUserOpResetPassword.js";
+import { ArgsUserOpResetPasswordConfirmation } from "./ArgsUserOpResetPasswordConfirmation.js";
 import { Grant } from "./Grant.js";
 import { Group } from "./Group.js";
 import { KeyStore } from "./KeyStore.js";
 import { Role } from "./Role.js";
 import { RoleAccessPoint } from "./RoleAccessPoint.js";
 import { Session } from "./Session.js";
+import { SessionContext } from "./SessionContext.js";
 import { User } from "./User.js";
 import { UserPermission } from "./UserPermission.js";
 
@@ -163,7 +178,7 @@ export class SecurityService {
     });
   }
 
-  async groupOpClone(id: number, args: any): Promise<Group> {
+  async groupOpClone(id: number, args: ArgsGroupOpClone): Promise<Group> {
     return this.#client.web.fetchJson(`/system/security/groupOpClone/${id}`, {
       method: "POST",
       headers: {
@@ -295,6 +310,13 @@ export class SecurityService {
     });
   }
 
+  async sessionContext(): Promise<SessionContext> {
+    return this.#client.web.fetchJson("/system/security/sessionContext", {
+      method: "GET",
+      
+    });
+  }
+
   async sessionDelete(id: any): Promise<Session> {
     return this.#client.web.fetchJson(`/system/security/session/${id}`, {
       method: "DELETE",
@@ -323,7 +345,7 @@ export class SecurityService {
     });
   }
 
-  async tokenOpInvalidate(args: any): Promise<void> {
+  async tokenOpInvalidate(args: ArgsTokenOpInvalidate): Promise<void> {
     return this.#client.web.fetchJson("/system/security/tokenOpInvalidate", {
       method: "POST",
       headers: {
@@ -342,14 +364,14 @@ export class SecurityService {
   }
 
   async tokenOpRenew(): Promise<string> {
-    return this.#client.web.fetchText("/system/security/tokenOpRenew", {
+    return this.#client.web.fetchJson("/system/security/tokenOpRenew", {
       method: "POST",
       
     });
   }
 
-  async tokenOpRequest(args: any): Promise<string> {
-    return this.#client.web.fetchText("/system/security/tokenOpRequest", {
+  async tokenOpRequest(args: ArgsTokenOpRequest): Promise<string> {
+    return this.#client.web.fetchJson("/system/security/tokenOpRequest", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -359,8 +381,8 @@ export class SecurityService {
     });
   }
 
-  async tokenOpRequestPermanent(args: any): Promise<string> {
-    return this.#client.web.fetchText("/system/security/tokenOpRequestPermanent", {
+  async tokenOpRequestPermanent(args: ArgsTokenOpRequestPermanent): Promise<string> {
+    return this.#client.web.fetchJson("/system/security/tokenOpRequestPermanent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -395,7 +417,7 @@ export class SecurityService {
     });
   }
 
-  async userOpAuthenticate(args: any): Promise<boolean> {
+  async userOpAuthenticate(args: ArgsUserOpAuthenticate): Promise<boolean> {
     return this.#client.web.fetchJson("/system/security/userOpAuthenticate", {
       method: "POST",
       headers: {
@@ -406,7 +428,7 @@ export class SecurityService {
     });
   }
 
-  async userOpChangeEmail(args: any): Promise<void> {
+  async userOpChangeEmail(args: ArgsUserOpChangeEmail): Promise<void> {
     return this.#client.web.fetchJson("/system/security/userOpChangeEmail", {
       method: "POST",
       headers: {
@@ -417,7 +439,7 @@ export class SecurityService {
     });
   }
 
-  async userOpChangeEmailConfirmation(args: any): Promise<void> {
+  async userOpChangeEmailConfirmation(args: ArgsUserOpChangeEmailConfirmation): Promise<void> {
     return this.#client.web.fetchJson("/system/security/userOpChangeEmailConfirmation", {
       method: "POST",
       headers: {
@@ -428,7 +450,7 @@ export class SecurityService {
     });
   }
 
-  async userOpChangePassword(args: any): Promise<void> {
+  async userOpChangePassword(args: ArgsUserOpChangePassword): Promise<void> {
     return this.#client.web.fetchJson("/system/security/userOpChangePassword", {
       method: "POST",
       headers: {
@@ -439,7 +461,7 @@ export class SecurityService {
     });
   }
 
-  async userOpChangePasswordThird(id: number, args: any): Promise<void> {
+  async userOpChangePasswordThird(id: number, args: ArgsUserOpChangePasswordThird): Promise<void> {
     return this.#client.web.fetchJson(`/system/security/userOpChangePasswordThird/${id}`, {
       method: "POST",
       headers: {
@@ -450,7 +472,7 @@ export class SecurityService {
     });
   }
 
-  async userOpCreate(args: any): Promise<void> {
+  async userOpCreate(args: ArgsUserOpCreate): Promise<void> {
     return this.#client.web.fetchJson("/system/security/userOpCreate", {
       method: "POST",
       headers: {
@@ -461,7 +483,7 @@ export class SecurityService {
     });
   }
 
-  async userOpCreateConfirmation(args: any): Promise<void> {
+  async userOpCreateConfirmation(args: ArgsUserOpCreateConfirmation): Promise<void> {
     return this.#client.web.fetchJson("/system/security/userOpCreateConfirmation", {
       method: "POST",
       headers: {
@@ -472,7 +494,7 @@ export class SecurityService {
     });
   }
 
-  async userOpCreateResend(args: any): Promise<void> {
+  async userOpCreateResend(args: ArgsUserOpCreateResend): Promise<void> {
     return this.#client.web.fetchJson("/system/security/userOpCreateResend", {
       method: "POST",
       headers: {
@@ -504,7 +526,7 @@ export class SecurityService {
     });
   }
 
-  async userOpResetPassword(args: any): Promise<void> {
+  async userOpResetPassword(args: ArgsUserOpResetPassword): Promise<void> {
     return this.#client.web.fetchJson("/system/security/userOpResetPassword", {
       method: "POST",
       headers: {
@@ -515,7 +537,7 @@ export class SecurityService {
     });
   }
 
-  async userOpResetPasswordConfirmation(args: any): Promise<void> {
+  async userOpResetPasswordConfirmation(args: ArgsUserOpResetPasswordConfirmation): Promise<void> {
     return this.#client.web.fetchJson("/system/security/userOpResetPasswordConfirmation", {
       method: "POST",
       headers: {

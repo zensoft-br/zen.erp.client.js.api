@@ -1,4 +1,5 @@
 import { Client } from "../../../Client.js";
+import { ArgsProductionOrderOpCreate } from "./ArgsProductionOrderOpCreate.js";
 import { Bom } from "./Bom.js";
 import { BomItem } from "./BomItem.js";
 import { Operation } from "./Operation.js";
@@ -344,7 +345,7 @@ export class ProductionService {
     });
   }
 
-  async productionOrderOpCreate(args: any): Promise<ProductionOrder> {
+  async productionOrderOpCreate(args: ArgsProductionOrderOpCreate): Promise<ProductionOrder> {
     return this.#client.web.fetchJson("/supply/production/productionOrderOpCreate", {
       method: "POST",
       headers: {

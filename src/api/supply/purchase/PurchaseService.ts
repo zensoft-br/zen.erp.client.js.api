@@ -1,4 +1,10 @@
 import { Client } from "../../../Client.js";
+import { ArgsProposalItemOpApprove } from "./ArgsProposalItemOpApprove.js";
+import { ArgsProposalItemOpDisapprove } from "./ArgsProposalItemOpDisapprove.js";
+import { ArgsPurchaseOpCancel } from "./ArgsPurchaseOpCancel.js";
+import { ArgsPurchaseOpCreate } from "./ArgsPurchaseOpCreate.js";
+import { ArgsQuoteOpCreate } from "./ArgsQuoteOpCreate.js";
+import { ArgsQuoteOpFinish } from "./ArgsQuoteOpFinish.js";
 import { PriceList } from "./PriceList.js";
 import { PriceListItem } from "./PriceListItem.js";
 import { Proposal } from "./Proposal.js";
@@ -140,7 +146,7 @@ export class PurchaseService {
     });
   }
 
-  async proposalItemOpApprove(id: number, args: any): Promise<ProposalItem> {
+  async proposalItemOpApprove(id: number, args: ArgsProposalItemOpApprove): Promise<ProposalItem> {
     return this.#client.web.fetchJson(`/supply/purchase/proposalItemOpApprove/${id}`, {
       method: "POST",
       headers: {
@@ -158,7 +164,7 @@ export class PurchaseService {
     });
   }
 
-  async proposalItemOpDisapprove(id: number, args: any): Promise<ProposalItem> {
+  async proposalItemOpDisapprove(id: number, args: ArgsProposalItemOpDisapprove): Promise<ProposalItem> {
     return this.#client.web.fetchJson(`/supply/purchase/proposalItemOpDisapprove/${id}`, {
       method: "POST",
       headers: {
@@ -329,7 +335,7 @@ export class PurchaseService {
     });
   }
 
-  async purchaseOpCancel(id: number, args: any): Promise<Purchase> {
+  async purchaseOpCancel(id: number, args: ArgsPurchaseOpCancel): Promise<Purchase> {
     return this.#client.web.fetchJson(`/supply/purchase/purchaseOpCancel/${id}`, {
       method: "POST",
       headers: {
@@ -354,7 +360,7 @@ export class PurchaseService {
     });
   }
 
-  async purchaseOpCreate(args: any): Promise<Purchase> {
+  async purchaseOpCreate(args: ArgsPurchaseOpCreate): Promise<Purchase> {
     return this.#client.web.fetchJson("/supply/purchase/purchaseOpCreate", {
       method: "POST",
       headers: {
@@ -604,7 +610,7 @@ export class PurchaseService {
     });
   }
 
-  async quoteOpCreate(args: any): Promise<Quote> {
+  async quoteOpCreate(args: ArgsQuoteOpCreate): Promise<Quote> {
     return this.#client.web.fetchJson("/supply/purchase/quoteOpCreate", {
       method: "POST",
       headers: {
@@ -615,7 +621,7 @@ export class PurchaseService {
     });
   }
 
-  async quoteOpFinish(id: number, args: any): Promise<Quote> {
+  async quoteOpFinish(id: number, args: ArgsQuoteOpFinish): Promise<Quote> {
     return this.#client.web.fetchJson(`/supply/purchase/quoteOpFinish/${id}`, {
       method: "POST",
       headers: {

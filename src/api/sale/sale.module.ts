@@ -2,8 +2,8 @@ export { SaleService } from "./SaleService.js";
 
 export { PriceFormation } from "./PriceFormation.js";
 export { PriceFormationItem } from "./PriceFormationItem.js";
-export { PriceFormationOpSimulation } from "./PriceFormationOpSimulation.js";
-export { PriceFormationOpSimulationItem } from "./PriceFormationOpSimulationItem.js";
+export { PriceFormationSimulation } from "./PriceFormationSimulation.js";
+export { PriceFormationSimulationItem } from "./PriceFormationSimulationItem.js";
 export { PriceList } from "./PriceList.js";
 export { PriceListItem } from "./PriceListItem.js";
 export { Quote } from "./Quote.js";

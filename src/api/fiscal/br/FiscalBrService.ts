@@ -1,4 +1,14 @@
 import { Client } from "../../../Client.js";
+import { ArgsDfeNfeProcInCreate } from "./ArgsDfeNfeProcInCreate.js";
+import { ArgsDfeNfeProcInOpIncomingInvoiceCreate } from "./ArgsDfeNfeProcInOpIncomingInvoiceCreate.js";
+import { ArgsDfeNfeProcOutOpCreateOutgoingInvoice } from "./ArgsDfeNfeProcOutOpCreateOutgoingInvoice.js";
+import { ArgsDfeNfeProcOutOpUpload } from "./ArgsDfeNfeProcOutOpUpload.js";
+import { ArgsDfeProcInutNFeCreate } from "./ArgsDfeProcInutNFeCreate.js";
+import { ArgsDocumentSefazOpFetch } from "./ArgsDocumentSefazOpFetch.js";
+import { ArgsNfeOutOpCancel } from "./ArgsNfeOutOpCancel.js";
+import { ArgsNfeOutOpCorrect } from "./ArgsNfeOutOpCorrect.js";
+import { ArgsNfeOutOpExport } from "./ArgsNfeOutOpExport.js";
+import { ArgsSpedOpExport } from "./ArgsSpedOpExport.js";
 import { Dfe } from "./Dfe.js";
 import { DfeNfeProcIn } from "./DfeNfeProcIn.js";
 import { DfeNfeProcOut } from "./DfeNfeProcOut.js";
@@ -18,7 +28,7 @@ export class FiscalBrService {
     this.#client = client;
   }
   
-  async dfeNfeProcInCreate(args: any): Promise<DfeNfeProcIn> {
+  async dfeNfeProcInCreate(args: ArgsDfeNfeProcInCreate): Promise<DfeNfeProcIn> {
     return this.#client.web.fetchJson("/fiscal/br/dfeNfeProcIn", {
       method: "POST",
       headers: {
@@ -36,7 +46,7 @@ export class FiscalBrService {
     });
   }
 
-  async dfeNfeProcInOpIncomingInvoiceCreate(id: number, args: any): Promise<IncomingInvoice> {
+  async dfeNfeProcInOpIncomingInvoiceCreate(id: number, args: ArgsDfeNfeProcInOpIncomingInvoiceCreate): Promise<IncomingInvoice> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcInOpIncomingInvoiceCreate/${id}`, {
       method: "POST",
       headers: {
@@ -75,7 +85,7 @@ export class FiscalBrService {
     });
   }
 
-  async dfeNfeProcOutOpCancel(id: number, args: any): Promise<DfeNfeProcOut> {
+  async dfeNfeProcOutOpCancel(id: number, args: ArgsNfeOutOpCancel): Promise<DfeNfeProcOut> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOutOpCancel/${id}`, {
       method: "POST",
       headers: {
@@ -93,7 +103,7 @@ export class FiscalBrService {
     });
   }
 
-  async dfeNfeProcOutOpCorrect(id: number, args: any): Promise<DfeNfeProcOut> {
+  async dfeNfeProcOutOpCorrect(id: number, args: ArgsNfeOutOpCorrect): Promise<DfeNfeProcOut> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOutOpCorrect/${id}`, {
       method: "POST",
       headers: {
@@ -113,7 +123,7 @@ export class FiscalBrService {
     });
   }
 
-  async dfeNfeProcOutOpDownload(args: any): Promise<any> {
+  async dfeNfeProcOutOpDownload(args: ArgsNfeOutOpExport): Promise<any> {
     return this.#client.web.fetchBlob("/fiscal/br/dfeNfeProcOutOpDownload", {
       method: "POST",
       headers: {
@@ -124,7 +134,7 @@ export class FiscalBrService {
     });
   }
 
-  async dfeNfeProcOutOpOutgoingInvoiceCreate(id: number, args: any): Promise<OutgoingInvoice> {
+  async dfeNfeProcOutOpOutgoingInvoiceCreate(id: number, args: ArgsDfeNfeProcOutOpCreateOutgoingInvoice): Promise<OutgoingInvoice> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOutOpOutgoingInvoiceCreate/${id}`, {
       method: "POST",
       headers: {
@@ -156,7 +166,7 @@ export class FiscalBrService {
     });
   }
 
-  async dfeNfeProcOutOpUpload(args: any): Promise<DfeNfeProcOut> {
+  async dfeNfeProcOutOpUpload(args: ArgsDfeNfeProcOutOpUpload): Promise<DfeNfeProcOut> {
     return this.#client.web.fetchJson("/fiscal/br/dfeNfeProcOutOpUpload", {
       method: "POST",
       headers: {
@@ -216,7 +226,7 @@ export class FiscalBrService {
     });
   }
 
-  async dfeProcInutNFeCreate(args: any): Promise<DfeProcInutNFe> {
+  async dfeProcInutNFeCreate(args: ArgsDfeProcInutNFeCreate): Promise<DfeProcInutNFe> {
     return this.#client.web.fetchJson("/fiscal/br/dfeProcInutNFe", {
       method: "POST",
       headers: {
@@ -292,7 +302,7 @@ export class FiscalBrService {
     });
   }
 
-  async documentSefazOpFetch(args: any): Promise<void> {
+  async documentSefazOpFetch(args: ArgsDocumentSefazOpFetch): Promise<void> {
     return this.#client.web.fetchJson("/fiscal/br/documentSefazOpFetch", {
       method: "POST",
       headers: {
@@ -303,7 +313,7 @@ export class FiscalBrService {
     });
   }
 
-  async spedOpExport(args: any): Promise<any> {
+  async spedOpExport(args: ArgsSpedOpExport): Promise<any> {
     return this.#client.web.fetchBlob("/fiscal/br/spedOpExport", {
       method: "POST",
       headers: {

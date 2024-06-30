@@ -1,4 +1,5 @@
 import { Client } from "../../../Client.js";
+import { ArgsCityOpFind } from "./ArgsCityOpFind.js";
 import { City } from "./City.js";
 import { Country } from "./Country.js";
 import { Geocode } from "./Geocode.js";
@@ -31,7 +32,7 @@ export class LocationService {
     });
   }
 
-  async cityOpFind(args: any): Promise<City> {
+  async cityOpFind(args: ArgsCityOpFind): Promise<City> {
     return this.#client.web.fetchJson("/catalog/location/cityOpFind", {
       method: "POST",
       headers: {

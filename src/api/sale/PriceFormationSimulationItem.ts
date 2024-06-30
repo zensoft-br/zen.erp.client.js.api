@@ -1,4 +1,4 @@
-export class PriceFormationOpSimulationItem {
+export class PriceFormationSimulationItem {
   id!: number;
   code!: string;
   description!: string;

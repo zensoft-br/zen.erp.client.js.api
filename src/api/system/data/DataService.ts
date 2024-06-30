@@ -1,4 +1,5 @@
 import { Client } from "../../../Client.js";
+import { ArgsDataSourceOpRead } from "./ArgsDataSourceOpRead.js";
 import { DataSource } from "./DataSource.js";
 import { DataSourceParameter } from "./DataSourceParameter.js";
 
@@ -28,7 +29,7 @@ export class DataService {
     });
   }
 
-  async dataSourceOpRead(args: any): Promise<string[]> {
+  async dataSourceOpRead(args: ArgsDataSourceOpRead): Promise<Map<string,any>[]> {
     return this.#client.web.fetchJson("/system/data/dataSourceOpRead", {
       method: "POST",
       headers: {

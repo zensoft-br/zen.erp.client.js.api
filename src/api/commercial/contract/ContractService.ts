@@ -254,7 +254,7 @@ export class ContractService {
     });
   }
 
-  async contractOpCreate(args: any): Promise<any> {
+  async contractOpCreate(args: ContractFull): Promise<ContractFull> {
     return this.#client.web.fetchJson("/commercial/contract/contractOpCreate", {
       method: "POST",
       headers: {

@@ -1,8 +1,14 @@
 import { Client } from "../../Client.js";
+import { ArgsPriceFormationOpCalculate } from "./ArgsPriceFormationOpCalculate.js";
+import { ArgsQuoteItemOpFill } from "./ArgsQuoteItemOpFill.js";
+import { ArgsQuoteOpApprove } from "./ArgsQuoteOpApprove.js";
+import { ArgsSaleOpCancel } from "./ArgsSaleOpCancel.js";
+import { ArgsSaleOpCreate } from "./ArgsSaleOpCreate.js";
+import { ArgsSaleOpPickingOrderCreate } from "./ArgsSaleOpPickingOrderCreate.js";
 import { PickingOrder } from "../material/PickingOrder.js";
 import { PriceFormation } from "./PriceFormation.js";
 import { PriceFormationItem } from "./PriceFormationItem.js";
-import { PriceFormationOpSimulation } from "./PriceFormationOpSimulation.js";
+import { PriceFormationSimulation } from "./PriceFormationSimulation.js";
 import { PriceList } from "./PriceList.js";
 import { PriceListItem } from "./PriceListItem.js";
 import { Quote } from "./Quote.js";
@@ -82,7 +88,7 @@ export class SaleService {
     });
   }
 
-  async priceFormationOpCalculate(id: number, args: any): Promise<number> {
+  async priceFormationOpCalculate(id: number, args: ArgsPriceFormationOpCalculate): Promise<number> {
     return this.#client.web.fetchJson(`/sale/priceFormationOpCalculate/${id}`, {
       method: "POST",
       headers: {
@@ -100,7 +106,7 @@ export class SaleService {
     });
   }
 
-  async priceFormationOpSimulation(id: number, args: any): Promise<PriceFormationOpSimulation> {
+  async priceFormationOpSimulation(id: number, args: ArgsPriceFormationOpCalculate): Promise<PriceFormationSimulation> {
     return this.#client.web.fetchJson(`/sale/priceFormationOpSimulation/${id}`, {
       method: "POST",
       headers: {
@@ -258,7 +264,7 @@ export class SaleService {
     });
   }
 
-  async quoteItemOpFill(id: number, args: any): Promise<QuoteItem> {
+  async quoteItemOpFill(id: number, args: ArgsQuoteItemOpFill): Promise<QuoteItem> {
     return this.#client.web.fetchJson(`/sale/quoteItemOpFill/${id}`, {
       method: "POST",
       headers: {
@@ -294,7 +300,7 @@ export class SaleService {
     });
   }
 
-  async quoteOpApprove(id: number, args: any): Promise<Quote> {
+  async quoteOpApprove(id: number, args: ArgsQuoteOpApprove): Promise<Quote> {
     return this.#client.web.fetchJson(`/sale/quoteOpApprove/${id}`, {
       method: "POST",
       headers: {
@@ -496,7 +502,7 @@ export class SaleService {
     });
   }
 
-  async saleOpCancel(id: number, args: any): Promise<Sale> {
+  async saleOpCancel(id: number, args: ArgsSaleOpCancel): Promise<Sale> {
     return this.#client.web.fetchJson(`/sale/saleOpCancel/${id}`, {
       method: "POST",
       headers: {
@@ -521,7 +527,7 @@ export class SaleService {
     });
   }
 
-  async saleOpCreate(args: any): Promise<Sale> {
+  async saleOpCreate(args: ArgsSaleOpCreate): Promise<Sale> {
     return this.#client.web.fetchJson("/sale/saleOpCreate", {
       method: "POST",
       headers: {
@@ -550,7 +556,7 @@ export class SaleService {
     });
   }
 
-  async saleOpPickingOrderCreate(id: number, args: any): Promise<PickingOrder> {
+  async saleOpPickingOrderCreate(id: number, args: ArgsSaleOpPickingOrderCreate): Promise<PickingOrder> {
     return this.#client.web.fetchJson(`/sale/saleOpPickingOrderCreate/${id}`, {
       method: "POST",
       headers: {

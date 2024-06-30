@@ -8,5 +8,6 @@ export { KeyStore } from "./KeyStore.js";
 export { Role } from "./Role.js";
 export { RoleAccessPoint } from "./RoleAccessPoint.js";
 export { Session } from "./Session.js";
+export { SessionContext } from "./SessionContext.js";
 export { User } from "./User.js";
 export { UserPermission } from "./UserPermission.js";

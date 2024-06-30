@@ -1,5 +1,5 @@
 export class ArgsAccountStatementOpConsolidate {
   description!: string;
-  items!: any;
+  items!: any[];
   tags!: string;
 }

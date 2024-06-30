@@ -1,5 +1,21 @@
 import { Client } from "../../Client.js";
 import { Address } from "./Address.js";
+import { ArgsIncomingListOpImport } from "./ArgsIncomingListOpImport.js";
+import { ArgsIncomingListOpImportFromOutgoingList } from "./ArgsIncomingListOpImportFromOutgoingList.js";
+import { ArgsMovingOrderItemOpLoad } from "./ArgsMovingOrderItemOpLoad.js";
+import { ArgsMovingOrderOpAllocateStock } from "./ArgsMovingOrderOpAllocateStock.js";
+import { ArgsOutgoingListOpCreateFromReservation } from "./ArgsOutgoingListOpCreateFromReservation.js";
+import { ArgsOutgoingListOpOutgoingInvoiceCreate } from "./ArgsOutgoingListOpOutgoingInvoiceCreate.js";
+import { ArgsOutgoingListOpVolumeCreateAuto } from "./ArgsOutgoingListOpVolumeCreateAuto.js";
+import { ArgsOutgoingRequestOpForwardAuto } from "./ArgsOutgoingRequestOpForwardAuto.js";
+import { ArgsPickingOrderOpCreate } from "./ArgsPickingOrderOpCreate.js";
+import { ArgsReservationOpAllocate } from "./ArgsReservationOpAllocate.js";
+import { ArgsReservationOpAllocateRevert } from "./ArgsReservationOpAllocateRevert.js";
+import { ArgsStockManagementOpImport } from "./ArgsStockManagementOpImport.js";
+import { ArgsStockOpUpdate } from "./ArgsStockOpUpdate.js";
+import { ArgsUpdateAverageDailyConsumption } from "./ArgsUpdateAverageDailyConsumption.js";
+import { ArgsVolumeOpCheck } from "./ArgsVolumeOpCheck.js";
+import { ArgsVolumeOpCreate } from "./ArgsVolumeOpCreate.js";
 import { HandlingUnit } from "./HandlingUnit.js";
 import { IncomingList } from "./IncomingList.js";
 import { IncomingListItem } from "./IncomingListItem.js";
@@ -190,7 +206,7 @@ export class MaterialService {
     });
   }
 
-  async incomingListOpImport(args: any): Promise<IncomingList> {
+  async incomingListOpImport(args: ArgsIncomingListOpImport): Promise<IncomingList> {
     return this.#client.web.fetchJson("/material/incomingListOpImport", {
       method: "POST",
       headers: {
@@ -201,7 +217,7 @@ export class MaterialService {
     });
   }
 
-  async incomingListOpImportFromOutgoingList(id: number, args: any): Promise<IncomingList> {
+  async incomingListOpImportFromOutgoingList(id: number, args: ArgsIncomingListOpImportFromOutgoingList): Promise<IncomingList> {
     return this.#client.web.fetchJson(`/material/incomingListOpImportFromOutgoingList/${id}`, {
       method: "POST",
       headers: {
@@ -615,7 +631,7 @@ export class MaterialService {
     });
   }
 
-  async movingOrderItemOpLoad(id: number, args: any): Promise<MovingOrderItem> {
+  async movingOrderItemOpLoad(id: number, args: ArgsMovingOrderItemOpLoad): Promise<MovingOrderItem> {
     return this.#client.web.fetchJson(`/material/movingOrderItemOpLoad/${id}`, {
       method: "POST",
       headers: {
@@ -665,7 +681,7 @@ export class MaterialService {
     });
   }
 
-  async movingOrderOpAllocateStock(id: number, args: any): Promise<MovingOrderItem> {
+  async movingOrderOpAllocateStock(id: number, args: ArgsMovingOrderOpAllocateStock): Promise<MovingOrderItem> {
     return this.#client.web.fetchJson(`/material/movingOrderOpAllocateStock/${id}`, {
       method: "POST",
       headers: {
@@ -766,7 +782,7 @@ export class MaterialService {
     });
   }
 
-  async outgoingListOpCreateFromReservation(id: number, args: any): Promise<OutgoingList> {
+  async outgoingListOpCreateFromReservation(id: number, args: ArgsOutgoingListOpCreateFromReservation): Promise<OutgoingList> {
     return this.#client.web.fetchJson(`/material/outgoingListOpCreateFromReservation/${id}`, {
       method: "POST",
       headers: {
@@ -788,7 +804,7 @@ export class MaterialService {
     });
   }
 
-  async outgoingListOpOutgoingInvoiceCreate(id: number, args: any): Promise<OutgoingInvoice> {
+  async outgoingListOpOutgoingInvoiceCreate(id: number, args: ArgsOutgoingListOpOutgoingInvoiceCreate): Promise<OutgoingInvoice> {
     return this.#client.web.fetchJson(`/material/outgoingListOpOutgoingInvoiceCreate/${id}`, {
       method: "POST",
       headers: {
@@ -820,7 +836,7 @@ export class MaterialService {
     });
   }
 
-  async outgoingListOpVolumeCreateAuto(id: number, args: any): Promise<OutgoingList> {
+  async outgoingListOpVolumeCreateAuto(id: number, args: ArgsOutgoingListOpVolumeCreateAuto): Promise<OutgoingList> {
     return this.#client.web.fetchJson(`/material/outgoingListOpVolumeCreateAuto/${id}`, {
       method: "POST",
       headers: {
@@ -920,7 +936,7 @@ export class MaterialService {
     });
   }
 
-  async outgoingRequestOpForwardAuto(id: number, args: any): Promise<OutgoingRequest> {
+  async outgoingRequestOpForwardAuto(id: number, args: ArgsOutgoingRequestOpForwardAuto): Promise<OutgoingRequest> {
     return this.#client.web.fetchJson(`/material/outgoingRequestOpForwardAuto/${id}`, {
       method: "POST",
       headers: {
@@ -1048,7 +1064,7 @@ export class MaterialService {
     });
   }
 
-  async pickingOrderOpCreate(args: any): Promise<PickingOrder> {
+  async pickingOrderOpCreate(args: ArgsPickingOrderOpCreate): Promise<PickingOrder> {
     return this.#client.web.fetchJson("/material/pickingOrderOpCreate", {
       method: "POST",
       headers: {
@@ -1624,7 +1640,7 @@ export class MaterialService {
     });
   }
 
-  async stockManagementOpImport(args: any): Promise<void> {
+  async stockManagementOpImport(args: ArgsStockManagementOpImport): Promise<void> {
     return this.#client.web.fetchJson("/material/stockManagementOpImport", {
       method: "POST",
       headers: {
@@ -1635,7 +1651,7 @@ export class MaterialService {
     });
   }
 
-  async stockManagementOpUpdateAverageDailyConsumption(args: any): Promise<void> {
+  async stockManagementOpUpdateAverageDailyConsumption(args: ArgsUpdateAverageDailyConsumption): Promise<void> {
     return this.#client.web.fetchJson("/material/stockManagementOpUpdateAverageDailyConsumption", {
       method: "POST",
       headers: {
@@ -1671,7 +1687,7 @@ export class MaterialService {
     });
   }
 
-  async stockOpUpdate(id: number, args: any): Promise<Stock> {
+  async stockOpUpdate(id: number, args: ArgsStockOpUpdate): Promise<Stock> {
     return this.#client.web.fetchJson(`/material/stockOpUpdate/${id}`, {
       method: "POST",
       headers: {
@@ -1790,7 +1806,7 @@ export class MaterialService {
     });
   }
 
-  async volumeOpCheck(id: number, args: any): Promise<Volume> {
+  async volumeOpCheck(id: number, args: ArgsVolumeOpCheck): Promise<Volume> {
     return this.#client.web.fetchJson(`/material/volumeOpCheck/${id}`, {
       method: "POST",
       headers: {
@@ -1808,7 +1824,7 @@ export class MaterialService {
     });
   }
 
-  async volumeOpCreate(args: any): Promise<Volume> {
+  async volumeOpCreate(args: ArgsVolumeOpCreate): Promise<Volume> {
     return this.#client.web.fetchJson("/material/volumeOpCreate", {
       method: "POST",
       headers: {

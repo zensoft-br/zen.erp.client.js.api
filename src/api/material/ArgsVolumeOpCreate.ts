@@ -3,5 +3,5 @@ export class ArgsVolumeOpCreate {
   code!: string;
   tags!: string;
   properties!: Object;
-  items!: any;
+  items!: any[];
 }

@@ -2,6 +2,7 @@ export * as audit from "./audit/audit.module.js";
 export * as automation from "./automation/automation.module.js";
 export * as data from "./data/data.module.js";
 export * as file from "./file/file.module.js";
+export * as frontend from "./frontend/frontend.module.js";
 export * as image from "./image/image.module.js";
 export * as integration from "./integration/integration.module.js";
 export * as mail from "./mail/mail.module.js";

@@ -6,6 +6,6 @@ export class ArgsJournalEntry {
   value!: number;
   description!: string;
   tags!: string;
-  items!: any;
+  items!: any[];
   publish!: boolean;
 }

@@ -1,4 +1,5 @@
 import { Client } from "../../Client.js";
+import { ArgsCustomPropertiesOpSet } from "./ArgsCustomPropertiesOpSet.js";
 import { Info } from "./Info.js";
 import { Status } from "./Status.js";
 import { Test } from "./Test.js";
@@ -18,7 +19,7 @@ export class SystemService {
     });
   }
 
-  async customPropertiesOpSet(args: any): Promise<void> {
+  async customPropertiesOpSet(args: ArgsCustomPropertiesOpSet): Promise<void> {
     return this.#client.web.fetchJson("/system/customPropertiesOpSet", {
       method: "POST",
       headers: {
@@ -58,7 +59,7 @@ export class SystemService {
     if (id) sp.set("id", String(id));
     if (waitTime) sp.set("waitTime", String(waitTime));
     if (leaseTime) sp.set("leaseTime", String(leaseTime));
-    return this.#client.web.fetchText(`/system/lockOpAcquire?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/lockOpAcquire?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -86,14 +87,14 @@ export class SystemService {
   }
 
   async metricsRead(): Promise<Object> {
-    return this.#client.web.fetchText("/system/metrics", {
+    return this.#client.web.fetchJson("/system/metrics", {
       method: "GET",
       
     });
   }
 
   async resourcesRead(): Promise<Object> {
-    return this.#client.web.fetchText("/system/resources", {
+    return this.#client.web.fetchJson("/system/resources", {
       method: "GET",
       
     });

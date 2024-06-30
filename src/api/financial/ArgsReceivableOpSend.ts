@@ -1,3 +1,3 @@
 export class ArgsReceivableOpSend {
-  ids!: any;
+  ids!: number[];
 }

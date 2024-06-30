@@ -6,6 +6,9 @@ import { AccountConversion } from "./AccountConversion.js";
 import { AccountConversionChart } from "./AccountConversionChart.js";
 import { AccountDefault } from "./AccountDefault.js";
 import { AccountFiscalYear } from "./AccountFiscalYear.js";
+import { ArgsAccountChartOpImport } from "./ArgsAccountChartOpImport.js";
+import { ArgsAccountDefaultOpRead } from "./ArgsAccountDefaultOpRead.js";
+import { ArgsJournalEntry } from "./ArgsJournalEntry.js";
 import { AssetInventory } from "./AssetInventory.js";
 import { AssetTag } from "./AssetTag.js";
 import { JournalEntry } from "./JournalEntry.js";
@@ -278,7 +281,7 @@ export class AccountingService {
     });
   }
 
-  async accountDefaultOpRead(args: any): Promise<Account> {
+  async accountDefaultOpRead(args: ArgsAccountDefaultOpRead): Promise<Account> {
     return this.#client.web.fetchJson("/financial/accounting/accountDefaultOpRead", {
       method: "POST",
       headers: {
@@ -406,7 +409,7 @@ export class AccountingService {
     });
   }
 
-  async journalEntryOpCreate(args: any): Promise<JournalEntry> {
+  async journalEntryOpCreate(args: ArgsJournalEntry): Promise<JournalEntry> {
     return this.#client.web.fetchJson("/financial/accounting/journalEntryOpCreate", {
       method: "POST",
       headers: {
@@ -431,7 +434,7 @@ export class AccountingService {
     });
   }
 
-  async journalEntryOpUpdate(args: any): Promise<JournalEntry> {
+  async journalEntryOpUpdate(args: ArgsJournalEntry): Promise<JournalEntry> {
     return this.#client.web.fetchJson("/financial/accounting/journalEntryOpUpdate", {
       method: "POST",
       headers: {

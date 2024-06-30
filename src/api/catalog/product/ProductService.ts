@@ -1,10 +1,12 @@
 import { Client } from "../../../Client.js";
+import { ArgsProductOpClone } from "./ArgsProductOpClone.js";
 import { CodeConversion } from "./CodeConversion.js";
 import { CodeConversionList } from "./CodeConversionList.js";
 import { Dimension } from "./Dimension.js";
 import { Product } from "./Product.js";
 import { ProductKitComponent } from "./ProductKitComponent.js";
 import { ProductPacking } from "./ProductPacking.js";
+import { ProductProfile } from "./ProductProfile.js";
 import { ProductUnitConversion } from "./ProductUnitConversion.js";
 import { ProductVariant } from "./ProductVariant.js";
 import { Unit } from "./Unit.js";
@@ -207,7 +209,7 @@ export class ProductService {
     });
   }
 
-  async productOpClone(id: number, args: any): Promise<Product> {
+  async productOpClone(id: number, args: ArgsProductOpClone): Promise<Product> {
     return this.#client.web.fetchJson(`/catalog/product/productOpClone/${id}`, {
       method: "POST",
       headers: {
@@ -272,6 +274,49 @@ export class ProductService {
 
   async productPackingUpdate(bean: ProductPacking): Promise<ProductPacking> {
     return this.#client.web.fetchJson("/catalog/product/productPacking", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async productProfileCreate(bean: ProductProfile): Promise<ProductProfile> {
+    return this.#client.web.fetchJson("/catalog/product/productProfile", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async productProfileDelete(id: number): Promise<ProductProfile> {
+    return this.#client.web.fetchJson(`/catalog/product/productProfile/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async productProfileRead(search: any): Promise<ProductProfile[]> {
+    return this.#client.web.fetchJson(`/catalog/product/productProfile?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async productProfileReadById(id: number): Promise<ProductProfile> {
+    return this.#client.web.fetchJson(`/catalog/product/productProfile/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async productProfileUpdate(bean: ProductProfile): Promise<ProductProfile> {
+    return this.#client.web.fetchJson("/catalog/product/productProfile", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

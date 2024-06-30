@@ -10,7 +10,7 @@ export class StorageService {
   async get(key: string): Promise<any> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchText(`/system/storage/?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/?${sp.toString()}`, {
       method: "GET",
       
     });
@@ -28,7 +28,7 @@ export class StorageService {
   async getString(key: string): Promise<string> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchText(`/system/storage/string?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/string?${sp.toString()}`, {
       method: "GET",
       
     });
@@ -79,7 +79,7 @@ export class StorageService {
   async userGet(key: string): Promise<any> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchText(`/system/storage/user?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/user?${sp.toString()}`, {
       method: "GET",
       
     });
@@ -97,7 +97,7 @@ export class StorageService {
   async userGetString(key: string): Promise<string> {
     const sp = new URLSearchParams();
     if (key) sp.set("key", String(key));
-    return this.#client.web.fetchText(`/system/storage/user/string?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/storage/user/string?${sp.toString()}`, {
       method: "GET",
       
     });

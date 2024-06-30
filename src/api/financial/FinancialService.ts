@@ -1,4 +1,8 @@
 import { Client } from "../../Client.js";
+import { ArgsBillingTitleOpRepeat } from "./ArgsBillingTitleOpRepeat.js";
+import { ArgsBillingTitleOpUpdate } from "./ArgsBillingTitleOpUpdate.js";
+import { ArgsOpSettle } from "./ArgsOpSettle.js";
+import { ArgsReceivableOpSend } from "./ArgsReceivableOpSend.js";
 import { Currency } from "./Currency.js";
 import { CurrencyExchangeRate } from "./CurrencyExchangeRate.js";
 import { Payable } from "./Payable.js";
@@ -165,7 +169,7 @@ export class FinancialService {
     });
   }
 
-  async payableOpRepeat(id: number, args: any): Promise<Payable[]> {
+  async payableOpRepeat(id: number, args: ArgsBillingTitleOpRepeat): Promise<Payable[]> {
     return this.#client.web.fetchJson(`/financial/payableOpRepeat/${id}`, {
       method: "POST",
       headers: {
@@ -176,7 +180,7 @@ export class FinancialService {
     });
   }
 
-  async payableOpSettle(args: any): Promise<Settlement> {
+  async payableOpSettle(args: ArgsOpSettle): Promise<Settlement> {
     return this.#client.web.fetchJson("/financial/payableOpSettle", {
       method: "POST",
       headers: {
@@ -187,7 +191,7 @@ export class FinancialService {
     });
   }
 
-  async payableOpUpdate(id: number, args: any): Promise<Payable> {
+  async payableOpUpdate(id: number, args: ArgsBillingTitleOpUpdate): Promise<Payable> {
     return this.#client.web.fetchJson(`/financial/payableOpUpdate/${id}`, {
       method: "POST",
       headers: {
@@ -315,7 +319,7 @@ export class FinancialService {
     });
   }
 
-  async receivableOpRepeat(id: number, args: any): Promise<Payable[]> {
+  async receivableOpRepeat(id: number, args: ArgsBillingTitleOpRepeat): Promise<Payable[]> {
     return this.#client.web.fetchJson(`/financial/receivableOpRepeat/${id}`, {
       method: "POST",
       headers: {
@@ -326,7 +330,7 @@ export class FinancialService {
     });
   }
 
-  async receivableOpSend(args: any): Promise<void> {
+  async receivableOpSend(args: ArgsReceivableOpSend): Promise<void> {
     return this.#client.web.fetchJson("/financial/receivableOpSend", {
       method: "POST",
       headers: {
@@ -337,7 +341,7 @@ export class FinancialService {
     });
   }
 
-  async receivableOpSettle(args: any): Promise<Settlement> {
+  async receivableOpSettle(args: ArgsOpSettle): Promise<Settlement> {
     return this.#client.web.fetchJson("/financial/receivableOpSettle", {
       method: "POST",
       headers: {
@@ -348,7 +352,7 @@ export class FinancialService {
     });
   }
 
-  async receivableOpUpdate(id: number, args: any): Promise<Receivable> {
+  async receivableOpUpdate(id: number, args: ArgsBillingTitleOpUpdate): Promise<Receivable> {
     return this.#client.web.fetchJson(`/financial/receivableOpUpdate/${id}`, {
       method: "POST",
       headers: {

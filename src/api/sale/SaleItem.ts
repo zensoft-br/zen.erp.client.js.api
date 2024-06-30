@@ -1,5 +1,6 @@
 import { Account } from "../financial/accounting/Account.js";
 import { AccountComplement } from "../financial/accounting/AccountComplement.js";
+import { Currency } from "../financial/Currency.js";
 import { FiscalProfileProduct } from "../fiscal/FiscalProfileProduct.js";
 import { ProductPacking } from "../catalog/product/ProductPacking.js";
 import { PurchaseItem } from "../supply/purchase/PurchaseItem.js";
@@ -18,12 +19,13 @@ export class SaleItem {
   quantity!: number;
   servedQuantity!: number;
   unitValue!: number;
+  currency!: Currency;
   costUnitValue!: number;
   productValue!: number;
   discountType!: string;
   discountAmount!: number;
   discountValue!: number;
-  otherValues!: Object;
+  otherValues!: Map<string,number>;
   operationValue!: number;
   insideTaxValue!: number;
   outsideTaxValue!: number;

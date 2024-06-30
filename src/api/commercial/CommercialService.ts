@@ -1,5 +1,4 @@
 import { Client } from "../../Client.js";
-import { PriceList } from "./PriceList.js";
 import { PriceListChangeRequest } from "./PriceListChangeRequest.js";
 import { PriceListTransformation } from "./PriceListTransformation.js";
 
@@ -65,17 +64,6 @@ export class CommercialService {
     return this.#client.web.fetchJson(`/commercial/priceListOpFind/${id}?${sp.toString()}`, {
       method: "POST",
       
-    });
-  }
-
-  async priceListOpImport(id: number, args: any): Promise<PriceList> {
-    return this.#client.web.fetchJson(`/commercial/priceListOpImport/${id}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(args),
-
     });
   }
 

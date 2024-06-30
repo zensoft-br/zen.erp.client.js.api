@@ -57,7 +57,7 @@ export class MailService {
     const sp = new URLSearchParams();
     if (mailerConfigId) sp.set("mailerConfigId", String(mailerConfigId));
     if (mailerConfigCode) sp.set("mailerConfigCode", String(mailerConfigCode));
-    return this.#client.web.fetchText(`/system/mail/messageOpSend?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/mail/messageOpSend?${sp.toString()}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

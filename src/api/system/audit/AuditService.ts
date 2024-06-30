@@ -1,4 +1,5 @@
 import { Client } from "../../../Client.js";
+import { ArgsLogCreate } from "./ArgsLogCreate.js";
 import { Log } from "./Log.js";
 import { Source } from "./Source.js";
 
@@ -10,7 +11,7 @@ export class AuditService {
     this.#client = client;
   }
   
-  async logCreate(args: any): Promise<Log> {
+  async logCreate(args: ArgsLogCreate): Promise<Log> {
     return this.#client.web.fetchJson("/system/audit/log", {
       method: "POST",
       headers: {
@@ -66,7 +67,7 @@ export class AuditService {
     });
   }
 
-  async userLogCreate(args: any): Promise<Log> {
+  async userLogCreate(args: ArgsLogCreate): Promise<Log> {
     return this.#client.web.fetchJson("/system/audit/userLog", {
       method: "POST",
       headers: {

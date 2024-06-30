@@ -29,7 +29,7 @@ export class AutomationService {
     });
   }
 
-  async agentOpExecute(id: number, parameters: Object): Promise<void> {
+  async agentOpExecute(id: number, parameters: any): Promise<void> {
     return this.#client.web.fetchJson(`/system/automation/agentOpExecute/${id}`, {
       method: "POST",
       headers: {

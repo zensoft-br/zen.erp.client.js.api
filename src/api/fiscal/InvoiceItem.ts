@@ -24,7 +24,7 @@ export class InvoiceItem {
   unitValue!: number;
   productValue!: number;
   discountValue!: number;
-  otherValues!: Object;
+  otherValues!: Map<string,number>;
   operationValue!: number;
   insideTaxValue!: number;
   outsideTaxValue!: number;
