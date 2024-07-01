@@ -7,5 +7,5 @@ export class ContractBilling {
   date!: Date;
   value!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

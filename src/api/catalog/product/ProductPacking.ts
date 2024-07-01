@@ -16,5 +16,5 @@ export class ProductPacking {
   netWeightKg!: number;
   grossWeightKg!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

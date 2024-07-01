@@ -8,5 +8,5 @@ export class IncomingList {
   person!: Person;
   date!: Date;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

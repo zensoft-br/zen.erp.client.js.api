@@ -35,5 +35,5 @@ export class ProposalItem {
   taxCompensationValue!: number;
   effectiveValue!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -5,5 +5,5 @@ export class KeyStore {
   content!: any;
   password!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

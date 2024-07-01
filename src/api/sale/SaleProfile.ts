@@ -13,5 +13,5 @@ export class SaleProfile {
   invoiceSeriesTag!: string;
   pickingProfile!: PickingProfile;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

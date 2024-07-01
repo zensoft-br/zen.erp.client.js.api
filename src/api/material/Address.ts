@@ -6,5 +6,5 @@ export class Address {
   code!: string;
   status!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

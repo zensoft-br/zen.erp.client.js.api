@@ -7,5 +7,5 @@ export class ProductKitComponent {
   productPacking!: ProductPacking;
   quantity!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

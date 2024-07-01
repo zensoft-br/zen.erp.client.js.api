@@ -6,5 +6,5 @@ export class PersonContact {
   type!: string;
   description!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

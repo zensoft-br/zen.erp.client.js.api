@@ -3,5 +3,5 @@ export class ArgsPickingOrderOpCreate {
   pickingProfileId!: number;
   shipmentId!: number;
   items!: any;
-  properties!: Object;
+  properties!: any;
 }

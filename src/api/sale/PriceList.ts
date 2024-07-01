@@ -11,5 +11,5 @@ export class PriceList {
   variationRateLow!: number;
   variationRateHigh!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -33,5 +33,5 @@ export class Invoice {
   freightType!: string;
   journalEntry!: JournalEntry;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -17,5 +17,5 @@ export class AccountDefault {
   wallet!: Wallet;
   account!: Account;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

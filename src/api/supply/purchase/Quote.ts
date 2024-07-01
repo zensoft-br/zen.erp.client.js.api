@@ -14,5 +14,5 @@ export class Quote {
   date!: Date;
   availabilityDate!: Date;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

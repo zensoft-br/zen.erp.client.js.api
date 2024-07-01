@@ -9,5 +9,5 @@ export class Account {
   description!: string;
   fullDescription!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

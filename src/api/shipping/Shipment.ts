@@ -11,5 +11,5 @@ export class Shipment {
   grossWeightKg!: number;
   volumeM3!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -9,5 +9,5 @@ export class BatchRequest {
   quantity!: number;
   file!: File;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

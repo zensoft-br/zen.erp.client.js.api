@@ -5,5 +5,5 @@ export class FiscalProfileProduct {
   fiscalRegion!: FiscalRegion;
   description!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

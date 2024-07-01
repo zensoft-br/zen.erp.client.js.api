@@ -12,5 +12,5 @@ export class TaxationRule {
   fiscalProfileOperation!: FiscalProfileOperation;
   taxationOperation!: TaxationOperation;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

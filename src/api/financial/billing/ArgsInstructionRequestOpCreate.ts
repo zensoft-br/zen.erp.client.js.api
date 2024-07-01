@@ -4,5 +4,5 @@ export class ArgsInstructionRequestOpCreate {
   walletId!: number;
   dueDate!: Date;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

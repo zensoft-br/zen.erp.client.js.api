@@ -7,5 +7,5 @@ export class Status {
   description!: string;
   accessPoint!: AccessPoint;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

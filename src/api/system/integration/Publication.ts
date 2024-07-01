@@ -4,5 +4,5 @@ export class Publication {
   contentType!: string;
   content!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -8,5 +8,5 @@ export class Queue {
   maxReads!: number;
   deadQueue!: Queue;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

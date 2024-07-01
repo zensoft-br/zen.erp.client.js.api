@@ -1,4 +1,4 @@
 export class ArgsPriceFormationOpCalculate {
   value!: number;
-  properties!: Object;
+  properties!: any;
 }

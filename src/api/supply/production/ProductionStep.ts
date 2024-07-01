@@ -4,5 +4,5 @@ export class ProductionStep {
   id!: number;
   productionOrder!: ProductionOrder;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

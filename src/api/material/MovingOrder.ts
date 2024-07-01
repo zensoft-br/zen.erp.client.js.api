@@ -6,5 +6,5 @@ export class MovingOrder {
   status!: string;
   date!: Date;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

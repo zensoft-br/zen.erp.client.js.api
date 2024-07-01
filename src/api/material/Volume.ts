@@ -15,5 +15,5 @@ export class Volume {
   checked!: boolean;
   loaded!: boolean;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

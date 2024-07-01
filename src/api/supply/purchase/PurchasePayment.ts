@@ -11,5 +11,5 @@ export class PurchasePayment {
   term!: number;
   value!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

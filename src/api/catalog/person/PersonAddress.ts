@@ -12,5 +12,5 @@ export class PersonAddress {
   district!: string;
   city!: City;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

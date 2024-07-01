@@ -7,5 +7,5 @@ export class DataSource {
   sql!: string;
   accessPoint!: AccessPoint;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

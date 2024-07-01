@@ -6,5 +6,5 @@ export class State {
   name!: string;
   country!: Country;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

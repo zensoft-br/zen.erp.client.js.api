@@ -3,5 +3,5 @@ export class ArgsTopicOpPublish {
   contentType!: string;
   content!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

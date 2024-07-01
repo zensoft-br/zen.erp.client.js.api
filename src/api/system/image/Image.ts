@@ -10,5 +10,5 @@ export class Image {
   width!: number;
   height!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

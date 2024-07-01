@@ -9,5 +9,5 @@ export class CodeConversion {
   unit!: Unit;
   code!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

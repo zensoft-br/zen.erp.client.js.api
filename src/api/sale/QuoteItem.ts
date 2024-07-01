@@ -13,5 +13,5 @@ export class QuoteItem {
   totalValue!: number;
   approvedQuantity!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

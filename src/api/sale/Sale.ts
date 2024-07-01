@@ -34,5 +34,5 @@ export class Sale {
   shipment!: Shipment;
   outgoingInvoice!: OutgoingInvoice;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -4,8 +4,8 @@ export class ArgsReportOpGenerate {
   id!: number;
   code!: string;
   format!: string;
-  parameters!: Object;
-  properties!: Object;
+  parameters!: any;
+  properties!: any;
   dataSource!: ArgsDataSourceOpRead;
   printer!: any;
 }

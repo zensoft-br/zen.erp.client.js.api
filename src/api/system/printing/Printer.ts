@@ -5,5 +5,5 @@ export class Printer {
   description!: string;
   jobs!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

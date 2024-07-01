@@ -20,5 +20,5 @@ export class Quote {
   personSalesperson!: Person;
   totalValue!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

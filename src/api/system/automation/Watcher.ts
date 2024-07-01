@@ -3,5 +3,5 @@ export class Watcher {
   event!: string;
   uri!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

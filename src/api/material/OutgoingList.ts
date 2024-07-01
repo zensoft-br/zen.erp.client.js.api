@@ -19,5 +19,5 @@ export class OutgoingList {
   invoiceSeries!: InvoiceSeries;
   number!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

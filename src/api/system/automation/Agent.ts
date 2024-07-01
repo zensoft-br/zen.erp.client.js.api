@@ -3,5 +3,5 @@ export class Agent {
   description!: string;
   uri!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

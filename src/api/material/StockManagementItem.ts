@@ -15,5 +15,5 @@ export class StockManagementItem {
   acquisitionType!: string;
   person!: Person;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

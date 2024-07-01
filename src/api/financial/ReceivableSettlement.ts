@@ -18,5 +18,5 @@ export class ReceivableSettlement {
   value!: number;
   journalEntry!: JournalEntry;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -1,5 +1,5 @@
 export class ArgsTokenOpRequestPermanent {
   email!: string;
   password!: string;
-  properties!: Object;
+  properties!: any;
 }

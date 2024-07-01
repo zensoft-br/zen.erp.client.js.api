@@ -33,5 +33,5 @@ export class Person {
   category4!: Category;
   category5!: Category;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

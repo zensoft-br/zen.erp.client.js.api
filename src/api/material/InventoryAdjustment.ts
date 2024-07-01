@@ -25,5 +25,5 @@ export class InventoryAdjustment {
   type!: string;
   tags!: string;
   quantity!: number;
-  properties!: Object;
+  properties!: any;
 }

@@ -13,5 +13,5 @@ export class Dfe {
   nProt!: string;
   nsu!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

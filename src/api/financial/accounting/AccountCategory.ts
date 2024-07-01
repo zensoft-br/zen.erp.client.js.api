@@ -3,5 +3,5 @@ export class AccountCategory {
   code!: string;
   description!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

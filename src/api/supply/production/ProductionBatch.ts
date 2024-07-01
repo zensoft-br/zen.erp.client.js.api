@@ -12,5 +12,5 @@ export class ProductionBatch {
   incomingList!: IncomingList;
   journalEntry!: JournalEntry;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

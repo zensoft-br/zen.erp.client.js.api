@@ -18,5 +18,5 @@ export class PayableSettlement {
   value!: number;
   journalEntry!: JournalEntry;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

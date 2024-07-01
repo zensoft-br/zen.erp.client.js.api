@@ -4,5 +4,5 @@ export class ContractIndex {
   description!: string;
   value!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

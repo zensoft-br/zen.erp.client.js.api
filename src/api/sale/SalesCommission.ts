@@ -7,5 +7,5 @@ export class SalesCommission {
   type!: string;
   value!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

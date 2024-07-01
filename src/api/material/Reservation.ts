@@ -9,5 +9,5 @@ export class Reservation {
   code!: string;
   date!: Date;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

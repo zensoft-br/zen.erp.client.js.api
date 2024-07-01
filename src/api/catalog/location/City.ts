@@ -5,5 +5,5 @@ export class City {
   name!: string;
   state!: State;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

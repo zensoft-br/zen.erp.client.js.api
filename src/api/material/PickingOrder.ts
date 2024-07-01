@@ -23,5 +23,5 @@ export class PickingOrder {
   volumeM3!: number;
   shipment!: Shipment;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

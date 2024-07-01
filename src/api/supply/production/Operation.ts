@@ -9,5 +9,5 @@ export class Operation {
   unitValue!: number;
   totalValue!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

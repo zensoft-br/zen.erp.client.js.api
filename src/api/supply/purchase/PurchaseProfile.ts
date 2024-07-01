@@ -8,5 +8,5 @@ export class PurchaseProfile {
   fiscalProfileOperation!: FiscalProfileOperation;
   workflow!: Workflow;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

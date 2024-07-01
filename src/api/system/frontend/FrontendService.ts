@@ -46,14 +46,14 @@ export class FrontendService {
     });
   }
 
-  async resourcesRead(): Promise<Map<string,Object>> {
+  async resourcesRead(): Promise<Map<string,Map<string,string>>> {
     return this.#client.web.fetchJson("/system/frontend/resources", {
       method: "GET",
       
     });
   }
 
-  async resourcesUpdate(resources: any): Promise<Map<string,Object>> {
+  async resourcesUpdate(resources: any): Promise<Map<string,Map<string,string>>> {
     return this.#client.web.fetchJson("/system/frontend/resources", {
       method: "PUT",
       headers: {

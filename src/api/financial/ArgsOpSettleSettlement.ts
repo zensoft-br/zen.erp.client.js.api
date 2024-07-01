@@ -5,5 +5,5 @@ export class ArgsOpSettleSettlement {
   accountId!: number;
   resultCenterId!: number;
   tag!: string;
-  properties!: Object;
+  properties!: any;
 }

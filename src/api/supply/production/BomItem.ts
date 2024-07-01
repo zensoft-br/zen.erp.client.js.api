@@ -9,5 +9,5 @@ export class BomItem {
   type!: string;
   quantity!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -26,5 +26,5 @@ export class IncomingListItem {
   volumeM3!: number;
   productPackingInvoice!: ProductPacking;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

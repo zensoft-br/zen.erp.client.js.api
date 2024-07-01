@@ -17,5 +17,5 @@ export class Taxation {
   compensationRate!: number;
   compensationValue!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

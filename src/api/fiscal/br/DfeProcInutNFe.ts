@@ -14,5 +14,5 @@ export class DfeProcInutNFe {
   nProt!: string;
   nsu!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

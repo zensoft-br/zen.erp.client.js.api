@@ -33,5 +33,5 @@ export class Purchase {
   quote!: Quote;
   purchaseSource!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

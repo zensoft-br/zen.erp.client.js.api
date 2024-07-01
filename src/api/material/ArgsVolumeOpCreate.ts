@@ -2,6 +2,6 @@ export class ArgsVolumeOpCreate {
   outgoingListId!: number;
   code!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
   items!: any[];
 }

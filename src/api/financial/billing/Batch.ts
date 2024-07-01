@@ -6,5 +6,5 @@ export class Batch {
   quantity!: number;
   file!: File;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

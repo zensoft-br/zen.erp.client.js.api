@@ -6,6 +6,6 @@ export class InvoiceSeries {
   code!: string;
   description!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
   lastNumber!: number;
 }

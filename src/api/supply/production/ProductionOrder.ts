@@ -17,5 +17,5 @@ export class ProductionOrder {
   quantity!: number;
   servedQuantity!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

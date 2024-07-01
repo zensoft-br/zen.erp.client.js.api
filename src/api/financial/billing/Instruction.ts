@@ -7,5 +7,5 @@ export class Instruction {
   wallet!: Wallet;
   date!: Date;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

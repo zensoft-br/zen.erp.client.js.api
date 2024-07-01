@@ -4,5 +4,5 @@ export class Report {
   type!: string;
   delegate!: Report;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

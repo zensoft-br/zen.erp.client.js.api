@@ -11,5 +11,5 @@ export class WorkpieceNode {
   status!: string;
   user!: User;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

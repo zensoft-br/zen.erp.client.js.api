@@ -14,5 +14,5 @@ export class DfeResNFeIn {
   nProt!: string;
   nsu!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

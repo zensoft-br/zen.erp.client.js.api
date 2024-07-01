@@ -8,5 +8,5 @@ export class ProductionStepInput {
   quantity!: number;
   servedQuantity!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

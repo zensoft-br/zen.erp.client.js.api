@@ -9,5 +9,5 @@ export class CreditLineItem {
   person!: Person;
   value!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

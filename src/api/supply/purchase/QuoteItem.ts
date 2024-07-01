@@ -11,5 +11,5 @@ export class QuoteItem {
   internalQuantity!: number;
   approvedQuantity!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

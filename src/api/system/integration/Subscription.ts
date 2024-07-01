@@ -10,5 +10,5 @@ export class Subscription {
   queue!: Queue;
   agent!: Agent;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

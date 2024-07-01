@@ -4,5 +4,5 @@ export class Quality {
   description!: string;
   punctuation!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

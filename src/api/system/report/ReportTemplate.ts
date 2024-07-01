@@ -4,5 +4,5 @@ export class ReportTemplate {
   type!: string;
   template!: any;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

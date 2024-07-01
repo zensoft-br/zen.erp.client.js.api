@@ -36,5 +36,5 @@ export class PurchaseItem {
   account!: Account;
   accountComplement!: AccountComplement;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

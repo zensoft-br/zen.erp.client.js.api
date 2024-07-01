@@ -11,5 +11,5 @@ export class InvoiceItemAccounting {
   accountComplement!: AccountComplement;
   value!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

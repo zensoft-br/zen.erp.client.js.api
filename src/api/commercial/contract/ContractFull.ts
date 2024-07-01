@@ -31,5 +31,5 @@ export class ContractFull {
   adjustmentNextDate!: Date;
   totalValue!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

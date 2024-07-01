@@ -29,5 +29,5 @@ export class Contract {
   adjustmentNextDate!: Date;
   totalValue!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

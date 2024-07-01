@@ -4,5 +4,5 @@ export class AccountChart {
   description!: string;
   mask!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

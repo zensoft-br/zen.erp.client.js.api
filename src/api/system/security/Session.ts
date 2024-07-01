@@ -6,5 +6,5 @@ export class Session {
   user!: User;
   dateTime!: Date;
   expiration!: Date;
-  properties!: Object;
+  properties!: any;
 }

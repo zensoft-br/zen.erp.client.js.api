@@ -9,5 +9,5 @@ export class PrinterJobData {
   description!: string;
   type!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

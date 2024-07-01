@@ -11,5 +11,5 @@ export class AccountStatement {
   description!: string;
   value!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

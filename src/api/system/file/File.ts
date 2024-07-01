@@ -9,5 +9,5 @@ export class File {
   size!: number;
   accessible!: boolean;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

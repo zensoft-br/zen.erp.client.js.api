@@ -37,5 +37,5 @@ export class OutgoingInvoiceItem {
   account!: Account;
   accountComplement!: AccountComplement;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

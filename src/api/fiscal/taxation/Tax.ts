@@ -6,5 +6,5 @@ export class Tax {
   code!: string;
   type!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

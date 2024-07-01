@@ -7,5 +7,5 @@ export class ArgsLogCreate {
   expiration!: Date;
   expirationHours!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

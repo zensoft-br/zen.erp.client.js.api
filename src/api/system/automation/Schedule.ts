@@ -10,5 +10,5 @@ export class Schedule {
   lastRun!: Date;
   agent!: Agent;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

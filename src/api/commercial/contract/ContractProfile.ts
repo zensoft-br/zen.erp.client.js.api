@@ -6,5 +6,5 @@ export class ContractProfile {
   description!: string;
   workflow!: Workflow;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

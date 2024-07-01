@@ -10,5 +10,5 @@ export class Inventory {
   pointInTime!: Date;
   journalEntry!: JournalEntry;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

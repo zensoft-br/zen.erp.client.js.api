@@ -12,5 +12,5 @@ export class Log {
   expiration!: Date;
   system!: boolean;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -11,5 +11,5 @@ export class InstructionRequest {
   wallet!: Wallet;
   date!: Date;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

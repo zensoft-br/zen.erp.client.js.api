@@ -5,5 +5,5 @@ export class PersonComment {
   person!: Person;
   comments!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

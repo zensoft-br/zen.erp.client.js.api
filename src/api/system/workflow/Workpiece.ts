@@ -8,5 +8,5 @@ export class Workpiece {
   workflow!: Workflow;
   workflowNode!: WorkflowNode;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

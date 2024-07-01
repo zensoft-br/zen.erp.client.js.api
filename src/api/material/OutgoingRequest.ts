@@ -17,5 +17,5 @@ export class OutgoingRequest {
   volumeM3!: number;
   unique!: OutgoingRequestUnique;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

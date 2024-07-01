@@ -86,14 +86,14 @@ export class SystemService {
     });
   }
 
-  async metricsRead(): Promise<Object> {
+  async metricsRead(): Promise<any> {
     return this.#client.web.fetchJson("/system/metrics", {
       method: "GET",
       
     });
   }
 
-  async resourcesRead(): Promise<Object> {
+  async resourcesRead(): Promise<any> {
     return this.#client.web.fetchJson("/system/resources", {
       method: "GET",
       

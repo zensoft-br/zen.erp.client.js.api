@@ -5,5 +5,5 @@ export class Country {
   codeA3!: string;
   codeN!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

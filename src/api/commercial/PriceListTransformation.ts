@@ -7,5 +7,5 @@ export class PriceListTransformation {
   priceListDestination!: PriceList;
   priceFormation!: PriceFormation;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

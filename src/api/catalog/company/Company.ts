@@ -27,5 +27,5 @@ export class Company {
   creditLine!: CreditLine;
   mailerConfig!: MailerConfig;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

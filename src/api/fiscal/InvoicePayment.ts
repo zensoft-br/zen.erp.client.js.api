@@ -11,5 +11,5 @@ export class InvoicePayment {
   dueDate!: Date;
   value!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

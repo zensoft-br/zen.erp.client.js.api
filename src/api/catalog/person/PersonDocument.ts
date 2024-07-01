@@ -6,5 +6,5 @@ export class PersonDocument {
   type!: string;
   number!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

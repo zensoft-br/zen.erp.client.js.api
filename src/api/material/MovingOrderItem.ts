@@ -14,5 +14,5 @@ export class MovingOrderItem {
   quantityUnloaded!: number;
   user!: User;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

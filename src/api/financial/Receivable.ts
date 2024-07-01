@@ -33,5 +33,5 @@ export class Receivable {
   accountComplementCounterpart!: AccountComplement;
   wallet!: Wallet;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

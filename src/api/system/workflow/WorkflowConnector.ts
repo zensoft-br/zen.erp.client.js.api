@@ -8,5 +8,5 @@ export class WorkflowConnector {
   workflowNodeTarget!: WorkflowNode;
   accessPoint!: AccessPoint;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

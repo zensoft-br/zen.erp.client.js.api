@@ -9,5 +9,5 @@ export class ArgsOpSettle {
   settlements!: ArgsOpSettleSettlement[];
   methods!: ArgsOpSettleMethod[];
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

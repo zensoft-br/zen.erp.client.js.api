@@ -8,5 +8,5 @@ export class PriceFormationItem {
   type!: string;
   expression!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

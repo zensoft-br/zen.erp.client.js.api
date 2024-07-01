@@ -9,5 +9,5 @@ export class Proposal {
   date!: Date;
   totalValue!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

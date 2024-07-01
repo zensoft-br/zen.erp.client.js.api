@@ -5,5 +5,5 @@ export class ArgsPrinterJobCreate {
   type!: string;
   data!: any;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -11,5 +11,5 @@ export class Wallet {
   interestRateMonth!: number;
   lateFee!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

@@ -25,5 +25,5 @@ export class InventoryStock {
   type!: string;
   tags!: string;
   quantity!: number;
-  properties!: Object;
+  properties!: any;
 }

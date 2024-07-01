@@ -4,5 +4,5 @@ export class Category {
   code!: string;
   description!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

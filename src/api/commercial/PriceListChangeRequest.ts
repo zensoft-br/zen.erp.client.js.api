@@ -13,5 +13,5 @@ export class PriceListChangeRequest {
   currency!: Currency;
   unitValue!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

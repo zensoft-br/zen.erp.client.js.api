@@ -5,5 +5,5 @@ export class OperationType {
   productionProfile!: ProductionProfile;
   code!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

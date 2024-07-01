@@ -10,5 +10,5 @@ export class ProductUnitConversion {
   conversionFactor!: number;
   scale!: number;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }

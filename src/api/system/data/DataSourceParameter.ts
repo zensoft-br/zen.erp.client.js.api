@@ -6,5 +6,5 @@ export class DataSourceParameter {
   name!: string;
   type!: string;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }
