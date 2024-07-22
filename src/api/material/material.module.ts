@@ -1,6 +1,7 @@
 export { MaterialService } from "./MaterialService.js";
 
 export { Address } from "./Address.js";
+export { AddressProfile } from "./AddressProfile.js";
 export { HandlingUnit } from "./HandlingUnit.js";
 export { IncomingList } from "./IncomingList.js";
 export { IncomingListItem } from "./IncomingListItem.js";
@@ -32,7 +33,6 @@ export { StockCluster } from "./StockCluster.js";
 export { StockData } from "./StockData.js";
 export { StockManagement } from "./StockManagement.js";
 export { StockManagementItem } from "./StockManagementItem.js";
-export { StockSummary } from "./StockSummary.js";
 export { StockTransaction } from "./StockTransaction.js";
 export { Volume } from "./Volume.js";
 export { VolumeItem } from "./VolumeItem.js";

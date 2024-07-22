@@ -567,6 +567,15 @@ export class SaleService {
     });
   }
 
+  async saleOpPickingOrderCreateRevert(id: number, pickingOrderId: number): Promise<Sale> {
+    const sp = new URLSearchParams();
+    if (pickingOrderId) sp.set("pickingOrderId", String(pickingOrderId));
+    return this.#client.web.fetchJson(`/sale/saleOpPickingOrderCreateRevert/${id}?${sp.toString()}`, {
+      method: "POST",
+      
+    });
+  }
+
   async saleOpPrepare(id: number): Promise<Sale> {
     return this.#client.web.fetchJson(`/sale/saleOpPrepare/${id}`, {
       method: "POST",
@@ -576,20 +585,6 @@ export class SaleService {
 
   async saleOpPrepareRevert(id: number): Promise<Sale> {
     return this.#client.web.fetchJson(`/sale/saleOpPrepareRevert/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async saleOpReleaseForPicking(id: number): Promise<Sale> {
-    return this.#client.web.fetchJson(`/sale/saleOpReleaseForPicking/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async saleOpReleaseForPickingRevert(id: number): Promise<Sale> {
-    return this.#client.web.fetchJson(`/sale/saleOpReleaseForPickingRevert/${id}`, {
       method: "POST",
       
     });

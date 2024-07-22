@@ -1,6 +1,5 @@
 import { Company } from "../catalog/company/Company.js";
 import { MovingOrder } from "./MovingOrder.js";
-import { OutgoingRequest } from "./OutgoingRequest.js";
 import { Person } from "../catalog/person/Person.js";
 import { PickingProfile } from "./PickingProfile.js";
 import { Reservation } from "./Reservation.js";
@@ -10,9 +9,8 @@ export class PickingOrder {
   id!: number;
   company!: Company;
   status!: string;
-  type!: string;
+  source!: string;
   pickingProfile!: PickingProfile;
-  outgoingRequest!: OutgoingRequest;
   person!: Person;
   reservation!: Reservation;
   movingOrder!: MovingOrder;
@@ -22,6 +20,7 @@ export class PickingOrder {
   grossWeightKg!: number;
   volumeM3!: number;
   shipment!: Shipment;
+  pickingOrderGroup!: PickingOrder;
   tags!: string;
   properties!: any;
 }

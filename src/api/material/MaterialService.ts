@@ -1,5 +1,6 @@
 import { Client } from "../../Client.js";
 import { Address } from "./Address.js";
+import { AddressProfile } from "./AddressProfile.js";
 import { ArgsIncomingListOpImport } from "./ArgsIncomingListOpImport.js";
 import { ArgsIncomingListOpImportFromOutgoingList } from "./ArgsIncomingListOpImportFromOutgoingList.js";
 import { ArgsMovingOrderItemOpLoad } from "./ArgsMovingOrderItemOpLoad.js";
@@ -7,8 +8,8 @@ import { ArgsMovingOrderOpAllocateStock } from "./ArgsMovingOrderOpAllocateStock
 import { ArgsOutgoingListOpCreateFromReservation } from "./ArgsOutgoingListOpCreateFromReservation.js";
 import { ArgsOutgoingListOpOutgoingInvoiceCreate } from "./ArgsOutgoingListOpOutgoingInvoiceCreate.js";
 import { ArgsOutgoingListOpVolumeCreateAuto } from "./ArgsOutgoingListOpVolumeCreateAuto.js";
-import { ArgsOutgoingRequestOpForwardAuto } from "./ArgsOutgoingRequestOpForwardAuto.js";
 import { ArgsPickingOrderOpCreate } from "./ArgsPickingOrderOpCreate.js";
+import { ArgsPickingOrderOpGroup } from "./ArgsPickingOrderOpGroup.js";
 import { ArgsReservationOpAllocate } from "./ArgsReservationOpAllocate.js";
 import { ArgsReservationOpAllocateRevert } from "./ArgsReservationOpAllocateRevert.js";
 import { ArgsStockManagementOpImport } from "./ArgsStockManagementOpImport.js";
@@ -45,7 +46,6 @@ import { StockAvailability } from "./StockAvailability.js";
 import { StockCluster } from "./StockCluster.js";
 import { StockManagement } from "./StockManagement.js";
 import { StockManagementItem } from "./StockManagementItem.js";
-import { StockSummary } from "./StockSummary.js";
 import { StockTransaction } from "./StockTransaction.js";
 import { Volume } from "./Volume.js";
 import { VolumeItem } from "./VolumeItem.js";
@@ -74,6 +74,49 @@ export class MaterialService {
     return this.#client.web.fetchJson(`/material/address/${id}`, {
       method: "DELETE",
       
+    });
+  }
+
+  async addressProfileCreate(bean: AddressProfile): Promise<AddressProfile> {
+    return this.#client.web.fetchJson("/material/addressProfile", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async addressProfileDelete(id: number): Promise<AddressProfile> {
+    return this.#client.web.fetchJson(`/material/addressProfile/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async addressProfileRead(search: any): Promise<AddressProfile[]> {
+    return this.#client.web.fetchJson(`/material/addressProfile?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async addressProfileReadById(id: number): Promise<AddressProfile> {
+    return this.#client.web.fetchJson(`/material/addressProfile/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async addressProfileUpdate(bean: AddressProfile): Promise<AddressProfile> {
+    return this.#client.web.fetchJson("/material/addressProfile", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
     });
   }
 
@@ -936,17 +979,6 @@ export class MaterialService {
     });
   }
 
-  async outgoingRequestOpForwardAuto(id: number, args: ArgsOutgoingRequestOpForwardAuto): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson(`/material/outgoingRequestOpForwardAuto/${id}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(args),
-
-    });
-  }
-
   async outgoingRequestOpPrepare(id: number): Promise<OutgoingRequest> {
     return this.#client.web.fetchJson(`/material/outgoingRequestOpPrepare/${id}`, {
       method: "POST",
@@ -1050,6 +1082,17 @@ export class MaterialService {
     });
   }
 
+  async pickingOrderItemUpdate(bean: PickingOrderItem): Promise<PickingOrderItem> {
+    return this.#client.web.fetchJson("/material/pickingOrderItem", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
   async pickingOrderOpApprove(id: number): Promise<PickingOrder> {
     return this.#client.web.fetchJson(`/material/pickingOrderOpApprove/${id}`, {
       method: "POST",
@@ -1102,6 +1145,24 @@ export class MaterialService {
 
   async pickingOrderOpFinish(id: number): Promise<PickingOrder> {
     return this.#client.web.fetchJson(`/material/pickingOrderOpFinish/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async pickingOrderOpGroup(args: ArgsPickingOrderOpGroup): Promise<PickingOrder> {
+    return this.#client.web.fetchJson("/material/pickingOrderOpGroup", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
+  async pickingOrderOpGroupRevert(id: number): Promise<PickingOrder> {
+    return this.#client.web.fetchJson(`/material/pickingOrderOpGroupRevert/${id}`, {
       method: "POST",
       
     });
@@ -1716,20 +1777,6 @@ export class MaterialService {
 
   async stockReadById(id: number): Promise<Stock> {
     return this.#client.web.fetchJson(`/material/stock/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async stockSummaryRead(search: any): Promise<StockSummary[]> {
-    return this.#client.web.fetchJson(`/material/stockSummary?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async stockSummaryReadById(id: number): Promise<StockSummary> {
-    return this.#client.web.fetchJson(`/material/stockSummary/${id}`, {
       method: "GET",
       
     });

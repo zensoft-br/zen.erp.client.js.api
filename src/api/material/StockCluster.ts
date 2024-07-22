@@ -6,8 +6,8 @@ export class StockCluster {
   code!: string;
   description!: string;
   assetValuationMethod!: string;
-  priceListCost!: PriceList1;
+  priceListCost!: PriceList;
   priceListRetail!: PriceList;
   tags!: string;
-  properties!: Object;
+  properties!: any;
 }
