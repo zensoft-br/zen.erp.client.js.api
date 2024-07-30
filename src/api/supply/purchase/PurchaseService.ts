@@ -5,8 +5,8 @@ import { ArgsPurchaseOpCancel } from "./ArgsPurchaseOpCancel.js";
 import { ArgsPurchaseOpCreate } from "./ArgsPurchaseOpCreate.js";
 import { ArgsQuoteOpCreate } from "./ArgsQuoteOpCreate.js";
 import { ArgsQuoteOpFinish } from "./ArgsQuoteOpFinish.js";
-import { PriceList } from "./PriceList.js";
-import { PriceListItem } from "./PriceListItem.js";
+import { PriceListCost } from "./PriceListCost.js";
+import { PriceListCostItem } from "./PriceListCostItem.js";
 import { Proposal } from "./Proposal.js";
 import { ProposalItem } from "./ProposalItem.js";
 import { Purchase } from "./Purchase.js";
@@ -24,7 +24,7 @@ export class PurchaseService {
     this.#client = client;
   }
   
-  async priceListCreate(bean: PriceList): Promise<PriceList> {
+  async priceListCreate(bean: PriceListCost): Promise<PriceListCost> {
     return this.#client.web.fetchJson("/supply/purchase/priceList", {
       method: "POST",
       headers: {
@@ -35,14 +35,14 @@ export class PurchaseService {
     });
   }
 
-  async priceListDelete(id: number): Promise<PriceList> {
+  async priceListDelete(id: number): Promise<PriceListCost> {
     return this.#client.web.fetchJson(`/supply/purchase/priceList/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async priceListItemCreate(bean: PriceListItem): Promise<PriceListItem> {
+  async priceListItemCreate(bean: PriceListCostItem): Promise<PriceListCostItem> {
     return this.#client.web.fetchJson("/supply/purchase/priceListItem", {
       method: "POST",
       headers: {
@@ -53,28 +53,28 @@ export class PurchaseService {
     });
   }
 
-  async priceListItemDelete(id: number): Promise<PriceListItem> {
+  async priceListItemDelete(id: number): Promise<PriceListCostItem> {
     return this.#client.web.fetchJson(`/supply/purchase/priceListItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async priceListItemRead(search: any): Promise<PriceListItem[]> {
+  async priceListItemRead(search: any): Promise<PriceListCostItem[]> {
     return this.#client.web.fetchJson(`/supply/purchase/priceListItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async priceListItemReadById(id: number): Promise<PriceListItem> {
+  async priceListItemReadById(id: number): Promise<PriceListCostItem> {
     return this.#client.web.fetchJson(`/supply/purchase/priceListItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async priceListItemUpdate(bean: PriceListItem): Promise<PriceListItem> {
+  async priceListItemUpdate(bean: PriceListCostItem): Promise<PriceListCostItem> {
     return this.#client.web.fetchJson("/supply/purchase/priceListItem", {
       method: "PUT",
       headers: {
@@ -85,21 +85,21 @@ export class PurchaseService {
     });
   }
 
-  async priceListRead(search: any): Promise<PriceList[]> {
+  async priceListRead(search: any): Promise<PriceListCost[]> {
     return this.#client.web.fetchJson(`/supply/purchase/priceList?${search}`, {
       method: "GET",
       
     });
   }
 
-  async priceListReadById(id: number): Promise<PriceList> {
+  async priceListReadById(id: number): Promise<PriceListCost> {
     return this.#client.web.fetchJson(`/supply/purchase/priceList/${id}`, {
       method: "GET",
       
     });
   }
 
-  async priceListUpdate(bean: PriceList): Promise<PriceList> {
+  async priceListUpdate(bean: PriceListCost): Promise<PriceListCost> {
     return this.#client.web.fetchJson("/supply/purchase/priceList", {
       method: "PUT",
       headers: {

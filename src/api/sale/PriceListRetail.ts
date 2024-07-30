@@ -1,6 +1,6 @@
-import { Currency } from "../../financial/Currency.js";
+import { Currency } from "../financial/Currency.js";
 
-export class PriceList {
+export class PriceListRetail {
   id!: number;
   type!: string;
   code!: string;

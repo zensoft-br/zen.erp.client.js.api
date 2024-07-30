@@ -1,7 +1,6 @@
 import { Company } from "../catalog/company/Company.js";
 import { InvoiceSeries } from "../fiscal/InvoiceSeries.js";
 import { Person } from "../catalog/person/Person.js";
-import { PickingOrder } from "./PickingOrder.js";
 import { Reservation } from "./Reservation.js";
 import { Shipment } from "../shipping/Shipment.js";
 
@@ -12,7 +11,6 @@ export class OutgoingList {
   source!: string;
   date!: Date;
   person!: Person;
-  pickingOrder!: PickingOrder;
   reservation!: Reservation;
   shipment!: Shipment;
   invoiceSeries!: InvoiceSeries;

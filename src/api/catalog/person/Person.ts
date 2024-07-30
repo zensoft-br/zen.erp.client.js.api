@@ -4,6 +4,8 @@ import { CodeConversionList } from "../product/CodeConversionList.js";
 import { Country } from "../location/Country.js";
 import { FiscalProfilePerson } from "../../fiscal/FiscalProfilePerson.js";
 import { PersonGroup } from "./PersonGroup.js";
+import { PriceListCost } from "../../supply/purchase/PriceListCost.js";
+import { PriceListRetail } from "../../sale/PriceListRetail.js";
 
 export class Person {
   id!: number;
@@ -25,6 +27,8 @@ export class Person {
   phone!: string;
   comments!: string;
   codeConversionList!: CodeConversionList;
+  priceListCost!: PriceListCost;
+  priceListRetail!: PriceListRetail;
   fiscalProfilePerson!: FiscalProfilePerson;
   personGroup!: PersonGroup;
   category1!: Category;

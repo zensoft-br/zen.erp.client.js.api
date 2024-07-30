@@ -5,19 +5,19 @@ import { ArgsQuoteOpApprove } from "./ArgsQuoteOpApprove.js";
 import { ArgsSaleOpCancel } from "./ArgsSaleOpCancel.js";
 import { ArgsSaleOpCreate } from "./ArgsSaleOpCreate.js";
 import { ArgsSaleOpPickingOrderCreate } from "./ArgsSaleOpPickingOrderCreate.js";
+import { OutgoingInvoice } from "../fiscal/OutgoingInvoice.js";
 import { PickingOrder } from "../material/PickingOrder.js";
 import { PriceFormation } from "./PriceFormation.js";
 import { PriceFormationItem } from "./PriceFormationItem.js";
 import { PriceFormationSimulation } from "./PriceFormationSimulation.js";
-import { PriceList } from "./PriceList.js";
-import { PriceListItem } from "./PriceListItem.js";
+import { PriceListRetail } from "./PriceListRetail.js";
+import { PriceListRetailItem } from "./PriceListRetailItem.js";
 import { Quote } from "./Quote.js";
 import { QuoteItem } from "./QuoteItem.js";
 import { Sale } from "./Sale.js";
 import { SaleItem } from "./SaleItem.js";
 import { SalePayment } from "./SalePayment.js";
 import { SaleProfile } from "./SaleProfile.js";
-import { SalesCommission } from "./SalesCommission.js";
 
 export class SaleService {
 
@@ -142,7 +142,7 @@ export class SaleService {
     });
   }
 
-  async priceListCreate(bean: PriceList): Promise<PriceList> {
+  async priceListCreate(bean: PriceListRetail): Promise<PriceListRetail> {
     return this.#client.web.fetchJson("/sale/priceList", {
       method: "POST",
       headers: {
@@ -153,14 +153,14 @@ export class SaleService {
     });
   }
 
-  async priceListDelete(id: number): Promise<PriceList> {
+  async priceListDelete(id: number): Promise<PriceListRetail> {
     return this.#client.web.fetchJson(`/sale/priceList/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async priceListItemCreate(bean: PriceListItem): Promise<PriceListItem> {
+  async priceListItemCreate(bean: PriceListRetailItem): Promise<PriceListRetailItem> {
     return this.#client.web.fetchJson("/sale/priceListItem", {
       method: "POST",
       headers: {
@@ -171,28 +171,28 @@ export class SaleService {
     });
   }
 
-  async priceListItemDelete(id: number): Promise<PriceListItem> {
+  async priceListItemDelete(id: number): Promise<PriceListRetailItem> {
     return this.#client.web.fetchJson(`/sale/priceListItem/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async priceListItemRead(search: any): Promise<PriceListItem[]> {
+  async priceListItemRead(search: any): Promise<PriceListRetailItem[]> {
     return this.#client.web.fetchJson(`/sale/priceListItem?${search}`, {
       method: "GET",
       
     });
   }
 
-  async priceListItemReadById(id: number): Promise<PriceListItem> {
+  async priceListItemReadById(id: number): Promise<PriceListRetailItem> {
     return this.#client.web.fetchJson(`/sale/priceListItem/${id}`, {
       method: "GET",
       
     });
   }
 
-  async priceListItemUpdate(bean: PriceListItem): Promise<PriceListItem> {
+  async priceListItemUpdate(bean: PriceListRetailItem): Promise<PriceListRetailItem> {
     return this.#client.web.fetchJson("/sale/priceListItem", {
       method: "PUT",
       headers: {
@@ -203,21 +203,21 @@ export class SaleService {
     });
   }
 
-  async priceListRead(search: any): Promise<PriceList[]> {
+  async priceListRead(search: any): Promise<PriceListRetail[]> {
     return this.#client.web.fetchJson(`/sale/priceList?${search}`, {
       method: "GET",
       
     });
   }
 
-  async priceListReadById(id: number): Promise<PriceList> {
+  async priceListReadById(id: number): Promise<PriceListRetail> {
     return this.#client.web.fetchJson(`/sale/priceList/${id}`, {
       method: "GET",
       
     });
   }
 
-  async priceListUpdate(bean: PriceList): Promise<PriceList> {
+  async priceListUpdate(bean: PriceListRetail): Promise<PriceListRetail> {
     return this.#client.web.fetchJson("/sale/priceList", {
       method: "PUT",
       headers: {
@@ -502,6 +502,13 @@ export class SaleService {
     });
   }
 
+  async saleOpAutoForward(id: number): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson(`/sale/saleOpAutoForward/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async saleOpCancel(id: number, args: ArgsSaleOpCancel): Promise<Sale> {
     return this.#client.web.fetchJson(`/sale/saleOpCancel/${id}`, {
       method: "POST",
@@ -719,49 +726,6 @@ export class SaleService {
 
   async saleUpdate(bean: Sale): Promise<Sale> {
     return this.#client.web.fetchJson("/sale/sale", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async salesCommissionCreate(bean: SalesCommission): Promise<SalesCommission> {
-    return this.#client.web.fetchJson("/sale/salesCommission", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async salesCommissionDelete(id: number): Promise<SalesCommission> {
-    return this.#client.web.fetchJson(`/sale/salesCommission/${id}`, {
-      method: "DELETE",
-      
-    });
-  }
-
-  async salesCommissionRead(search: any): Promise<SalesCommission[]> {
-    return this.#client.web.fetchJson(`/sale/salesCommission?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async salesCommissionReadById(id: number): Promise<SalesCommission> {
-    return this.#client.web.fetchJson(`/sale/salesCommission/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async salesCommissionUpdate(bean: SalesCommission): Promise<SalesCommission> {
-    return this.#client.web.fetchJson("/sale/salesCommission", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

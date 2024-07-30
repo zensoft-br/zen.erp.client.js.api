@@ -1,13 +1,13 @@
-import { PriceList } from "../sale/PriceList.js";
-import { PriceList as PriceList1 } from "../supply/purchase/PriceList.js";
+import { PriceListCost } from "../supply/purchase/PriceListCost.js";
+import { PriceListRetail } from "../sale/PriceListRetail.js";
 
 export class StockCluster {
   id!: number;
   code!: string;
   description!: string;
   assetValuationMethod!: string;
-  priceListCost!: PriceList;
-  priceListRetail!: PriceList;
+  priceListCost!: PriceListCost;
+  priceListRetail!: PriceListRetail;
   tags!: string;
   properties!: any;
 }

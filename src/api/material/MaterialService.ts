@@ -31,8 +31,6 @@ import { MovingOrder } from "./MovingOrder.js";
 import { MovingOrderItem } from "./MovingOrderItem.js";
 import { OutgoingInvoice } from "../fiscal/OutgoingInvoice.js";
 import { OutgoingList } from "./OutgoingList.js";
-import { OutgoingRequest } from "./OutgoingRequest.js";
-import { OutgoingRequestItem } from "./OutgoingRequestItem.js";
 import { PickingOrder } from "./PickingOrder.js";
 import { PickingOrderItem } from "./PickingOrderItem.js";
 import { PickingProfile } from "./PickingProfile.js";
@@ -904,134 +902,6 @@ export class MaterialService {
     });
   }
 
-  async outgoingRequestCreate(bean: OutgoingRequest): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson("/material/outgoingRequest", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async outgoingRequestDelete(id: number): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson(`/material/outgoingRequest/${id}`, {
-      method: "DELETE",
-      
-    });
-  }
-
-  async outgoingRequestItemCreate(bean: OutgoingRequestItem): Promise<OutgoingRequestItem> {
-    return this.#client.web.fetchJson("/material/outgoingRequestItem", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async outgoingRequestItemDelete(id: number): Promise<OutgoingRequestItem> {
-    return this.#client.web.fetchJson(`/material/outgoingRequestItem/${id}`, {
-      method: "DELETE",
-      
-    });
-  }
-
-  async outgoingRequestItemRead(search: any): Promise<OutgoingRequestItem[]> {
-    return this.#client.web.fetchJson(`/material/outgoingRequestItem?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async outgoingRequestItemReadById(id: number): Promise<OutgoingRequestItem> {
-    return this.#client.web.fetchJson(`/material/outgoingRequestItem/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async outgoingRequestItemUpdate(bean: OutgoingRequestItem): Promise<OutgoingRequestItem> {
-    return this.#client.web.fetchJson("/material/outgoingRequestItem", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async outgoingRequestOpApprove(id: number): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson(`/material/outgoingRequestOpApprove/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async outgoingRequestOpApproveRevert(id: number): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson(`/material/outgoingRequestOpApproveRevert/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async outgoingRequestOpPrepare(id: number): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson(`/material/outgoingRequestOpPrepare/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async outgoingRequestOpPrepareRevert(id: number): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson(`/material/outgoingRequestOpPrepareRevert/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async outgoingRequestOpReleaseForPicking(id: number): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson(`/material/outgoingRequestOpReleaseForPicking/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async outgoingRequestOpReleaseForPickingRevert(id: number): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson(`/material/outgoingRequestOpReleaseForPickingRevert/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async outgoingRequestRead(search: any): Promise<OutgoingRequest[]> {
-    return this.#client.web.fetchJson(`/material/outgoingRequest?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async outgoingRequestReadById(id: number): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson(`/material/outgoingRequest/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async outgoingRequestUpdate(bean: OutgoingRequest): Promise<OutgoingRequest> {
-    return this.#client.web.fetchJson("/material/outgoingRequest", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
   async pickingOrderCreate(bean: PickingOrder): Promise<PickingOrder> {
     return this.#client.web.fetchJson("/material/pickingOrder", {
       method: "POST",
@@ -1196,22 +1066,22 @@ export class MaterialService {
     });
   }
 
-  async pickingOrderOpUngrouped(id: number): Promise<PickingOrder> {
-    return this.#client.web.fetchJson(`/material/pickingOrderOpUngrouped/${id}`, {
+  async pickingOrderOpUngroup(id: number): Promise<PickingOrder> {
+    return this.#client.web.fetchJson(`/material/pickingOrderOpUngroup/${id}`, {
       method: "POST",
       
     });
   }
 
-  async pickingOrderOpUngroupedDivergent(id: number): Promise<PickingOrder> {
-    return this.#client.web.fetchJson(`/material/pickingOrderOpUngroupedDivergent/${id}`, {
+  async pickingOrderOpUngroupDivergent(id: number): Promise<PickingOrder> {
+    return this.#client.web.fetchJson(`/material/pickingOrderOpUngroupDivergent/${id}`, {
       method: "POST",
       
     });
   }
 
-  async pickingOrderOpUngroupedRevert(id: number): Promise<PickingOrder> {
-    return this.#client.web.fetchJson(`/material/pickingOrderOpUngroupedRevert/${id}`, {
+  async pickingOrderOpUngroupRevert(id: number): Promise<PickingOrder> {
+    return this.#client.web.fetchJson(`/material/pickingOrderOpUngroupRevert/${id}`, {
       method: "POST",
       
     });

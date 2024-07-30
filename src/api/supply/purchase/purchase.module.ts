@@ -1,7 +1,7 @@
 export { PurchaseService } from "./PurchaseService.js";
 
-export { PriceList } from "./PriceList.js";
-export { PriceListItem } from "./PriceListItem.js";
+export { PriceListCost } from "./PriceListCost.js";
+export { PriceListCostItem } from "./PriceListCostItem.js";
 export { Proposal } from "./Proposal.js";
 export { ProposalItem } from "./ProposalItem.js";
 export { Purchase } from "./Purchase.js";

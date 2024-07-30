@@ -5,7 +5,7 @@ import { FiscalRegion } from "../../fiscal/FiscalRegion.js";
 import { Image } from "../../system/image/Image.js";
 import { MailerConfig } from "../../system/mail/MailerConfig.js";
 import { Person } from "../person/Person.js";
-import { PriceList } from "../../supply/purchase/PriceList.js";
+import { PriceListCost } from "../../supply/purchase/PriceListCost.js";
 import { Society } from "./Society.js";
 import { StockCluster } from "../../material/StockCluster.js";
 import { Warehouse } from "../../material/Warehouse.js";
@@ -22,7 +22,7 @@ export class Company {
   currency!: Currency;
   stockCluster!: StockCluster;
   warehouse!: Warehouse;
-  priceList!: PriceList;
+  priceList!: PriceListCost;
   image!: Image;
   creditLine!: CreditLine;
   mailerConfig!: MailerConfig;

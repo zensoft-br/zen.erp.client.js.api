@@ -5,7 +5,7 @@ import { OutgoingInvoice } from "../fiscal/OutgoingInvoice.js";
 import { Person } from "../catalog/person/Person.js";
 import { PersonAddress } from "../catalog/person/PersonAddress.js";
 import { PickingOrder } from "../material/PickingOrder.js";
-import { PriceList } from "./PriceList.js";
+import { PriceListRetail } from "./PriceListRetail.js";
 import { SaleProfile } from "./SaleProfile.js";
 import { Shipment } from "../shipping/Shipment.js";
 import { Workflow } from "../system/workflow/Workflow.js";
@@ -27,7 +27,7 @@ export class Sale {
   personSalesperson!: Person;
   freightType!: string;
   personShipping!: Person;
-  priceList!: PriceList;
+  priceList!: PriceListRetail;
   currency!: Currency;
   totalValue!: number;
   pickingOrder!: PickingOrder;

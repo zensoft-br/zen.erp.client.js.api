@@ -3,7 +3,7 @@ import { PriceList } from "../../commercial/PriceList.js";
 import { Product } from "../../catalog/product/Product.js";
 import { ProductPacking } from "../../catalog/product/ProductPacking.js";
 
-export class PriceListItem {
+export class PriceListCostItem {
   id!: number;
   priceList!: PriceList;
   product!: Product;
