@@ -4,6 +4,7 @@ import { ArgsQuoteItemOpFill } from "./ArgsQuoteItemOpFill.js";
 import { ArgsQuoteOpApprove } from "./ArgsQuoteOpApprove.js";
 import { ArgsSaleOpCancel } from "./ArgsSaleOpCancel.js";
 import { ArgsSaleOpCreate } from "./ArgsSaleOpCreate.js";
+import { ArgsSaleOpForwardAuto } from "./ArgsSaleOpForwardAuto.js";
 import { ArgsSaleOpPickingOrderCreate } from "./ArgsSaleOpPickingOrderCreate.js";
 import { OutgoingInvoice } from "../fiscal/OutgoingInvoice.js";
 import { PickingOrder } from "../material/PickingOrder.js";
@@ -502,13 +503,6 @@ export class SaleService {
     });
   }
 
-  async saleOpAutoForward(id: number): Promise<OutgoingInvoice> {
-    return this.#client.web.fetchJson(`/sale/saleOpAutoForward/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
   async saleOpCancel(id: number, args: ArgsSaleOpCancel): Promise<Sale> {
     return this.#client.web.fetchJson(`/sale/saleOpCancel/${id}`, {
       method: "POST",
@@ -549,6 +543,17 @@ export class SaleService {
     return this.#client.web.fetchJson(`/sale/saleOpFinishRevert/${id}`, {
       method: "POST",
       
+    });
+  }
+
+  async saleOpForwardAuto(id: number, args: ArgsSaleOpForwardAuto): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson(`/sale/saleOpForwardAuto/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
+
     });
   }
 
