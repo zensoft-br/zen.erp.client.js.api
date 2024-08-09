@@ -1,6 +1,6 @@
 import { Client } from "../../Client.js";
 import { ArgsPriceFormationOpCalculate } from "./ArgsPriceFormationOpCalculate.js";
-import { ArgsQuoteOpApprove } from "./ArgsQuoteOpApprove.js";
+import { ArgsQuoteOpCreate } from "./ArgsQuoteOpCreate.js";
 import { ArgsSaleOpCancel } from "./ArgsSaleOpCancel.js";
 import { ArgsSaleOpCreate } from "./ArgsSaleOpCreate.js";
 import { ArgsSaleOpForwardAuto } from "./ArgsSaleOpForwardAuto.js";
@@ -361,14 +361,17 @@ export class SaleService {
     });
   }
 
-  async quoteOpApprove(id: number, args: ArgsQuoteOpApprove): Promise<Quote> {
+  async quoteOpApprove(id: number): Promise<Quote> {
     return this.#client.web.fetchJson(`/sale/quoteOpApprove/${id}`, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(args),
+      
+    });
+  }
 
+  async quoteOpApproveRevert(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpApproveRevert/${id}`, {
+      method: "POST",
+      
     });
   }
 
@@ -383,6 +386,17 @@ export class SaleService {
     return this.#client.web.fetchJson(`/sale/quoteOpCancelRevert/${id}`, {
       method: "POST",
       
+    });
+  }
+
+  async quoteOpCreate(args: ArgsQuoteOpCreate): Promise<Quote> {
+    return this.#client.web.fetchJson("/sale/quoteOpCreate", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(args),
+
     });
   }
 
