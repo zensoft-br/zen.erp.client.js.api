@@ -1,6 +1,5 @@
 import { Client } from "../../Client.js";
 import { ArgsPriceFormationOpCalculate } from "./ArgsPriceFormationOpCalculate.js";
-import { ArgsQuoteItemOpFill } from "./ArgsQuoteItemOpFill.js";
 import { ArgsQuoteOpApprove } from "./ArgsQuoteOpApprove.js";
 import { ArgsSaleOpCancel } from "./ArgsSaleOpCancel.js";
 import { ArgsSaleOpCreate } from "./ArgsSaleOpCreate.js";
@@ -15,6 +14,7 @@ import { PriceListRetail } from "./PriceListRetail.js";
 import { PriceListRetailItem } from "./PriceListRetailItem.js";
 import { Quote } from "./Quote.js";
 import { QuoteItem } from "./QuoteItem.js";
+import { QuoteItemProposal } from "./QuoteItemProposal.js";
 import { Sale } from "./Sale.js";
 import { SaleItem } from "./SaleItem.js";
 import { SalePayment } from "./SalePayment.js";
@@ -265,13 +265,73 @@ export class SaleService {
     });
   }
 
-  async quoteItemOpFill(id: number, args: ArgsQuoteItemOpFill): Promise<QuoteItem> {
+  async quoteItemOpFill(id: number): Promise<QuoteItem> {
     return this.#client.web.fetchJson(`/sale/quoteItemOpFill/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async quoteItemOpFillRevert(id: number): Promise<QuoteItem> {
+    return this.#client.web.fetchJson(`/sale/quoteItemOpFillRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async quoteItemOpRefuse(id: number): Promise<QuoteItem> {
+    return this.#client.web.fetchJson(`/sale/quoteItemOpRefuse/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async quoteItemOpRefuseRevert(id: number): Promise<QuoteItem> {
+    return this.#client.web.fetchJson(`/sale/quoteItemOpRefuseRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async quoteItemProposalCreate(bean: QuoteItemProposal): Promise<QuoteItemProposal> {
+    return this.#client.web.fetchJson("/sale/quoteItemProposal", {
       method: "POST",
       headers: {
         "content-type": "application/json",
         },
-        body: JSON.stringify(args),
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async quoteItemProposalDelete(id: number): Promise<QuoteItemProposal> {
+    return this.#client.web.fetchJson(`/sale/quoteItemProposal/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async quoteItemProposalRead(search: any): Promise<QuoteItemProposal[]> {
+    return this.#client.web.fetchJson(`/sale/quoteItemProposal?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async quoteItemProposalReadById(id: number): Promise<QuoteItemProposal> {
+    return this.#client.web.fetchJson(`/sale/quoteItemProposal/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async quoteItemProposalUpdate(bean: QuoteItemProposal): Promise<QuoteItemProposal> {
+    return this.#client.web.fetchJson("/sale/quoteItemProposal", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        },
+        body: JSON.stringify(bean),
 
     });
   }
@@ -326,15 +386,15 @@ export class SaleService {
     });
   }
 
-  async quoteOpFinish(id: number): Promise<Quote> {
-    return this.#client.web.fetchJson(`/sale/quoteOpFinish/${id}`, {
+  async quoteOpFill(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpFill/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteOpFinishRevert(id: number): Promise<Quote> {
-    return this.#client.web.fetchJson(`/sale/quoteOpFinishRevert/${id}`, {
+  async quoteOpFillRevert(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpFillRevert/${id}`, {
       method: "POST",
       
     });
@@ -565,6 +625,13 @@ export class SaleService {
         },
         body: JSON.stringify(ids),
 
+    });
+  }
+
+  async saleOpMergeRevert(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpMergeRevert/${id}`, {
+      method: "POST",
+      
     });
   }
 

@@ -3,6 +3,8 @@ export class ArgsPickingOrderOpCreate {
   personId!: number;
   pickingProfileId!: number;
   shipmentId!: number;
-  items!: any;
+  addressId!: number;
+  tags!: string;
   properties!: any;
+  items!: any;
 }

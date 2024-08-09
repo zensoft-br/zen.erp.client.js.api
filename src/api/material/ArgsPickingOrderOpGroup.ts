@@ -1,8 +1,9 @@
 export class ArgsPickingOrderOpGroup {
-  ids!: number[];
   description!: string;
   pickingProfileId!: number;
+  shipmentId!: number;
   addressId!: number;
   tags!: string;
   properties!: any;
+  ids!: number[];
 }

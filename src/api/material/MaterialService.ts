@@ -1,7 +1,6 @@
 import { Client } from "../../Client.js";
 import { Address } from "./Address.js";
 import { AddressProfile } from "./AddressProfile.js";
-import { ArgsIncomingListOpImport } from "./ArgsIncomingListOpImport.js";
 import { ArgsIncomingListOpImportFromOutgoingList } from "./ArgsIncomingListOpImportFromOutgoingList.js";
 import { ArgsMovingOrderItemOpLoad } from "./ArgsMovingOrderItemOpLoad.js";
 import { ArgsMovingOrderOpAllocateStock } from "./ArgsMovingOrderOpAllocateStock.js";
@@ -243,17 +242,6 @@ export class MaterialService {
         "content-type": "application/json",
         },
         body: JSON.stringify(bean),
-
-    });
-  }
-
-  async incomingListOpImport(args: ArgsIncomingListOpImport): Promise<IncomingList> {
-    return this.#client.web.fetchJson("/material/incomingListOpImport", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        },
-        body: JSON.stringify(args),
 
     });
   }

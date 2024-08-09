@@ -335,6 +335,13 @@ export class PurchaseService {
     });
   }
 
+  async purchaseOpApproveUnconditionally(id: number): Promise<Purchase> {
+    return this.#client.web.fetchJson(`/supply/purchase/purchaseOpApproveUnconditionally/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async purchaseOpCancel(id: number, args: ArgsPurchaseOpCancel): Promise<Purchase> {
     return this.#client.web.fetchJson(`/supply/purchase/purchaseOpCancel/${id}`, {
       method: "POST",
