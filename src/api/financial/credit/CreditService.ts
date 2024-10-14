@@ -15,6 +15,7 @@ export class CreditService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -33,6 +34,7 @@ export class CreditService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -65,6 +67,7 @@ export class CreditService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -90,6 +93,7 @@ export class CreditService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 

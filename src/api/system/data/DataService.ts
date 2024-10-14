@@ -1,6 +1,7 @@
 import { Client } from "../../../Client.js";
 import { ArgsDataSourceOpRead } from "./ArgsDataSourceOpRead.js";
 import { DataSource } from "./DataSource.js";
+import { DataSourceField } from "./DataSourceField.js";
 import { DataSourceParameter } from "./DataSourceParameter.js";
 
 export class DataService {
@@ -16,6 +17,7 @@ export class DataService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -29,11 +31,38 @@ export class DataService {
     });
   }
 
+  async dataSourceFieldRead(search: any): Promise<DataSourceField[]> {
+    return this.#client.web.fetchJson(`/system/data/dataSourceField?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async dataSourceFieldReadById(id: number): Promise<DataSourceField> {
+    return this.#client.web.fetchJson(`/system/data/dataSourceField/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async dataSourceFieldUpdate(bean: DataSourceField): Promise<DataSourceField> {
+    return this.#client.web.fetchJson("/system/data/dataSourceField", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
   async dataSourceOpRead(args: ArgsDataSourceOpRead): Promise<Map<string,any>[]> {
     return this.#client.web.fetchJson("/system/data/dataSourceOpRead", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -45,6 +74,7 @@ export class DataService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -77,6 +107,7 @@ export class DataService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -102,6 +133,7 @@ export class DataService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 

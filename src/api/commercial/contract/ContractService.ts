@@ -1,4 +1,5 @@
 import { Client } from "../../../Client.js";
+import { ArgsContractBillingOpCreateInvoice } from "./ArgsContractBillingOpCreateInvoice.js";
 import { Contract } from "./Contract.js";
 import { ContractBilling } from "./ContractBilling.js";
 import { ContractFull } from "./ContractFull.js";
@@ -20,6 +21,7 @@ export class ContractService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -56,13 +58,14 @@ export class ContractService {
     });
   }
 
-  async contractBillingOpCreateInvoice(ids: any): Promise<OutgoingInvoice> {
+  async contractBillingOpCreateInvoice(args: ArgsContractBillingOpCreateInvoice): Promise<OutgoingInvoice> {
     return this.#client.web.fetchJson("/commercial/contract/contractBillingOpCreateInvoice", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
-        body: JSON.stringify(ids),
+        body: JSON.stringify(args),
 
     });
   }
@@ -109,6 +112,7 @@ export class ContractService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -120,6 +124,7 @@ export class ContractService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -138,6 +143,7 @@ export class ContractService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -170,6 +176,7 @@ export class ContractService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -181,6 +188,7 @@ export class ContractService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -213,6 +221,7 @@ export class ContractService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -259,6 +268,7 @@ export class ContractService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -284,6 +294,7 @@ export class ContractService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -316,6 +327,7 @@ export class ContractService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -341,6 +353,7 @@ export class ContractService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 

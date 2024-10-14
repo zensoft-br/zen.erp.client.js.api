@@ -14,6 +14,7 @@ export class FileService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -53,6 +54,7 @@ export class FileService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 

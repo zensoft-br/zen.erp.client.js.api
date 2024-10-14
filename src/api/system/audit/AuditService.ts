@@ -16,6 +16,7 @@ export class AuditService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -72,6 +73,7 @@ export class AuditService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -104,6 +106,7 @@ export class AuditService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 

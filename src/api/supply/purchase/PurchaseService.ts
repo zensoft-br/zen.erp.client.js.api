@@ -3,6 +3,7 @@ import { ArgsProposalItemOpApprove } from "./ArgsProposalItemOpApprove.js";
 import { ArgsProposalItemOpDisapprove } from "./ArgsProposalItemOpDisapprove.js";
 import { ArgsPurchaseOpCancel } from "./ArgsPurchaseOpCancel.js";
 import { ArgsPurchaseOpCreate } from "./ArgsPurchaseOpCreate.js";
+import { ArgsPurchaseOpSplit } from "./ArgsPurchaseOpSplit.js";
 import { ArgsQuoteOpCreate } from "./ArgsQuoteOpCreate.js";
 import { ArgsQuoteOpFinish } from "./ArgsQuoteOpFinish.js";
 import { PriceListCost } from "./PriceListCost.js";
@@ -29,6 +30,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -47,6 +49,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -79,6 +82,7 @@ export class PurchaseService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -104,6 +108,7 @@ export class PurchaseService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -115,6 +120,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -133,6 +139,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -151,6 +158,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -169,6 +177,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -201,6 +210,7 @@ export class PurchaseService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -254,6 +264,7 @@ export class PurchaseService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -265,6 +276,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -283,6 +295,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -315,6 +328,7 @@ export class PurchaseService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -347,6 +361,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -372,6 +387,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -392,6 +408,18 @@ export class PurchaseService {
     });
   }
 
+  async purchaseOpMerge(ids: any): Promise<Purchase> {
+    return this.#client.web.fetchJson("/supply/purchase/purchaseOpMerge", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(ids),
+
+    });
+  }
+
   async purchaseOpPrepare(id: number): Promise<Purchase> {
     return this.#client.web.fetchJson(`/supply/purchase/purchaseOpPrepare/${id}`, {
       method: "POST",
@@ -406,11 +434,31 @@ export class PurchaseService {
     });
   }
 
+  async purchaseOpSplit(id: number, args: ArgsPurchaseOpSplit): Promise<Purchase> {
+    return this.#client.web.fetchJson(`/supply/purchase/purchaseOpSplit/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
+  async purchaseOpTaxationCalc(id: number): Promise<Purchase> {
+    return this.#client.web.fetchJson(`/supply/purchase/purchaseOpTaxationCalc/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async purchaseOpUpdatePrepared(bean: Purchase): Promise<Purchase> {
     return this.#client.web.fetchJson("/supply/purchase/purchaseOpUpdatePrepared", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -422,6 +470,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -454,6 +503,7 @@ export class PurchaseService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -465,6 +515,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -497,6 +548,7 @@ export class PurchaseService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -522,6 +574,7 @@ export class PurchaseService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -533,6 +586,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -551,6 +605,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -583,6 +638,7 @@ export class PurchaseService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -622,6 +678,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -633,6 +690,7 @@ export class PurchaseService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -679,6 +737,7 @@ export class PurchaseService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 

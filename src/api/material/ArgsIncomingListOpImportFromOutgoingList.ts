@@ -1,5 +1,6 @@
 export class ArgsIncomingListOpImportFromOutgoingList {
   outgoingListId!: number;
+  ignoreStockCluster!: boolean;
   ignoreAddress!: boolean;
   ignoreDepositor!: boolean;
   ignoreQuality!: boolean;

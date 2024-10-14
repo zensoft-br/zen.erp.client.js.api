@@ -11,7 +11,7 @@ export class QuoteItemProposal {
   currency!: Currency;
   unitValue!: number;
   totalValue!: number;
-  approvedQuantity!: number;
+  availabilityDate!: Date;
   tags!: string;
   properties!: any;
 }

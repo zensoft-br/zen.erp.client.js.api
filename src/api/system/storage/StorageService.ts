@@ -41,6 +41,7 @@ export class StorageService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(value),
 
@@ -110,6 +111,7 @@ export class StorageService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(value),
 

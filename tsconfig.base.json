@@ -78,7 +78,10 @@
     /* Type Checking */
     "strict": true, /* Enable all strict type-checking options. */
     // TODO zen: back to true
-    "noImplicitAny": false,                            /* Enable error reporting for expressions and declarations with an implied 'any' type. */
+    // "noImplicitAny": true,                            /* Enable error reporting for expressions and declarations with an implied 'any' type. */
+    // TODO: remove and handle error cases
+    // "suppressImplicitAnyIndexErrors": true,
+    // "ignoreDeprecations": "5.0",
     // "strictNullChecks": true,                         /* When type checking, take into account 'null' and 'undefined'. */
     // "strictFunctionTypes": true,                      /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */
     // "strictBindCallApply": true,                      /* Check that the arguments for 'bind', 'call', and 'apply' methods match the original function. */
@@ -100,10 +103,13 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "include": [
-    "src/**/*"
-  ],
+  // "include": [
+  //   "src/**/*"
+  // ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "files": [
+    "src/index.ts", // Include only this file and its dependencies
+  ],
 }

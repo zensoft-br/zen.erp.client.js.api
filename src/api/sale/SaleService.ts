@@ -5,6 +5,7 @@ import { ArgsSaleOpCancel } from "./ArgsSaleOpCancel.js";
 import { ArgsSaleOpCreate } from "./ArgsSaleOpCreate.js";
 import { ArgsSaleOpForwardAuto } from "./ArgsSaleOpForwardAuto.js";
 import { ArgsSaleOpPickingOrderCreate } from "./ArgsSaleOpPickingOrderCreate.js";
+import { ArgsSaleOpSplit } from "./ArgsSaleOpSplit.js";
 import { OutgoingInvoice } from "../fiscal/OutgoingInvoice.js";
 import { PickingOrder } from "../material/PickingOrder.js";
 import { PriceFormation } from "./PriceFormation.js";
@@ -33,6 +34,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -51,6 +53,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -83,6 +86,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -94,6 +98,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -112,6 +117,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -137,6 +143,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -148,6 +155,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -166,6 +174,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -198,6 +207,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -223,6 +233,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -234,6 +245,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -252,6 +264,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -265,29 +278,15 @@ export class SaleService {
     });
   }
 
-  async quoteItemOpFill(id: number): Promise<QuoteItem> {
-    return this.#client.web.fetchJson(`/sale/quoteItemOpFill/${id}`, {
+  async quoteItemOpReject(id: number): Promise<QuoteItem> {
+    return this.#client.web.fetchJson(`/sale/quoteItemOpReject/${id}`, {
       method: "POST",
       
     });
   }
 
-  async quoteItemOpFillRevert(id: number): Promise<QuoteItem> {
-    return this.#client.web.fetchJson(`/sale/quoteItemOpFillRevert/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async quoteItemOpRefuse(id: number): Promise<QuoteItem> {
-    return this.#client.web.fetchJson(`/sale/quoteItemOpRefuse/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async quoteItemOpRefuseRevert(id: number): Promise<QuoteItem> {
-    return this.#client.web.fetchJson(`/sale/quoteItemOpRefuseRevert/${id}`, {
+  async quoteItemOpRejectRevert(id: number): Promise<QuoteItem> {
+    return this.#client.web.fetchJson(`/sale/quoteItemOpRejectRevert/${id}`, {
       method: "POST",
       
     });
@@ -298,6 +297,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -307,6 +307,34 @@ export class SaleService {
   async quoteItemProposalDelete(id: number): Promise<QuoteItemProposal> {
     return this.#client.web.fetchJson(`/sale/quoteItemProposal/${id}`, {
       method: "DELETE",
+      
+    });
+  }
+
+  async quoteItemProposalOpApprove(id: number): Promise<QuoteItemProposal> {
+    return this.#client.web.fetchJson(`/sale/quoteItemProposalOpApprove/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async quoteItemProposalOpApproveRevert(id: number): Promise<QuoteItemProposal> {
+    return this.#client.web.fetchJson(`/sale/quoteItemProposalOpApproveRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async quoteItemProposalOpReject(id: number): Promise<QuoteItemProposal> {
+    return this.#client.web.fetchJson(`/sale/quoteItemProposalOpReject/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async quoteItemProposalOpRejectRevert(id: number): Promise<QuoteItemProposal> {
+    return this.#client.web.fetchJson(`/sale/quoteItemProposalOpRejectRevert/${id}`, {
+      method: "POST",
       
     });
   }
@@ -330,6 +358,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -355,6 +384,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -394,6 +424,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -489,6 +520,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -500,6 +532,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -518,6 +551,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -528,6 +562,18 @@ export class SaleService {
     return this.#client.web.fetchJson(`/sale/saleItem/${id}`, {
       method: "DELETE",
       
+    });
+  }
+
+  async saleItemOpUpdatePrepared(bean: SaleItem): Promise<SaleItem> {
+    return this.#client.web.fetchJson("/sale/saleItemOpUpdatePrepared", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
     });
   }
 
@@ -550,6 +596,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -582,6 +629,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -607,6 +655,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -625,6 +674,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -636,6 +686,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(ids),
 
@@ -654,6 +705,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(args),
 
@@ -699,11 +751,31 @@ export class SaleService {
     });
   }
 
+  async saleOpSplit(id: number, args: ArgsSaleOpSplit): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpSplit/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
+  async saleOpTaxationCalc(id: number): Promise<Sale> {
+    return this.#client.web.fetchJson(`/sale/saleOpTaxationCalc/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async saleOpUpdatePrepared(bean: Sale): Promise<Sale> {
     return this.#client.web.fetchJson("/sale/saleOpUpdatePrepared", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -715,6 +787,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -747,6 +820,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -758,6 +832,7 @@ export class SaleService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -790,6 +865,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 
@@ -815,6 +891,7 @@ export class SaleService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(bean),
 

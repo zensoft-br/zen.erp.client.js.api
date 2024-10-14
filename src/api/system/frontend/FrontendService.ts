@@ -22,6 +22,7 @@ export class FrontendService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(injects),
 
@@ -40,6 +41,7 @@ export class FrontendService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(menu),
 
@@ -58,6 +60,7 @@ export class FrontendService {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        accept: "application/json",
         },
         body: JSON.stringify(resources),
 

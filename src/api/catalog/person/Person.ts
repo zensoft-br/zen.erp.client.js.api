@@ -36,6 +36,8 @@ export class Person {
   category3!: Category;
   category4!: Category;
   category5!: Category;
+  personSalesperson!: Person;
+  personShipping!: Person;
   tags!: string;
   properties!: any;
 }

@@ -1,33 +1,28 @@
 import { DateTime } from "luxon";
+import { Client } from "./Client.js";
 // import { HttpError } from "./errors";
 
 export class I18n {
 
-  #locale;
-  #timeZone;
-  #resources;
+  #locale: string;
+  #timeZone: string;
+  #resources: any;
 
-  constructor(locale, timeZone, resources) {
+  constructor(locale: string, timeZone: string, resources: any) {
     this.#locale = locale;
     this.#timeZone = timeZone;
     this.#resources = resources;
   }
 
-  get locale() {
+  get locale(): string {
     return this.#locale;
   }
 
-  get timeZone() {
+  get timeZone(): string {
     return this.#timeZone;
   }
 
-  /**
-   *
-   * @param {string} key
-   * @param {string} defaultValue
-   * @returns
-   */
-  getResource(key, defaultValue?) {
+  getResource(key: string | null, defaultValue?: string): string | null {
     if (!key) {
       return null;
     }
@@ -42,13 +37,7 @@ export class I18n {
     return result;
   }
 
-  /**
-   *
-   * @param {string} key
-   * @param  {...any} args
-   * @returns string
-   */
-  format(key, ...args) {
+  format(key: string, ...args: any): string {
     const format = this.getResource(key);
 
     if (!format)
@@ -70,20 +59,14 @@ export class I18n {
     return result + (extra.length ? ` [${extra.join(", ")}]` : "");
   }
 
-  /**
-   *
-   * @param {number} number
-   * @param {string} currencyCode
-   * @returns string
-   */
-  formatCurrency(number, currencyCode = null) {
+  formatCurrency(number: number | null, currencyCode?: string): string | null {
     if (number == null)
       return null;
     try {
       const result = new Intl.NumberFormat(this.#locale, {
         style: "currency",
         currency:
-          currencyCode ?? this.getResource("/@system/default/currency"),
+          currencyCode ?? this.getResource("/@system/default/currency") ?? undefined,
       }).format(number);
 
       // Replace &nbsp; with space
@@ -93,11 +76,7 @@ export class I18n {
     }
   }
 
-  /**
-   * @param {string | Date} date
-   * @returns string
-   */
-  formatDate(date) {
+  formatDate(date: string | Date | null): string | null {
     if (date == null)
       return null;
 
@@ -112,16 +91,11 @@ export class I18n {
         year: "2-digit", month: "numeric", day: "numeric",
       });
     } catch (error) {
-      return date;
+      return date.toString();
     }
   }
 
-  /**
-   *
-   * @param {string | Date} date
-   * @returns
-   */
-  formatDateTime(date) {
+  formatDateTime(date: string | Date | null): string | null {
     if (date == null)
       return null;
 
@@ -137,17 +111,11 @@ export class I18n {
         year: "2-digit", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric",
       });
     } catch {
-      return date;
+      return date.toString();
     }
   }
 
-  /**
-   *
-   * @param {number} number
-   * @param {any} args
-   * @returns string
-   */
-  formatNumber(number, args) {
+  formatNumber(number: number | null, args: any): string | null {
     if (number == null)
       return null;
 
@@ -164,21 +132,11 @@ export class I18n {
     }
   }
 
-  /**
-   *
-   * @param {number} number
-   * @returns string
-   */
-  formatQuantity(number, args) {
+  formatQuantity(number: number | null, args: any): string | null {
     return this.formatNumber(number, args);
   }
 
-  /**
-   *
-   * @param {string} time
-   * @returns  string
-   */
-  formatTime(time) {
+  formatTime(time: string | Date | null): string | null {
     if (time == null)
       return null;
 
@@ -192,46 +150,27 @@ export class I18n {
 
       return _date.toLocaleString(DateTime.TIME_24_WITH_SECONDS);
     } catch {
-      return time;
+      return time.toString();
     }
   }
 
-  /**
-   *
-   * @param {number} number
-   * @returns string
-   */
-  formatUnitValue(number) {
+  formatUnitValue(number: number | null): string | null {
     return this.formatNumber(number, { minDigits: 2, maxDigits: 8 });
   }
 
-  /**
-   *
-   * @param {number} number
-   * @returns string
-   */
-  formatValue(number) {
+  formatValue(number: number | null): string | null {
     return this.formatNumber(number, { digits: 2 });
   }
 
-  /**
-   *
-   * @param {number} number
-   * @returns string
-   */
-  formatWeight(number) {
+  formatWeight(number: number | null): string | null {
     return this.formatNumber(number, { minDigits: 3, maxDigits: 6 });
   }
 
-  /**
-   *
-   * @param {Node} node
-   */
-  localizeNode(node) {
+  localizeNode(node: Node): void {
     // Localize element attribute values
     if (node instanceof HTMLElement) {
       Array.from(node.attributes).forEach((attr) => {
-        const tmp = attr.value.replace(/@@:([\\/@\\.\\-\\+\\#\w]+)/g, (_, b) => this.getResource(b));
+        const tmp = attr.value.replace(/@@:([\\/@\\.\\-\\+\\#\w]+)/g, (_, b) => this.getResource(b) ?? "");
         if (tmp !== attr.value) {
           node.setAttribute(attr.name, tmp);
         }
@@ -243,7 +182,7 @@ export class I18n {
 
     for (const child of _node.childNodes) {
       if (!child.hasChildNodes() && child.textContent) {
-        const tmp = child.textContent.replace(/@@:([\\/@\\.\\-\\+\\#\w]+)/g, (_, b) => this.getResource(b));
+        const tmp = child.textContent.replace(/@@:([\\/@\\.\\-\\+\\#\w]+)/g, (_, b) => this.getResource(b) ?? "");
         if (tmp !== child.textContent) {
           child.textContent = tmp;
         }
@@ -255,11 +194,7 @@ export class I18n {
     }
   }
 
-  /**
-   *
-   * @param {Node} node
-   */
-  observeNode(node) {
+  observeNode(node: Node): void {
     this.localizeNode(node);
 
     const observer = new MutationObserver((mutations) => {
@@ -280,7 +215,7 @@ export class I18n {
   }
 }
 
-export async function createI18n(zenClient) {
+export async function createI18n(zenClient: Client): Promise<I18n> {
   const resources = await zenClient.web.fetchJson("/system/resources");
 
   return new I18n(zenClient.language, zenClient.timeZone, resources);

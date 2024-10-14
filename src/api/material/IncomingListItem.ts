@@ -20,6 +20,7 @@ export class IncomingListItem {
   serial!: Serial;
   expirationDate!: Date;
   handlingUnit!: HandlingUnit;
+  type!: string;
   quantity!: number;
   netWeightKg!: number;
   grossWeightKg!: number;
