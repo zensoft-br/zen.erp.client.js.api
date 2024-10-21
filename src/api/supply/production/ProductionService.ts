@@ -9,8 +9,8 @@ import { ProductionBatch } from "./ProductionBatch.js";
 import { ProductionOrder } from "./ProductionOrder.js";
 import { ProductionProfile } from "./ProductionProfile.js";
 import { ProductionStep } from "./ProductionStep.js";
-import { ProductionStepInput } from "./ProductionStepInput.js";
-import { ProductionStepOutput } from "./ProductionStepOutput.js";
+import { ProductionStepConsumption } from "./ProductionStepConsumption.js";
+import { ProductionStepProduction } from "./ProductionStepProduction.js";
 
 export class ProductionService {
 
@@ -469,6 +469,58 @@ export class ProductionService {
     });
   }
 
+  async productionStepConsumptionCreate(bean: ProductionStepConsumption): Promise<ProductionStepConsumption> {
+    return this.#client.web.fetchJson("/supply/production/productionStepConsumption", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async productionStepConsumptionDelete(id: number): Promise<ProductionStepConsumption> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepConsumption/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async productionStepConsumptionOpCalculate(id: number): Promise<ProductionStep> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepConsumptionOpCalculate/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async productionStepConsumptionRead(search: any): Promise<ProductionStepConsumption[]> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepConsumption?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async productionStepConsumptionReadById(id: number): Promise<ProductionStepConsumption> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepConsumption/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async productionStepConsumptionUpdate(bean: ProductionStepConsumption): Promise<ProductionStepConsumption> {
+    return this.#client.web.fetchJson("/supply/production/productionStepConsumption", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
   async productionStepCreate(bean: ProductionStep): Promise<ProductionStep> {
     return this.#client.web.fetchJson("/supply/production/productionStep", {
       method: "POST",
@@ -488,8 +540,8 @@ export class ProductionService {
     });
   }
 
-  async productionStepInputCreate(bean: ProductionStepInput): Promise<ProductionStepInput> {
-    return this.#client.web.fetchJson("/supply/production/productionStepInput", {
+  async productionStepProductionCreate(bean: ProductionStepProduction): Promise<ProductionStepProduction> {
+    return this.#client.web.fetchJson("/supply/production/productionStepProduction", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -500,81 +552,29 @@ export class ProductionService {
     });
   }
 
-  async productionStepInputDelete(id: number): Promise<ProductionStepInput> {
-    return this.#client.web.fetchJson(`/supply/production/productionStepInput/${id}`, {
+  async productionStepProductionDelete(id: number): Promise<ProductionStepProduction> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepProduction/${id}`, {
       method: "DELETE",
       
     });
   }
 
-  async productionStepInputRead(search: any): Promise<ProductionStepInput[]> {
-    return this.#client.web.fetchJson(`/supply/production/productionStepInput?${search}`, {
+  async productionStepProductionRead(search: any): Promise<ProductionStepProduction[]> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepProduction?${search}`, {
       method: "GET",
       
     });
   }
 
-  async productionStepInputReadById(id: number): Promise<ProductionStepInput> {
-    return this.#client.web.fetchJson(`/supply/production/productionStepInput/${id}`, {
+  async productionStepProductionReadById(id: number): Promise<ProductionStepProduction> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepProduction/${id}`, {
       method: "GET",
       
     });
   }
 
-  async productionStepInputUpdate(bean: ProductionStepInput): Promise<ProductionStepInput> {
-    return this.#client.web.fetchJson("/supply/production/productionStepInput", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async productionStepOpCalculateInput(id: number): Promise<ProductionStep> {
-    return this.#client.web.fetchJson(`/supply/production/productionStepOpCalculateInput/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async productionStepOutputCreate(bean: ProductionStepOutput): Promise<ProductionStepOutput> {
-    return this.#client.web.fetchJson("/supply/production/productionStepOutput", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async productionStepOutputDelete(id: number): Promise<ProductionStepOutput> {
-    return this.#client.web.fetchJson(`/supply/production/productionStepOutput/${id}`, {
-      method: "DELETE",
-      
-    });
-  }
-
-  async productionStepOutputRead(search: any): Promise<ProductionStepOutput[]> {
-    return this.#client.web.fetchJson(`/supply/production/productionStepOutput?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async productionStepOutputReadById(id: number): Promise<ProductionStepOutput> {
-    return this.#client.web.fetchJson(`/supply/production/productionStepOutput/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async productionStepOutputUpdate(bean: ProductionStepOutput): Promise<ProductionStepOutput> {
-    return this.#client.web.fetchJson("/supply/production/productionStepOutput", {
+  async productionStepProductionUpdate(bean: ProductionStepProduction): Promise<ProductionStepProduction> {
+    return this.#client.web.fetchJson("/supply/production/productionStepProduction", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

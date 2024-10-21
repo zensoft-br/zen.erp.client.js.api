@@ -8,7 +8,7 @@ import StringUtils from "./StringUtils.js";
 export default class ControlColor extends HTMLElement {
   private _root: HTMLElement;
 
-  private _observer: MutationObserver | null;
+  private _observer?: MutationObserver;
 
   constructor() {
     super();
@@ -43,7 +43,7 @@ export default class ControlColor extends HTMLElement {
   disconnectedCallback(): void {
     if (this._observer) {
       this._observer.disconnect();
-      this._observer = null;
+      this._observer = undefined;
     }
   }
 

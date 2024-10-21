@@ -77,7 +77,7 @@ export class I18n {
   }
 
   formatDate(date: string | Date | null): string | null {
-    if (date == null)
+    if (!date)
       return null;
 
     try {
@@ -96,7 +96,7 @@ export class I18n {
   }
 
   formatDateTime(date: string | Date | null): string | null {
-    if (date == null)
+    if (!date)
       return null;
 
     try {
@@ -115,7 +115,7 @@ export class I18n {
     }
   }
 
-  formatNumber(number: number | null, args: any): string | null {
+  formatNumber(number: number | null, args?: any): string | null {
     if (number == null)
       return null;
 
@@ -132,7 +132,7 @@ export class I18n {
     }
   }
 
-  formatQuantity(number: number | null, args: any): string | null {
+  formatQuantity(number: number | null, args?: any): string | null {
     return this.formatNumber(number, args);
   }
 

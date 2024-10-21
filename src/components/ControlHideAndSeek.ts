@@ -19,7 +19,9 @@ export default class ControlHideAndSeek extends HTMLElement {
   }
 
   disconnectedCallback(): void {
-    this.parentElement.removeEventListener("scroll", this._listener);
+    if (this.parentElement) {
+      this.parentElement.removeEventListener("scroll", this._listener);
+    }
   }
 
   static isVisible(element: HTMLElement): boolean {
@@ -37,13 +39,13 @@ export default class ControlHideAndSeek extends HTMLElement {
     if (visible && !this._lastVisible) {
       this._lastVisible = true;
       if (this.hasAttribute("onshow")) {
-        new Function(this.getAttribute("onshow"))();
+        new Function(this.getAttribute("onshow") ?? "")();
       }
     }
     if (!visible && this._lastVisible) {
       this._lastVisible = false;
       if (this.hasAttribute("onhide")) {
-        new Function(this.getAttribute("onhide"))();
+        new Function(this.getAttribute("onhide") ?? "")();
       }
     }
   }
@@ -56,11 +58,13 @@ export default class ControlHideAndSeek extends HTMLElement {
       const listener = () => {
         if (!done && ControlHideAndSeek.isVisible(element)) {
           done = true;
-          parentElement.removeEventListener("scroll", listener);
+          // TODO ! not null assertion
+          parentElement!.removeEventListener("scroll", listener);
           resolve();
         }
       };
-      parentElement.addEventListener("scroll", listener);
+      // TODO ! not null assertion
+      parentElement!.addEventListener("scroll", listener);
     });
   }
 }

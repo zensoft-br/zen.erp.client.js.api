@@ -9,5 +9,5 @@ export { ProductionBatch } from "./ProductionBatch.js";
 export { ProductionOrder } from "./ProductionOrder.js";
 export { ProductionProfile } from "./ProductionProfile.js";
 export { ProductionStep } from "./ProductionStep.js";
-export { ProductionStepInput } from "./ProductionStepInput.js";
-export { ProductionStepOutput } from "./ProductionStepOutput.js";
+export { ProductionStepConsumption } from "./ProductionStepConsumption.js";
+export { ProductionStepProduction } from "./ProductionStepProduction.js";

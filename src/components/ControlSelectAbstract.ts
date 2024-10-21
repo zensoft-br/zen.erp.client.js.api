@@ -48,7 +48,7 @@ export default abstract class ControlSelectAbstract<
 
   private _textValues: string[] = [];
 
-  private _iterator: AsyncIterator<INT> | null = null;
+  private _iterator?: AsyncIterator<INT>;
 
   private _values: INT[] = [];
 
@@ -278,7 +278,7 @@ export default abstract class ControlSelectAbstract<
       // Remove duplicates
       const _values: INT[] = [];
       values.forEach((external) => {
-        const internal = this.toINT(external);
+        const internal = this.toINT(external)!;
         if (!_values.find((e) => this.compare(e, internal) === 0)) {
           _values.push(internal);
         }
@@ -384,7 +384,7 @@ export default abstract class ControlSelectAbstract<
     if (ul) {
       ul.remove();
     }
-    this._iterator = null;
+    this._iterator = undefined;
     this._closed = true;
   }
 
@@ -510,14 +510,14 @@ export default abstract class ControlSelectAbstract<
       let done = false;
       for (let index = 0; index < _fetchSize; index++) {
         // TODO Em alguns casos o iterator chegou null aqui (ao segurar uma tecla apertada)
-        const next = await this._iterator.next();
+        const next = await this._iterator!.next();
         if (next.done) {
           done = true;
           break;
         }
 
         const li = ul.appendChild(document.createElement("li"));
-        li.innerHTML = this._highlight(this.getString(next.value), this._text);
+        li.innerHTML = this._highlight(this.getString(next.value) ?? "", this._text);
 
         // Set value on click
         li.addEventListener("click", () => {
@@ -601,7 +601,7 @@ export default abstract class ControlSelectAbstract<
 
   protected abstract toEXT(value: INT): EXT;
 
-  protected abstract toINT(value: EXT): INT;
+  protected abstract toINT(value: EXT): INT | undefined;
 
   protected abstract compare(a: INT, b: INT): number;
 }

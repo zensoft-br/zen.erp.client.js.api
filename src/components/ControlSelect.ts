@@ -23,8 +23,8 @@ export default class ControlSelect extends ControlSelectAbstract<
 
       this.root.querySelectorAll("option").forEach((option) => {
         this._options.push({
-          value: option.value ? option.value : option.textContent.trim(),
-          text: option.textContent.trim(),
+          value: option.value ? option.value : (option.textContent ?? "").trim(),
+          text: (option.textContent ?? "").trim(),
         });
         option.remove();
       });
@@ -71,7 +71,7 @@ export default class ControlSelect extends ControlSelectAbstract<
     return value?.value;
   }
 
-  protected toINT(value: string): Tuple {
+  protected toINT(value: string): Tuple | undefined {
     return this._options.find((e) => e.value === value);
   }
 

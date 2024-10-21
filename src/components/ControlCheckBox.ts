@@ -3,7 +3,7 @@ export default class ControlCheckBox extends HTMLElement {
 
   readonly #input: HTMLInputElement;
 
-  #value: boolean | null;
+  #value?: boolean;
 
   constructor() {
     super();
@@ -23,7 +23,7 @@ export default class ControlCheckBox extends HTMLElement {
       );
     });
 
-    this.#value = null;
+    this.#value = undefined;
   }
 
   connectedCallback() {
@@ -34,11 +34,11 @@ export default class ControlCheckBox extends HTMLElement {
     this.#input.remove();
   }
 
-  get value(): boolean | null {
+  get value(): boolean | undefined {
     return this.#value;
   }
 
-  set value(value: boolean | null) {
+  set value(value: boolean | undefined) {
     this.#value = value;
     if (value == null) {
       this.#input.checked = false;

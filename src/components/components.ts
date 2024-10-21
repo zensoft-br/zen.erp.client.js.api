@@ -55,7 +55,6 @@ import ControlMaterialLot from "./ControlMaterialLot.js";
 import ControlMaterialOutgoingList from "./ControlMaterialOutgoingList.js";
 import ControlMaterialPickingOrder from "./ControlMaterialPickingOrder.js";
 import ControlMaterialPickingProfile from "./ControlMaterialPickingProfile.js";
-import ControlMaterialProductProfile from "./ControlMaterialProductProfile.js";
 import ControlMaterialQuality from "./ControlMaterialQuality.js";
 import ControlMaterialReservation from "./ControlMaterialReservation.js";
 import ControlMaterialReservationTarget from "./ControlMaterialReservationTarget.js";
@@ -159,7 +158,6 @@ export function customElementsDefine() {
   customElements.define("ps-material-outgoinglist", ControlMaterialOutgoingList);
   customElements.define("ps-material-pickingorder", ControlMaterialPickingOrder);
   customElements.define("ps-material-pickingprofile", ControlMaterialPickingProfile);
-  customElements.define("ps-material-productprofile", ControlMaterialProductProfile);
   customElements.define("ps-material-quality", ControlMaterialQuality);
   customElements.define("ps-material-reservation", ControlMaterialReservation);
   customElements.define("ps-material-reservationtarget", ControlMaterialReservationTarget);

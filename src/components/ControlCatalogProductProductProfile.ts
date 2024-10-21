@@ -48,6 +48,16 @@ export default class ControlCatalogProductProductProfile extends ControlSelectZe
   }
 
   protected getString(value: any): string | null {
-    return value ? `${value.description || value.code || value.id}` : null;
+    if (!value) {
+      return null;
+    }
+
+    const result: string[] = [];
+    result.push(value.code);
+    if (value.description !== value.code) {
+      result.push(value.description);
+    }
+
+    return result.join(", ");
   }
 }

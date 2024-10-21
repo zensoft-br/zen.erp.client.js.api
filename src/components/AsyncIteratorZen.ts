@@ -45,7 +45,8 @@ export default class AsyncIteratorZen<T> implements AsyncIterator<T> {
 
     // Retrieve from buffer
     if (this._buffer.length) {
-      return { value: this._buffer.shift(), done: false };
+      // TODO ! not null assertion
+      return { value: this._buffer.shift()!, done: false };
     }
 
     // Done
@@ -93,7 +94,7 @@ export default class AsyncIteratorZen<T> implements AsyncIterator<T> {
     const web = (<any>window).zen?.ctx.web;
     const response = await web.fetch(input, this._init);
     await web.handleResponse(response);
-    this._buffer = <T[]> await response.json();
+    this._buffer = <T[]>await response.json();
 
     // Increment page
     this._page++;
@@ -113,6 +114,7 @@ export default class AsyncIteratorZen<T> implements AsyncIterator<T> {
       this._buffer.pop();
     }
 
-    return { value: this._buffer.shift(), done: false };
+    // TODO ! not null assertion
+    return { value: this._buffer.shift()!, done: false };
   }
 }

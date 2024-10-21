@@ -5,7 +5,7 @@ export default class ControlDatetime extends HTMLElement {
 
   private readonly _inputTime: HTMLInputElement;
 
-  private _value: Date | null;
+  private _value?: Date;
 
   constructor() {
     super();
@@ -23,7 +23,7 @@ export default class ControlDatetime extends HTMLElement {
 
       // both empty
       if (this._inputDate.value === "" && this._inputTime.value === "") {
-        this._value = null;
+        this._value = undefined;
         dispath = true;
       }
       // both filled
@@ -48,7 +48,7 @@ export default class ControlDatetime extends HTMLElement {
     this._inputTime.setAttribute("step", "1");
     this._inputTime.addEventListener("change", eventListener);
 
-    this._value = null;
+    this._value = undefined;
   }
 
   connectedCallback() {
@@ -62,11 +62,11 @@ export default class ControlDatetime extends HTMLElement {
     this._inputTime.remove();
   }
 
-  get value(): Date | null {
+  get value(): Date | undefined {
     return this._value;
   }
 
-  set value(value: Date | null) {
+  set value(value: Date | undefined) {
     if (!value) {
       this._inputDate.value = "";
       this._inputTime.value = "";
