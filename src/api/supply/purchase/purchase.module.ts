@@ -4,6 +4,7 @@ export { PriceListCost } from "./PriceListCost.js";
 export { PriceListCostItem } from "./PriceListCostItem.js";
 export { Proposal } from "./Proposal.js";
 export { ProposalItem } from "./ProposalItem.js";
+export { ProposalRequest } from "./ProposalRequest.js";
 export { Purchase } from "./Purchase.js";
 export { PurchaseItem } from "./PurchaseItem.js";
 export { PurchasePayment } from "./PurchasePayment.js";

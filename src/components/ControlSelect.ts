@@ -47,20 +47,29 @@ export default class ControlSelect extends ControlSelectAbstract<
     } else {
       options = this._options;
     }
-    const range = {
-      [Symbol.asyncIterator]() {
-        return {
-          current: 0,
-          async next() {
-            if (this.current < options.length) {
-              return { done: false, value: options[this.current++] };
-            }
-            return { done: true, value: null };
-          },
-        };
+    // const range = {
+    //   [Symbol.asyncIterator]() {
+    //     return {
+    //       current: 0,
+    //       async next() {
+    //         if (this.current < options.length) {
+    //           return { done: false, value: options[this.current++] };
+    //         }
+    //         return { done: true, value: null };
+    //       },
+    //     };
+    //   },
+    // };
+    // return range[Symbol.asyncIterator]();
+    let current = 0;
+    return {
+      async next() {
+        if (current < options.length) {
+          return { done: false, value: options[current++] };
+        }
+        return { done: true, value: null };
       },
     };
-    return range[Symbol.asyncIterator]();
   }
 
   protected getString(value: Tuple): string {

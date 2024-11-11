@@ -6,6 +6,7 @@ export class QuoteItem {
   id!: number;
   quote!: Quote;
   productPacking!: ProductPacking;
+  referenceCode!: string;
   unit!: Unit;
   quantity!: number;
   internalQuantity!: number;

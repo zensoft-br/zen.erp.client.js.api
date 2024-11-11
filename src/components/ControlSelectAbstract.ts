@@ -15,7 +15,7 @@
 
 import _debounce from "lodash.debounce";
 import StringUtils from "./StringUtils.js";
-import ControlHideAndSeek from "./ControlHideAndSeek";
+import ControlHideAndSeek from "./ControlHideAndSeek.js";
 
 // INT - Internal type, EXT - External type
 export default abstract class ControlSelectAbstract<

@@ -6,6 +6,7 @@ export class QuoteItem {
   status!: string;
   quote!: Quote;
   productPacking!: ProductPacking;
+  referenceCode!: string;
   quantity!: number;
   tags!: string;
   properties!: any;

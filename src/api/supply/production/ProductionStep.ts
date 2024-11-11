@@ -12,6 +12,7 @@ export class ProductionStep {
   productPacking!: ProductPacking;
   quantity!: number;
   servedQuantity!: number;
+  productionStepParent!: ProductionStep;
   tags!: string;
   properties!: any;
 }

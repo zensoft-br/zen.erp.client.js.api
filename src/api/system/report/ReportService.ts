@@ -46,8 +46,10 @@ export class ReportService {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        accept: "application/pdf",
         },
         body: JSON.stringify(args),
+
     });
   }
 

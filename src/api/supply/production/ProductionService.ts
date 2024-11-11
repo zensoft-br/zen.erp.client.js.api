@@ -1,5 +1,6 @@
 import { Client } from "../../../Client.js";
 import { ArgsProductionOrderOpCreate } from "./ArgsProductionOrderOpCreate.js";
+import { ArgsProductionStepOpCreate } from "./ArgsProductionStepOpCreate.js";
 import { Bom } from "./Bom.js";
 import { BomItem } from "./BomItem.js";
 import { Operation } from "./Operation.js";
@@ -536,6 +537,46 @@ export class ProductionService {
   async productionStepDelete(id: number): Promise<ProductionStep> {
     return this.#client.web.fetchJson(`/supply/production/productionStep/${id}`, {
       method: "DELETE",
+      
+    });
+  }
+
+  async productionStepOpCreate(args: ArgsProductionStepOpCreate): Promise<ProductionStep> {
+    return this.#client.web.fetchJson("/supply/production/productionStepOpCreate", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
+  async productionStepOpFinish(id: number): Promise<ProductionStep> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepOpFinish/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async productionStepOpFinishRevert(id: number): Promise<ProductionStep> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepOpFinishRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async productionStepOpStart(id: number): Promise<ProductionStep> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepOpStart/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async productionStepOpStartRevert(id: number): Promise<ProductionStep> {
+    return this.#client.web.fetchJson(`/supply/production/productionStepOpStartRevert/${id}`, {
+      method: "POST",
       
     });
   }

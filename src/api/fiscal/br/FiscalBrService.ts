@@ -27,15 +27,15 @@ export class FiscalBrService {
   constructor(client: Client) {
     this.#client = client;
   }
-
+  
   async dfeNfeProcInCreate(args: ArgsDfeNfeProcInCreate): Promise<DfeNfeProcIn> {
     return this.#client.web.fetchJson("/fiscal/br/dfeNfeProcIn", {
       method: "POST",
       headers: {
         "content-type": "application/json",
         accept: "application/json",
-      },
-      body: JSON.stringify(args),
+        },
+        body: JSON.stringify(args),
 
     });
   }
@@ -43,7 +43,7 @@ export class FiscalBrService {
   async dfeNfeProcInDelete(id: number): Promise<DfeNfeProcIn> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcIn/${id}`, {
       method: "DELETE",
-
+      
     });
   }
 
@@ -53,8 +53,8 @@ export class FiscalBrService {
       headers: {
         "content-type": "application/json",
         accept: "application/json",
-      },
-      body: JSON.stringify(args),
+        },
+        body: JSON.stringify(args),
 
     });
   }
@@ -62,28 +62,28 @@ export class FiscalBrService {
   async dfeNfeProcInOpIncomingInvoiceCreateRevert(id: number): Promise<void> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcInOpIncomingInvoiceCreateRevert/${id}`, {
       method: "POST",
-
+      
     });
   }
 
   async dfeNfeProcInRead(search: any): Promise<DfeNfeProcIn[]> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcIn?${search}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeNfeProcInReadById(id: number): Promise<DfeNfeProcIn> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcIn/${id}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeNfeProcOutDelete(id: number): Promise<DfeNfeProcOut> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOut/${id}`, {
       method: "DELETE",
-
+      
     });
   }
 
@@ -93,8 +93,8 @@ export class FiscalBrService {
       headers: {
         "content-type": "application/json",
         accept: "application/json",
-      },
-      body: JSON.stringify(args),
+        },
+        body: JSON.stringify(args),
 
     });
   }
@@ -102,7 +102,7 @@ export class FiscalBrService {
   async dfeNfeProcOutOpConfirm(id: number): Promise<DfeNfeProcOut> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOutOpConfirm/${id}`, {
       method: "POST",
-
+      
     });
   }
 
@@ -112,8 +112,8 @@ export class FiscalBrService {
       headers: {
         "content-type": "application/json",
         accept: "application/json",
-      },
-      body: JSON.stringify(args),
+        },
+        body: JSON.stringify(args),
 
     });
   }
@@ -123,7 +123,7 @@ export class FiscalBrService {
     if (invoiceId) sp.set("invoiceId", String(invoiceId));
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOutOpCreate?${sp.toString()}`, {
       method: "POST",
-
+      
     });
   }
 
@@ -132,8 +132,9 @@ export class FiscalBrService {
       method: "POST",
       headers: {
         "content-type": "application/json",
-      },
-      body: JSON.stringify(args),
+        accept: "application/zip",
+        },
+        body: JSON.stringify(args),
 
     });
   }
@@ -144,8 +145,8 @@ export class FiscalBrService {
       headers: {
         "content-type": "application/json",
         accept: "application/json",
-      },
-      body: JSON.stringify(args),
+        },
+        body: JSON.stringify(args),
 
     });
   }
@@ -153,21 +154,21 @@ export class FiscalBrService {
   async dfeNfeProcOutOpSign(id: number): Promise<DfeNfeProcOut> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOutOpSign/${id}`, {
       method: "POST",
-
+      
     });
   }
 
   async dfeNfeProcOutOpSignRevert(id: number): Promise<DfeNfeProcOut> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOutOpSignRevert/${id}`, {
       method: "POST",
-
+      
     });
   }
 
   async dfeNfeProcOutOpTransmit(id: number): Promise<DfeNfeProcOut> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOutOpTransmit/${id}`, {
       method: "POST",
-
+      
     });
   }
 
@@ -177,8 +178,8 @@ export class FiscalBrService {
       headers: {
         "content-type": "application/json",
         accept: "application/json",
-      },
-      body: JSON.stringify(args),
+        },
+        body: JSON.stringify(args),
 
     });
   }
@@ -186,49 +187,49 @@ export class FiscalBrService {
   async dfeNfeProcOutRead(search: any): Promise<DfeNfeProcOut[]> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOut?${search}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeNfeProcOutReadById(id: number): Promise<DfeNfeProcOut> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeNfeProcOut/${id}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeOpReadContent(id: number): Promise<any> {
     return this.#client.web.fetchBlob(`/fiscal/br/dfeOpReadContent/${id}`, {
       method: "POST",
-
+      
     });
   }
 
   async dfeProcEventoNFeInRead(search: any): Promise<DfeProcEventoNFeIn[]> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeProcEventoNFeIn?${search}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeProcEventoNFeInReadById(id: number): Promise<DfeProcEventoNFeIn> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeProcEventoNFeIn/${id}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeProcEventoNFeOutRead(search: any): Promise<DfeProcEventoNFeOut[]> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeProcEventoNFeOut?${search}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeProcEventoNFeOutReadById(id: number): Promise<DfeProcEventoNFeOut> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeProcEventoNFeOut/${id}`, {
       method: "GET",
-
+      
     });
   }
 
@@ -238,8 +239,8 @@ export class FiscalBrService {
       headers: {
         "content-type": "application/json",
         accept: "application/json",
-      },
-      body: JSON.stringify(args),
+        },
+        body: JSON.stringify(args),
 
     });
   }
@@ -247,42 +248,42 @@ export class FiscalBrService {
   async dfeProcInutNFeRead(search: any): Promise<DfeProcInutNFe[]> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeProcInutNFe?${search}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeProcInutNFeReadById(id: number): Promise<DfeProcInutNFe> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeProcInutNFe/${id}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeRead(search: any): Promise<Dfe[]> {
     return this.#client.web.fetchJson(`/fiscal/br/dfe?${search}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeReadById(id: number): Promise<Dfe> {
     return this.#client.web.fetchJson(`/fiscal/br/dfe/${id}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeResEventoRead(search: any): Promise<DfeResEvento[]> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeResEvento?${search}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeResEventoReadById(id: number): Promise<DfeResEvento> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeResEvento/${id}`, {
       method: "GET",
-
+      
     });
   }
 
@@ -291,21 +292,21 @@ export class FiscalBrService {
     if (status) sp.set("status", String(status));
     return this.#client.web.fetchJson(`/fiscal/br/dfeResNFeInOpManifest/${id}?${sp.toString()}`, {
       method: "POST",
-
+      
     });
   }
 
   async dfeResNFeInRead(search: any): Promise<DfeResNFeIn[]> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeResNFeIn?${search}`, {
       method: "GET",
-
+      
     });
   }
 
   async dfeResNFeInReadById(id: number): Promise<DfeResNFeIn> {
     return this.#client.web.fetchJson(`/fiscal/br/dfeResNFeIn/${id}`, {
       method: "GET",
-
+      
     });
   }
 
@@ -315,8 +316,8 @@ export class FiscalBrService {
       headers: {
         "content-type": "application/json",
         accept: "application/json",
-      },
-      body: JSON.stringify(args),
+        },
+        body: JSON.stringify(args),
 
     });
   }
@@ -327,10 +328,10 @@ export class FiscalBrService {
       headers: {
         "content-type": "application/json",
         accept: "application/json",
-      },
-      body: JSON.stringify(args),
+        },
+        body: JSON.stringify(args),
 
     });
   }
 
-}
+  }

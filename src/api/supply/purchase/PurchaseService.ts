@@ -10,6 +10,7 @@ import { PriceListCost } from "./PriceListCost.js";
 import { PriceListCostItem } from "./PriceListCostItem.js";
 import { Proposal } from "./Proposal.js";
 import { ProposalItem } from "./ProposalItem.js";
+import { ProposalRequest } from "./ProposalRequest.js";
 import { Purchase } from "./Purchase.js";
 import { PurchaseItem } from "./PurchaseItem.js";
 import { PurchasePayment } from "./PurchasePayment.js";
@@ -256,6 +257,29 @@ export class PurchaseService {
     return this.#client.web.fetchJson(`/supply/purchase/proposal/${id}`, {
       method: "GET",
       
+    });
+  }
+
+  async proposalRequestReadById(id: number, token: string): Promise<ProposalRequest> {
+    const sp = new URLSearchParams();
+    if (token) sp.set("token", String(token));
+    return this.#client.web.fetchJson(`/supply/purchase/proposalRequest/${id}?${sp.toString()}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async proposalRequestUpdate(bean: ProposalRequest, token: string): Promise<ProposalRequest> {
+    const sp = new URLSearchParams();
+    if (token) sp.set("token", String(token));
+    return this.#client.web.fetchJson(`/supply/purchase/proposalRequest?${sp.toString()}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
     });
   }
 

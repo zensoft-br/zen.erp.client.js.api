@@ -1,8 +1,8 @@
 import { Client } from "../../../Client.js";
 import { Person } from "./Person.js";
 import { PersonAddress } from "./PersonAddress.js";
-import { PersonBasic } from "./PersonBasic.js";
 import { PersonComment } from "./PersonComment.js";
+import { PersonCompact } from "./PersonCompact.js";
 import { PersonContact } from "./PersonContact.js";
 import { PersonDocument } from "./PersonDocument.js";
 import { PersonGroup } from "./PersonGroup.js";
@@ -67,20 +67,6 @@ export class PersonService {
     });
   }
 
-  async personBasicRead(search: any): Promise<PersonBasic[]> {
-    return this.#client.web.fetchJson(`/catalog/person/personBasic?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async personBasicReadById(id: number): Promise<PersonBasic> {
-    return this.#client.web.fetchJson(`/catalog/person/personBasic/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
   async personCommentCreate(bean: PersonComment): Promise<PersonComment> {
     return this.#client.web.fetchJson("/catalog/person/personComment", {
       method: "POST",
@@ -123,6 +109,20 @@ export class PersonService {
         },
         body: JSON.stringify(bean),
 
+    });
+  }
+
+  async personCompactRead(search: any): Promise<PersonCompact[]> {
+    return this.#client.web.fetchJson(`/catalog/person/personCompact?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async personCompactReadById(id: number): Promise<PersonCompact> {
+    return this.#client.web.fetchJson(`/catalog/person/personCompact/${id}`, {
+      method: "GET",
+      
     });
   }
 
