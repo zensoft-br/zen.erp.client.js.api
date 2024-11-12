@@ -9,6 +9,7 @@ export default class ControlSelect extends ControlSelectAbstract<
   Tuple,
   string
 > {
+  private _init: boolean = false;
   private _options: Tuple[] = [];
 
   // constructor() {
@@ -18,7 +19,7 @@ export default class ControlSelect extends ControlSelectAbstract<
 
   connectedCallback(): void {
     // Load _options from the original <option> elements and remove them
-    if (this._options == null) {
+    if (!this._init) {
       this._options = [];
 
       this.root.querySelectorAll("option").forEach((option) => {
@@ -28,14 +29,15 @@ export default class ControlSelect extends ControlSelectAbstract<
         });
         option.remove();
       });
+      this._init = true;
     }
 
     // Translate option's text
-    (async () => {
-      for (const option of this._options) {
-        // option.text = await (<any> window).zen?.ctx.i18n.getResourceA(option.text);
-      }
-    })();
+    // (async () => {
+    //   for (const option of this._options) {
+    //     // option.text = await (<any> window).zen?.ctx.i18n.getResourceA(option.text);
+    //   }
+    // })();
 
     super.connectedCallback();
   }
