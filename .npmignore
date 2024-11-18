@@ -1,7 +1,7 @@
-/.vscode
-/src
-/test
 /.env
 /.gitignore
+/.vscode
 /eslint.config.js
 /rollup.config.js
+/src
+/test

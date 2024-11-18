@@ -1,17 +1,16 @@
 {
   "name": "@zensoftbr/zenerpclient",
-  "version": "1.0.20",
-  "description": "Javascript client for Zen Erp",
+  "version": "1.0.21",
+  "description": "Javascript client for Zen ERP",
   "type": "module",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
       "require": "./dist/cjs/index.js",
       "import": "./dist/esm/index.js",
       "default": "./dist/esm/index.js"
     },
     "./*": {
-      "types": "./dist/types/*.d.ts",
       "require": "./dist/cjs/*.js",
       "import": "./dist/esm/*.js",
       "default": "./dist/esm/*.js"
@@ -24,7 +23,7 @@
   },
   "bugs": "",
   "keywords": [
-    "Zen Erp",
+    "Zen ERP",
     "Zen Soft"
   ],
   "author": {
@@ -40,9 +39,9 @@
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:types": "tsc -p tsconfig.types.json",
-    "build": "npm run build:types && npm run build:cjs && npm run build:esm && npm run rollup",
+    "build": "npm run build:types && npm run build:cjs && npm run build:esm",
     "prepublishOnly": "npm run build",
-    "rollup": "rollup --config",
+    "bundle": "rollup --config",
     "test": "echo \"Error: no test specified\" && exit 1",
     "zip": "npx npm-pack-zip"
   },

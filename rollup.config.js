@@ -7,7 +7,15 @@ export default {
   input: "src/index.ts",
   output: [
     {
-      file: "dist/iife/zenerpclient.js",
+      file: "bundle/zenerpclient.js",
+      format: "iife",
+      sourcemap: true,
+      name: "zenerpclient",
+      plugins: [
+      ],
+    },
+    {
+      file: "bundle/zenerpclient.min.js",
       format: "iife",
       sourcemap: true,
       name: "zenerpclient",
@@ -22,16 +30,7 @@ export default {
     }),
     commonjs(),
     typescript({
-      // compilerOptions: {
-      //   target: "es2022",
-      //   // allowSyntheticDefaultImports: true,
-      //   esModuleInterop: true,
-      // },
+      tsconfig: "./tsconfig.base.json",
     }),
   ],
-  // onwarn(warning) {
-  //   if (warning.code !== "CIRCULAR_DEPENDENCY") {
-  //     console.error(`(!) ${warning.message}`);
-  //   }
-  // },
 };

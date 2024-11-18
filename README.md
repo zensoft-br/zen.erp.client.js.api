@@ -1,6 +1,6 @@
 # @zensoftbr/zenerpclient
 
-Este projeto visa desenvolver um software cliente inovador, projetado para integrar-se perfeitamente com o sistema de gestão Zen Erp. Nosso objetivo é oferecer uma solução que não apenas melhore a eficiência operacional, mas também enriqueça a experiência dos desenvolvedores através de funcionalidades intuitivas e personalizadas. Ideal para desenvolvedores que desejam explorar novas possibilidades e criar soluções impactantes no ecossistema Zen Erp.
+Este projeto visa desenvolver um software cliente inovador, projetado para integrar-se perfeitamente com o sistema de gestão Zen ERP. Nosso objetivo é oferecer uma solução que não apenas melhore a eficiência operacional, mas também enriqueça a experiência dos desenvolvedores através de funcionalidades intuitivas e personalizadas. Ideal para desenvolvedores que desejam explorar novas possibilidades e criar soluções impactantes no ecossistema Zen ERP.
 
 ## Instalação
 
