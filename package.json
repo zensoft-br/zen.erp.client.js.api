@@ -8,7 +8,8 @@
     ".": {
       "require": "./dist/cjs/index.js",
       "import": "./dist/esm/index.js",
-      "default": "./dist/esm/index.js"
+      "default": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts"
     },
     "./*": {
       "require": "./dist/cjs/*.js",
@@ -32,7 +33,9 @@
     "url": ""
   },
   "files": [
-    "dist"
+    "dist/",
+    "LICENSE.txt",
+    "README.md"
   ],
   "contributors": [],
   "scripts": {
