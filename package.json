@@ -1,9 +1,11 @@
 {
   "name": "@zensoftbr/zenerpclient",
   "version": "1.0.22",
-  "description": "Javascript client for Zen ERP",
+  "description": "Zen ERP Client Api",
   "type": "module",
   "types": "./dist/types/index.d.ts",
+  "license": "ISC",
+  "private": false,
   "exports": {
     ".": {
       "require": "./dist/cjs/index.js",
@@ -17,36 +19,45 @@
       "default": "./dist/esm/*.js"
     }
   },
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zensoft-br/zen.client.javascript.git"
-  },
-  "bugs": "",
-  "keywords": [
-    "Zen ERP",
-    "Zen Soft"
-  ],
-  "author": {
-    "name": "Fabiano Bonin",
-    "email": "fabiano.bonin@zensoft.com.br",
-    "url": ""
+  "engines": {
+    "node": ">= 14.0.0",
+    "npm": ">= 6.0.0"
   },
   "files": [
     "dist/",
     "LICENSE.txt",
     "README.md"
   ],
+  "homepage": "https://github.com/zensoft-br/zen.erp.client.js.api",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zensoft-br/zen.erp.client.js.api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zensoft-br/zen.erp.client.js.api/issues"
+  },
+  "keywords": [
+    "Zen ERP",
+    "JavaScript",
+    "client"
+  ],
+  "author": {
+    "name": "Zen Soft",
+    "email": "contact@zensoft.com.br",
+    "url": "https://www.zensoft.com.br"
+  },
   "contributors": [],
   "scripts": {
+    "dev": "echo 'No dev script defined'",
+    "test": "echo 'No test script defined'",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:types": "tsc -p tsconfig.types.json",
-    "build": "npm run build:types && npm run build:cjs && npm run build:esm",
-    "prepublishOnly": "npm run build",
-    "bundle": "rollup --config",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "zip": "npx npm-pack-zip"
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "luxon": "^3.4.4"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
@@ -54,7 +65,6 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@stylistic/eslint-plugin-js": "^1.6.2",
-    "@types/lodash.debounce": "^4.0.9",
     "@types/luxon": "^3.4.2",
     "dotenv": "^16.4.5",
     "eslint": "^8.56.0",
@@ -62,9 +72,5 @@
     "rollup": "^4.13.0",
     "tslib": "^2.6.2",
     "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "lodash.debounce": "^4.0.8",
-    "luxon": "^3.4.4"
   }
 }
