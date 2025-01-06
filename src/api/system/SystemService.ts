@@ -94,8 +94,10 @@ export class SystemService {
     });
   }
 
-  async resourcesRead(): Promise<any> {
-    return this.#client.web.fetchJson("/system/resources", {
+  async resourcesRead(locale: string): Promise<any> {
+    const sp = new URLSearchParams();
+    if (locale) sp.set("locale", String(locale));
+    return this.#client.web.fetchJson(`/system/resources?${sp.toString()}`, {
       method: "GET",
       
     });

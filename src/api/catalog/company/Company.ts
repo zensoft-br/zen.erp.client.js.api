@@ -8,6 +8,7 @@ import { Person } from "../person/Person.js";
 import { PriceListCost } from "../../supply/purchase/PriceListCost.js";
 import { Society } from "./Society.js";
 import { StockCluster } from "../../material/StockCluster.js";
+import { TargetPlan } from "../../commercial/target/TargetPlan.js";
 import { Warehouse } from "../../material/Warehouse.js";
 
 export class Company {
@@ -26,6 +27,7 @@ export class Company {
   image!: Image;
   creditLine!: CreditLine;
   mailerConfig!: MailerConfig;
+  targetPlan!: TargetPlan;
   tags!: string;
   properties!: any;
 }

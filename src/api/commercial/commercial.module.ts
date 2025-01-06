@@ -1,4 +1,5 @@
 export * as contract from "./contract/contract.module.js";
+export * as target from "./target/target.module.js";
 
 export { CommercialService } from "./CommercialService.js";
 

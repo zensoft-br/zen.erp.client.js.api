@@ -2,6 +2,7 @@ import { Category } from "../Category.js";
 import { FiscalProfileProduct } from "../../fiscal/FiscalProfileProduct.js";
 import { ProductProfile } from "./ProductProfile.js";
 import { ProductVariant } from "./ProductVariant.js";
+import { TargetGroup } from "../../commercial/target/TargetGroup.js";
 import { Unit } from "./Unit.js";
 
 export class Product {
@@ -14,8 +15,6 @@ export class Product {
   keywords!: string;
   unit!: Unit;
   fiscalProfileProduct!: FiscalProfileProduct;
-  variant!: ProductVariant;
-  barcode!: string;
   lengthCm!: number;
   widthCm!: number;
   heightCm!: number;
@@ -27,6 +26,9 @@ export class Product {
   category3!: Category;
   category4!: Category;
   category5!: Category;
+  targetGroup!: TargetGroup;
+  variant!: ProductVariant;
+  barcode!: string;
   tags!: string;
   properties!: any;
 }
