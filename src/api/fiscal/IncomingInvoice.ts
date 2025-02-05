@@ -6,12 +6,14 @@ import { InvoiceSeries } from "./InvoiceSeries.js";
 import { JournalEntry } from "../financial/accounting/JournalEntry.js";
 import { Person } from "../catalog/person/Person.js";
 import { PersonAddress } from "../catalog/person/PersonAddress.js";
+import { Purchase } from "../supply/purchase/Purchase.js";
 import { Workflow } from "../system/workflow/Workflow.js";
 import { Workpiece } from "../system/workflow/Workpiece.js";
 
 export class IncomingInvoice {
   status!: string;
   incomingList!: IncomingList;
+  purchase!: Purchase;
   id!: number;
   source!: string;
   company!: Company;

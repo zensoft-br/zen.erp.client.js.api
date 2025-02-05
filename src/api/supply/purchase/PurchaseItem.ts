@@ -12,6 +12,7 @@ export class PurchaseItem {
   id!: number;
   purchase!: Purchase;
   productPacking!: ProductPacking;
+  code!: string;
   fiscalProfileProduct!: FiscalProfileProduct;
   taxationRule!: TaxationRule;
   taxationOperation!: TaxationOperation;

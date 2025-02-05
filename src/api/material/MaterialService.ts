@@ -19,8 +19,6 @@ import { ArgsVolumeOpCreate } from "./ArgsVolumeOpCreate.js";
 import { HandlingUnit } from "./HandlingUnit.js";
 import { IncomingList } from "./IncomingList.js";
 import { IncomingListItem } from "./IncomingListItem.js";
-import { IncomingRequest } from "./IncomingRequest.js";
-import { IncomingRequestItem } from "./IncomingRequestItem.js";
 import { Inventory } from "./Inventory.js";
 import { InventoryAdjustment } from "./InventoryAdjustment.js";
 import { InventoryCheck } from "./InventoryCheck.js";
@@ -304,34 +302,6 @@ export class MaterialService {
         },
         body: JSON.stringify(bean),
 
-    });
-  }
-
-  async incomingRequestItemRead(search: any): Promise<IncomingRequestItem[]> {
-    return this.#client.web.fetchJson(`/material/incomingRequestItem?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async incomingRequestItemReadById(id: number): Promise<IncomingRequestItem> {
-    return this.#client.web.fetchJson(`/material/incomingRequestItem/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async incomingRequestRead(search: any): Promise<IncomingRequest[]> {
-    return this.#client.web.fetchJson(`/material/incomingRequest?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async incomingRequestReadById(id: number): Promise<IncomingRequest> {
-    return this.#client.web.fetchJson(`/material/incomingRequest/${id}`, {
-      method: "GET",
-      
     });
   }
 

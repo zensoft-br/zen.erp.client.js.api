@@ -1,7 +1,6 @@
 import { Company } from "../../catalog/company/Company.js";
 import { Currency } from "../../financial/Currency.js";
 import { FiscalProfileOperation } from "../../fiscal/FiscalProfileOperation.js";
-import { IncomingRequest } from "../../material/IncomingRequest.js";
 import { Person } from "../../catalog/person/Person.js";
 import { PersonAddress } from "../../catalog/person/PersonAddress.js";
 import { PriceList } from "../../commercial/PriceList.js";
@@ -29,7 +28,6 @@ export class Purchase {
   priceList!: PriceList;
   currency!: Currency;
   totalValue!: number;
-  incomingRequest!: IncomingRequest;
   quote!: Quote;
   purchaseSource!: number;
   tags!: string;

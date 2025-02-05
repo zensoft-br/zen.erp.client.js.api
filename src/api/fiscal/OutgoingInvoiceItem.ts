@@ -15,6 +15,7 @@ export class OutgoingInvoiceItem {
   id!: number;
   accountingType!: string;
   productPacking!: ProductPacking;
+  code!: string;
   taxationRule!: TaxationRule;
   taxationOperation!: TaxationOperation;
   quantity!: number;

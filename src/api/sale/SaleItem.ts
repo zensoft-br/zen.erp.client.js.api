@@ -12,6 +12,7 @@ export class SaleItem {
   id!: number;
   sale!: Sale;
   productPacking!: ProductPacking;
+  code!: string;
   fiscalProfileProduct!: FiscalProfileProduct;
   taxationRule!: TaxationRule;
   taxationOperation!: TaxationOperation;

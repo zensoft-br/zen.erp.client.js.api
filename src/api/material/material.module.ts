@@ -5,8 +5,6 @@ export { AddressProfile } from "./AddressProfile.js";
 export { HandlingUnit } from "./HandlingUnit.js";
 export { IncomingList } from "./IncomingList.js";
 export { IncomingListItem } from "./IncomingListItem.js";
-export { IncomingRequest } from "./IncomingRequest.js";
-export { IncomingRequestItem } from "./IncomingRequestItem.js";
 export { Inventory } from "./Inventory.js";
 export { InventoryAdjustment } from "./InventoryAdjustment.js";
 export { InventoryCheck } from "./InventoryCheck.js";
