@@ -1,5 +1,6 @@
 import { Client } from "../../../Client.js";
 import { ArgsMessageOpCreate } from "./ArgsMessageOpCreate.js";
+import { ArgsQueueOpReadMessage } from "./ArgsQueueOpReadMessage.js";
 import { ArgsTopicOpPublish } from "./ArgsTopicOpPublish.js";
 import { Message } from "./Message.js";
 import { Queue } from "./Queue.js";
@@ -84,24 +85,32 @@ export class IntegrationService {
     });
   }
 
-  async queueOpReadMessage(queueCode: string, maxMessages: any): Promise<Message[]> {
+  async queueOpReadMessage(queueCode: string, args: ArgsQueueOpReadMessage): Promise<Message[]> {
     const sp = new URLSearchParams();
     if (queueCode) sp.set("queueCode", String(queueCode));
-    if (maxMessages) sp.set("maxMessages", String(maxMessages));
     return this.#client.web.fetchJson(`/system/integration/queueOpReadMessage?${sp.toString()}`, {
       method: "POST",
-      
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
     });
   }
 
-  async queueOpReadMessageTimeout(queueCode: string, maxMessages: any, timeoutS: any): Promise<Message[]> {
+  async queueOpReadMessageTimeout(queueCode: string, args: ArgsQueueOpReadMessage, timeoutS: any): Promise<Message[]> {
     const sp = new URLSearchParams();
     if (queueCode) sp.set("queueCode", String(queueCode));
-    if (maxMessages) sp.set("maxMessages", String(maxMessages));
     if (timeoutS) sp.set("timeoutS", String(timeoutS));
     return this.#client.web.fetchJson(`/system/integration/queueOpReadMessageTimeout?${sp.toString()}`, {
       method: "POST",
-      
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
     });
   }
 
