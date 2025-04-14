@@ -27,8 +27,9 @@ export class IncomingInvoiceItem {
   netWeightKg!: number;
   grossWeightKg!: number;
   unitValue!: number;
-  productValue!: number;
+  grossProductValue!: number;
   discountValue!: number;
+  productValue!: number;
   otherValues!: Map<string,number>;
   operationValue!: number;
   insideTaxValue!: number;

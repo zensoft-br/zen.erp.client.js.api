@@ -174,6 +174,20 @@ export class FinancialService {
     });
   }
 
+  async payableOpPrepare(id: number): Promise<Payable> {
+    return this.#client.web.fetchJson(`/financial/payableOpPrepare/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async payableOpPrepareRevert(id: number): Promise<Payable> {
+    return this.#client.web.fetchJson(`/financial/payableOpPrepareRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async payableOpRepeat(id: number, args: ArgsBillingTitleOpRepeat): Promise<Payable[]> {
     return this.#client.web.fetchJson(`/financial/payableOpRepeat/${id}`, {
       method: "POST",
@@ -325,6 +339,20 @@ export class FinancialService {
 
   async receivableOpApproveRevert(id: number): Promise<Receivable> {
     return this.#client.web.fetchJson(`/financial/receivableOpApproveRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async receivableOpPrepare(id: number): Promise<Receivable> {
+    return this.#client.web.fetchJson(`/financial/receivableOpPrepare/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async receivableOpPrepareRevert(id: number): Promise<Receivable> {
+    return this.#client.web.fetchJson(`/financial/receivableOpPrepareRevert/${id}`, {
       method: "POST",
       
     });

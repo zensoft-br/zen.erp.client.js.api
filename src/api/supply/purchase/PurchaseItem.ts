@@ -23,10 +23,11 @@ export class PurchaseItem {
   servedQuantity!: number;
   unitValue!: number;
   currency!: Currency;
-  productValue!: number;
+  grossProductValue!: number;
   discountType!: string;
   discountAmount!: number;
   discountValue!: number;
+  productValue!: number;
   otherValues!: Map<string,number>;
   operationValue!: number;
   insideTaxValue!: number;

@@ -23,10 +23,11 @@ export class ProposalItem {
   unitValue!: number;
   taxationRule!: TaxationRule;
   taxationOperation!: TaxationOperation;
-  productValue!: number;
+  grossProductValue!: number;
   discountType!: string;
   discountAmount!: number;
   discountValue!: number;
+  productValue!: number;
   otherValues!: Map<string,number>;
   operationValue!: number;
   insideTaxValue!: number;

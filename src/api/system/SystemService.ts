@@ -87,13 +87,6 @@ export class SystemService {
     });
   }
 
-  async metricsRead(): Promise<any> {
-    return this.#client.web.fetchJson("/system/metrics", {
-      method: "GET",
-      
-    });
-  }
-
   async resourcesRead(locale: string): Promise<any> {
     const sp = new URLSearchParams();
     if (locale) sp.set("locale", String(locale));

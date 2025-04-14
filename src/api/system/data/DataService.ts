@@ -57,7 +57,7 @@ export class DataService {
     });
   }
 
-  async dataSourceOpRead(args: ArgsDataSourceOpRead): Promise<Map<string,any>[]> {
+  async dataSourceOpRead(args: ArgsDataSourceOpRead): Promise<any[]> {
     return this.#client.web.fetchJson("/system/data/dataSourceOpRead", {
       method: "POST",
       headers: {
