@@ -1,5 +1,4 @@
 import { Client } from "../../Client.js";
-import { ArgsIncomingInvoiceOpApprove } from "./ArgsIncomingInvoiceOpApprove.js";
 import { ArgsIncomingInvoiceOpCreate } from "./ArgsIncomingInvoiceOpCreate.js";
 import { ArgsIncomingInvoiceOpCreateFromIncomingList } from "./ArgsIncomingInvoiceOpCreateFromIncomingList.js";
 import { ArgsInvoiceOpReturn } from "./ArgsInvoiceOpReturn.js";
@@ -16,6 +15,7 @@ import { IncomingInvoiceItem } from "./IncomingInvoiceItem.js";
 import { InvoiceItemAccounting } from "./InvoiceItemAccounting.js";
 import { InvoicePayment } from "./InvoicePayment.js";
 import { InvoiceReference } from "./InvoiceReference.js";
+import { InvoiceReturn } from "./InvoiceReturn.js";
 import { InvoiceSeries } from "./InvoiceSeries.js";
 import { OutgoingInvoice } from "./OutgoingInvoice.js";
 import { OutgoingInvoiceItem } from "./OutgoingInvoiceItem.js";
@@ -385,15 +385,10 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceOpApproveDivergences(id: number, args: ArgsIncomingInvoiceOpApprove): Promise<IncomingInvoice> {
+  async incomingInvoiceOpApproveDivergences(id: number): Promise<IncomingInvoice> {
     return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpApproveDivergences/${id}`, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-        },
-        body: JSON.stringify(args),
-
+      
     });
   }
 
@@ -638,6 +633,51 @@ export class FiscalService {
 
   async invoiceReferenceUpdate(bean: InvoiceReference): Promise<InvoiceReference> {
     return this.#client.web.fetchJson("/fiscal/invoiceReference", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async invoiceReturnCreate(bean: InvoiceReturn): Promise<InvoiceReturn> {
+    return this.#client.web.fetchJson("/fiscal/invoiceReturn", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async invoiceReturnDelete(id: number): Promise<InvoiceReturn> {
+    return this.#client.web.fetchJson(`/fiscal/invoiceReturn/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async invoiceReturnRead(search: any): Promise<InvoiceReturn[]> {
+    return this.#client.web.fetchJson(`/fiscal/invoiceReturn?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async invoiceReturnReadById(id: number): Promise<InvoiceReturn> {
+    return this.#client.web.fetchJson(`/fiscal/invoiceReturn/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async invoiceReturnUpdate(bean: InvoiceReturn): Promise<InvoiceReturn> {
+    return this.#client.web.fetchJson("/fiscal/invoiceReturn", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

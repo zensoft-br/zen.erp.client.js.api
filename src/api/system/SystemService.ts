@@ -60,7 +60,7 @@ export class SystemService {
     if (id) sp.set("id", String(id));
     if (waitTime) sp.set("waitTime", String(waitTime));
     if (leaseTime) sp.set("leaseTime", String(leaseTime));
-    return this.#client.web.fetchJson(`/system/lockOpAcquire?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/system/lockOpAcquire?${sp.toString()}`, {
       method: "POST",
       
     });

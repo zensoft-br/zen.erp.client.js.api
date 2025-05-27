@@ -376,14 +376,14 @@ export class SecurityService {
   }
 
   async tokenOpRenew(): Promise<string> {
-    return this.#client.web.fetchJson("/system/security/tokenOpRenew", {
+    return this.#client.web.fetchText("/system/security/tokenOpRenew", {
       method: "POST",
       
     });
   }
 
   async tokenOpRequest(args: ArgsTokenOpRequest): Promise<string> {
-    return this.#client.web.fetchJson("/system/security/tokenOpRequest", {
+    return this.#client.web.fetchText("/system/security/tokenOpRequest", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -395,7 +395,7 @@ export class SecurityService {
   }
 
   async tokenOpRequestPermanent(args: ArgsTokenOpRequestPermanent): Promise<string> {
-    return this.#client.web.fetchJson("/system/security/tokenOpRequestPermanent", {
+    return this.#client.web.fetchText("/system/security/tokenOpRequestPermanent", {
       method: "POST",
       headers: {
         "content-type": "application/json",

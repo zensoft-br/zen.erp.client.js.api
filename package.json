@@ -9,14 +9,11 @@
   "exports": {
     ".": {
       "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js",
-      "default": "./dist/esm/index.js",
-      "types": "./dist/types/index.d.ts"
+      "import": "./dist/esm/index.js"
     },
     "./*": {
       "require": "./dist/cjs/*.js",
-      "import": "./dist/esm/*.js",
-      "default": "./dist/esm/*.js"
+      "import": "./dist/esm/*.js"
     }
   },
   "engines": {
@@ -49,7 +46,7 @@
   "contributors": [],
   "scripts": {
     "dev": "echo 'No dev script defined'",
-    "test": "echo 'No test script defined'",
+    "test": "vitest",
     "build": "npm run build:cjs && npm run build:esm && npm run build:types",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
@@ -62,10 +59,11 @@
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.6.2",
     "@types/luxon": "^3.4.2",
+    "@types/node": "^22.15.21",
     "dotenv": "^16.4.5",
     "eslint": "^8.56.0",
-    "jest": "^29.7.0",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^3.1.4"
   }
 }

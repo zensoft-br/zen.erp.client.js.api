@@ -1656,15 +1656,6 @@ export class MaterialService {
     });
   }
 
-  async stockPointRead(dateTime: Date, search: any): Promise<Stock[]> {
-    const sp = new URLSearchParams();
-    if (dateTime) sp.set("dateTime", String(dateTime));
-    return this.#client.web.fetchJson(`/material/stockPoint?${search}?${sp.toString()}`, {
-      method: "GET",
-      
-    });
-  }
-
   async stockRead(search: any): Promise<Stock[]> {
     return this.#client.web.fetchJson(`/material/stock?${search}`, {
       method: "GET",

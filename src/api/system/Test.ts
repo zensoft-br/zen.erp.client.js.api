@@ -8,4 +8,5 @@ export class Test {
   longProp!: number;
   stringProp!: string;
   zonedDateTimeProp!: Date;
+  delayS!: number;
 }

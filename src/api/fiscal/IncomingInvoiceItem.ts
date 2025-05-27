@@ -1,5 +1,3 @@
-import { Account } from "../financial/accounting/Account.js";
-import { AccountComplement } from "../financial/accounting/AccountComplement.js";
 import { AssetTag } from "../financial/accounting/AssetTag.js";
 import { IncomingInvoice } from "./IncomingInvoice.js";
 import { ProductPacking } from "../catalog/product/ProductPacking.js";
@@ -9,7 +7,7 @@ import { TaxationRule } from "./taxation/TaxationRule.js";
 import { Unit } from "../catalog/product/Unit.js";
 
 export class IncomingInvoiceItem {
-  incomingInvoice!: IncomingInvoice;
+  invoice!: IncomingInvoice;
   purchase!: Purchase;
   OTHER_VALUES_FREIGHT!: string;
   OTHER_VALUES_INSURANCE!: string;
@@ -38,8 +36,7 @@ export class IncomingInvoiceItem {
   taxCompensationValue!: number;
   effectiveValue!: number;
   assetTag!: AssetTag;
-  account!: Account;
-  accountComplement!: AccountComplement;
+  returnedQuantity!: number;
   tags!: string;
   properties!: any;
 }

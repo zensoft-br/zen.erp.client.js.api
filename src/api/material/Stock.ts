@@ -8,12 +8,10 @@ import { Quality } from "./Quality.js";
 import { Reservation } from "./Reservation.js";
 import { Serial } from "./Serial.js";
 import { StockCluster } from "./StockCluster.js";
-import { Warehouse } from "./Warehouse.js";
 
 export class Stock {
   id!: number;
   stockCluster!: StockCluster;
-  warehouse!: Warehouse;
   address!: Address;
   code!: string;
   depositor!: Person;

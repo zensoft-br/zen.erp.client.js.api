@@ -3,6 +3,7 @@ import Web from "./Web.js";
 
 export class Client {
 
+  #host: string;
   #tenant: string;
   #token: string;
   #jwt: any;
@@ -11,45 +12,43 @@ export class Client {
   #i18n: Promise<I18n> | undefined;
   #web: Web | undefined;
 
-  constructor(tenant: string, token: string) {
+  constructor(tenant: string, token: string, properties?: any) {
+    this.#host = properties?.host ?? "https://api.zenerp.app.br";
     this.#tenant = tenant;
     this.#token = token;
     this.#jwt = jwt(token);
   }
 
   async close() {
-    // this.fetch();
+    const response = await this.fetch("/auth/logout", {
+      method: "POST",
+    });
+    if (!response.ok) {
+
+    }
   }
 
   async fetch(input: string | URL | globalThis.Request, init?: RequestInit): Promise<Response> {
-    const _input = `${this.#tenant}${input}`;
+    const url = input instanceof Request
+      ? new URL(input.url, this.#host)
+      : new URL(input.toString(), this.#host);
 
-    const _init = init ?? {};
+    // shallow copy
+    const _init = { ...init };
 
-    // Add authorization header
     const authorization = `Bearer ${this.#token}`;
-    if (_init.headers instanceof Headers) {
-      _init.headers.append("Authorization", authorization);
-    } else if (Array.isArray(_init.headers)) {
-      _init.headers.push(["Authorization", authorization]);
-    } else if (_init.headers) {
-      _init.headers.Authorization = authorization;
-    } else {
-      _init.headers = { Authorization: authorization };
-    }
+
+    const headers = new Headers(_init.headers);
+    headers.set("tenant", this.#tenant);
+    headers.set("authorization", authorization);
+    _init.headers = headers;
 
     if (this.#debug) {
-      console.debug(`${_init.method ?? "GET"} ${input}`);
+      console.debug(`${_init.method ?? "GET"} ${url}`);
     }
 
-    return fetch(_input, _init);
+    return fetch(url, _init);
   }
-
-  // get api() {
-  //   if (!this.#api)
-  //     this.#api = new Api(this);
-  //   return this.#api;
-  // }
 
   get i18n(): Promise<I18n> {
     if (!this.#i18n)
@@ -86,51 +85,55 @@ export class Client {
   }
 }
 
-export function createFromToken(host: string, token: string, options?: any) {
-  if (!host)
-    throw new Error("Missing argument: host");
+export function createFromToken(tenant: string, token: string, properties?: any) {
+  // Checks
+  if (!tenant)
+    throw new Error("Missing argument: tenant");
   if (!token)
     throw new Error("Missing argument: token");
 
-  // Tenant
-  if (!host.toLowerCase().startsWith("http"))
-    host = `https://${host}.zenerp.app.br:8443`;
-
-  return new Client(host, token);
+  return new Client(tenant, token, properties);
 }
 
-export async function connect(host: string, user: string, password: string, properties: any) {
-  if (!host)
-    throw new Error("Missing argument: host");
+export async function connect(tenant: string, user: string, password: string, properties: any) {
+  // Checks
+  if (!tenant)
+    throw new Error("Missing argument: tenant");
   if (!user)
     throw new Error("Missing argument: user");
 
-  // Tenant
-  if (!host.toLowerCase().startsWith("http"))
-    host = `https://${host}.zenerp.app.br:8443`;
+  // Host
+  const host = properties?.host ?? "https://api.zenerp.app.br";
 
-  const response = await fetch(`${host}/system/security/tokenOpRequest`, {
+  // 
+  const response = await fetch(`${host}/auth/login`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
+      tenant,
     },
     body: JSON.stringify({
-      email: user,
+      username: user,
       password,
       properties,
     }),
   });
   if (!response.ok) {
-    const o = await response.json();
-    // throw new ZenError(o.message, o.stackTrace);
-    const error = new Error(o.message);
-    (<any>error).stackTrace = o.stackTrace;
-    throw error;
+    const text = await response.text();
+    try {
+      const json = JSON.parse(text);
+
+      const error = new Error(`${response.status} ${json.message}`);
+      (<any>error).stackTrace = json.stackTrace;
+      throw error;
+    } catch (error) {
+      throw new Error(`${response.status} ${text}`);
+    }
   }
 
-  const token = await response.text();
+  const token = await response.json();
 
-  return createFromToken(host, token);
+  return createFromToken(tenant, token.accessToken);
 }
 
 function jwt(token: string): any {

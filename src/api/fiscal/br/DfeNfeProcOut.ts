@@ -4,7 +4,7 @@ import { Invoice } from "../Invoice.js";
 
 export class DfeNfeProcOut {
   status!: string;
-  outgoingInvoice!: Invoice;
+  invoice!: Invoice;
   number!: number;
   fileDanfe!: File;
   id!: number;

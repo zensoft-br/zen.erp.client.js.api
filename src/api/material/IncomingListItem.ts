@@ -1,4 +1,5 @@
 import { Address } from "./Address.js";
+import { AssetTag } from "../financial/accounting/AssetTag.js";
 import { HandlingUnit } from "./HandlingUnit.js";
 import { IncomingList } from "./IncomingList.js";
 import { Lot } from "./Lot.js";
@@ -15,6 +16,7 @@ export class IncomingListItem {
   address!: Address;
   depositor!: Person;
   productPacking!: ProductPacking;
+  assetTag!: AssetTag;
   quality!: Quality;
   lot!: Lot;
   serial!: Serial;

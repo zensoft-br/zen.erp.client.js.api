@@ -5,4 +5,6 @@ export class ArgsIncomingInvoiceOpCreate {
   invoice!: IncomingInvoice;
   itemList!: any[];
   paymentList!: InvoicePayment[];
+  prepare!: boolean;
+  approve!: boolean;
 }

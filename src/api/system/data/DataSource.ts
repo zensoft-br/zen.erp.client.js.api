@@ -6,6 +6,7 @@ export class DataSource {
   type!: string;
   sql!: string;
   accessPoint!: AccessPoint;
+  delegate!: DataSource;
   tags!: string;
   properties!: any;
 }
