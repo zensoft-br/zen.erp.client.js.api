@@ -95,7 +95,7 @@ export function createFromToken(tenant: string, token: string, properties?: any)
   return new Client(tenant, token, properties);
 }
 
-export async function connect(tenant: string, user: string, password: string, properties: any) {
+export async function connect(tenant: string, user: string, password: string, properties?: any) {
   // Checks
   if (!tenant)
     throw new Error("Missing argument: tenant");
