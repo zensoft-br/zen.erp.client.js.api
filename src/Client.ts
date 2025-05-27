@@ -118,18 +118,7 @@ export async function connect(tenant: string, user: string, password: string, pr
       properties,
     }),
   });
-  if (!response.ok) {
-    const text = await response.text();
-    try {
-      const json = JSON.parse(text);
-
-      const error = new Error(`${response.status} ${json.message}`);
-      (<any>error).stackTrace = json.stackTrace;
-      throw error;
-    } catch (error) {
-      throw new Error(`${response.status} ${text}`);
-    }
-  }
+  await Web.handleResponse(response);
 
   const token = await response.json();
 

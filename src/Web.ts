@@ -1,4 +1,5 @@
 import { Client } from "./Client.js";
+import { AppError } from "./AppError.js";
 
 export default class Web {
 
@@ -14,13 +15,13 @@ export default class Web {
 
   async fetchBlob(input: string | URL | globalThis.Request, init?: RequestInit): Promise<Blob> {
     const response = await this.#zenClient.fetch(input, init);
-    await this.handleResponse(response);
+    await Web.handleResponse(response);
     return response.blob();
   }
 
   async fetchJson(input: string | URL | globalThis.Request, init?: RequestInit): Promise<any> {
     const response = await this.#zenClient.fetch(input, init);
-    await this.handleResponse(response);
+    await Web.handleResponse(response);
     const text = await response.text();
     return text == null || text === "" ? null : JSON.parse(text);
   }
@@ -35,26 +36,42 @@ export default class Web {
 
   async fetchOk(input: string | URL | globalThis.Request, init?: RequestInit): Promise<Response> {
     const response = await this.#zenClient.fetch(input, init);
-    await this.handleResponse(response);
+    await Web.handleResponse(response);
     return response;
   }
 
   async fetchText(input: string | URL | globalThis.Request, init?: RequestInit): Promise<string> {
     const response = await this.#zenClient.fetch(input, init);
-    await this.handleResponse(response);
+    await Web.handleResponse(response);
     return response.text();
   }
 
-  async handleResponse(response: Response) {
+  static async handleResponse(response: Response) {
     if (!response.ok) {
-      const text = await response.text();
-      let error: any = null;
+      const status = response.status;
+
+      let message = await response.text();
+
+      let error: Error;
+
       try {
-        const json = JSON.parse(text);
-        error = new Error(json.message ?? text);
-      } catch (_) {
-        error = new Error(`${response.status} ${text}`);
+        const json = JSON.parse(message);
+
+        if (json.message)
+          message = json.message;
+        else
+          message = response.statusText;
+
+        error = new AppError(message, {
+          status,
+          payload: json,
+        });
+      } catch (error) {
+        throw new AppError(message, {
+          status
+        });
       }
+
       throw error;
     }
   }

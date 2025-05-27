@@ -213,6 +213,28 @@ export class I18n {
       subtree: true,
     });
   }
+
+  parseLocalizedResource(o: any): string {
+    if (Array.isArray(o)) {
+      return o.map((e) => this.parseLocalizedResource(e)).join("\n");
+    }
+
+    if (typeof o === 'object' && o !== null) {
+      if (o.type === "localizedResource") {
+        const args: string[] = [];
+        if (Array.isArray(o.args)) {
+          for (const arg of o.args) {
+            args.push(this.parseLocalizedResource(arg));
+          }
+        }
+        return this.format(o.key, ...args);
+      }
+
+      return JSON.stringify(o);
+    }
+
+    return String(o);
+  }
 }
 
 export async function createI18n(zenClient: Client): Promise<I18n> {
