@@ -46,6 +46,36 @@ export default class Web {
     return response.text();
   }
 
+  async handleResponse(response: Response) {
+    if (!response.ok) {
+      const status = response.status;
+
+      let message = await response.text();
+
+      let error: Error;
+
+      try {
+        const json = JSON.parse(message);
+
+        if (json.message)
+          message = json.message;
+        else
+          message = response.statusText;
+
+        error = new AppError(message, {
+          status,
+          payload: json,
+        });
+      } catch (error) {
+        throw new AppError(message, {
+          status
+        });
+      }
+
+      throw error;
+    }
+  }
+
   static async handleResponse(response: Response) {
     if (!response.ok) {
       const status = response.status;
