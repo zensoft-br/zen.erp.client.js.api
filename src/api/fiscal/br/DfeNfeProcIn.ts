@@ -4,7 +4,7 @@ import { IncomingInvoice } from "../IncomingInvoice.js";
 
 export class DfeNfeProcIn {
   status!: string;
-  invoice!: IncomingInvoice;
+  incomingInvoice!: IncomingInvoice;
   number!: number;
   id!: number;
   type!: string;

@@ -3,6 +3,7 @@ export { AccountingService } from "./AccountingService.js";
 export { Account } from "./Account.js";
 export { AccountCategory } from "./AccountCategory.js";
 export { AccountChart } from "./AccountChart.js";
+export { AccountComplement } from "./AccountComplement.js";
 export { AccountConversion } from "./AccountConversion.js";
 export { AccountConversionChart } from "./AccountConversionChart.js";
 export { AccountDefault } from "./AccountDefault.js";

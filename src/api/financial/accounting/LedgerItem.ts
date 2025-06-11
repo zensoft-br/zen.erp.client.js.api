@@ -1,9 +1,8 @@
 import { Account } from "./Account.js";
+import { AccountComplement } from "./AccountComplement.js";
 import { Company } from "../../catalog/company/Company.js";
 import { FiscalYear } from "../../fiscal/FiscalYear.js";
 import { JournalEntry } from "./JournalEntry.js";
-import { Person } from "../../catalog/person/Person.js";
-import { ResultCenter } from "./ResultCenter.js";
 
 export class LedgerItem {
   id!: number;
@@ -12,8 +11,7 @@ export class LedgerItem {
   fiscalYear!: FiscalYear;
   date!: Date;
   account!: Account;
-  resultCenter!: ResultCenter;
-  person!: Person;
+  accountComplement!: AccountComplement;
   accountCounterpart!: Account;
   value!: number;
   sign!: string;

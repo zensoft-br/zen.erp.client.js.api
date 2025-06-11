@@ -1,5 +1,7 @@
-import { AssetTag } from "../../financial/accounting/AssetTag.js";
+import { Account } from "../../financial/accounting/Account.js";
+import { AccountComplement } from "../../financial/accounting/AccountComplement.js";
 import { Currency } from "../../financial/Currency.js";
+import { FiscalProfileProduct } from "../../fiscal/FiscalProfileProduct.js";
 import { ProductPacking } from "../../catalog/product/ProductPacking.js";
 import { Purchase } from "./Purchase.js";
 import { TaxationOperation } from "../../fiscal/taxation/TaxationOperation.js";
@@ -11,6 +13,7 @@ export class PurchaseItem {
   purchase!: Purchase;
   productPacking!: ProductPacking;
   code!: string;
+  fiscalProfileProduct!: FiscalProfileProduct;
   taxationRule!: TaxationRule;
   taxationOperation!: TaxationOperation;
   priceListValue!: number;
@@ -32,7 +35,8 @@ export class PurchaseItem {
   totalValue!: number;
   taxCompensationValue!: number;
   effectiveValue!: number;
-  assetTag!: AssetTag;
+  account!: Account;
+  accountComplement!: AccountComplement;
   tags!: string;
   properties!: any;
 }

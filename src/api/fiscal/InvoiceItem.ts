@@ -1,3 +1,5 @@
+import { Account } from "../financial/accounting/Account.js";
+import { AccountComplement } from "../financial/accounting/AccountComplement.js";
 import { AssetTag } from "../financial/accounting/AssetTag.js";
 import { ProductPacking } from "../catalog/product/ProductPacking.js";
 import { TaxationOperation } from "./taxation/TaxationOperation.js";
@@ -32,7 +34,8 @@ export class InvoiceItem {
   taxCompensationValue!: number;
   effectiveValue!: number;
   assetTag!: AssetTag;
-  returnedQuantity!: number;
+  account!: Account;
+  accountComplement!: AccountComplement;
   tags!: string;
   properties!: any;
 }

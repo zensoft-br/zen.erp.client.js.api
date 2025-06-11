@@ -8,14 +8,14 @@ export class InfoService {
   }
   
   async healthRead(): Promise<string> {
-    return this.#client.web.fetchText("/system/info/health", {
+    return this.#client.web.fetchJson("/system/info/health", {
       method: "GET",
       
     });
   }
 
   async metricsRead(): Promise<string> {
-    return this.#client.web.fetchText("/system/info/metrics", {
+    return this.#client.web.fetchJson("/system/info/metrics", {
       method: "GET",
       
     });

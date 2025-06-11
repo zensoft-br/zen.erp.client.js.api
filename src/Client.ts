@@ -7,16 +7,18 @@ export class Client {
   #tenant: string;
   #token: string;
   #jwt: any;
+  #web: Web;
+
   #debug = false;
 
   #i18n: Promise<I18n> | undefined;
-  #web: Web | undefined;
 
   constructor(tenant: string, token: string, properties?: any) {
     this.#host = properties?.host ?? "https://api.zenerp.app.br";
     this.#tenant = tenant;
     this.#token = token;
     this.#jwt = jwt(token);
+    this.#web = new Web(this);
   }
 
   async close() {
@@ -79,8 +81,6 @@ export class Client {
   }
 
   get web() {
-    if (!this.#web)
-      this.#web = new Web(this);
     return this.#web;
   }
 }

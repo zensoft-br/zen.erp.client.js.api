@@ -33,7 +33,7 @@ export class Sale {
   totalValue!: number;
   pickingOrder!: PickingOrder;
   shipment!: Shipment;
-  invoice!: OutgoingInvoice;
+  outgoingInvoice!: OutgoingInvoice;
   quote!: Quote;
   tags!: string;
   properties!: any;

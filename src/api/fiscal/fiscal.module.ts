@@ -16,7 +16,6 @@ export { InvoiceItem } from "./InvoiceItem.js";
 export { InvoiceItemAccounting } from "./InvoiceItemAccounting.js";
 export { InvoicePayment } from "./InvoicePayment.js";
 export { InvoiceReference } from "./InvoiceReference.js";
-export { InvoiceReturn } from "./InvoiceReturn.js";
 export { InvoiceSeries } from "./InvoiceSeries.js";
 export { OutgoingInvoice } from "./OutgoingInvoice.js";
 export { OutgoingInvoiceItem } from "./OutgoingInvoiceItem.js";

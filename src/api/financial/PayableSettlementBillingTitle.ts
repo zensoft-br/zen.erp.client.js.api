@@ -1,4 +1,5 @@
-import { AssetTag } from "./accounting/AssetTag.js";
+import { Account } from "./accounting/Account.js";
+import { AccountComplement } from "./accounting/AccountComplement.js";
 import { BillingTitle } from "./BillingTitle.js";
 import { Settlement } from "./Settlement.js";
 
@@ -7,6 +8,7 @@ export class PayableSettlementBillingTitle {
   settlement!: Settlement;
   billingTitle!: BillingTitle;
   type!: string;
+  account!: Account;
+  accountComplement!: AccountComplement;
   value!: number;
-  assetTag!: AssetTag;
 }

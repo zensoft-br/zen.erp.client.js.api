@@ -1,4 +1,5 @@
-import { AssetTag } from "../financial/accounting/AssetTag.js";
+import { Account } from "../financial/accounting/Account.js";
+import { AccountComplement } from "../financial/accounting/AccountComplement.js";
 import { InvoiceItem } from "./InvoiceItem.js";
 
 export class InvoiceItemAccounting {
@@ -6,8 +7,9 @@ export class InvoiceItemAccounting {
   invoiceItem!: InvoiceItem;
   type!: string;
   sign!: string;
+  account!: Account;
+  accountComplement!: AccountComplement;
   value!: number;
-  assetTag!: AssetTag;
   tags!: string;
   properties!: any;
 }
