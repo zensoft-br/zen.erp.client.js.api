@@ -1,6 +1,6 @@
 {
   "name": "@zensoftbr/zenerpclient",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "Zen ERP Client Api",
   "type": "module",
   "types": "./dist/types/index.d.ts",
@@ -9,7 +9,8 @@
   "exports": {
     ".": {
       "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js"
+      "import": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts"
     },
     "./*": {
       "require": "./dist/cjs/*.js",
