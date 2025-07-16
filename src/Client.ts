@@ -32,8 +32,8 @@ export class Client {
 
   async fetch(input: string | URL | globalThis.Request, init?: RequestInit): Promise<Response> {
     const url = input instanceof Request
-      ? new URL(input.url, this.#host)
-      : new URL(input.toString(), this.#host);
+      ? this.serviceUrl(this.#host, input.url)
+      : this.serviceUrl(this.#host, input.toString());
 
     // shallow copy
     const _init = { ...init };
@@ -50,6 +50,10 @@ export class Client {
     }
 
     return fetch(url, _init);
+  }
+
+  private serviceUrl(host: string, path: string): URL {
+    return new URL(path.replace(/^\/+/, ""), host.replace(/\/?$/, "/"));
   }
 
   get i18n(): Promise<I18n> {

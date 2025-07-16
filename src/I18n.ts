@@ -28,13 +28,11 @@ export class I18n {
     }
 
     const _key = key.startsWith("@@:") ? key.substring(3) : key;
-    const _defaultValue = defaultValue ?? _key;
+    const _defaultValue = arguments.length >= 2 ? defaultValue : _key;
 
     const result = this.#resources[_key];
-    if (!result) {
-      return _defaultValue;
-    }
-    return result;
+    
+    return result ?? _defaultValue;
   }
 
   format(key: string, ...args: any): string {
