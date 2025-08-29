@@ -1,4 +1,6 @@
 import { Client } from "../../Client.js";
+import { PersonHierarchy } from "./PersonHierarchy.js";
+import { PersonHierarchyView } from "./PersonHierarchyView.js";
 import { PriceListChangeRequest } from "./PriceListChangeRequest.js";
 import { PriceListTransformation } from "./PriceListTransformation.js";
 
@@ -10,6 +12,58 @@ export class CommercialService {
     this.#client = client;
   }
   
+  async personHierarchyCreate(bean: PersonHierarchy): Promise<PersonHierarchy> {
+    return this.#client.web.fetchJson("/commercial/personHierarchy", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async personHierarchyDelete(id: number): Promise<PersonHierarchy> {
+    return this.#client.web.fetchJson(`/commercial/personHierarchy/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async personHierarchyRead(search: any): Promise<PersonHierarchy[]> {
+    return this.#client.web.fetchJson(`/commercial/personHierarchy?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async personHierarchyReadById(id: number): Promise<PersonHierarchy> {
+    return this.#client.web.fetchJson(`/commercial/personHierarchy/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async personHierarchyUpdate(bean: PersonHierarchy): Promise<PersonHierarchy> {
+    return this.#client.web.fetchJson("/commercial/personHierarchy", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async personHierarchyViewRead(search: any): Promise<PersonHierarchyView[]> {
+    return this.#client.web.fetchJson(`/commercial/personHierarchyView?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
   async priceListChangeRequestCreate(bean: PriceListChangeRequest): Promise<PriceListChangeRequest> {
     return this.#client.web.fetchJson("/commercial/priceListChangeRequest", {
       method: "POST",

@@ -126,7 +126,7 @@ export async function connect(tenant: string, user: string, password: string, pr
 
   const token = await response.json();
 
-  return createFromToken(tenant, token.accessToken);
+  return createFromToken(tenant, token.accessToken, properties);
 }
 
 function jwt(token: string): any {

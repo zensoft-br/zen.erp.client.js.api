@@ -1,5 +1,4 @@
 import { Client } from "../../Client.js";
-import { ArgsIncomingInvoiceOpApprove } from "./ArgsIncomingInvoiceOpApprove.js";
 import { ArgsIncomingInvoiceOpCreate } from "./ArgsIncomingInvoiceOpCreate.js";
 import { ArgsIncomingInvoiceOpCreateFromIncomingList } from "./ArgsIncomingInvoiceOpCreateFromIncomingList.js";
 import { ArgsInvoiceOpReturn } from "./ArgsInvoiceOpReturn.js";
@@ -385,15 +384,10 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceOpApproveDivergences(id: number, args: ArgsIncomingInvoiceOpApprove): Promise<IncomingInvoice> {
+  async incomingInvoiceOpApproveDivergences(id: number): Promise<IncomingInvoice> {
     return this.#client.web.fetchJson(`/fiscal/incomingInvoiceOpApproveDivergences/${id}`, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-        },
-        body: JSON.stringify(args),
-
+      
     });
   }
 

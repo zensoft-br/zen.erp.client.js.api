@@ -3,6 +3,8 @@ export * as target from "./target/target.module.js";
 
 export { CommercialService } from "./CommercialService.js";
 
+export { PersonHierarchy } from "./PersonHierarchy.js";
+export { PersonHierarchyView } from "./PersonHierarchyView.js";
 export { PriceList } from "./PriceList.js";
 export { PriceListChangeRequest } from "./PriceListChangeRequest.js";
 export { PriceListItem } from "./PriceListItem.js";

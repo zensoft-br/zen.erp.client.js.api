@@ -1,10 +1,13 @@
 import { Account } from "./Account.js";
-import { AccountComplement } from "./AccountComplement.js";
 import { FiscalProfileProduct } from "../../fiscal/FiscalProfileProduct.js";
+import { Person } from "../../catalog/person/Person.js";
+import { ResultCenter } from "./ResultCenter.js";
 
 export class AssetTag {
   id!: number;
-  fiscalProfileProduct!: FiscalProfileProduct;
   account!: Account;
-  accountComplement!: AccountComplement;
+  resultCenter!: ResultCenter;
+  fiscalProfileProduct!: FiscalProfileProduct;
+  person!: Person;
+  batchId!: number;
 }

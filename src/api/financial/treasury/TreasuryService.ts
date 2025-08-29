@@ -2,6 +2,7 @@ import { Client } from "../../../Client.js";
 import { AccountStatement } from "./AccountStatement.js";
 import { ArgsAccountStatementOpConsolidate } from "./ArgsAccountStatementOpConsolidate.js";
 import { ArgsJournalEntry } from "../accounting/ArgsJournalEntry.js";
+import { ArgsOpSettle } from "../ArgsOpSettle.js";
 import { JournalEntry } from "../accounting/JournalEntry.js";
 
 export class TreasuryService {
@@ -78,10 +79,15 @@ export class TreasuryService {
     });
   }
 
-  async accountStatementOpSettle(id: number): Promise<AccountStatement> {
+  async accountStatementOpSettle(id: number, args: ArgsOpSettle): Promise<AccountStatement> {
     return this.#client.web.fetchJson(`/financial/treasury/accountStatementOpSettle/${id}`, {
       method: "POST",
-      
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
     });
   }
 

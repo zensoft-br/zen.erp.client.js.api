@@ -1,15 +1,13 @@
-import { Account } from "../financial/accounting/Account.js";
-import { AccountComplement } from "../financial/accounting/AccountComplement.js";
+import { AssetTag } from "../financial/accounting/AssetTag.js";
 import { Sale } from "./Sale.js";
 
 export class SalePayment {
   id!: number;
   sale!: Sale;
   type!: string;
-  account!: Account;
-  accountComplement!: AccountComplement;
   term!: number;
   value!: number;
+  assetTag!: AssetTag;
   tags!: string;
   properties!: any;
 }

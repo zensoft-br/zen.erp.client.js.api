@@ -4,4 +4,5 @@ export class ArgsAccountChartOpImport {
   type!: string;
   description!: string;
   tags!: string;
+  properties!: any;
 }
