@@ -70,6 +70,15 @@ export class ContractService {
     });
   }
 
+  async contractBillingOpCreateInvoiceRevert(invoiceId: number): Promise<OutgoingInvoice> {
+    const sp = new URLSearchParams();
+    if (invoiceId) sp.set("invoiceId", String(invoiceId));
+    return this.#client.web.fetchJson(`/commercial/contract/contractBillingOpCreateInvoiceRevert?${sp.toString()}`, {
+      method: "POST",
+      
+    });
+  }
+
   async contractBillingOpCreateRevert(contractId: number): Promise<Contract> {
     const sp = new URLSearchParams();
     if (contractId) sp.set("contractId", String(contractId));

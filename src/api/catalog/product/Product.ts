@@ -1,5 +1,6 @@
 import { Category } from "../Category.js";
 import { FiscalProfileProduct } from "../../fiscal/FiscalProfileProduct.js";
+import { Image } from "../../system/image/Image.js";
 import { ProductProfile } from "./ProductProfile.js";
 import { ProductVariant } from "./ProductVariant.js";
 import { TargetGroup } from "../../commercial/target/TargetGroup.js";
@@ -26,6 +27,7 @@ export class Product {
   category3!: Category;
   category4!: Category;
   category5!: Category;
+  image!: Image;
   targetGroup!: TargetGroup;
   variant!: ProductVariant;
   barcode!: string;

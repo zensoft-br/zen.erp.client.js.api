@@ -1,6 +1,6 @@
 {
   "name": "@zensoftbr/zenerpclient",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "Zen ERP Client Api",
   "type": "module",
   "types": "./dist/types/index.d.ts",
@@ -46,13 +46,15 @@
   },
   "contributors": [],
   "scripts": {
-    "dev": "echo 'No dev script defined'",
-    "test": "vitest",
     "build": "npm run build:cjs && npm run build:esm && npm run build:types",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:types": "tsc -p tsconfig.types.json",
-    "prepublishOnly": "npm run build"
+    "dev": "echo 'No dev script defined'",
+    "pack": "npm pack",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish",
+    "test": "vitest"
   },
   "dependencies": {
     "luxon": "^3.4.4"

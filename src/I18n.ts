@@ -22,6 +22,12 @@ export class I18n {
     return this.#timeZone;
   }
 
+  private parseDate(input: string | Date, locale: string) {
+    return input instanceof Date
+      ? DateTime.fromJSDate(input).setLocale(locale)
+      : DateTime.fromISO(input).setLocale(locale);
+  }
+
   getResource(key: string | null, defaultValue?: string): string | null {
     if (!key) {
       return null;
@@ -31,7 +37,7 @@ export class I18n {
     const _defaultValue = arguments.length >= 2 ? defaultValue : _key;
 
     const result = this.#resources[_key];
-    
+
     return result ?? _defaultValue;
   }
 
@@ -57,111 +63,129 @@ export class I18n {
     return result + (extra.length ? ` [${extra.join(", ")}]` : "");
   }
 
-  formatCurrency(number: number | null, currencyCode?: string): string | null {
-    if (number == null)
-      return null;
-    try {
-      const result = new Intl.NumberFormat(this.#locale, {
-        style: "currency",
-        currency:
-          currencyCode ?? this.getResource("/@system/default/currency") ?? undefined,
-      }).format(number);
+  formatCurrency(value: number | null, args?: {
+    locale?: string;
+    currencyCode?: string;
+    digits?: number;
+    minDigits?: number;
+    maxDigits?: number;
+  }): string | null {
+    if (value == null) return null;
 
-      // Replace &nbsp; with space
-      return result.replace(String.fromCharCode(160), " ");
+    try {
+      const result = new Intl.NumberFormat(
+        args?.locale ?? this.#locale,
+        {
+          style: !!args?.currencyCode ? "currency" : "decimal",
+          currency: args?.currencyCode || undefined,
+          minimumFractionDigits: args?.digits ?? args?.minDigits ?? 2,
+          maximumFractionDigits: args?.digits ?? args?.maxDigits,
+        }
+      ).format(value);
+
+      // Normalizar espaços não separáveis
+      // return result.replace(/\u00A0/g, " ");
+
+      return result;
     } catch {
-      return number.toString();
+      return value.toString();
     }
   }
 
-  formatDate(date: string | Date | null): string | null {
-    if (!date)
-      return null;
+  formatDate(value: string | Date | null, args?: { locale?: string }): string | null {
+    if (!value) return null;
 
     try {
-      let _date;
-      if (date instanceof Date) {
-        _date = DateTime.fromJSDate(date).setLocale(this.#locale);
-      } else {
-        _date = DateTime.fromISO(date).setLocale(this.#locale);
-      }
-      return _date.startOf("day").toLocaleString({
-        year: "2-digit", month: "numeric", day: "numeric",
-      });
-    } catch (error) {
-      return date.toString();
-    }
-  }
-
-  formatDateTime(date: string | Date | null): string | null {
-    if (!date)
-      return null;
-
-    try {
-      let _date;
-      if (date instanceof Date) {
-        _date = DateTime.fromJSDate(date).setLocale(this.#locale);
-      } else {
-        _date = DateTime.fromISO(date).setLocale(this.#locale);
-      }
-
+      const _date = this.parseDate(value, args?.locale ?? this.#locale);
       return _date.toLocaleString({
-        year: "2-digit", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric",
+        year: "2-digit",
+        month: "numeric",
+        day: "numeric",
       });
     } catch {
-      return date.toString();
+      return value.toString();
     }
   }
 
-  formatNumber(number: number | null, args?: any): string | null {
-    if (number == null)
-      return null;
+  formatDateTime(value: string | Date | null, args?: { locale?: string }): string | null {
+    if (!value) return null;
 
     try {
-      const result = new Intl.NumberFormat(args?.locale ?? this.#locale, {
-        style: "decimal",
-        minimumFractionDigits: args?.digits ?? args?.minDigits ?? 0,
-        maximumFractionDigits: args?.digits ?? args?.maxDigits ?? 20,
-      }).format(number);
-
-      return result || number.toString();
+      const _date = this.parseDate(value, args?.locale ?? this.#locale);
+      return _date.toLocaleString({
+        year: "2-digit",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+      });
     } catch {
-      return number.toString();
+      return value.toString();
     }
   }
 
-  formatQuantity(number: number | null, args?: any): string | null {
-    return this.formatNumber(number, args);
-  }
-
-  formatTime(time: string | Date | null): string | null {
-    if (time == null)
-      return null;
+  formatNumber(value: number | null, args?: {
+    locale?: string;
+    digits?: number;
+    minDigits?: number;
+    maxDigits?: number;
+  }): string | null {
+    if (value == null) return null;
 
     try {
-      let _date;
-      if (time instanceof Date) {
-        _date = DateTime.fromJSDate(time).setLocale(this.#locale);
-      } else {
-        _date = DateTime.fromISO(time).setLocale(this.#locale);
-      }
+      const result = new Intl.NumberFormat(
+        args?.locale ?? this.#locale,
+        {
+          style: "decimal",
+          minimumFractionDigits: args?.digits ?? args?.minDigits ?? 0,
+          maximumFractionDigits: args?.digits ?? args?.maxDigits ?? 20,
+        }
+      ).format(value);
 
+      return result || value.toString();
+    } catch {
+      return value.toString();
+    }
+  }
+
+  formatQuantity(value: number | null, args?: {
+    locale?: string;
+    digits?: number;
+    minDigits?: number;
+    maxDigits?: number
+  }): string | null {
+    // Quantidade → sem restrição de casas decimais, usa defaults ou args
+    return this.formatNumber(value, args);
+  }
+
+  formatTime(value: string | Date | null, args?: { locale?: string }): string | null {
+    if (!value) return null;
+
+    try {
+      const _date = this.parseDate(value, args?.locale ?? this.#locale);
       return _date.toLocaleString(DateTime.TIME_24_WITH_SECONDS);
     } catch {
-      return time.toString();
+      return value.toString();
     }
   }
 
-  formatUnitValue(number: number | null): string | null {
-    return this.formatNumber(number, { minDigits: 2, maxDigits: 8 });
+  formatUnitValue(value: number | null, args?: {
+    locale?: string
+  }): string | null {
+    return this.formatNumber(value, { ...args, minDigits: 2, maxDigits: 8 });
   }
 
-  formatValue(number: number | null): string | null {
-    return this.formatNumber(number, { digits: 2 });
+  formatValue(value: number | null, args?: {
+    locale?: string
+  }): string | null {
+    return this.formatNumber(value, { ...args, digits: 2 });
   }
 
-  formatWeight(number: number | null): string | null {
-    return this.formatNumber(number, { minDigits: 3, maxDigits: 6 });
+  formatWeight(value: number | null, args?: {
+    locale?: string
+  }): string | null {
+    return this.formatNumber(value, { ...args, minDigits: 3, maxDigits: 6 });
   }
 
   localizeNode(node: Node): void {

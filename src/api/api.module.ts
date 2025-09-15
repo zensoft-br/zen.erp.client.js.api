@@ -9,3 +9,4 @@ export * as sale from "./sale/sale.module.js";
 export * as shipping from "./shipping/shipping.module.js";
 export * as supply from "./supply/supply.module.js";
 export * as system from "./system/system.module.js";
+export * as trade from "./trade/trade.module.js";
