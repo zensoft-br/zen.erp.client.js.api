@@ -7,9 +7,7 @@ export class ContractPayment {
   exchangeContract!: ExchangeContract;
   contract!: Contract;
   date!: Date;
-  exchangeContractValue!: number;
-  contractValue!: number;
-  localValue!: number;
+  value!: number;
   tags!: string;
   properties!: any;
 }

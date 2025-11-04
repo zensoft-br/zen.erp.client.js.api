@@ -5,6 +5,7 @@ export class FiscalProfileOperation {
   fiscalRegion!: FiscalRegion;
   code!: string;
   description!: string;
+  delegateCode!: string;
   tags!: string;
   properties!: any;
 }

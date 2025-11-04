@@ -4,6 +4,7 @@ import { Shipment } from "./Shipment.js";
 
 export class Clearance {
   id!: number;
+  type!: string;
   status!: string;
   shipment!: Shipment;
   company!: Company;

@@ -174,6 +174,15 @@ export class FinancialService {
     });
   }
 
+  async payableOpChangeWallet(id: number, walletId: number): Promise<Payable> {
+    const sp = new URLSearchParams();
+    if (walletId) sp.set("walletId", String(walletId));
+    return this.#client.web.fetchJson(`/financial/payableOpChangeWallet/${id}?${sp.toString()}`, {
+      method: "POST",
+      
+    });
+  }
+
   async payableOpPrepare(id: number): Promise<Payable> {
     return this.#client.web.fetchJson(`/financial/payableOpPrepare/${id}`, {
       method: "POST",

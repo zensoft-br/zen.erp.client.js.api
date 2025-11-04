@@ -8,6 +8,7 @@ export { IncomingListItem } from "./IncomingListItem.js";
 export { Inventory } from "./Inventory.js";
 export { InventoryAdjustment } from "./InventoryAdjustment.js";
 export { InventoryCheck } from "./InventoryCheck.js";
+export { InventoryProfile } from "./InventoryProfile.js";
 export { InventoryStock } from "./InventoryStock.js";
 export { Lot } from "./Lot.js";
 export { MovingOrder } from "./MovingOrder.js";

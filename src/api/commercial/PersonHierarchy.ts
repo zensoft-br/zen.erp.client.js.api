@@ -2,6 +2,7 @@ import { Person } from "../catalog/person/Person.js";
 
 export class PersonHierarchy {
   id!: number;
+  type!: string;
   personParent!: Person;
   personChild!: Person;
   tags!: string;

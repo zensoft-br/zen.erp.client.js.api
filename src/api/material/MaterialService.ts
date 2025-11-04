@@ -11,6 +11,7 @@ import { ArgsPickingOrderOpCreate } from "./ArgsPickingOrderOpCreate.js";
 import { ArgsPickingOrderOpGroup } from "./ArgsPickingOrderOpGroup.js";
 import { ArgsReservationOpAllocate } from "./ArgsReservationOpAllocate.js";
 import { ArgsReservationOpAllocateRevert } from "./ArgsReservationOpAllocateRevert.js";
+import { ArgsReservationOpCreate } from "./ArgsReservationOpCreate.js";
 import { ArgsStockManagementOpImport } from "./ArgsStockManagementOpImport.js";
 import { ArgsStockOpUpdate } from "./ArgsStockOpUpdate.js";
 import { ArgsUpdateAverageDailyConsumption } from "./ArgsUpdateAverageDailyConsumption.js";
@@ -22,6 +23,7 @@ import { IncomingListItem } from "./IncomingListItem.js";
 import { Inventory } from "./Inventory.js";
 import { InventoryAdjustment } from "./InventoryAdjustment.js";
 import { InventoryCheck } from "./InventoryCheck.js";
+import { InventoryProfile } from "./InventoryProfile.js";
 import { InventoryStock } from "./InventoryStock.js";
 import { Lot } from "./Lot.js";
 import { MovingOrder } from "./MovingOrder.js";
@@ -491,6 +493,51 @@ export class MaterialService {
     return this.#client.web.fetchJson(`/material/inventoryOpStartRevert/${id}`, {
       method: "POST",
       
+    });
+  }
+
+  async inventoryProfileCreate(bean: InventoryProfile): Promise<InventoryProfile> {
+    return this.#client.web.fetchJson("/material/inventoryProfile", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async inventoryProfileDelete(id: number): Promise<InventoryProfile> {
+    return this.#client.web.fetchJson(`/material/inventoryProfile/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async inventoryProfileRead(search: any): Promise<InventoryProfile[]> {
+    return this.#client.web.fetchJson(`/material/inventoryProfile?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async inventoryProfileReadById(id: number): Promise<InventoryProfile> {
+    return this.#client.web.fetchJson(`/material/inventoryProfile/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async inventoryProfileUpdate(bean: InventoryProfile): Promise<InventoryProfile> {
+    return this.#client.web.fetchJson("/material/inventoryProfile", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
     });
   }
 
@@ -1301,6 +1348,18 @@ export class MaterialService {
     });
   }
 
+  async reservationOpCreate(args: ArgsReservationOpCreate): Promise<Reservation> {
+    return this.#client.web.fetchJson("/material/reservationOpCreate", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
   async reservationOpFinish(id: number): Promise<Reservation> {
     return this.#client.web.fetchJson(`/material/reservationOpFinish/${id}`, {
       method: "POST",
@@ -1640,6 +1699,18 @@ export class MaterialService {
         accept: "application/json",
         },
         body: JSON.stringify(stock),
+
+    });
+  }
+
+  async stockOpCompensate(stockMap: any): Promise<void> {
+    return this.#client.web.fetchJson("/material/stockOpCompensate", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(stockMap),
 
     });
   }

@@ -8,6 +8,7 @@ export { ContractPayment } from "./ContractPayment.js";
 export { Cost } from "./Cost.js";
 export { CostAllocation } from "./CostAllocation.js";
 export { ExchangeContract } from "./ExchangeContract.js";
+export { ExchangeContractProfile } from "./ExchangeContractProfile.js";
 export { Shipment } from "./Shipment.js";
 export { ShipmentContainer } from "./ShipmentContainer.js";
 export { ShipmentItem } from "./ShipmentItem.js";
