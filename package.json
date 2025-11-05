@@ -53,7 +53,7 @@
     "dev": "echo 'No dev script defined'",
     "pack": "npm pack",
     "prepublishOnly": "npm run build",
-    "publish": "npm publish",
+    "release": "npm publish",
     "test": "vitest"
   },
   "dependencies": {
