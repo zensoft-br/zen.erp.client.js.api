@@ -8,5 +8,6 @@ export class ArgsJournalEntry {
   tags!: string;
   properties!: any;
   items!: any[];
+  normalize!: boolean;
   publish!: boolean;
 }

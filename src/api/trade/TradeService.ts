@@ -7,6 +7,8 @@ import { ContractPayment } from "./ContractPayment.js";
 import { Cost } from "./Cost.js";
 import { CostAllocation } from "./CostAllocation.js";
 import { ExchangeContract } from "./ExchangeContract.js";
+import { ExchangeContractPayment } from "./ExchangeContractPayment.js";
+import { ExchangeContractProfile } from "./ExchangeContractProfile.js";
 import { Shipment } from "./Shipment.js";
 import { ShipmentContainer } from "./ShipmentContainer.js";
 import { ShipmentItem } from "./ShipmentItem.js";
@@ -462,6 +464,124 @@ export class TradeService {
     return this.#client.web.fetchJson(`/trade/exchangeContractOpPrepareRevert/${id}`, {
       method: "POST",
       
+    });
+  }
+
+  async exchangeContractPaymentCreate(bean: ExchangeContractPayment): Promise<ExchangeContractPayment> {
+    return this.#client.web.fetchJson("/trade/exchangeContractPayment", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async exchangeContractPaymentDelete(id: number): Promise<ExchangeContractPayment> {
+    return this.#client.web.fetchJson(`/trade/exchangeContractPayment/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async exchangeContractPaymentOpApprove(id: number): Promise<ExchangeContractPayment> {
+    return this.#client.web.fetchJson(`/trade/exchangeContractPaymentOpApprove/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async exchangeContractPaymentOpApproveRevert(id: number): Promise<ExchangeContractPayment> {
+    return this.#client.web.fetchJson(`/trade/exchangeContractPaymentOpApproveRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async exchangeContractPaymentOpPrepare(id: number): Promise<ExchangeContractPayment> {
+    return this.#client.web.fetchJson(`/trade/exchangeContractPaymentOpPrepare/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async exchangeContractPaymentOpPrepareRevert(id: number): Promise<ExchangeContractPayment> {
+    return this.#client.web.fetchJson(`/trade/exchangeContractPaymentOpPrepareRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async exchangeContractPaymentRead(search: any): Promise<ExchangeContractPayment[]> {
+    return this.#client.web.fetchJson(`/trade/exchangeContractPayment?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async exchangeContractPaymentReadById(id: number): Promise<ExchangeContractPayment> {
+    return this.#client.web.fetchJson(`/trade/exchangeContractPayment/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async exchangeContractPaymentUpdate(bean: ExchangeContractPayment): Promise<ExchangeContractPayment> {
+    return this.#client.web.fetchJson("/trade/exchangeContractPayment", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async exchangeContractProfileCreate(bean: ExchangeContractProfile): Promise<ExchangeContractProfile> {
+    return this.#client.web.fetchJson("/trade/exchangeContractProfile", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async exchangeContractProfileDelete(id: number): Promise<ExchangeContractProfile> {
+    return this.#client.web.fetchJson(`/trade/exchangeContractProfile/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async exchangeContractProfileRead(search: any): Promise<ExchangeContractProfile[]> {
+    return this.#client.web.fetchJson(`/trade/exchangeContractProfile?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async exchangeContractProfileReadById(id: number): Promise<ExchangeContractProfile> {
+    return this.#client.web.fetchJson(`/trade/exchangeContractProfile/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async exchangeContractProfileUpdate(bean: ExchangeContractProfile): Promise<ExchangeContractProfile> {
+    return this.#client.web.fetchJson("/trade/exchangeContractProfile", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
     });
   }
 

@@ -13,6 +13,7 @@ import { Warehouse } from "./Warehouse.js";
 export class ReservationItem {
   id!: number;
   reservation!: Reservation;
+  sourceId!: number;
   stockCluster!: StockCluster;
   warehouse!: Warehouse;
   address!: Address;

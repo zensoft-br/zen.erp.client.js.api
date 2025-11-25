@@ -11,6 +11,7 @@ import { StockCluster } from "./StockCluster.js";
 
 export class StockData {
   id!: number;
+  sourceId!: number;
   stockCluster!: StockCluster;
   address!: Address;
   depositor!: Person;

@@ -6,7 +6,7 @@ import { Person } from "../catalog/person/Person.js";
 export class ExchangeContract {
   id!: number;
   status!: string;
-  profile!: ExchangeContractProfile;
+  exchangeContractProfile!: ExchangeContractProfile;
   company!: Company;
   person!: Person;
   personAgent!: Person;
@@ -15,7 +15,9 @@ export class ExchangeContract {
   date!: Date;
   currency!: Currency;
   value!: number;
+  allocatedValue!: number;
   paymentValue!: number;
+  exchangeRate!: number;
   tags!: string;
   properties!: any;
 }

@@ -12,6 +12,7 @@ import { StockCluster } from "./StockCluster.js";
 export class InventoryAdjustment {
   id!: number;
   inventory!: Inventory;
+  sourceId!: number;
   stockCluster!: StockCluster;
   address!: Address;
   productPacking!: ProductPacking;

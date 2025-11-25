@@ -1,6 +1,6 @@
 {
   "name": "@zensoftbr/zenerpclient",
-  "version": "1.0.37",
+  "version": "1.0.38",
   "description": "Zen ERP Client Api",
   "type": "module",
   "types": "./dist/types/index.d.ts",

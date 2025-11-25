@@ -17,6 +17,7 @@ export class StockTransaction {
   reversal!: boolean;
   description!: string;
   id!: number;
+  sourceId!: number;
   stockCluster!: StockCluster;
   address!: Address;
   code!: string;

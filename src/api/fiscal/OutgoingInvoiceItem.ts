@@ -35,8 +35,8 @@ export class OutgoingInvoiceItem {
   taxCompensationValue!: number;
   effectiveValue!: number;
   assetTag!: AssetTag;
-  returnedQuantity!: number;
-  invoiceItemReturned!: InvoiceItem;
+  referencedQuantity!: number;
+  invoiceItemReferenced!: InvoiceItem;
   tags!: string;
   properties!: any;
 }
