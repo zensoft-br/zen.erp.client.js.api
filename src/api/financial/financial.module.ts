@@ -1,6 +1,7 @@
 export * as accounting from "./accounting/accounting.module.js";
 export * as billing from "./billing/billing.module.js";
 export * as credit from "./credit/credit.module.js";
+export * as salesCommission from "./salesCommission/salesCommission.module.js";
 export * as treasury from "./treasury/treasury.module.js";
 
 export { FinancialService } from "./FinancialService.js";
