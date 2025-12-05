@@ -34,7 +34,7 @@ export class I18n {
     }
 
     const _key = key.startsWith("@@:") ? key.substring(3) : key;
-    const _defaultValue = arguments.length >= 2 ? defaultValue : _key;
+    const _defaultValue = defaultValue !== undefined ? defaultValue : _key;
 
     const result = this.#resources[_key];
 
