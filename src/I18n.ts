@@ -38,7 +38,7 @@ export class I18n {
 
     const result = this.#resources[_key];
 
-    return result ?? _defaultValue;
+    return result?.length ? result : _defaultValue;
   }
 
   format(key: string, ...args: any): string {
