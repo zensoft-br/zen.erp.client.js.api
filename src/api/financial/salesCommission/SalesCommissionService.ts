@@ -69,6 +69,20 @@ export class SalesCommissionService {
     });
   }
 
+  async salesCommissionOpPublish(id: number): Promise<SalesCommission> {
+    return this.#client.web.fetchJson(`/financial/salesCommission/salesCommissionOpPublish/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async salesCommissionOpPublishRevert(id: number): Promise<SalesCommission> {
+    return this.#client.web.fetchJson(`/financial/salesCommission/salesCommissionOpPublishRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async salesCommissionRead(search: any): Promise<SalesCommission[]> {
     return this.#client.web.fetchJson(`/financial/salesCommission/salesCommission?${search}`, {
       method: "GET",
