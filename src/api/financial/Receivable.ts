@@ -7,6 +7,7 @@ import { Wallet } from "./billing/Wallet.js";
 export class Receivable {
   invoice!: OutgoingInvoice;
   id!: number;
+  flow!: string;
   status!: string;
   source!: string;
   company!: Company;

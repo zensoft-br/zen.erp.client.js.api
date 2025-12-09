@@ -5,6 +5,7 @@ import { Wallet } from "./billing/Wallet.js";
 
 export class BillingTitle {
   id!: number;
+  flow!: string;
   status!: string;
   source!: string;
   company!: Company;

@@ -7,6 +7,7 @@ import { Wallet } from "./billing/Wallet.js";
 export class Payable {
   invoice!: IncomingInvoice;
   id!: number;
+  flow!: string;
   status!: string;
   source!: string;
   company!: Company;

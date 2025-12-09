@@ -10,6 +10,7 @@ import { Workpiece } from "../system/workflow/Workpiece.js";
 
 export class Invoice {
   id!: number;
+  flow!: string;
   source!: string;
   company!: Company;
   fiscalProfileOperation!: FiscalProfileOperation;

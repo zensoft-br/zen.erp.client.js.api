@@ -15,6 +15,7 @@ export class OutgoingInvoice {
   outgoingList!: OutgoingList;
   shipment!: Shipment;
   id!: number;
+  flow!: string;
   source!: string;
   company!: Company;
   fiscalProfileOperation!: FiscalProfileOperation;

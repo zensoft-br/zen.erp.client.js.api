@@ -817,6 +817,15 @@ export class FiscalService {
     });
   }
 
+  async outgoingInvoiceOpOutgoingListBind(id: number, outgoingListId: number): Promise<OutgoingInvoice> {
+    const sp = new URLSearchParams();
+    if (outgoingListId) sp.set("outgoingListId", String(outgoingListId));
+    return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpOutgoingListBind/${id}?${sp.toString()}`, {
+      method: "POST",
+      
+    });
+  }
+
   async outgoingInvoiceOpPrepare(id: number): Promise<OutgoingInvoice> {
     return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceOpPrepare/${id}`, {
       method: "POST",

@@ -55,6 +55,18 @@ export class SalesCommissionService {
     });
   }
 
+  async salesCommissionOpCalculateRevert(args: ArgsSalesCommissionOpCalculate): Promise<void> {
+    return this.#client.web.fetchJson("/financial/salesCommission/salesCommissionOpCalculateRevert", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
   async salesCommissionOpPrepare(id: number): Promise<SalesCommission> {
     return this.#client.web.fetchJson(`/financial/salesCommission/salesCommissionOpPrepare/${id}`, {
       method: "POST",

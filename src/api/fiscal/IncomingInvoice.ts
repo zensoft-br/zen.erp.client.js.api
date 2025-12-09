@@ -15,6 +15,7 @@ export class IncomingInvoice {
   incomingList!: IncomingList;
   purchase!: Purchase;
   id!: number;
+  flow!: string;
   source!: string;
   company!: Company;
   fiscalProfileOperation!: FiscalProfileOperation;

@@ -6,6 +6,7 @@ export * as frontend from "./frontend/frontend.module.js";
 export * as image from "./image/image.module.js";
 export * as info from "./info/info.module.js";
 export * as integration from "./integration/integration.module.js";
+export * as job from "./job/job.module.js";
 export * as mail from "./mail/mail.module.js";
 export * as printing from "./printing/printing.module.js";
 export * as report from "./report/report.module.js";
