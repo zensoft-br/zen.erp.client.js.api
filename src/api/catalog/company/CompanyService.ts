@@ -37,9 +37,7 @@ export class CompanyService {
   }
 
   async companyOpSetActive(id: number): Promise<Company> {
-    const sp = new URLSearchParams();
-    if (id) sp.set("id", String(id));
-    return this.#client.web.fetchJson(`/catalog/company/companyOpSetActive?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/catalog/company/companyOpSetActive/${id}`, {
       method: "POST",
       
     });

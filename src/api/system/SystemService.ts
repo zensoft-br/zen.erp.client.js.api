@@ -57,10 +57,9 @@ export class SystemService {
 
   async lockOpAcquire(id: string, waitTime: string, leaseTime: string): Promise<string> {
     const sp = new URLSearchParams();
-    if (id) sp.set("id", String(id));
     if (waitTime) sp.set("waitTime", String(waitTime));
     if (leaseTime) sp.set("leaseTime", String(leaseTime));
-    return this.#client.web.fetchText(`/system/lockOpAcquire?${sp.toString()}`, {
+    return this.#client.web.fetchText(`/system/lockOpAcquire/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -68,10 +67,9 @@ export class SystemService {
 
   async lockOpExtend(id: string, lockToken: string, leaseTime: string): Promise<void> {
     const sp = new URLSearchParams();
-    if (id) sp.set("id", String(id));
     if (lockToken) sp.set("lockToken", String(lockToken));
     if (leaseTime) sp.set("leaseTime", String(leaseTime));
-    return this.#client.web.fetchJson(`/system/lockOpExtend?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/lockOpExtend/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
@@ -79,9 +77,8 @@ export class SystemService {
 
   async lockOpRelease(id: string, lockToken: string): Promise<void> {
     const sp = new URLSearchParams();
-    if (id) sp.set("id", String(id));
     if (lockToken) sp.set("lockToken", String(lockToken));
-    return this.#client.web.fetchJson(`/system/lockOpRelease?${sp.toString()}`, {
+    return this.#client.web.fetchJson(`/system/lockOpRelease/${id}?${sp.toString()}`, {
       method: "POST",
       
     });
