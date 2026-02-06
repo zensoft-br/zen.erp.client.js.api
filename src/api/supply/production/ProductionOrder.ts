@@ -12,6 +12,7 @@ export class ProductionOrder {
   productionProfile!: ProductionProfile;
   workflow!: Workflow;
   workpiece!: Workpiece;
+  code!: string;
   person!: Person;
   date!: Date;
   availabilityDate!: Date;

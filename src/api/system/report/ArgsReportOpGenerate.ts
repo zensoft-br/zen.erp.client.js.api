@@ -7,5 +7,6 @@ export class ArgsReportOpGenerate {
   parameters!: any;
   properties!: any;
   dataSource!: ArgsDataSourceOpRead;
+  data!: any;
   printer!: any;
 }

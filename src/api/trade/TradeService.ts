@@ -231,6 +231,18 @@ export class TradeService {
     });
   }
 
+  async contractOpUpdateDmz(bean: Contract): Promise<Contract> {
+    return this.#client.web.fetchJson("/trade/contractOpUpdateDmz", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
   async contractPaymentCreate(bean: ContractPayment): Promise<ContractPayment> {
     return this.#client.web.fetchJson("/trade/contractPayment", {
       method: "POST",
