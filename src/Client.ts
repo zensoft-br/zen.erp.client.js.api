@@ -91,10 +91,14 @@ export class Client {
 
 export function createFromToken(tenant: string, token: string, properties?: any) {
   // Checks
-  if (!tenant)
-    throw new Error("Missing argument: tenant");
   if (!token)
     throw new Error("Missing argument: token");
+
+  tenant = jwt(token).tenant || tenant;
+
+  // Checks
+  if (!tenant)
+    throw new Error("Missing argument: tenant");
 
   return new Client(tenant, token, properties);
 }
@@ -124,9 +128,9 @@ export async function connect(tenant: string, user: string, password: string, pr
   });
   await Web.handleResponse(response);
 
-  const token = await response.json();
+  const json = await response.json();
 
-  return createFromToken(tenant, token.accessToken, properties);
+  return createFromToken(tenant, json.accessToken, properties);
 }
 
 function jwt(token: string): any {
