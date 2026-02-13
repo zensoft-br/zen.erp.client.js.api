@@ -7,6 +7,7 @@ export { ContractItem } from "./ContractItem.js";
 export { ContractPayment } from "./ContractPayment.js";
 export { Cost } from "./Cost.js";
 export { CostAllocation } from "./CostAllocation.js";
+export { CostProfile } from "./CostProfile.js";
 export { ExchangeContract } from "./ExchangeContract.js";
 export { ExchangeContractPayment } from "./ExchangeContractPayment.js";
 export { ExchangeContractProfile } from "./ExchangeContractProfile.js";

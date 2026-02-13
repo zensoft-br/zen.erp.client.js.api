@@ -6,6 +6,7 @@ import { ContractItem } from "./ContractItem.js";
 import { ContractPayment } from "./ContractPayment.js";
 import { Cost } from "./Cost.js";
 import { CostAllocation } from "./CostAllocation.js";
+import { CostProfile } from "./CostProfile.js";
 import { ExchangeContract } from "./ExchangeContract.js";
 import { ExchangeContractPayment } from "./ExchangeContractPayment.js";
 import { ExchangeContractProfile } from "./ExchangeContractProfile.js";
@@ -403,6 +404,79 @@ export class TradeService {
     return this.#client.web.fetchJson(`/trade/cost/${id}`, {
       method: "DELETE",
       
+    });
+  }
+
+  async costOpApprove(id: number): Promise<Cost> {
+    return this.#client.web.fetchJson(`/trade/costOpApprove/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async costOpApproveRevert(id: number): Promise<Cost> {
+    return this.#client.web.fetchJson(`/trade/costOpApproveRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async costOpPrepare(id: number): Promise<Cost> {
+    return this.#client.web.fetchJson(`/trade/costOpPrepare/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async costOpPrepareRevert(id: number): Promise<Cost> {
+    return this.#client.web.fetchJson(`/trade/costOpPrepareRevert/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
+  async costProfileCreate(bean: CostProfile): Promise<CostProfile> {
+    return this.#client.web.fetchJson("/trade/costProfile", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
+  async costProfileDelete(id: number): Promise<CostProfile> {
+    return this.#client.web.fetchJson(`/trade/costProfile/${id}`, {
+      method: "DELETE",
+      
+    });
+  }
+
+  async costProfileRead(search: any): Promise<CostProfile[]> {
+    return this.#client.web.fetchJson(`/trade/costProfile?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async costProfileReadById(id: number): Promise<CostProfile> {
+    return this.#client.web.fetchJson(`/trade/costProfile/${id}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async costProfileUpdate(bean: CostProfile): Promise<CostProfile> {
+    return this.#client.web.fetchJson("/trade/costProfile", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
     });
   }
 
