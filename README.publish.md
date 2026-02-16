@@ -28,5 +28,6 @@ git push origin --tags -f
 * Publish the project
 
 ```bash
+npm login
 npm publish --access public
 ```
