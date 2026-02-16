@@ -12,6 +12,7 @@ import { FiscalRegion } from "./FiscalRegion.js";
 import { FiscalYear } from "./FiscalYear.js";
 import { IncomingInvoice } from "./IncomingInvoice.js";
 import { IncomingInvoiceItem } from "./IncomingInvoiceItem.js";
+import { Invoice } from "./Invoice.js";
 import { InvoiceItemAccounting } from "./InvoiceItemAccounting.js";
 import { InvoicePayment } from "./InvoicePayment.js";
 import { InvoiceReference } from "./InvoiceReference.js";
@@ -594,6 +595,20 @@ export class FiscalService {
         },
         body: JSON.stringify(bean),
 
+    });
+  }
+
+  async invoiceRead(search: any): Promise<Invoice[]> {
+    return this.#client.web.fetchJson(`/fiscal/invoice?${search}`, {
+      method: "GET",
+      
+    });
+  }
+
+  async invoiceReadById(id: number): Promise<Invoice> {
+    return this.#client.web.fetchJson(`/fiscal/invoice/${id}`, {
+      method: "GET",
+      
     });
   }
 
