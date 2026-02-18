@@ -1,5 +1,5 @@
+import { AppError, BackendErrorResponse } from "./AppError.js";
 import { Client } from "./Client.js";
-import { AppError } from "./AppError.js";
 
 export default class Web {
 
@@ -47,62 +47,37 @@ export default class Web {
   }
 
   async handleResponse(response: Response) {
-    if (!response.ok) {
-      const status = response.status;
-
-      let message = await response.text();
-
-      let error: Error;
-
-      try {
-        const json = JSON.parse(message);
-
-        if (json.message)
-          message = json.message;
-        else
-          message = response.statusText;
-
-        error = new AppError(message, {
-          status,
-          payload: json,
-        });
-      } catch (error) {
-        throw new AppError(message, {
-          status
-        });
-      }
-
-      throw error;
-    }
+    Web.handleResponse(response);
   }
 
-  static async handleResponse(response: Response) {
-    if (!response.ok) {
-      const status = response.status;
+  static async handleResponse(response: Response): Promise<void> {
+    if (response.ok) return;
 
-      let message = await response.text();
+    const status = response.status;
+    const rawBody = await response.text();
 
-      let error: Error;
+    try {
+      const json = JSON.parse(rawBody) as BackendErrorResponse;
 
-      try {
-        const json = JSON.parse(message);
+      const errorData: BackendErrorResponse = {
+        message: json.message || response.statusText || `Error ${status}`,
+        status: json.status ?? status,
+        timestamp: json.timestamp ?? Date.now(),
+        errors: json.errors ?? [],
+        stackTrace: json.stackTrace,
+        exceptionClass: json.exceptionClass
+      };
 
-        if (json.message)
-          message = json.message;
-        else
-          message = response.statusText;
+      throw new AppError(errorData);
+    } catch (e) {
+      if (e instanceof AppError) throw e;
 
-        error = new AppError(message, {
-          status,
-          payload: json,
-        });
-      } catch (error) {
-        throw new AppError(message, {
-          status
-        });
-      }
-
-      throw error;
+      throw new AppError({
+        message: rawBody || response.statusText || "Unknown Network Error",
+        status: status,
+        timestamp: Date.now(),
+        errors: [{ type: 'generic', message: rawBody || response.statusText }]
+      });
     }
   }
 
