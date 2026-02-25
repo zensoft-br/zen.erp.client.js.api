@@ -477,8 +477,8 @@ export class PurchaseService {
     });
   }
 
-  async purchaseOpUpdatePrepared(bean: Purchase): Promise<Purchase> {
-    return this.#client.web.fetchJson("/supply/purchase/purchaseOpUpdatePrepared", {
+  async purchaseOpUpdateDmz(bean: Purchase): Promise<Purchase> {
+    return this.#client.web.fetchJson("/supply/purchase/purchaseOpUpdateDmz", {
       method: "POST",
       headers: {
         "content-type": "application/json",

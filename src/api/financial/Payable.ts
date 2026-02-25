@@ -3,6 +3,8 @@ import { Company } from "../catalog/company/Company.js";
 import { IncomingInvoice } from "../fiscal/IncomingInvoice.js";
 import { Person } from "../catalog/person/Person.js";
 import { Wallet } from "./billing/Wallet.js";
+import { Workflow } from "../system/workflow/Workflow.js";
+import { Workpiece } from "../system/workflow/Workpiece.js";
 
 export class Payable {
   invoice!: IncomingInvoice;
@@ -11,6 +13,8 @@ export class Payable {
   status!: string;
   source!: string;
   company!: Company;
+  workflow!: Workflow;
+  workpiece!: Workpiece;
   person!: Person;
   payer!: Person;
   type!: string;

@@ -565,8 +565,8 @@ export class SaleService {
     });
   }
 
-  async saleItemOpUpdatePrepared(bean: SaleItem): Promise<SaleItem> {
-    return this.#client.web.fetchJson("/sale/saleItemOpUpdatePrepared", {
+  async saleItemOpUpdateDmz(bean: SaleItem): Promise<SaleItem> {
+    return this.#client.web.fetchJson("/sale/saleItemOpUpdateDmz", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -770,8 +770,8 @@ export class SaleService {
     });
   }
 
-  async saleOpUpdatePrepared(bean: Sale): Promise<Sale> {
-    return this.#client.web.fetchJson("/sale/saleOpUpdatePrepared", {
+  async saleOpUpdateDmz(bean: Sale): Promise<Sale> {
+    return this.#client.web.fetchJson("/sale/saleOpUpdateDmz", {
       method: "POST",
       headers: {
         "content-type": "application/json",

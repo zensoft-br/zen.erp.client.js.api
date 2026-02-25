@@ -233,8 +233,8 @@ export class FinancialService {
     });
   }
 
-  async payableOpUpdatePrepared(bean: Payable): Promise<Payable> {
-    return this.#client.web.fetchJson("/financial/payableOpUpdatePrepared", {
+  async payableOpUpdateDmz(bean: Payable): Promise<Payable> {
+    return this.#client.web.fetchJson("/financial/payableOpUpdateDmz", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -415,8 +415,8 @@ export class FinancialService {
     });
   }
 
-  async receivableOpUpdatePrepared(bean: Receivable): Promise<Receivable> {
-    return this.#client.web.fetchJson("/financial/receivableOpUpdatePrepared", {
+  async receivableOpUpdateDmz(bean: Receivable): Promise<Receivable> {
+    return this.#client.web.fetchJson("/financial/receivableOpUpdateDmz", {
       method: "POST",
       headers: {
         "content-type": "application/json",

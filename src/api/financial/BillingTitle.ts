@@ -2,6 +2,8 @@ import { AssetTag } from "./accounting/AssetTag.js";
 import { Company } from "../catalog/company/Company.js";
 import { Person } from "../catalog/person/Person.js";
 import { Wallet } from "./billing/Wallet.js";
+import { Workflow } from "../system/workflow/Workflow.js";
+import { Workpiece } from "../system/workflow/Workpiece.js";
 
 export class BillingTitle {
   id!: number;
@@ -9,6 +11,8 @@ export class BillingTitle {
   status!: string;
   source!: string;
   company!: Company;
+  workflow!: Workflow;
+  workpiece!: Workpiece;
   person!: Person;
   payer!: Person;
   type!: string;

@@ -470,8 +470,8 @@ export class FiscalService {
     });
   }
 
-  async incomingInvoiceOpUpdatePrepared(bean: IncomingInvoice): Promise<IncomingInvoice> {
-    return this.#client.web.fetchJson("/fiscal/incomingInvoiceOpUpdatePrepared", {
+  async incomingInvoiceOpUpdateDmz(bean: IncomingInvoice): Promise<IncomingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoiceOpUpdateDmz", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -874,8 +874,8 @@ export class FiscalService {
     });
   }
 
-  async outgoingInvoiceOpUpdatePrepared(bean: OutgoingInvoice): Promise<OutgoingInvoice> {
-    return this.#client.web.fetchJson("/fiscal/outgoingInvoiceOpUpdatePrepared", {
+  async outgoingInvoiceOpUpdateDmz(bean: OutgoingInvoice): Promise<OutgoingInvoice> {
+    return this.#client.web.fetchJson("/fiscal/outgoingInvoiceOpUpdateDmz", {
       method: "POST",
       headers: {
         "content-type": "application/json",
