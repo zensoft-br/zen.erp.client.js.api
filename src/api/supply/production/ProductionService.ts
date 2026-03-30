@@ -1,4 +1,5 @@
 import { Client } from "../../../Client.js";
+import { ArgsBomOpCreate } from "./ArgsBomOpCreate.js";
 import { ArgsProductionOrderOpCreate } from "./ArgsProductionOrderOpCreate.js";
 import { ArgsProductionStepOpCreate } from "./ArgsProductionStepOpCreate.js";
 import { Bom } from "./Bom.js";
@@ -89,6 +90,30 @@ export class ProductionService {
     return this.#client.web.fetchJson(`/supply/production/bomOpClone/${id}`, {
       method: "POST",
       
+    });
+  }
+
+  async bomOpCreate(args: ArgsBomOpCreate): Promise<Bom> {
+    return this.#client.web.fetchJson("/supply/production/bomOpCreate", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
+  async bomOpUpdate(args: ArgsBomOpCreate): Promise<Bom> {
+    return this.#client.web.fetchJson("/supply/production/bomOpUpdate", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
     });
   }
 
