@@ -10,6 +10,7 @@ export class QuoteItemProposal {
   quantity!: number;
   currency!: Currency;
   unitValue!: number;
+  costUnitValue!: number;
   totalValue!: number;
   availabilityDate!: Date;
   tags!: string;

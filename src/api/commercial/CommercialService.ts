@@ -2,6 +2,7 @@ import { Client } from "../../Client.js";
 import { PersonHierarchy } from "./PersonHierarchy.js";
 import { PersonHierarchyView } from "./PersonHierarchyView.js";
 import { PriceListChangeRequest } from "./PriceListChangeRequest.js";
+import { PriceListItem } from "./PriceListItem.js";
 import { PriceListTransformation } from "./PriceListTransformation.js";
 
 export class CommercialService {
@@ -107,6 +108,18 @@ export class CommercialService {
   async priceListChangeRequestReadById(id: number): Promise<PriceListChangeRequest> {
     return this.#client.web.fetchJson(`/commercial/priceListChangeRequest/${id}`, {
       method: "GET",
+      
+    });
+  }
+
+  async priceListItemOpFind(id: number, productId: number, productPackingId: number, currencyId: number, date: Date): Promise<PriceListItem> {
+    const sp = new URLSearchParams();
+    if (productId) sp.set("productId", String(productId));
+    if (productPackingId) sp.set("productPackingId", String(productPackingId));
+    if (currencyId) sp.set("currencyId", String(currencyId));
+    if (date) sp.set("date", String(date));
+    return this.#client.web.fetchJson(`/commercial/priceListItemOpFind/${id}?${sp.toString()}`, {
+      method: "POST",
       
     });
   }

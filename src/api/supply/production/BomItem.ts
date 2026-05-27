@@ -5,7 +5,7 @@ export class BomItem {
   id!: number;
   bom!: Bom;
   productPacking!: ProductPacking;
-  lotQuantity!: number;
+  bomQuantity!: number;
   type!: string;
   quantity!: number;
   tags!: string;
