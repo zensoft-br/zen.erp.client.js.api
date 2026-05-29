@@ -12,7 +12,6 @@ import { ArgsPickingOrderOpGroup } from "./ArgsPickingOrderOpGroup.js";
 import { ArgsReservationOpAllocate } from "./ArgsReservationOpAllocate.js";
 import { ArgsReservationOpAllocateRevert } from "./ArgsReservationOpAllocateRevert.js";
 import { ArgsReservationOpCreate } from "./ArgsReservationOpCreate.js";
-import { ArgsStockManagementOpImport } from "./ArgsStockManagementOpImport.js";
 import { ArgsStockOpUpdate } from "./ArgsStockOpUpdate.js";
 import { ArgsUpdateAverageDailyConsumption } from "./ArgsUpdateAverageDailyConsumption.js";
 import { ArgsVolumeOpCheck } from "./ArgsVolumeOpCheck.js";
@@ -1637,18 +1636,6 @@ export class MaterialService {
         accept: "application/json",
         },
         body: JSON.stringify(bean),
-
-    });
-  }
-
-  async stockManagementOpImport(args: ArgsStockManagementOpImport): Promise<void> {
-    return this.#client.web.fetchJson("/material/stockManagementOpImport", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-        },
-        body: JSON.stringify(args),
 
     });
   }

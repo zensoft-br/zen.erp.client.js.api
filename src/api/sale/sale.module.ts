@@ -8,7 +8,6 @@ export { PriceListRetail } from "./PriceListRetail.js";
 export { PriceListRetailItem } from "./PriceListRetailItem.js";
 export { Quote } from "./Quote.js";
 export { QuoteItem } from "./QuoteItem.js";
-export { QuoteItemProposal } from "./QuoteItemProposal.js";
 export { Sale } from "./Sale.js";
 export { SaleItem } from "./SaleItem.js";
 export { SalePayment } from "./SalePayment.js";

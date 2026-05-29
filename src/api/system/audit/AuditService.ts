@@ -1,5 +1,6 @@
 import { Client } from "../../../Client.js";
 import { ArgsLogCreate } from "./ArgsLogCreate.js";
+import { ArgsUserLogCreate } from "./ArgsUserLogCreate.js";
 import { Log } from "./Log.js";
 import { Source } from "./Source.js";
 
@@ -68,7 +69,7 @@ export class AuditService {
     });
   }
 
-  async userLogCreate(args: ArgsLogCreate): Promise<Log> {
+  async userLogCreate(args: ArgsUserLogCreate): Promise<Log> {
     return this.#client.web.fetchJson("/system/audit/userLog", {
       method: "POST",
       headers: {

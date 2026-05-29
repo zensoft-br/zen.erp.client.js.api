@@ -15,7 +15,6 @@ import { PriceListRetail } from "./PriceListRetail.js";
 import { PriceListRetailItem } from "./PriceListRetailItem.js";
 import { Quote } from "./Quote.js";
 import { QuoteItem } from "./QuoteItem.js";
-import { QuoteItemProposal } from "./QuoteItemProposal.js";
 import { Sale } from "./Sale.js";
 import { SaleItem } from "./SaleItem.js";
 import { SalePayment } from "./SalePayment.js";
@@ -289,79 +288,6 @@ export class SaleService {
     return this.#client.web.fetchJson(`/sale/quoteItemOpRejectRevert/${id}`, {
       method: "POST",
       
-    });
-  }
-
-  async quoteItemProposalCreate(bean: QuoteItemProposal): Promise<QuoteItemProposal> {
-    return this.#client.web.fetchJson("/sale/quoteItemProposal", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-        },
-        body: JSON.stringify(bean),
-
-    });
-  }
-
-  async quoteItemProposalDelete(id: number): Promise<QuoteItemProposal> {
-    return this.#client.web.fetchJson(`/sale/quoteItemProposal/${id}`, {
-      method: "DELETE",
-      
-    });
-  }
-
-  async quoteItemProposalOpApprove(id: number): Promise<QuoteItemProposal> {
-    return this.#client.web.fetchJson(`/sale/quoteItemProposalOpApprove/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async quoteItemProposalOpApproveRevert(id: number): Promise<QuoteItemProposal> {
-    return this.#client.web.fetchJson(`/sale/quoteItemProposalOpApproveRevert/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async quoteItemProposalOpReject(id: number): Promise<QuoteItemProposal> {
-    return this.#client.web.fetchJson(`/sale/quoteItemProposalOpReject/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async quoteItemProposalOpRejectRevert(id: number): Promise<QuoteItemProposal> {
-    return this.#client.web.fetchJson(`/sale/quoteItemProposalOpRejectRevert/${id}`, {
-      method: "POST",
-      
-    });
-  }
-
-  async quoteItemProposalRead(search: any): Promise<QuoteItemProposal[]> {
-    return this.#client.web.fetchJson(`/sale/quoteItemProposal?${search}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async quoteItemProposalReadById(id: number): Promise<QuoteItemProposal> {
-    return this.#client.web.fetchJson(`/sale/quoteItemProposal/${id}`, {
-      method: "GET",
-      
-    });
-  }
-
-  async quoteItemProposalUpdate(bean: QuoteItemProposal): Promise<QuoteItemProposal> {
-    return this.#client.web.fetchJson("/sale/quoteItemProposal", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-        },
-        body: JSON.stringify(bean),
-
     });
   }
 
