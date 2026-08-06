@@ -11,6 +11,7 @@ export class Shipment {
   code!: string;
   description!: string;
   date!: Date;
+  availabilityDate!: Date;
   tags!: string;
   properties!: any;
 }

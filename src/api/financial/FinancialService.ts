@@ -3,6 +3,7 @@ import { ArgsBillingTitleOpRepeat } from "./ArgsBillingTitleOpRepeat.js";
 import { ArgsBillingTitleOpUpdate } from "./ArgsBillingTitleOpUpdate.js";
 import { ArgsOpSettle } from "./ArgsOpSettle.js";
 import { ArgsReceivableOpSend } from "./ArgsReceivableOpSend.js";
+import { ArgsSettlementOpRevert } from "./ArgsSettlementOpRevert.js";
 import { Currency } from "./Currency.js";
 import { CurrencyExchangeRate } from "./CurrencyExchangeRate.js";
 import { Payable } from "./Payable.js";
@@ -294,6 +295,18 @@ export class FinancialService {
     });
   }
 
+  async payableSettlementOpRevert(id: number, args: ArgsSettlementOpRevert): Promise<Settlement> {
+    return this.#client.web.fetchJson(`/financial/payableSettlementOpRevert/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
+    });
+  }
+
   async payableSettlementRead(search: any): Promise<Settlement[]> {
     return this.#client.web.fetchJson(`/financial/payableSettlement?${search}`, {
       method: "GET",
@@ -473,6 +486,18 @@ export class FinancialService {
     return this.#client.web.fetchJson(`/financial/receivableSettlementMethod/${id}`, {
       method: "GET",
       
+    });
+  }
+
+  async receivableSettlementOpRevert(id: number, args: ArgsSettlementOpRevert): Promise<Settlement> {
+    return this.#client.web.fetchJson(`/financial/receivableSettlementOpRevert/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(args),
+
     });
   }
 

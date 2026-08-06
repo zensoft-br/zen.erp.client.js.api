@@ -29,6 +29,7 @@ export class QuoteItem {
   insideTaxValue!: number;
   outsideTaxValue!: number;
   totalValue!: number;
+  costTotalValue!: number;
   tags!: string;
   properties!: any;
 }

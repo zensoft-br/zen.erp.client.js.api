@@ -18,6 +18,4 @@ export class LedgerItem {
   value!: number;
   sign!: string;
   description!: string;
-  previousBalance!: number;
-  balance!: number;
 }

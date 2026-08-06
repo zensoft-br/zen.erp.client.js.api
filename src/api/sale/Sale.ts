@@ -31,6 +31,7 @@ export class Sale {
   priceList!: PriceListRetail;
   currency!: Currency;
   totalValue!: number;
+  costTotalValue!: number;
   pickingOrder!: PickingOrder;
   shipment!: Shipment;
   invoice!: OutgoingInvoice;

@@ -29,6 +29,7 @@ export class SaleItem {
   insideTaxValue!: number;
   outsideTaxValue!: number;
   totalValue!: number;
+  costTotalValue!: number;
   taxCompensationValue!: number;
   effectiveValue!: number;
   schedule!: PurchaseItem;

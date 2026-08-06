@@ -13,6 +13,5 @@ export { AssetTag } from "./AssetTag.js";
 export { JournalEntry } from "./JournalEntry.js";
 export { JournalItem } from "./JournalItem.js";
 export { LedgerItem } from "./LedgerItem.js";
-export { LedgerItemBalance } from "./LedgerItemBalance.js";
 export { ResultCenter } from "./ResultCenter.js";
 export { ResultCenterChart } from "./ResultCenterChart.js";

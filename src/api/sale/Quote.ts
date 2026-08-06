@@ -19,6 +19,7 @@ export class Quote {
   availabilityDate!: Date;
   personSalesperson!: Person;
   totalValue!: number;
+  costTotalValue!: number;
   tags!: string;
   properties!: any;
 }

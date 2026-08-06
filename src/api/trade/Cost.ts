@@ -9,6 +9,7 @@ export class Cost {
   costProfile!: CostProfile;
   shipment!: Shipment;
   person!: Person;
+  code!: string;
   description!: string;
   date!: Date;
   dueDate!: Date;

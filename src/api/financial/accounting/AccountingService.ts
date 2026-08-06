@@ -14,7 +14,6 @@ import { AssetTag } from "./AssetTag.js";
 import { JournalEntry } from "./JournalEntry.js";
 import { JournalItem } from "./JournalItem.js";
 import { LedgerItem } from "./LedgerItem.js";
-import { LedgerItemBalance } from "./LedgerItemBalance.js";
 import { ResultCenter } from "./ResultCenter.js";
 import { ResultCenterChart } from "./ResultCenterChart.js";
 
@@ -530,13 +529,6 @@ export class AccountingService {
         },
         body: JSON.stringify(bean),
 
-    });
-  }
-
-  async ledgerItemBalanceRead(search: any): Promise<LedgerItemBalance[]> {
-    return this.#client.web.fetchJson(`/financial/accounting/ledgerItemBalance?${search}`, {
-      method: "GET",
-      
     });
   }
 

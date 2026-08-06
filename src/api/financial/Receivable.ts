@@ -7,6 +7,7 @@ import { Workflow } from "../system/workflow/Workflow.js";
 import { Workpiece } from "../system/workflow/Workpiece.js";
 
 export class Receivable {
+  personSalesperson!: Person;
   invoice!: OutgoingInvoice;
   id!: number;
   flow!: string;

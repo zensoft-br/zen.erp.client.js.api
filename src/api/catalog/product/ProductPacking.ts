@@ -1,6 +1,7 @@
 import { Image } from "../../system/image/Image.js";
 import { Product } from "./Product.js";
 import { ProductVariant } from "./ProductVariant.js";
+import { Unit } from "./Unit.js";
 
 export class ProductPacking {
   id!: number;
@@ -9,6 +10,7 @@ export class ProductPacking {
   code!: string;
   complement!: string;
   barcode!: string;
+  unit!: Unit;
   units!: number;
   lengthCm!: number;
   widthCm!: number;
