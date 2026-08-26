@@ -10,6 +10,7 @@ export class ProductPacking {
   code!: string;
   complement!: string;
   barcode!: string;
+  fullDescription!: string;
   unit!: Unit;
   units!: number;
   lengthCm!: number;

@@ -716,6 +716,18 @@ export class TradeService {
     });
   }
 
+  async shipmentContainerOpUpdateDmz(bean: ShipmentContainer): Promise<ShipmentContainer> {
+    return this.#client.web.fetchJson("/trade/shipmentContainerOpUpdateDmz", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
   async shipmentContainerRead(search: any): Promise<ShipmentContainer[]> {
     return this.#client.web.fetchJson(`/trade/shipmentContainer?${search}`, {
       method: "GET",

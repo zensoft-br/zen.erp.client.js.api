@@ -14,10 +14,14 @@ export class Contract {
   company!: Company;
   person!: Person;
   code!: string;
+  number!: string;
   description!: string;
   date!: Date;
   availabilityDate!: Date;
+  cargoReadyEstimateDate!: Date;
+  cargoReadyDate!: Date;
   country!: Country;
+  boardingPort!: string;
   currency!: Currency;
   totalValue!: number;
   paymentValue!: number;

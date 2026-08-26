@@ -352,6 +352,18 @@ export class FiscalService {
     });
   }
 
+  async incomingInvoiceItemOpUpdateDmz(bean: IncomingInvoiceItem): Promise<IncomingInvoiceItem> {
+    return this.#client.web.fetchJson("/fiscal/incomingInvoiceItemOpUpdateDmz", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
+    });
+  }
+
   async incomingInvoiceItemRead(search: any): Promise<IncomingInvoiceItem[]> {
     return this.#client.web.fetchJson(`/fiscal/incomingInvoiceItem?${search}`, {
       method: "GET",
@@ -753,6 +765,18 @@ export class FiscalService {
     return this.#client.web.fetchJson(`/fiscal/outgoingInvoiceItem/${id}`, {
       method: "DELETE",
       
+    });
+  }
+
+  async outgoingInvoiceItemOpUpdateDmz(bean: OutgoingInvoiceItem): Promise<OutgoingInvoiceItem> {
+    return this.#client.web.fetchJson("/fiscal/outgoingInvoiceItemOpUpdateDmz", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        },
+        body: JSON.stringify(bean),
+
     });
   }
 

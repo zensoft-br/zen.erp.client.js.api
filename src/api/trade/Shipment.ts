@@ -9,9 +9,18 @@ export class Shipment {
   workpiece!: Workpiece;
   person!: Person;
   code!: string;
+  number!: string;
   description!: string;
   date!: Date;
   availabilityDate!: Date;
+  boardingEstimateDate!: Date;
+  boardingDate!: Date;
+  boardingPort!: string;
+  arrivalEstimateDate!: Date;
+  arrivalDate!: Date;
+  arrivalPort!: string;
+  demurrageFreeTimeDays!: number;
+  demurrageFee!: number;
   tags!: string;
   properties!: any;
 }
