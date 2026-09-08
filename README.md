@@ -20,6 +20,10 @@ Pode ser necessário configurar o arquivo `jsconfig.json` para que o intellisens
 }
 ```
 
+## Geração
+
+O conteúdo da pasta `api` é gerada automaticamente pelo programa `zen.erp.api\src\test\java\ps\erp\api\Build_All.java`.
+
 ## Importação
 
 Os componentes devem ser importados individualmente, possibilitando a realização de tree-shaking no projeto.
