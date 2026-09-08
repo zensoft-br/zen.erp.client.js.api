@@ -345,6 +345,13 @@ export class SaleService {
     });
   }
 
+  async quoteOpClone(id: number): Promise<Quote> {
+    return this.#client.web.fetchJson(`/sale/quoteOpClone/${id}`, {
+      method: "POST",
+      
+    });
+  }
+
   async quoteOpCreate(args: ArgsQuoteOpCreate): Promise<Quote> {
     return this.#client.web.fetchJson("/sale/quoteOpCreate", {
       method: "POST",
